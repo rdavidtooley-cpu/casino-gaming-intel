@@ -1,0 +1,46 @@
+{
+  "kpis": {
+    "market_size_2025": 263.3,
+    "market_size_growth": 5.2,
+    "global_casinos_2025": 30000,
+    "online_gambling_share": 25,
+    "projected_2026": 280.0,
+    "projected_2026_growth": 6.3
+  },
+  "metrics": [
+    { "year": 2018, "totalRevenue": 180.5, "landBasedRevenue": 155.0, "onlineRevenue": 25.5, "sportsRevenue": 8.2, "yoyGrowth": 4.5, "jurisdictions": 120 },
+    { "year": 2019, "totalRevenue": 195.2, "landBasedRevenue": 162.0, "onlineRevenue": 33.2, "sportsRevenue": 12.5, "yoyGrowth": 8.1, "jurisdictions": 125 },
+    { "year": 2020, "totalRevenue": 125.8, "landBasedRevenue": 80.0, "onlineRevenue": 45.8, "sportsRevenue": 18.0, "yoyGrowth": -35.6, "jurisdictions": 128 },
+    { "year": 2021, "totalRevenue": 215.0, "landBasedRevenue": 155.0, "onlineRevenue": 60.0, "sportsRevenue": 28.0, "yoyGrowth": 70.9, "jurisdictions": 132 },
+    { "year": 2022, "totalRevenue": 238.5, "landBasedRevenue": 170.0, "onlineRevenue": 68.5, "sportsRevenue": 35.0, "yoyGrowth": 10.9, "jurisdictions": 138 },
+    { "year": 2023, "totalRevenue": 250.0, "landBasedRevenue": 175.0, "onlineRevenue": 75.0, "sportsRevenue": 42.0, "yoyGrowth": 4.8, "jurisdictions": 142 },
+    { "year": 2024, "totalRevenue": 258.0, "landBasedRevenue": 178.0, "onlineRevenue": 80.0, "sportsRevenue": 48.0, "yoyGrowth": 3.2, "jurisdictions": 148 },
+    { "year": 2025, "totalRevenue": 263.3, "landBasedRevenue": 179.0, "onlineRevenue": 84.3, "sportsRevenue": 53.0, "yoyGrowth": 2.1, "jurisdictions": 155 },
+    { "year": 2026, "totalRevenue": 280.0, "landBasedRevenue": 182.0, "onlineRevenue": 98.0, "sportsRevenue": 62.0, "yoyGrowth": 6.3, "jurisdictions": 162 }
+  ],
+  "segment_revenue_2025": {
+    "labels": ["Land-Based Casinos", "Online Gambling", "Sports Betting"],
+    "data": [179.0, 84.3, 53.0]
+  },
+  "region_revenue_2025": {
+    "labels": ["North America", "Asia-Pacific", "Europe", "Latin America", "Middle East & Africa"],
+    "data": [105.0, 82.5, 52.0, 14.5, 9.3]
+  },
+  "us_state_revenue_2025": {
+    "labels": ["Nevada", "New Jersey", "Pennsylvania", "New York", "Michigan", "Indiana"],
+    "data": [15.2, 5.8, 5.5, 4.2, 2.8, 2.5]
+  },
+  "game_type_revenue_2025": {
+    "labels": ["Slots", "Table Games", "Sports Betting", "Poker", "Other"],
+    "data": [95.0, 45.0, 53.0, 12.0, 58.3]
+  },
+  "top_gaming_jurisdictions_2024": {
+    "labels": ["Macau", "Las Vegas Strip", "Singapore", "Atlantic City", "Pennsylvania", "Connecticut"],
+    "data": [30.2, 8.8, 6.5, 3.6, 5.5, 2.8]
+  },
+  "emerging_markets_2024": {
+    "labels": ["Japan (IR)", "Brazil", "UAE", "Thailand", "Philippines", "Vietnam"],
+    "data": [25, 18, 15, 12, 10, 8]
+  },
+  "last_updated": "2026-02-26"
+}

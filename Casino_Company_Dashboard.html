@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Gaming Company Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #c9a227;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 0;
+        }
+
+        /* KPI Cards */
+        .kpi-section {
+            max-width: 1400px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #c9a227;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.2);
+        }
+
+        .kpi-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c9a227;
+        }
+
+        .kpi-detail {
+            font-size: 0.85rem;
+            color: #808080;
+            margin-top: 0.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.75rem;
+            background-color: #0f0f0f;
+            border: 2px solid #333;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:hover,
+        .filter-group select:focus,
+        .filter-group input:hover,
+        .filter-group input:focus {
+            border-color: #c9a227;
+            outline: none;
+        }
+
+        .reset-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #c9a227;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: #e0b830;
+            transform: scale(1.05);
+        }
+
+        /* Charts Section */
+        .charts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .chart-container {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #c9a227;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        /* Full-width charts */
+        .chart-full {
+            grid-column: 1 / -1;
+        }
+
+        .chart-full .chart-wrapper {
+            height: 350px;
+        }
+
+        /* Data Table Section */
+        .table-section {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .table-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #c9a227;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #0f0f0f;
+            border-bottom: 2px solid #c9a227;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+            color: #c9a227;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        th:hover {
+            background-color: #1a1a2e;
+        }
+
+        th::after {
+            content: '';
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        th.sortable.asc::after {
+            content: ' ▲';
+            color: #c9a227;
+        }
+
+        th.sortable.desc::after {
+            content: ' ▼';
+            color: #c9a227;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #333;
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #252535;
+        }
+
+        td {
+            padding: 1rem;
+            color: #e0e0e0;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            color: #c9a227;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f0f0f;
+            border-top: 2px solid #c9a227;
+            padding: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-section {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .kpi-card,
+        .chart-container,
+        .table-section {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Chart.js Custom Colors */
+        .chart-container canvas {
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Casino Gaming Company Comparison Dashboard</h1>
+            <p class="header-subtitle" id="header-timestamp">Latest Financial Performance & Market Analysis</p>
+        </div>
+    </header>
+
+    <!-- KPI Cards -->
+    <div class="kpi-section">
+        <div class="kpi-card">
+            <div class="kpi-label">Combined Revenue</div>
+            <div class="kpi-value" id="kpi-total-rev">Loading...</div>
+            <div class="kpi-detail" id="kpi-total-rev-detail">All tracked operators</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Companies Tracked</div>
+            <div class="kpi-value" id="kpi-count">Loading...</div>
+            <div class="kpi-detail" id="kpi-count-detail">Casino operators</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Largest Operator</div>
+            <div class="kpi-value" id="kpi-largest">Loading...</div>
+            <div class="kpi-detail" id="kpi-largest-detail"></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Highest Market Cap</div>
+            <div class="kpi-value" id="kpi-top-cap">Loading...</div>
+            <div class="kpi-detail" id="kpi-top-cap-detail"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="sectorFilter">Sector Filter</label>
+                <select id="sectorFilter">
+                    <option value="All">All Sectors</option>
+                    <option value="Casino Major">Casino Major</option>
+                    <option value="Regional Operator">Regional Operator</option>
+                    <option value="Online/Sports Betting">Online/Sports Betting</option>
+                    <option value="Equipment/Tech">Equipment/Tech</option>
+                    <option value="International Operator">International Operator</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="regionFilter">Region Filter</label>
+                <select id="regionFilter">
+                    <option value="All">All Regions</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="revenueThreshold">Revenue Threshold ($B)</label>
+                <input type="number" id="revenueThreshold" value="0" min="0" max="100" step="0.5">
+            </div>
+            <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <!-- Revenue Comparison (Full Width) -->
+            <div class="chart-container chart-full">
+                <div class="chart-title">Company Revenue Comparison</div>
+                <div class="chart-wrapper">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Revenue by Region (Doughnut) -->
+            <div class="chart-container">
+                <div class="chart-title">Revenue by Country</div>
+                <div class="chart-wrapper">
+                    <canvas id="regionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Sector Comparison Chart -->
+            <div class="chart-container">
+                <div class="chart-title">Sector Comparison</div>
+                <div class="chart-wrapper">
+                    <canvas id="sectorChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-section">
+            <div class="table-title">Complete Company Database</div>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-column="company">Company</th>
+                        <th class="sortable" data-column="ticker">Ticker</th>
+                        <th class="sortable" data-column="revenue">Revenue ($B)</th>
+                        <th class="sortable" data-column="country">Country</th>
+                        <th class="sortable" data-column="properties">Key Properties</th>
+                        <th class="sortable" data-column="employees">Employees</th>
+                        <th class="sortable" data-column="sector">Sector</th>
+                        <th class="sortable" data-column="market_cap">Market Cap ($B)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Casino Gaming Company Dashboard</strong></p>
+        <p id="footer-timestamp"><strong>Dashboard Created:</strong> February 2026</p>
+        <p style="margin-top: 1rem; color: #606060;">This dashboard is for informational purposes only. Revenue figures are from official company disclosures.</p>
+    </footer>
+
+    <script>
+        // Inline data placeholder — refresh_casino_dashboard.py injects here for file:// use
+        // INJECTED_DATA_START
+        var INJECTED_COMPANY_DATA = [
+  {
+    "ticker": "MGM",
+    "company": "MGM Resorts",
+    "revenue": 16.2,
+    "country": "United States",
+    "properties": "Bellagio, MGM Grand, Mandalay Bay, BetMGM",
+    "employees": 60000,
+    "sector": "Casino Major",
+    "market_cap": 10.032216064,
+    "timestamp": "2026-03-14T07:15:04.233168"
+  },
+  {
+    "ticker": "LVS",
+    "company": "Las Vegas Sands",
+    "revenue": 11.0,
+    "country": "United States",
+    "properties": "Venetian Macao, Marina Bay Sands, Londoner Macao",
+    "employees": 41000,
+    "sector": "Casino Major",
+    "market_cap": 36.294897664,
+    "timestamp": "2026-03-14T07:15:04.796520"
+  },
+  {
+    "ticker": "WYNN",
+    "company": "Wynn Resorts",
+    "revenue": 6.5,
+    "country": "United States",
+    "properties": "Wynn Las Vegas, Encore, Wynn Macau, Wynn Palace",
+    "employees": 28500,
+    "sector": "Casino Major",
+    "market_cap": 10.473170944,
+    "timestamp": "2026-03-14T07:15:05.466019"
+  },
+  {
+    "ticker": "CZR",
+    "company": "Caesars Entertainment",
+    "revenue": 11.0,
+    "country": "United States",
+    "properties": "Caesars Palace, Harrahs, Horseshoe, WSOP",
+    "employees": 50000,
+    "sector": "Casino Major",
+    "market_cap": 5.727268352,
+    "timestamp": "2026-03-14T07:15:06.151336"
+  },
+  {
+    "ticker": "PENN",
+    "company": "Penn Entertainment",
+    "revenue": 6.4,
+    "country": "United States",
+    "properties": "Hollywood Casino, ESPN BET, L'Auberge",
+    "employees": 23441,
+    "sector": "Regional Operator",
+    "market_cap": 1.911047168,
+    "timestamp": "2026-03-14T07:15:06.677013"
+  },
+  {
+    "ticker": "BYD",
+    "company": "Boyd Gaming",
+    "revenue": 3.9,
+    "country": "United States",
+    "properties": "Orleans, Borgata, IP Biloxi, Treasure Chest",
+    "employees": 16009,
+    "sector": "Regional Operator",
+    "market_cap": 6.163183616,
+    "timestamp": "2026-03-14T07:15:07.264084"
+  },
+  {
+    "ticker": "RRR",
+    "company": "Red Rock Resorts",
+    "revenue": 2.1,
+    "country": "United States",
+    "properties": "Red Rock Casino, Green Valley Ranch, Palace Station",
+    "employees": 9500,
+    "sector": "Regional Operator",
+    "market_cap": 5.947507712,
+    "timestamp": "2026-03-14T07:15:07.916413"
+  },
+  {
+    "ticker": "CHDN",
+    "company": "Churchill Downs",
+    "revenue": 2.6,
+    "country": "United States",
+    "properties": "Kentucky Derby, TwinSpires, Exact Sciences Racing",
+    "employees": 6600,
+    "sector": "Regional Operator",
+    "market_cap": 6.021774336,
+    "timestamp": "2026-03-14T07:15:08.522710"
+  },
+  {
+    "ticker": "MCRI",
+    "company": "Monarch Casino",
+    "revenue": 1.4,
+    "country": "United States",
+    "properties": "Atlantis Casino Reno, Monarch Casino Black Hawk",
+    "employees": 2740,
+    "sector": "Regional Operator",
+    "market_cap": 1.795945344,
+    "timestamp": "2026-03-14T07:15:09.053285"
+  },
+  {
+    "ticker": "GDEN",
+    "company": "Golden Entertainment",
+    "revenue": 1.0,
+    "country": "United States",
+    "properties": "STRAT, Arizona Charlies, PT's Taverns",
+    "employees": 4900,
+    "sector": "Regional Operator",
+    "market_cap": 0.728607232,
+    "timestamp": "2026-03-14T07:15:09.612604"
+  },
+  {
+    "ticker": "FLL",
+    "company": "Full House Resorts",
+    "revenue": 0.2,
+    "country": "United States",
+    "properties": "Grand Lodge, Stockmans, Chamonix",
+    "employees": 0,
+    "sector": "Regional Operator",
+    "market_cap": 0.094277104,
+    "timestamp": "2026-03-14T07:15:10.133764"
+  },
+  {
+    "ticker": "BALY",
+    "company": "Bally's Corp",
+    "revenue": 2.5,
+    "country": "United States",
+    "properties": "Bally's Atlantic City, Twin River, Dover Downs",
+    "employees": 10000,
+    "sector": "Regional Operator",
+    "market_cap": 0.623867456,
+    "timestamp": "2026-03-14T07:15:10.744788"
+  },
+  {
+    "ticker": "DKNG",
+    "company": "DraftKings",
+    "revenue": 4.8,
+    "country": "United States",
+    "properties": "DraftKings Sportsbook, DK Casino, DFS",
+    "employees": 5500,
+    "sector": "Online/Sports Betting",
+    "market_cap": 12.877375488,
+    "timestamp": "2026-03-14T07:15:11.265657"
+  },
+  {
+    "ticker": "FLUT",
+    "company": "Flutter Entertainment",
+    "revenue": 13.0,
+    "country": "United States",
+    "properties": "FanDuel, PokerStars, Betfair, Sky Betting",
+    "employees": 28518,
+    "sector": "Online/Sports Betting",
+    "market_cap": 18.999713792,
+    "timestamp": "2026-03-14T07:15:11.789302"
+  },
+  {
+    "ticker": "RSI",
+    "company": "Rush Street Interactive",
+    "revenue": 0.7,
+    "country": "United States",
+    "properties": "BetRivers, PlaySugarHouse, RushBet",
+    "employees": 912,
+    "sector": "Online/Sports Betting",
+    "market_cap": 4.713887232,
+    "timestamp": "2026-03-14T07:15:12.406658"
+  },
+  {
+    "ticker": "SRAD",
+    "company": "Sportradar",
+    "revenue": 1.0,
+    "country": "Switzerland",
+    "properties": "Sports data, odds, streaming, integrity",
+    "employees": 0,
+    "sector": "Online/Sports Betting",
+    "market_cap": 5.5224576,
+    "timestamp": "2026-03-14T07:15:13.010745"
+  },
+  {
+    "ticker": "LNW",
+    "company": "Light & Wonder",
+    "revenue": 2.9,
+    "country": null,
+    "properties": "Slot machines, systems, iGaming, SciPlay",
+    "employees": 0,
+    "sector": "Equipment/Tech",
+    "market_cap": 0,
+    "timestamp": "2026-03-14T07:15:13.510700"
+  },
+  {
+    "ticker": "ACEL",
+    "company": "Accel Entertainment",
+    "revenue": 0.7,
+    "country": "United States",
+    "properties": "Video gaming terminals, IL/NV distributed gaming",
+    "employees": 1600,
+    "sector": "Equipment/Tech",
+    "market_cap": 0.939417664,
+    "timestamp": "2026-03-14T07:15:14.121096"
+  },
+  {
+    "ticker": "MLCO",
+    "company": "Melco Resorts",
+    "revenue": 4.5,
+    "country": "Hong Kong",
+    "properties": "City of Dreams, Studio City, Altira Macau",
+    "employees": 0,
+    "sector": "International Operator",
+    "market_cap": 2.183930112,
+    "timestamp": "2026-03-14T07:15:14.826360"
+  }
+];
+                                                                                                                                                        // INJECTED_DATA_END
+
+        let companyDataWithMetrics = [];
+
+        const colors = {
+            primary: '#c9a227',
+            secondary: '#e0b830',
+            accent: '#c9a227',
+            dark: '#1a1a2e',
+            light: '#e0e0e0',
+            bars: [
+                '#c9a227', '#e0b830', '#ffd700', '#daa520', '#b8860b',
+                '#cd853f', '#d4af37', '#cfb53b', '#c5b358', '#aa8c2c',
+                '#f0e68c', '#bdb76b', '#8b7500', '#9b870c', '#c4a747'
+            ],
+            chartPalette: [
+                '#c9a227', '#e0b830', '#ffd700', '#daa520', '#b8860b',
+                '#cd853f', '#d4af37', '#cfb53b', '#c5b358', '#aa8c2c'
+            ],
+            doughnutPalette: [
+                '#c9a227', '#ffd700', '#e0b830', '#daa520', '#b8860b',
+                '#cd853f', '#d4af37', '#cfb53b', '#c5b358', '#aa8c2c'
+            ]
+        };
+
+        let charts = {};
+
+        async function loadData() {
+            let raw;
+            if (INJECTED_COMPANY_DATA) {
+                raw = INJECTED_COMPANY_DATA;
+            } else {
+                try {
+                    const resp = await fetch('company_data.json');
+                    raw = await resp.json();
+                } catch (e) {
+                    console.error('Could not load company_data.json:', e);
+                    document.getElementById('tableBody').innerHTML =
+                        '<tr><td colspan="8" style="text-align:center;padding:30px;color:#c9a227;">Failed to load data. Run refresh_casino_dashboard.py or open via HTTP server.</td></tr>';
+                    return;
+                }
+            }
+
+            companyDataWithMetrics = raw.map(c => ({
+                company: c.company,
+                ticker: c.ticker,
+                revenue: c.revenue,
+                country: c.country,
+                properties: c.properties,
+                employees: c.employees || 0,
+                market_cap: c.market_cap,
+                sector: c.sector,
+                timestamp: c.timestamp
+            }));
+
+            companyDataWithMetrics.sort((a, b) => b.revenue - a.revenue);
+            populateRegionFilter();
+            updateKPIs();
+            updateTimestamp();
+            initCharts();
+        }
+
+        function populateRegionFilter() {
+            var regionSelect = document.getElementById('regionFilter');
+            var countries = [];
+            companyDataWithMetrics.forEach(function(c) {
+                if (countries.indexOf(c.country) === -1) {
+                    countries.push(c.country);
+                }
+            });
+            countries.sort();
+            // Clear existing options beyond the first "All Regions"
+            regionSelect.innerHTML = '<option value="All">All Regions</option>';
+            countries.forEach(function(country) {
+                var opt = document.createElement('option');
+                opt.value = country;
+                opt.textContent = country;
+                regionSelect.appendChild(opt);
+            });
+        }
+
+        function updateKPIs() {
+            var totalRev = companyDataWithMetrics.reduce(function(s, d) { return s + d.revenue; }, 0);
+            document.getElementById('kpi-total-rev').textContent = '$' + totalRev.toFixed(1) + 'B';
+            document.getElementById('kpi-total-rev-detail').textContent = companyDataWithMetrics.length + ' operators combined';
+
+            document.getElementById('kpi-count').textContent = companyDataWithMetrics.length;
+            document.getElementById('kpi-count-detail').textContent = 'Casino operators';
+
+            var largest = companyDataWithMetrics[0];
+            if (largest) {
+                document.getElementById('kpi-largest').textContent = largest.company;
+                document.getElementById('kpi-largest-detail').textContent = '$' + largest.revenue.toFixed(1) + 'B revenue';
+            }
+
+            var topCap = companyDataWithMetrics.reduce(function(best, d) {
+                return (d.market_cap || 0) > (best.market_cap || 0) ? d : best;
+            });
+            if (topCap) {
+                document.getElementById('kpi-top-cap').textContent = topCap.company;
+                document.getElementById('kpi-top-cap-detail').textContent = '$' + (topCap.market_cap || 0).toFixed(1) + 'B market cap';
+            }
+        }
+
+        function updateTimestamp() {
+            var ts = companyDataWithMetrics[0] && companyDataWithMetrics[0].timestamp;
+            if (ts) {
+                var date = new Date(ts);
+                var fmt = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('header-timestamp').textContent = 'Latest Financial Performance & Market Analysis | Data as of ' + fmt;
+                document.getElementById('footer-timestamp').innerHTML = '<strong>Data Updated:</strong> ' + fmt;
+            }
+        }
+
+        function initCharts() {
+            initRevenueChart();
+            initRegionChart();
+            initSectorChart();
+            populateTable(companyDataWithMetrics);
+        }
+
+        // Revenue Comparison Chart (Horizontal Bar)
+        function initRevenueChart() {
+            var ctx = document.getElementById('revenueChart').getContext('2d');
+            var sortedData = companyDataWithMetrics.slice().sort(function(a, b) { return b.revenue - a.revenue; });
+
+            charts.revenue = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: sortedData.map(function(d) { return d.company; }),
+                    datasets: [{
+                        label: 'Revenue ($B)',
+                        data: sortedData.map(function(d) { return d.revenue; }),
+                        backgroundColor: colors.bars.slice(0, sortedData.length),
+                        borderColor: colors.primary,
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        hoverBackgroundColor: '#ffd700'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: colors.primary,
+                            bodyColor: colors.light,
+                            borderColor: colors.primary,
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + context.parsed.x.toFixed(1) + 'B';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(201, 162, 39, 0.1)' },
+                            ticks: { color: colors.light },
+                            title: { display: true, text: 'Revenue ($B)', color: colors.light }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: colors.light }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Revenue by Country (Doughnut)
+        function initRegionChart() {
+            var ctx = document.getElementById('regionChart').getContext('2d');
+            var regionData = {};
+            companyDataWithMetrics.forEach(function(c) {
+                regionData[c.country] = (regionData[c.country] || 0) + c.revenue;
+            });
+
+            var regionLabels = Object.keys(regionData);
+            var regionValues = Object.values(regionData);
+
+            charts.region = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: regionLabels,
+                    datasets: [{
+                        data: regionValues,
+                        backgroundColor: colors.doughnutPalette.slice(0, regionLabels.length),
+                        borderColor: '#1a1a2e',
+                        borderWidth: 3,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: colors.light,
+                                padding: 15,
+                                font: { size: 12, weight: 'bold' }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: colors.primary,
+                            bodyColor: colors.light,
+                            borderColor: colors.primary,
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': $' + context.parsed.toFixed(1) + 'B';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Sector Comparison Chart
+        function initSectorChart() {
+            var ctx = document.getElementById('sectorChart').getContext('2d');
+            var sectorData = {};
+            var sectorCount = {};
+            companyDataWithMetrics.forEach(function(c) {
+                sectorData[c.sector] = (sectorData[c.sector] || 0) + c.revenue;
+                sectorCount[c.sector] = (sectorCount[c.sector] || 0) + 1;
+            });
+
+            var sectorLabels = Object.keys(sectorData);
+            var sectorValues = sectorLabels.map(function(s) { return sectorData[s]; });
+
+            charts.sector = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: sectorLabels,
+                    datasets: [{
+                        label: 'Total Revenue ($B)',
+                        data: sectorValues,
+                        backgroundColor: colors.chartPalette.slice(0, sectorLabels.length),
+                        borderColor: colors.primary,
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        hoverBackgroundColor: '#ffd700'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: colors.primary,
+                            bodyColor: colors.light,
+                            borderColor: colors.primary,
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    var sector = context.label;
+                                    return [
+                                        'Revenue: $' + context.parsed.y.toFixed(1) + 'B',
+                                        'Companies: ' + (sectorCount[sector] || 0)
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: colors.light }
+                        },
+                        y: {
+                            grid: { color: 'rgba(201, 162, 39, 0.1)' },
+                            ticks: { color: colors.light },
+                            title: { display: true, text: 'Revenue ($B)', color: colors.light }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Populate Table
+        function populateTable(data) {
+            var tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            data.forEach(function(company) {
+                var row = '<tr>' +
+                    '<td>' + company.company + '</td>' +
+                    '<td>' + company.ticker + '</td>' +
+                    '<td>$' + company.revenue.toFixed(1) + 'B</td>' +
+                    '<td>' + company.country + '</td>' +
+                    '<td>' + company.properties + '</td>' +
+                    '<td>' + company.employees.toLocaleString() + '</td>' +
+                    '<td>' + company.sector + '</td>' +
+                    '<td>$' + (company.market_cap || 0).toFixed(1) + 'B</td>' +
+                    '</tr>';
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Table Sorting
+        var sortConfig = { column: null, direction: 'asc' };
+        document.querySelectorAll('th.sortable').forEach(function(th) {
+            th.addEventListener('click', function() {
+                var column = this.dataset.column;
+                var direction = sortConfig.column === column && sortConfig.direction === 'asc' ? 'desc' : 'asc';
+                sortConfig = { column: column, direction: direction };
+
+                document.querySelectorAll('th.sortable').forEach(function(h) {
+                    h.classList.remove('asc', 'desc');
+                });
+                this.classList.add(direction);
+
+                sortTable(column, direction);
+            });
+        });
+
+        function sortTable(column, direction) {
+            var sortedData = companyDataWithMetrics.slice().sort(function(a, b) {
+                var aVal = a[column];
+                var bVal = b[column];
+
+                if (typeof aVal === 'number') {
+                    return direction === 'asc' ? aVal - bVal : bVal - aVal;
+                }
+                return direction === 'asc' ? String(aVal).localeCompare(String(bVal)) : String(bVal).localeCompare(String(aVal));
+            });
+
+            populateTable(sortedData);
+        }
+
+        // Filtering
+        function applyFilters() {
+            var sector = document.getElementById('sectorFilter').value;
+            var region = document.getElementById('regionFilter').value;
+            var threshold = parseFloat(document.getElementById('revenueThreshold').value) || 0;
+
+            var filtered = companyDataWithMetrics.filter(function(c) {
+                var sectorMatch = sector === 'All' || c.sector === sector;
+                var regionMatch = region === 'All' || c.country === region;
+                var revenueMatch = c.revenue >= threshold;
+                return sectorMatch && regionMatch && revenueMatch;
+            });
+
+            populateTable(filtered);
+            updateCharts(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('sectorFilter').value = 'All';
+            document.getElementById('regionFilter').value = 'All';
+            document.getElementById('revenueThreshold').value = '0';
+            populateTable(companyDataWithMetrics);
+            updateCharts(companyDataWithMetrics);
+        }
+
+        function updateCharts(filteredData) {
+            // Update Revenue Chart
+            var sortedData = filteredData.slice().sort(function(a, b) { return b.revenue - a.revenue; });
+            charts.revenue.data.labels = sortedData.map(function(d) { return d.company; });
+            charts.revenue.data.datasets[0].data = sortedData.map(function(d) { return d.revenue; });
+            charts.revenue.data.datasets[0].backgroundColor = colors.bars.slice(0, sortedData.length);
+            charts.revenue.update();
+
+            // Update Region Chart
+            var regionData = {};
+            filteredData.forEach(function(c) {
+                regionData[c.country] = (regionData[c.country] || 0) + c.revenue;
+            });
+            var regionLabels = Object.keys(regionData);
+            var regionValues = Object.values(regionData);
+            charts.region.data.labels = regionLabels;
+            charts.region.data.datasets[0].data = regionValues;
+            charts.region.data.datasets[0].backgroundColor = colors.doughnutPalette.slice(0, regionLabels.length);
+            charts.region.update();
+
+            // Update Sector Chart
+            var sectorData = {};
+            filteredData.forEach(function(c) {
+                sectorData[c.sector] = (sectorData[c.sector] || 0) + c.revenue;
+            });
+            var sectorLabels = Object.keys(sectorData);
+            var sectorValues = sectorLabels.map(function(s) { return sectorData[s]; });
+            charts.sector.data.labels = sectorLabels;
+            charts.sector.data.datasets[0].data = sectorValues;
+            charts.sector.data.datasets[0].backgroundColor = colors.chartPalette.slice(0, sectorLabels.length);
+            charts.sector.update();
+        }
+
+        // Event Listeners
+        document.getElementById('sectorFilter').addEventListener('change', applyFilters);
+        document.getElementById('regionFilter').addEventListener('change', applyFilters);
+        document.getElementById('revenueThreshold').addEventListener('change', applyFilters);
+
+        // Initialize on load
+        window.addEventListener('load', loadData);
+    </script>
+</body>
+</html>

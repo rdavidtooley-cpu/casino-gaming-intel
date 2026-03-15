@@ -1,0 +1,211 @@
+[
+  {
+    "ticker": "MGM",
+    "company": "MGM Resorts",
+    "revenue": 16.2,
+    "country": "United States",
+    "properties": "Bellagio, MGM Grand, Mandalay Bay, BetMGM",
+    "employees": 60000,
+    "sector": "Casino Major",
+    "market_cap": 10.032216064,
+    "timestamp": "2026-03-14T07:15:04.233168"
+  },
+  {
+    "ticker": "LVS",
+    "company": "Las Vegas Sands",
+    "revenue": 11.0,
+    "country": "United States",
+    "properties": "Venetian Macao, Marina Bay Sands, Londoner Macao",
+    "employees": 41000,
+    "sector": "Casino Major",
+    "market_cap": 36.294897664,
+    "timestamp": "2026-03-14T07:15:04.796520"
+  },
+  {
+    "ticker": "WYNN",
+    "company": "Wynn Resorts",
+    "revenue": 6.5,
+    "country": "United States",
+    "properties": "Wynn Las Vegas, Encore, Wynn Macau, Wynn Palace",
+    "employees": 28500,
+    "sector": "Casino Major",
+    "market_cap": 10.473170944,
+    "timestamp": "2026-03-14T07:15:05.466019"
+  },
+  {
+    "ticker": "CZR",
+    "company": "Caesars Entertainment",
+    "revenue": 11.0,
+    "country": "United States",
+    "properties": "Caesars Palace, Harrahs, Horseshoe, WSOP",
+    "employees": 50000,
+    "sector": "Casino Major",
+    "market_cap": 5.727268352,
+    "timestamp": "2026-03-14T07:15:06.151336"
+  },
+  {
+    "ticker": "PENN",
+    "company": "Penn Entertainment",
+    "revenue": 6.4,
+    "country": "United States",
+    "properties": "Hollywood Casino, ESPN BET, L'Auberge",
+    "employees": 23441,
+    "sector": "Regional Operator",
+    "market_cap": 1.911047168,
+    "timestamp": "2026-03-14T07:15:06.677013"
+  },
+  {
+    "ticker": "BYD",
+    "company": "Boyd Gaming",
+    "revenue": 3.9,
+    "country": "United States",
+    "properties": "Orleans, Borgata, IP Biloxi, Treasure Chest",
+    "employees": 16009,
+    "sector": "Regional Operator",
+    "market_cap": 6.163183616,
+    "timestamp": "2026-03-14T07:15:07.264084"
+  },
+  {
+    "ticker": "RRR",
+    "company": "Red Rock Resorts",
+    "revenue": 2.1,
+    "country": "United States",
+    "properties": "Red Rock Casino, Green Valley Ranch, Palace Station",
+    "employees": 9500,
+    "sector": "Regional Operator",
+    "market_cap": 5.947507712,
+    "timestamp": "2026-03-14T07:15:07.916413"
+  },
+  {
+    "ticker": "CHDN",
+    "company": "Churchill Downs",
+    "revenue": 2.6,
+    "country": "United States",
+    "properties": "Kentucky Derby, TwinSpires, Exact Sciences Racing",
+    "employees": 6600,
+    "sector": "Regional Operator",
+    "market_cap": 6.021774336,
+    "timestamp": "2026-03-14T07:15:08.522710"
+  },
+  {
+    "ticker": "MCRI",
+    "company": "Monarch Casino",
+    "revenue": 1.4,
+    "country": "United States",
+    "properties": "Atlantis Casino Reno, Monarch Casino Black Hawk",
+    "employees": 2740,
+    "sector": "Regional Operator",
+    "market_cap": 1.795945344,
+    "timestamp": "2026-03-14T07:15:09.053285"
+  },
+  {
+    "ticker": "GDEN",
+    "company": "Golden Entertainment",
+    "revenue": 1.0,
+    "country": "United States",
+    "properties": "STRAT, Arizona Charlies, PT's Taverns",
+    "employees": 4900,
+    "sector": "Regional Operator",
+    "market_cap": 0.728607232,
+    "timestamp": "2026-03-14T07:15:09.612604"
+  },
+  {
+    "ticker": "FLL",
+    "company": "Full House Resorts",
+    "revenue": 0.2,
+    "country": "United States",
+    "properties": "Grand Lodge, Stockmans, Chamonix",
+    "employees": 0,
+    "sector": "Regional Operator",
+    "market_cap": 0.094277104,
+    "timestamp": "2026-03-14T07:15:10.133764"
+  },
+  {
+    "ticker": "BALY",
+    "company": "Bally's Corp",
+    "revenue": 2.5,
+    "country": "United States",
+    "properties": "Bally's Atlantic City, Twin River, Dover Downs",
+    "employees": 10000,
+    "sector": "Regional Operator",
+    "market_cap": 0.623867456,
+    "timestamp": "2026-03-14T07:15:10.744788"
+  },
+  {
+    "ticker": "DKNG",
+    "company": "DraftKings",
+    "revenue": 4.8,
+    "country": "United States",
+    "properties": "DraftKings Sportsbook, DK Casino, DFS",
+    "employees": 5500,
+    "sector": "Online/Sports Betting",
+    "market_cap": 12.877375488,
+    "timestamp": "2026-03-14T07:15:11.265657"
+  },
+  {
+    "ticker": "FLUT",
+    "company": "Flutter Entertainment",
+    "revenue": 13.0,
+    "country": "United States",
+    "properties": "FanDuel, PokerStars, Betfair, Sky Betting",
+    "employees": 28518,
+    "sector": "Online/Sports Betting",
+    "market_cap": 18.999713792,
+    "timestamp": "2026-03-14T07:15:11.789302"
+  },
+  {
+    "ticker": "RSI",
+    "company": "Rush Street Interactive",
+    "revenue": 0.7,
+    "country": "United States",
+    "properties": "BetRivers, PlaySugarHouse, RushBet",
+    "employees": 912,
+    "sector": "Online/Sports Betting",
+    "market_cap": 4.713887232,
+    "timestamp": "2026-03-14T07:15:12.406658"
+  },
+  {
+    "ticker": "SRAD",
+    "company": "Sportradar",
+    "revenue": 1.0,
+    "country": "Switzerland",
+    "properties": "Sports data, odds, streaming, integrity",
+    "employees": 0,
+    "sector": "Online/Sports Betting",
+    "market_cap": 5.5224576,
+    "timestamp": "2026-03-14T07:15:13.010745"
+  },
+  {
+    "ticker": "LNW",
+    "company": "Light & Wonder",
+    "revenue": 2.9,
+    "country": null,
+    "properties": "Slot machines, systems, iGaming, SciPlay",
+    "employees": 0,
+    "sector": "Equipment/Tech",
+    "market_cap": 0,
+    "timestamp": "2026-03-14T07:15:13.510700"
+  },
+  {
+    "ticker": "ACEL",
+    "company": "Accel Entertainment",
+    "revenue": 0.7,
+    "country": "United States",
+    "properties": "Video gaming terminals, IL/NV distributed gaming",
+    "employees": 1600,
+    "sector": "Equipment/Tech",
+    "market_cap": 0.939417664,
+    "timestamp": "2026-03-14T07:15:14.121096"
+  },
+  {
+    "ticker": "MLCO",
+    "company": "Melco Resorts",
+    "revenue": 4.5,
+    "country": "Hong Kong",
+    "properties": "City of Dreams, Studio City, Altira Macau",
+    "employees": 0,
+    "sector": "International Operator",
+    "market_cap": 2.183930112,
+    "timestamp": "2026-03-14T07:15:14.826360"
+  }
+]
