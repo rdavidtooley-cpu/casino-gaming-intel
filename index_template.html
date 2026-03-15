@@ -307,6 +307,96 @@
         </a>
     </div>
 
+    <!-- Newsletter Subscription -->
+    <div style="background:var(--bg-card);border:var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;">
+        <div style="text-align:center;margin-bottom:16px;">
+            <div style="font-size:20px;font-weight:700;color:var(--accent);margin-bottom:4px;">Stay Informed</div>
+            <div style="font-size:13px;color:var(--text-secondary);">Get gaming sector intelligence delivered to your inbox</div>
+        </div>
+        <div id="subscribe-form" style="max-width:440px;margin:0 auto;">
+            <div style="margin-bottom:12px;">
+                <input type="email" id="sub-email" placeholder="Enter your email address"
+                    style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,215,0,0.25);background:rgba(255,255,255,0.04);color:#e8eaed;font-size:14px;outline:none;box-sizing:border-box;"
+                    onfocus="this.style.borderColor='#ffd700'" onblur="this.style.borderColor='rgba(255,215,0,0.25)'">
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                <div style="display:flex;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);">
+                    <button type="button" id="freq-daily" onclick="setFrequency('daily')"
+                        style="padding:8px 18px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.2s;background:linear-gradient(135deg,#5c4a00,#8b7000);color:#ffd700;">Daily</button>
+                    <button type="button" id="freq-weekly" onclick="setFrequency('weekly')"
+                        style="padding:8px 18px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.2s;background:transparent;color:#9aa0a6;">Weekly</button>
+                </div>
+                <span style="font-size:11px;color:var(--text-secondary);" id="freq-desc">Mon\u2013Fri market digest</span>
+            </div>
+            <button onclick="handleSubscribe()" id="sub-btn"
+                style="width:100%;padding:11px;border:none;border-radius:8px;background:linear-gradient(135deg,#5c4a00,#8b7000,#ffd700);color:#000;font-size:14px;font-weight:700;cursor:pointer;transition:opacity 0.2s;"
+                onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Subscribe</button>
+            <div id="sub-msg" style="text-align:center;margin-top:10px;font-size:13px;display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+    var _subFreq = 'daily';
+    function setFrequency(f) {
+        _subFreq = f;
+        var daily = document.getElementById('freq-daily');
+        var weekly = document.getElementById('freq-weekly');
+        var desc = document.getElementById('freq-desc');
+        if (f === 'daily') {
+            daily.style.background = 'linear-gradient(135deg,#5c4a00,#8b7000)';
+            daily.style.color = '#ffd700';
+            weekly.style.background = 'transparent';
+            weekly.style.color = '#9aa0a6';
+            desc.textContent = 'Mon\u2013Fri market digest';
+        } else {
+            weekly.style.background = 'linear-gradient(135deg,#5c4a00,#8b7000)';
+            weekly.style.color = '#ffd700';
+            daily.style.background = 'transparent';
+            daily.style.color = '#9aa0a6';
+            desc.textContent = 'Monday weekly roundup';
+        }
+    }
+    function handleSubscribe() {
+        var email = document.getElementById('sub-email').value.trim();
+        var btn = document.getElementById('sub-btn');
+        var msg = document.getElementById('sub-msg');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            msg.style.display = 'block';
+            msg.style.color = '#f44336';
+            msg.textContent = 'Please enter a valid email address.';
+            return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Subscribing...';
+        fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, frequency: _subFreq })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            msg.style.display = 'block';
+            if (data.error) {
+                msg.style.color = '#f44336';
+                msg.textContent = data.error;
+            } else {
+                msg.style.color = '#4caf50';
+                msg.textContent = data.message || 'Subscribed successfully!';
+                document.getElementById('sub-email').value = '';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
+        })
+        .catch(function() {
+            msg.style.display = 'block';
+            msg.style.color = '#f44336';
+            msg.textContent = 'Something went wrong. Please try again.';
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
+        });
+    }
+    </script>
+
     <!-- Disclaimer -->
     <div class="disclaimer">
         <strong style="color:#9aa0a6;">Disclaimer:</strong> The information provided on this platform is for informational and educational purposes only and does not constitute investment advice, financial advice, legal advice, or any other form of professional advice. No representation or warranty, express or implied, is made regarding the accuracy, completeness, or reliability of any information presented. You should not make any investment decisions based solely on the information provided here. Always consult a qualified financial advisor before making any investment or financial decisions. Casino Gaming Intel and its operators assume no liability for any losses, damages, or other consequences arising from the use of or reliance on the information contained herein.
