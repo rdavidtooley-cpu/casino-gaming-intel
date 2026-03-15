@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Gaming Intel &mdash; Gaming Sector Intelligence Hub</title>
+    <meta name="description" content="Real-time casino and iGaming sector intelligence: market data, custom indexes, equity analysis, industry metrics, and news for 25 gaming companies.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23ffd700'/><text x='16' y='23' font-size='20' font-weight='bold' text-anchor='middle' fill='%23000'>C</text></svg>">
+    <script src="auth.js"></script>
+    <script src="export-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-primary: #0f1117;
+            --bg-card: #1a1d29;
+            --bg-hover: #252836;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --text-on-dark: #ffffff;
+            --accent: #ffd700;
+            --accent2: #4fc3f7;
+            --accent3: #81c784;
+            --accent4: #ba68c8;
+            --positive: #4caf50;
+            --negative: #f44336;
+            --radius: 10px;
+            --border: 1px solid rgba(255,255,255,0.06);
+            --gap: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+
+        /* Ticker Bar */
+        .ticker-bar { display:flex; align-items:center; background:#0a0c10; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; white-space:nowrap; height:32px; position:sticky; top:0; z-index:1001; }
+        .ticker-track { display:inline-flex; animation:ticker-scroll 80s linear infinite; gap:0; }
+        .ticker-track:hover { animation-play-state:paused; }
+        .ticker-item { display:inline-flex; align-items:center; gap:6px; padding:0 18px; font-size:11px; font-weight:600; border-right:1px solid rgba(255,255,255,0.04); height:32px; cursor:default; }
+        .ticker-item .tk-sym { color:var(--accent); font-weight:700; letter-spacing:0.5px; }
+        .ticker-item .tk-price { color:var(--text-primary); }
+        .ticker-item .tk-chg { font-size:10px; font-weight:600; }
+        .tk-up { color:var(--positive); } .tk-down { color:var(--negative); } .tk-flat { color:#9e9e9e; }
+        @keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+        /* Nav Bar */
+        .nav-bar { display:flex; gap:4px; padding:8px 24px; background:#111318; border-bottom:1px solid rgba(255,215,0,0.15); position:sticky; top:32px; z-index:1000; flex-wrap:wrap; align-items:center; }
+        .nav-bar a { color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; padding:8px 18px; border-radius:6px; transition:all 0.2s; }
+        .nav-bar a:hover { color:var(--text-primary); background:rgba(255,255,255,0.06); }
+        .nav-bar a.active { color:var(--accent); background:rgba(255,215,0,0.12); }
+
+        .container { max-width:1500px; margin:0 auto; padding:24px; }
+
+        /* Page Header */
+        .page-header { background:linear-gradient(135deg, #1a1d29 0%, #16213e 100%); border-bottom:2px solid var(--accent); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+        .page-header h1 { font-size:1.8rem; color:var(--accent); text-shadow:0 0 10px rgba(255,215,0,0.2); margin-bottom:4px; }
+        .page-header p { color:var(--text-secondary); font-size:0.9rem; }
+        .header-right { text-align:right; }
+        .header-right .idx-val { font-size:28px; font-weight:700; color:var(--text-primary); }
+        .header-right .idx-chg { font-size:13px; }
+        .header-right .idx-label { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--text-secondary); }
+
+        /* KPI Row */
+        .kpi-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:var(--gap); margin-bottom:var(--gap); }
+        .kpi-card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:18px 22px; transition:transform 0.2s; }
+        .kpi-card:hover { transform:translateY(-2px); }
+        .kpi-label { font-size:10px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:4px; }
+        .kpi-label[data-tip] { position:relative; cursor:help; border-bottom:1px dotted rgba(255,255,255,0.2); }
+        .kpi-label[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:0; top:100%; margin-top:4px; background:#2d3748; color:#e8eaed; font-size:11px; padding:6px 10px; border-radius:6px; white-space:normal; width:220px; z-index:100; text-transform:none; letter-spacing:normal; line-height:1.4; box-shadow:0 4px 12px rgba(0,0,0,0.4); pointer-events:none; }
+        .kpi-value { font-size:24px; font-weight:700; margin-bottom:2px; }
+        .kpi-sub { font-size:11px; color:var(--text-secondary); }
+        .positive { color:var(--positive); } .negative { color:var(--negative); }
+
+        /* Grid Layouts */
+        .grid-2col { display:grid; grid-template-columns:1.4fr 0.6fr; gap:var(--gap); margin-bottom:var(--gap); }
+        .grid-3col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--gap); margin-bottom:var(--gap); }
+        .grid-2even { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-bottom:var(--gap); }
+
+        /* Cards */
+        .card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:20px 24px; }
+        .card h3 { font-size:14px; font-weight:600; margin-bottom:12px; color:var(--text-primary); }
+        .section-title { font-size:1.1em; font-weight:700; color:var(--accent); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(255,215,0,0.15); }
+
+        /* Universe Table */
+        .universe-table { width:100%; border-collapse:collapse; font-size:12px; }
+        .universe-table th { text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.1); color:var(--text-secondary); font-size:10px; text-transform:uppercase; letter-spacing:0.5px; cursor:pointer; user-select:none; }
+        .universe-table th:hover { color:var(--accent); }
+        .universe-table td { padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .universe-table tr:hover { background:var(--bg-hover); cursor:pointer; }
+        .sort-arrow { font-size:8px; margin-left:3px; opacity:0.5; }
+
+        /* Movers */
+        .mover-card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:14px 18px; border-left:3px solid; }
+        .mover-card.up { border-left-color:var(--positive); }
+        .mover-card.down { border-left-color:var(--negative); }
+        .mover-ticker { font-weight:700; font-size:14px; color:var(--accent); }
+        .mover-change { font-size:20px; font-weight:700; margin:4px 0; }
+        .mover-name { font-size:11px; color:var(--text-secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .mover-price { font-size:11px; color:var(--text-secondary); margin-top:4px; }
+
+        /* News Items */
+        .news-item { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .news-item:last-child { border-bottom:none; }
+        .news-item a { color:var(--text-primary); text-decoration:none; font-size:13px; font-weight:500; line-height:1.4; display:block; }
+        .news-item a:hover { color:var(--accent); }
+        .news-meta { font-size:11px; color:var(--text-secondary); margin-top:3px; }
+        .view-all { display:inline-block; margin-top:12px; font-size:12px; font-weight:600; color:var(--accent); text-decoration:none; }
+        .view-all:hover { text-decoration:underline; }
+
+        /* Dashboard Links */
+        .dash-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:var(--gap); }
+        .dash-link-card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:20px; text-decoration:none; color:inherit; transition:transform 0.2s, border-color 0.2s; display:flex; align-items:center; gap:16px; }
+        .dash-link-card:hover { transform:translateY(-2px); border-color:rgba(255,215,0,0.3); }
+        .dl-icon { width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+        .dl-text h4 { font-size:14px; font-weight:600; margin-bottom:2px; }
+        .dl-text p { font-size:11px; color:var(--text-secondary); }
+
+        /* Transcript Intelligence */
+        .ti-section-title { font-size:16px; font-weight:600; color:var(--accent); margin:24px 0 12px; text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:8px; }
+        .ti-rank-table { width:100%; border-collapse:collapse; font-size:11px; }
+        .ti-rank-table th { text-align:left; padding:5px 6px; border-bottom:1px solid rgba(255,255,255,0.1); color:var(--text-secondary); font-size:9px; text-transform:uppercase; letter-spacing:0.5px; }
+        .ti-rank-table td { padding:5px 6px; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .ti-rank-table tr:hover { background:rgba(255,215,0,0.03); }
+        .ti-score-bar { display:inline-block; height:14px; border-radius:2px; min-width:4px; vertical-align:middle; }
+        .ti-badge { display:inline-block; padding:2px 7px; border-radius:3px; font-size:9px; font-weight:600; letter-spacing:0.3px; }
+        .ti-badge-raised { background:rgba(76,175,80,0.15); color:#4caf50; }
+        .ti-badge-lowered { background:rgba(244,67,54,0.15); color:#f44336; }
+        .ti-badge-maintained { background:rgba(255,193,7,0.15); color:#ffc107; }
+
+        /* Sector badge */
+        .cat-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; padding:2px 8px; border-radius:4px; font-weight:600; }
+        .cat-dot { width:6px; height:6px; border-radius:50%; display:inline-block; }
+
+        /* Market Breadth */
+        .breadth-bar { height:28px; border-radius:6px; overflow:hidden; display:flex; background:rgba(255,255,255,0.06); }
+
+        /* Info Tooltip */
+        .info-trigger { position:relative; display:inline-flex; align-items:center; }
+        .info-tooltip { display:none; position:fixed; z-index:9999; width:360px; max-width:90vw; background:#1e2130; border:1px solid rgba(255,215,0,0.25); border-radius:10px; padding:16px 18px; font-size:11.5px; line-height:1.55; color:#d0d0d0; box-shadow:0 8px 32px rgba(0,0,0,0.5); pointer-events:none; }
+
+        /* Footer */
+        .footer { text-align:center; padding:16px; font-size:11px; color:var(--text-secondary); }
+        .disclaimer { max-width:900px; margin:20px auto 0; padding:16px 20px; font-size:10px; color:#6b7280; line-height:1.5; border-top:1px solid rgba(255,255,255,0.06); }
+
+        /* Responsive */
+        @media(max-width:1100px) { .grid-3col { grid-template-columns:1fr 1fr; } }
+        @media(max-width:900px) { .grid-2col { grid-template-columns:1fr; } .grid-2even { grid-template-columns:1fr; } }
+        @media(max-width:700px) { .grid-3col { grid-template-columns:1fr; } }
+        @media(max-width:768px) {
+            .nav-bar { padding:6px 8px; } .nav-bar a { font-size:11px; padding:6px 10px; }
+            .ticker-bar { height:26px; } .ticker-item { padding:0 10px; font-size:10px; height:26px; }
+            .container { padding:12px; } .page-header { padding:16px 20px; } .page-header h1 { font-size:20px; }
+            .kpi-row { grid-template-columns:repeat(2,1fr); }
+            .dash-links { grid-template-columns:1fr; }
+        }
+        @media print {
+            .nav-bar,.ticker-bar { display:none!important; }
+            body { background:#fff!important; color:#000!important; }
+            .card,.kpi-card { border:1px solid #ddd!important; background:#fff!important; break-inside:avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Scrolling Ticker Bar -->
+<div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<!-- Navigation -->
+<div class="nav-bar">
+    <a href="index.html" class="active">Home</a>
+    <a href="CG_Equities_Dashboard.html">Equities</a>
+    <a href="CG_Peer_Analysis.html">Peer Analysis</a>
+    <a href="CG_Industry_Dashboard.html">Industry</a>
+    <a href="CG_News_Dashboard.html">News</a>
+    <a href="CG_Company_Summary.html">Company</a>
+</div>
+
+<div class="container">
+
+    <!-- Page Header with Gaming-25 Index -->
+    <div class="page-header">
+        <div>
+            <h1>Casino Gaming Intel</h1>
+            <p>Casino &amp; iGaming Intelligence Command Center &mdash; 25 Companies Tracked</p>
+        </div>
+        <div class="header-right" id="header-gaming25"></div>
+    </div>
+
+    <!-- 6 KPI Cards -->
+    <div class="kpi-row" id="kpi-row"></div>
+
+    <!-- Market Breadth Bar -->
+    <div class="card" style="margin-bottom:var(--gap);padding:16px 24px;">
+        <h3 style="margin-bottom:10px;">Market Breadth</h3>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+            <div class="breadth-bar" id="breadth-bar" style="flex:1;min-width:200px;"></div>
+            <div id="breadth-stats" style="display:flex;gap:16px;font-size:12px;"></div>
+        </div>
+    </div>
+
+    <!-- Main Content: Universe Table + Charts -->
+    <div class="grid-2col">
+        <!-- Universe Table -->
+        <div class="card">
+            <h3>Gaming Universe Snapshot <span style="font-size:11px;font-weight:400;color:var(--text-secondary);margin-left:8px;" id="universe-count"></span></h3>
+            <div style="max-height:700px;overflow-y:auto;" id="universe-table-wrap"></div>
+        </div>
+        <!-- Right Column: Chart + Doughnut -->
+        <div>
+            <div class="card" style="margin-bottom:var(--gap);">
+                <h3>Gaming-25 Index (1-Year)</h3>
+                <canvas id="gaming25-chart" style="max-height:240px;"></canvas>
+            </div>
+            <div class="card">
+                <h3 style="display:flex;align-items:center;gap:6px;">Sector Allocation (Market Cap)
+                    <span class="info-trigger">
+                        <svg width="15" height="15" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;cursor:help;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'"><circle cx="10" cy="10" r="9" stroke="#ffd700" stroke-width="1.5"/><text x="10" y="14.5" text-anchor="middle" fill="#ffd700" font-size="12" font-weight="700" font-family="Arial">i</text></svg>
+                        <div class="info-tooltip">
+                            <div style="font-weight:700;font-size:13px;margin-bottom:10px;color:#ffd700">Universe Categories</div>
+                            <div style="margin-bottom:8px;padding:8px 10px;border-radius:6px;background:rgba(255,215,0,0.08);border-left:3px solid #ffd700"><div style="font-weight:700;font-size:11px;color:#ffd700;margin-bottom:3px">Integrated Resorts</div><div>Large-cap operators with diversified casino resort portfolios (MGM, LVS, WYNN, CZR, MLCO)</div></div>
+                            <div style="margin-bottom:8px;padding:8px 10px;border-radius:6px;background:rgba(79,195,247,0.08);border-left:3px solid #4fc3f7"><div style="font-weight:700;font-size:11px;color:#4fc3f7;margin-bottom:3px">Regional Operators</div><div>Casino operators focused on regional U.S. markets (BYD, PENN, CHDN, RRR, GDEN, etc.)</div></div>
+                            <div style="margin-bottom:8px;padding:8px 10px;border-radius:6px;background:rgba(129,199,132,0.08);border-left:3px solid #81c784"><div style="font-weight:700;font-size:11px;color:#81c784;margin-bottom:3px">Online &amp; iGaming</div><div>Digital-first sports betting and iGaming platforms (DKNG, FLUT, RSI, SRAD, etc.)</div></div>
+                            <div style="padding:8px 10px;border-radius:6px;background:rgba(186,104,200,0.08);border-left:3px solid #ba68c8"><div style="font-weight:700;font-size:11px;color:#ba68c8;margin-bottom:3px">Gaming Equipment</div><div>Manufacturers of gaming machines, systems and technology (IGT, LNW, EVRI, AGS, etc.)</div></div>
+                        </div>
+                    </span>
+                </h3>
+                <canvas id="sector-chart" style="max-height:220px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Movers -->
+    <div class="grid-2even">
+        <div class="card">
+            <div class="section-title">Top Gainers</div>
+            <div id="top-gainers"></div>
+        </div>
+        <div class="card">
+            <div class="section-title">Top Losers</div>
+            <div id="top-losers"></div>
+        </div>
+    </div>
+
+    <!-- News Headlines + Transcript Intelligence -->
+    <div class="grid-2even">
+        <div class="card">
+            <div class="section-title">Latest News Headlines</div>
+            <div id="news-feed"></div>
+            <a href="CG_News_Dashboard.html" class="view-all">View all news &rarr;</a>
+        </div>
+        <div class="card">
+            <div class="section-title">Transcript Intelligence</div>
+            <div id="transcript-panel"></div>
+        </div>
+    </div>
+
+    <!-- Transcript Detail: Guidance + Sentiment + Topics -->
+    <div class="ti-section-title" id="ti-title-row">
+        <svg width="20" height="20" fill="none" stroke="#ffd700" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+        Earnings Call Insights
+    </div>
+    <div class="grid-3col" id="ti-section">
+        <div class="card">
+            <h3>Guidance Direction (Latest Quarter)</h3>
+            <canvas id="ti-guidance-chart" style="max-height:200px;"></canvas>
+        </div>
+        <div class="card">
+            <h3>Sentiment Leaders &amp; Laggards</h3>
+            <div id="ti-sentiment-table"></div>
+        </div>
+        <div class="card">
+            <h3 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                <span>Topic Focus</span>
+                <select id="ti-topic-company" style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:11px;cursor:pointer" onchange="renderTopicChart()">
+                    <option value="all">All Companies</option>
+                </select>
+            </h3>
+            <canvas id="ti-topics-chart" style="max-height:220px;"></canvas>
+        </div>
+    </div>
+
+    <!-- Dashboard Navigation Cards -->
+    <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin:24px 0 12px;display:flex;align-items:center;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;"></span> Explore Dashboards
+    </div>
+    <div class="dash-links">
+        <a class="dash-link-card" href="CG_Equities_Dashboard.html">
+            <div class="dl-icon" style="background:rgba(255,215,0,0.15)"><svg width="20" height="20" fill="none" stroke="#ffd700" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="dl-text"><h4>Equities</h4><p>Prices, valuations, performance, analyst ratings</p></div>
+        </a>
+        <a class="dash-link-card" href="CG_Peer_Analysis.html">
+            <div class="dl-icon" style="background:rgba(79,195,247,0.15)"><svg width="20" height="20" fill="none" stroke="#4fc3f7" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <div class="dl-text"><h4>Peer Analysis</h4><p>Rankings, scatter plots, comparative benchmarking</p></div>
+        </a>
+        <a class="dash-link-card" href="CG_Industry_Dashboard.html">
+            <div class="dl-icon" style="background:rgba(129,199,132,0.15)"><svg width="20" height="20" fill="none" stroke="#81c784" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+            <div class="dl-text"><h4>Industry Intel</h4><p>GGR trends, sports betting, regulatory data</p></div>
+        </a>
+        <a class="dash-link-card" href="CG_News_Dashboard.html">
+            <div class="dl-icon" style="background:rgba(233,30,99,0.15)"><svg width="20" height="20" fill="none" stroke="#e91e63" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div>
+            <div class="dl-text"><h4>News &amp; Filings</h4><p>Press releases, SEC filings, earnings calendar</p></div>
+        </a>
+        <a class="dash-link-card" href="CG_Company_Summary.html">
+            <div class="dl-icon" style="background:rgba(77,182,172,0.15)"><svg width="20" height="20" fill="none" stroke="#4db6ac" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div class="dl-text"><h4>Company Summary</h4><p>Deep-dive company profiles and AI analysis</p></div>
+        </a>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <strong style="color:#9aa0a6;">Disclaimer:</strong> The information provided on this platform is for informational and educational purposes only and does not constitute investment advice, financial advice, legal advice, or any other form of professional advice. No representation or warranty, express or implied, is made regarding the accuracy, completeness, or reliability of any information presented. You should not make any investment decisions based solely on the information provided here. Always consult a qualified financial advisor before making any investment or financial decisions. Casino Gaming Intel and its operators assume no liability for any losses, damages, or other consequences arising from the use of or reliance on the information contained herein.
+    </div>
+</div>
+
+<div class="footer" id="main-footer">Casino Gaming Intel &mdash; Proprietary &amp; Confidential</div>
+
+<script>
+// INJECTED_DATA_START
+var MARKET_DATA = {};
+var PRICE_HISTORY = {};
+var INDEX_HISTORY = {};
+var NEWS_DATA = [];
+var TRANSCRIPT_DATA = {};
+// INJECTED_DATA_END
+</script>
+
+<script>
+var CAT_COLORS = {
+    'Integrated Resorts': '#ffd700',
+    'Regional Operators': '#4fc3f7',
+    'Online & iGaming': '#81c784',
+    'Gaming Equipment': '#ba68c8'
+};
+var DASH = '\u2014';
+
+// ===== UTILITY FUNCTIONS =====
+function fmt(v, type) {
+    if (v == null || isNaN(v)) return DASH;
+    if (type === '$') return '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+    if (type === '$B') return '$' + Number(v).toFixed(1) + 'B';
+    if (type === '$M') return '$' + (Number(v)/1e6).toLocaleString('en-US', {maximumFractionDigits:0}) + 'M';
+    if (type === 'x') return Number(v).toFixed(1) + 'x';
+    if (type === '%') return Number(v).toFixed(2) + '%';
+    if (type === ',') return Number(v).toLocaleString('en-US', {maximumFractionDigits:0});
+    return v;
+}
+
+function esc(s) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(String(s)));
+    return div.innerHTML;
+}
+
+// ===== TICKER BAR =====
+function renderTicker() {
+    var strip = document.getElementById('ticker-track');
+    if (!strip || !MARKET_DATA || !Object.keys(MARKET_DATA).length) return;
+    var html = '';
+    var tickers = Object.keys(MARKET_DATA);
+    tickers.forEach(function(t) {
+        var d = MARKET_DATA[t];
+        var chg = d.change_pct || 0;
+        var dir = chg > 0 ? 'tk-up' : chg < 0 ? 'tk-down' : 'tk-flat';
+        var arrow = chg > 0 ? '\u25B2' : chg < 0 ? '\u25BC' : '';
+        html += '<div class="ticker-item"><span class="tk-sym">' + (d.display_ticker || t) + '</span><span class="tk-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</span><span class="tk-chg ' + dir + '">' + arrow + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span></div>';
+    });
+    strip.innerHTML = html + html; // duplicate for seamless scroll
+}
+
+// ===== PAGE HEADER: Gaming-25 =====
+function renderHeader() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var tickers = Object.keys(md);
+
+    // Compute Gaming-25 index value from INDEX_HISTORY or fallback
+    var idxVal = null, idxDailyPct = null, idxYtdPct = null;
+    if (INDEX_HISTORY && INDEX_HISTORY.length > 0) {
+        var last = INDEX_HISTORY[INDEX_HISTORY.length - 1];
+        idxVal = last.value || last.close;
+        if (INDEX_HISTORY.length > 1) {
+            var prev = INDEX_HISTORY[INDEX_HISTORY.length - 2];
+            var prevVal = prev.value || prev.close;
+            if (prevVal) idxDailyPct = ((idxVal - prevVal) / prevVal * 100);
+        }
+        var first = INDEX_HISTORY[0];
+        var firstVal = first.value || first.close;
+        if (firstVal) idxYtdPct = ((idxVal - firstVal) / firstVal * 100);
+    }
+
+    if (idxVal != null) {
+        var chgColor = (idxDailyPct || 0) >= 0 ? 'var(--positive)' : 'var(--negative)';
+        var arrow = (idxDailyPct || 0) >= 0 ? '\u25B2' : '\u25BC';
+        document.getElementById('header-gaming25').innerHTML =
+            '<div class="idx-label">Gaming-25 Index</div>' +
+            '<div class="idx-val">' + Number(idxVal).toFixed(2) + '</div>' +
+            '<div class="idx-chg" style="color:' + chgColor + '">' + arrow + ' ' + ((idxDailyPct || 0) >= 0 ? '+' : '') + (idxDailyPct || 0).toFixed(2) + '%' +
+            (idxYtdPct != null ? ' | YTD ' + (idxYtdPct >= 0 ? '+' : '') + idxYtdPct.toFixed(1) + '%' : '') + '</div>';
+    }
+}
+
+// ===== KPI CARDS =====
+function renderKPIs() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var tickers = Object.keys(md);
+
+    var totalMcap = 0;
+    var peSum = 0, peCount = 0;
+    var divSum = 0, divCount = 0;
+    var topGainer = null, topLoser = null;
+
+    tickers.forEach(function(t) {
+        var d = md[t];
+        totalMcap += (d.market_cap_b || 0);
+        if (d.pe_ratio && d.pe_ratio > 0 && d.pe_ratio < 200) { peSum += d.pe_ratio; peCount++; }
+        if (d.dividend_yield && d.dividend_yield > 0) { divSum += d.dividend_yield; divCount++; }
+        var chg = d.change_pct || 0;
+        if (!topGainer || chg > (topGainer.change_pct || 0)) topGainer = d;
+        if (!topLoser || chg < (topLoser.change_pct || 0)) topLoser = d;
+    });
+
+    var avgPE = peCount > 0 ? (peSum / peCount) : null;
+    var avgDiv = divCount > 0 ? (divSum / divCount) : null;
+    var idxVal = null;
+    if (INDEX_HISTORY && INDEX_HISTORY.length > 0) {
+        var last = INDEX_HISTORY[INDEX_HISTORY.length - 1];
+        idxVal = last.value || last.close;
+    }
+
+    var gainerChg = topGainer ? (topGainer.change_pct || 0) : 0;
+    var loserChg = topLoser ? (topLoser.change_pct || 0) : 0;
+
+    document.getElementById('kpi-row').innerHTML =
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Current value of the equal-weighted Gaming-25 composite index.">Gaming-25 Index</div><div class="kpi-value" style="color:var(--accent)">' + (idxVal != null ? Number(idxVal).toFixed(0) : DASH) + '</div><div class="kpi-sub">Composite index</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Sum of market capitalizations for all 25 gaming companies.">Total Market Cap</div><div class="kpi-value">$' + totalMcap.toFixed(1) + 'B</div><div class="kpi-sub">' + tickers.length + ' companies</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Average trailing P/E ratio across companies with positive earnings.">Avg P/E Ratio</div><div class="kpi-value">' + (avgPE ? avgPE.toFixed(1) + 'x' : DASH) + '</div><div class="kpi-sub">Trailing 12 months</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Average dividend yield across companies that pay dividends.">Avg Dividend Yield</div><div class="kpi-value">' + (avgDiv ? avgDiv.toFixed(2) + '%' : DASH) + '</div><div class="kpi-sub">' + divCount + ' payers</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label">Top Gainer</div><div class="kpi-value positive" style="font-size:16px">' + (topGainer ? (topGainer.display_ticker || '') : DASH) + '</div><div class="kpi-sub positive">' + (topGainer ? '+' + gainerChg.toFixed(1) + '%' : '') + '</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label">Top Loser</div><div class="kpi-value negative" style="font-size:16px">' + (topLoser ? (topLoser.display_ticker || '') : DASH) + '</div><div class="kpi-sub negative">' + (topLoser ? loserChg.toFixed(1) + '%' : '') + '</div></div>';
+}
+
+// ===== MARKET BREADTH =====
+function renderBreadth() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var tickers = Object.keys(md);
+    var up = 0, down = 0, flat = 0;
+    tickers.forEach(function(t) {
+        var chg = md[t].change_pct || 0;
+        if (chg > 0.05) up++; else if (chg < -0.05) down++; else flat++;
+    });
+    var total = tickers.length;
+    var barEl = document.getElementById('breadth-bar');
+    barEl.innerHTML =
+        '<div style="width:' + (up/total*100) + '%;background:var(--positive);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">' + (up > 0 ? up : '') + '</div>' +
+        '<div style="width:' + (flat/total*100) + '%;background:#555;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">' + (flat > 0 ? flat : '') + '</div>' +
+        '<div style="width:' + (down/total*100) + '%;background:var(--negative);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">' + (down > 0 ? down : '') + '</div>';
+    document.getElementById('breadth-stats').innerHTML =
+        '<span style="color:var(--positive);">\u25B2 ' + up + ' Advancing</span>' +
+        '<span style="color:#9aa0a6;">\u25CF ' + flat + ' Unchanged</span>' +
+        '<span style="color:var(--negative);">\u25BC ' + down + ' Declining</span>';
+}
+
+// ===== UNIVERSE TABLE =====
+var univSortCol = 'market_cap_b';
+var univSortAsc = false;
+
+function renderUniverseTable() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var tickers = Object.keys(md);
+    document.getElementById('universe-count').textContent = '(' + tickers.length + ' stocks)';
+
+    var sorted = tickers.slice().sort(function(a, b) {
+        var va = md[a][univSortCol], vb = md[b][univSortCol];
+        if (univSortCol === 'name' || univSortCol === 'display_ticker' || univSortCol === 'category') {
+            va = (va || '').toString().toLowerCase();
+            vb = (vb || '').toString().toLowerCase();
+            return univSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+        }
+        va = parseFloat(va) || 0; vb = parseFloat(vb) || 0;
+        return univSortAsc ? va - vb : vb - va;
+    });
+
+    var cols = [
+        {key:'display_ticker', label:'Ticker'},
+        {key:'name', label:'Company'},
+        {key:'price', label:'Price', align:'right'},
+        {key:'change_pct', label:'Chg %', align:'right'},
+        {key:'market_cap_b', label:'MCap ($B)', align:'right'},
+        {key:'category', label:'Sector'}
+    ];
+
+    var html = '<table class="universe-table"><thead><tr>';
+    cols.forEach(function(c) {
+        var arrow = univSortCol === c.key ? (univSortAsc ? ' \u25B2' : ' \u25BC') : '';
+        html += '<th style="' + (c.align === 'right' ? 'text-align:right' : '') + '" onclick="sortUniverse(\'' + c.key + '\')">' + c.label + '<span class="sort-arrow">' + arrow + '</span></th>';
+    });
+    html += '</tr></thead><tbody>';
+
+    sorted.forEach(function(t) {
+        var d = md[t];
+        var chg = d.change_pct || 0;
+        var catColor = CAT_COLORS[d.category] || '#9aa0a6';
+        html += '<tr onclick="window.location.href=\'CG_Company_Summary.html#company=' + t + '\'">' +
+            '<td><a href="CG_Company_Summary.html#company=' + t + '" style="color:var(--accent);font-weight:700;text-decoration:none">' + esc(d.display_ticker || t) + '</a></td>' +
+            '<td>' + esc(d.name || t) + '</td>' +
+            '<td style="text-align:right">' + (d.price ? '$' + Number(d.price).toFixed(2) : DASH) + '</td>' +
+            '<td style="text-align:right;font-weight:600" class="' + (chg >= 0 ? 'positive' : 'negative') + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</td>' +
+            '<td style="text-align:right">' + (d.market_cap_b ? Number(d.market_cap_b).toFixed(1) : DASH) + '</td>' +
+            '<td><span class="cat-badge" style="background:' + catColor + '22;color:' + catColor + '"><span class="cat-dot" style="background:' + catColor + '"></span>' + esc(d.category || 'Other') + '</span></td></tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('universe-table-wrap').innerHTML = html;
+}
+
+window.sortUniverse = function(col) {
+    if (univSortCol === col) univSortAsc = !univSortAsc;
+    else { univSortCol = col; univSortAsc = col === 'display_ticker' || col === 'name' || col === 'category'; }
+    renderUniverseTable();
+};
+
+// ===== GAMING-25 INDEX CHART =====
+function renderIndexChart() {
+    if (!INDEX_HISTORY || !INDEX_HISTORY.length) return;
+    new Chart(document.getElementById('gaming25-chart'), {
+        type: 'line',
+        data: {
+            labels: INDEX_HISTORY.map(function(d) { return d.date; }),
+            datasets: [{
+                data: INDEX_HISTORY.map(function(d) { return d.value || d.close; }),
+                borderColor: '#ffd700',
+                backgroundColor: 'rgba(255,215,0,0.08)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 0,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { ticks: { color:'#9aa0a6', maxTicksLimit:8, font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } },
+                y: { ticks: { color:'#9aa0a6', font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } }
+            }
+        }
+    });
+}
+
+// ===== SECTOR DOUGHNUT =====
+function renderSectorChart() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var sectors = {};
+    Object.keys(md).forEach(function(t) {
+        var cat = md[t].category || 'Other';
+        sectors[cat] = (sectors[cat] || 0) + (md[t].market_cap_b || 0);
+    });
+    new Chart(document.getElementById('sector-chart'), {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(sectors),
+            datasets: [{ data: Object.values(sectors).map(function(v) { return v.toFixed(1); }), backgroundColor: Object.keys(sectors).map(function(s) { return CAT_COLORS[s] || '#9aa0a6'; }), borderWidth: 0 }]
+        },
+        options: {
+            responsive: true,
+            cutout: '55%',
+            plugins: { legend: { position:'right', labels: { color:'#e8eaed', font:{size:11}, padding:12 } } }
+        }
+    });
+}
+
+// ===== TOP MOVERS =====
+function renderMovers() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var sorted = Object.keys(md).slice().sort(function(a, b) { return (md[b].change_pct || 0) - (md[a].change_pct || 0); });
+    var gainers = sorted.slice(0, 5);
+    var losers = sorted.slice(-5).reverse();
+
+    function renderList(arr, containerId) {
+        var html = '';
+        arr.forEach(function(t) {
+            var d = md[t];
+            var chg = d.change_pct || 0;
+            var cls = chg >= 0 ? 'up' : 'down';
+            html += '<div class="mover-card ' + cls + '" style="margin-bottom:8px;">' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+                '<span class="mover-ticker">' + esc(d.display_ticker || t) + '</span>' +
+                '<span class="mover-change ' + (chg >= 0 ? 'positive' : 'negative') + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%</span></div>' +
+                '<div class="mover-name">' + esc(d.name || '') + '</div>' +
+                '<div class="mover-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</div></div>';
+        });
+        document.getElementById(containerId).innerHTML = html;
+    }
+    renderList(gainers, 'top-gainers');
+    renderList(losers, 'top-losers');
+}
+
+// ===== NEWS HEADLINES =====
+function renderNews() {
+    var articles = (NEWS_DATA && NEWS_DATA.articles) ? NEWS_DATA.articles : (Array.isArray(NEWS_DATA) ? NEWS_DATA : []);
+    var container = document.getElementById('news-feed');
+    if (!articles.length) {
+        container.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:16px 0;">No recent news available.</div>';
+        return;
+    }
+    var html = '';
+    var count = Math.min(10, articles.length);
+    for (var i = 0; i < count; i++) {
+        var a = articles[i];
+        var timeStr = '';
+        if (a.published) {
+            try {
+                var d = new Date(a.published);
+                var now = new Date();
+                var diff = (now - d) / 1000;
+                if (diff < 3600) timeStr = Math.floor(diff / 60) + 'm ago';
+                else if (diff < 86400) timeStr = Math.floor(diff / 3600) + 'h ago';
+                else if (diff < 604800) timeStr = Math.floor(diff / 86400) + 'd ago';
+                else timeStr = d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+            } catch(e) { timeStr = a.published; }
+        }
+        html += '<div class="news-item"><a href="' + esc(a.url || '#') + '" target="_blank" rel="noopener">' + esc(a.headline || a.title || 'Untitled') + '</a>' +
+            '<div class="news-meta">' + esc(a.source || '') + (timeStr ? ' &middot; ' + timeStr : '') + '</div></div>';
+    }
+    container.innerHTML = html;
+}
+
+// ===== TRANSCRIPT INTELLIGENCE (Summary Panel) =====
+function renderTranscriptPanel() {
+    var ta = TRANSCRIPT_DATA;
+    if (!ta || !ta.companies || !Object.keys(ta.companies).length) {
+        document.getElementById('transcript-panel').innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:16px 0;">No transcript data available.</div>';
+        return;
+    }
+
+    var ls = ta.latest_sentiment || {};
+    var sentTickers = Object.keys(ls).sort(function(a, b) { return (ls[b].score || 0) - (ls[a].score || 0); });
+    var maxScore = Math.max.apply(null, sentTickers.map(function(t) { return Math.abs(ls[t].score || 0); }).concat([1]));
+
+    var gs = ta.guidance_summary || {};
+    var html = '<div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;">';
+    ['Raised','Maintained','Lowered'].forEach(function(label) {
+        var count = gs[label] || 0;
+        var color = label === 'Raised' ? '#4caf50' : label === 'Lowered' ? '#f44336' : '#ffc107';
+        html += '<div style="text-align:center;flex:1;min-width:80px;"><div style="font-size:20px;font-weight:700;color:' + color + '">' + count + '</div><div style="font-size:9px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px">' + label + '</div></div>';
+    });
+    html += '</div>';
+
+    html += '<table class="ti-rank-table"><thead><tr><th></th><th>Ticker</th><th>Score</th><th>Direction</th></tr></thead><tbody>';
+    var showCount = Math.min(8, sentTickers.length);
+    for (var i = 0; i < showCount; i++) {
+        var t = sentTickers[i];
+        var s = ls[t];
+        var score = s.score || 0;
+        var barColor = score > 20 ? '#4caf50' : score > 10 ? '#ffc107' : score > 0 ? '#ff9800' : '#f44336';
+        var barW = Math.abs(score) / maxScore * 50;
+        var guidanceCls = s.direction === 'Raised' ? 'ti-badge-raised' : s.direction === 'Lowered' ? 'ti-badge-lowered' : 'ti-badge-maintained';
+        var icon = i === 0 ? '\uD83E\uDD47' : i === 1 ? '\uD83E\uDD48' : i === 2 ? '\uD83E\uDD49' : '';
+        html += '<tr><td style="text-align:center;width:20px;font-size:12px">' + icon + '</td>' +
+            '<td><span style="color:var(--accent);font-weight:700">' + esc(t) + '</span></td>' +
+            '<td style="white-space:nowrap"><span class="ti-score-bar" style="width:' + barW + 'px;background:' + barColor + '"></span> <span style="font-weight:600">' + (score >= 0 ? '+' : '') + score.toFixed(1) + '</span></td>' +
+            '<td>' + (s.direction && s.direction !== 'Not Detected' ? '<span class="ti-badge ' + guidanceCls + '">' + esc(s.direction) + '</span>' : '<span style="color:#555;font-size:10px">' + DASH + '</span>') + '</td></tr>';
+    }
+    html += '</tbody></table>';
+    document.getElementById('transcript-panel').innerHTML = html;
+}
+
+// ===== TRANSCRIPT DETAIL SECTION =====
+function renderTranscriptDetail() {
+    var ta = TRANSCRIPT_DATA;
+    if (!ta || !ta.companies || !Object.keys(ta.companies).length) {
+        document.getElementById('ti-section').style.display = 'none';
+        document.getElementById('ti-title-row').style.display = 'none';
+        return;
+    }
+
+    // 1. Guidance Doughnut
+    var gs = ta.guidance_summary || {};
+    var guidanceLabels = ['Raised', 'Maintained', 'Lowered', 'Not Detected'];
+    var guidanceData = guidanceLabels.map(function(l) { return gs[l] || 0; });
+    var guidanceColors = ['#4caf50', '#ffc107', '#f44336', '#555'];
+
+    new Chart(document.getElementById('ti-guidance-chart'), {
+        type: 'doughnut',
+        data: { labels: guidanceLabels, datasets: [{ data: guidanceData, backgroundColor: guidanceColors, borderWidth: 0 }] },
+        options: {
+            responsive: true,
+            cutout: '55%',
+            plugins: { legend: { position:'right', labels: { color:'#e8eaed', font:{size:11}, padding:10, generateLabels: function(chart) {
+                var data = chart.data;
+                return data.labels.map(function(l, i) { return { text: l + ': ' + data.datasets[0].data[i], fillStyle: data.datasets[0].backgroundColor[i], fontColor: '#e8eaed', strokeStyle: 'transparent', index: i }; });
+            } } } }
+        }
+    });
+
+    // 2. Sentiment Leaders & Laggards
+    var ls = ta.latest_sentiment || {};
+    var sentTickers = Object.keys(ls).sort(function(a, b) { return (ls[b].score || 0) - (ls[a].score || 0); });
+    var maxScore = Math.max.apply(null, sentTickers.map(function(t) { return Math.abs(ls[t].score || 0); }).concat([1]));
+
+    var html = '<table class="ti-rank-table"><thead><tr><th></th><th>Ticker</th><th>Sentiment</th><th>Guidance</th></tr></thead><tbody>';
+    sentTickers.forEach(function(t, i) {
+        var s = ls[t];
+        var score = s.score || 0;
+        var barColor = score > 20 ? '#4caf50' : score > 10 ? '#ffc107' : score > 0 ? '#ff9800' : '#f44336';
+        var barW = Math.abs(score) / maxScore * 60;
+        var guidanceCls = s.direction === 'Raised' ? 'ti-badge-raised' : s.direction === 'Lowered' ? 'ti-badge-lowered' : 'ti-badge-maintained';
+        var icon = i === 0 ? '\uD83E\uDD47' : i === 1 ? '\uD83E\uDD48' : i === 2 ? '\uD83E\uDD49' : i >= sentTickers.length - 2 ? '\uD83D\uDCC9' : '';
+        html += '<tr><td style="font-size:12px;text-align:center;width:24px">' + icon + '</td>' +
+            '<td><span style="color:var(--accent);font-weight:700">' + esc(t) + '</span><span style="font-size:10px;color:var(--text-secondary);margin-left:4px">' + esc(s.period || '') + '</span></td>' +
+            '<td style="white-space:nowrap"><span class="ti-score-bar" style="width:' + barW + 'px;background:' + barColor + '"></span> <span style="font-weight:600;' + (score > 15 ? 'color:#4caf50' : score < 5 ? 'color:#ff9800' : '') + '">' + (score >= 0 ? '+' : '') + score.toFixed(1) + '</span></td>' +
+            '<td>' + (s.direction && s.direction !== 'Not Detected' ? '<span class="ti-badge ' + guidanceCls + '">' + esc(s.direction) + '</span>' : '<span style="color:#555;font-size:10px">' + DASH + '</span>') + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('ti-sentiment-table').innerHTML = html;
+
+    // 3. Topic Focus Chart
+    var allTopics = ['revenue_growth','sports_betting','igaming_digital','regulation_licensing','capital_allocation','margins_profitability','expansion_development','mergers_acquisitions','loyalty_marketing','international_markets'];
+    var topicLabels = { 'revenue_growth':'Revenue Growth', 'sports_betting':'Sports Betting', 'igaming_digital':'iGaming & Digital', 'regulation_licensing':'Regulation & Licensing', 'capital_allocation':'Capital Allocation', 'margins_profitability':'Margins & Profitability', 'expansion_development':'Expansion & Development', 'mergers_acquisitions':'M&A', 'loyalty_marketing':'Loyalty & Marketing', 'international_markets':'International Markets' };
+    var topicColors = ['#ffd700','#4fc3f7','#81c784','#ba68c8','#ff7043','#42a5f5','#66bb6a','#ef5350','#ab47bc','#26c6da'];
+
+    var companySelect = document.getElementById('ti-topic-company');
+    var companyKeys = Object.keys(ta.companies || {}).sort();
+    companyKeys.forEach(function(ticker) {
+        var opt = document.createElement('option');
+        opt.value = ticker;
+        opt.textContent = ticker + ' \u2014 ' + ((ta.companies[ticker] || {}).company || ticker);
+        companySelect.appendChild(opt);
+    });
+
+    var _topicChart = null;
+    window.renderTopicChart = function() {
+        var sel = companySelect.value;
+        var topicTotals = {};
+        allTopics.forEach(function(t) { topicTotals[t] = 0; });
+
+        if (sel === 'all') {
+            var tt = ta.topic_trends || {};
+            Object.values(tt).forEach(function(period) {
+                allTopics.forEach(function(t) { topicTotals[t] += (period[t] || 0); });
+            });
+        } else {
+            var comp = (ta.companies || {})[sel];
+            if (comp && comp.topic_history) {
+                comp.topic_history.forEach(function(period) {
+                    allTopics.forEach(function(t) { topicTotals[t] += (period[t] || 0); });
+                });
+            }
+        }
+
+        var sortedTopics = allTopics.slice().sort(function(a, b) { return topicTotals[b] - topicTotals[a]; });
+        var labels = sortedTopics.map(function(t) { return topicLabels[t] || t; });
+        var data = sortedTopics.map(function(t) { return topicTotals[t]; });
+        var colors = sortedTopics.map(function(t) { return topicColors[allTopics.indexOf(t)]; });
+
+        if (_topicChart) _topicChart.destroy();
+        _topicChart = new Chart(document.getElementById('ti-topics-chart'), {
+            type: 'bar',
+            data: { labels: labels, datasets: [{ data: data, backgroundColor: colors, borderRadius: 4, barThickness: 14 }] },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx) { return ctx.raw + ' mentions across transcripts'; } } } },
+                scales: { x: { ticks: { color:'#9aa0a6', font:{size:9} }, grid: { color:'rgba(255,255,255,0.04)' } }, y: { ticks: { color:'#e8eaed', font:{size:10} }, grid: { display:false } } }
+            }
+        });
+    };
+    renderTopicChart();
+}
+
+// ===== INFO TOOLTIP POSITIONING =====
+function initInfoTooltips() {
+    document.querySelectorAll('.info-trigger').forEach(function(trigger) {
+        var tooltip = trigger.querySelector('.info-tooltip');
+        if (!tooltip) return;
+        trigger.addEventListener('mouseenter', function() {
+            tooltip.style.display = 'block';
+            var rect = trigger.getBoundingClientRect();
+            var tw = 360, th = tooltip.offsetHeight;
+            var left = rect.right + 10;
+            var top = rect.top - 10;
+            if (left + tw > window.innerWidth - 16) left = rect.left - tw - 10;
+            if (left < 16) left = Math.max(16, (window.innerWidth - tw) / 2);
+            if (top + th > window.innerHeight - 16) top = window.innerHeight - th - 16;
+            if (top < 16) top = 16;
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        });
+        trigger.addEventListener('mouseleave', function() { tooltip.style.display = 'none'; });
+    });
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', function() {
+    renderTicker();
+    renderHeader();
+    renderKPIs();
+    renderBreadth();
+    renderUniverseTable();
+    renderIndexChart();
+    renderSectorChart();
+    renderMovers();
+    renderNews();
+    renderTranscriptPanel();
+    renderTranscriptDetail();
+    initInfoTooltips();
+
+    // Footer timestamp
+    if (MARKET_DATA && Object.keys(MARKET_DATA).length) {
+        var firstTicker = Object.keys(MARKET_DATA)[0];
+        var ts = MARKET_DATA[firstTicker].last_updated || MARKET_DATA[firstTicker].timestamp;
+        if (ts) {
+            var d = new Date(ts);
+            var footer = document.getElementById('main-footer');
+            if (footer) footer.innerHTML += ' | Data as of ' + d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) + ' ' + d.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+        }
+    }
+});
+</script>
+</body>
+</html>

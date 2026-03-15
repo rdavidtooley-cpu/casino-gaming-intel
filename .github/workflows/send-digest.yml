@@ -1,0 +1,45 @@
+name: Send Email Digest
+
+on:
+  schedule:
+    # Weekdays at 2 PM UTC (9 AM CT) — offset from Oil_Gas (1 PM) and Inspection (1 PM)
+    - cron: '0 14 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      frequency:
+        description: 'Digest type to send'
+        type: choice
+        options:
+          - daily
+          - weekly
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Determine frequency
+        id: freq
+        run: |
+          DAY=$(date +%u)
+          if [ "${{ github.event.inputs.frequency }}" != "" ]; then
+            echo "frequency=${{ github.event.inputs.frequency }}" >> $GITHUB_OUTPUT
+          elif [ "$DAY" = "1" ]; then
+            echo "frequency=weekly" >> $GITHUB_OUTPUT
+          else
+            echo "frequency=daily" >> $GITHUB_OUTPUT
+          fi
+          echo "Sending ${{ steps.freq.outputs.frequency || 'auto' }} digest"
+
+      - name: Send digest emails
+        env:
+          SITE_URL: https://casino-gaming-intel.pages.dev
+          API_SECRET: ${{ secrets.DIGEST_API_SECRET }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          FROM_EMAIL: Casino Gaming Intel <casino@sector-intel.com>
+        run: node .github/scripts/send-digest.js "${{ steps.freq.outputs.frequency }}"

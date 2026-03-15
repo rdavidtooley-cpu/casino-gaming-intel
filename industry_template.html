@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Gaming Intel — Industry Dashboard</title>
+    <script src="auth.js"></script>
+    <script src="export-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+    <style>
+        :root {
+            --bg-primary: #0f1117;
+            --bg-card: #1a1d29;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #ffd700;
+            --accent2: #4fc3f7;
+            --accent3: #81c784;
+            --accent4: #ba68c8;
+            --positive: #4caf50;
+            --negative: #f44336;
+            --radius: 10px;
+            --border: 1px solid rgba(255,255,255,0.06);
+            --gap: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--gap);
+            background: var(--bg-card);
+            padding: 8px;
+            border-radius: var(--radius);
+            border: var(--border);
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
+        .nav-bar a.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--accent);
+            padding: 28px 32px;
+            margin-bottom: var(--gap);
+            border-radius: var(--radius);
+            border: var(--border);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            font-size: 2em;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(255,215,0,0.2);
+            margin-bottom: 4px;
+        }
+        .header p { color: var(--text-secondary); font-size: 0.9em; }
+
+        /* Tab Bar */
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--gap);
+            flex-wrap: wrap;
+            background: var(--bg-card);
+            padding: 8px;
+            border-radius: var(--radius);
+            border: var(--border);
+        }
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
+        .tab-btn.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--gap);
+            margin-bottom: var(--gap);
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .kpi-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+        }
+        .kpi-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .kpi-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .kpi-change {
+            font-size: 0.8em;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+        .kpi-change.positive { color: var(--positive); }
+        .kpi-change.negative { color: var(--negative); }
+
+        /* Section */
+        .section-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+        }
+        .data-section {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            margin-bottom: var(--gap);
+        }
+
+        /* Chart container */
+        .chart-wrap {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            margin-bottom: var(--gap);
+            position: relative;
+        }
+        .chart-wrap canvas { max-height: 360px; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; }
+        thead th {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        thead th:hover { color: var(--accent); }
+        thead th .sort-arrow { margin-left: 4px; font-size: 0.85em; }
+        tbody td {
+            padding: 10px 12px;
+            font-size: 0.88em;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        tbody tr:hover { background: rgba(255,255,255,0.02); }
+        td a { color: var(--accent2); text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+        .val-positive { color: var(--positive); font-weight: 600; }
+        .val-negative { color: var(--negative); font-weight: 600; }
+        .val-neutral { color: var(--text-secondary); }
+
+        /* Two-column grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+        }
+
+        /* Status indicators */
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .status-legal { background: var(--positive); }
+        .status-pending { background: var(--accent); }
+        .status-not-legal { background: var(--negative); }
+        .status-partial { background: var(--accent2); }
+
+        /* State list */
+        .state-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 6px;
+        }
+        .state-item {
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+        }
+        .state-item .state-name { flex: 1; }
+        .state-item .state-status { font-size: 0.78em; font-weight: 600; }
+
+        /* Note */
+        .data-note {
+            font-size: 0.78em;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 860px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 520px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Nav Bar -->
+    <div class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="CG_Equities_Dashboard.html">Equities</a>
+        <a href="CG_Peer_Analysis.html">Peer Analysis</a>
+        <a href="CG_Industry_Dashboard.html" class="active">Industry</a>
+        <a href="CG_News_Dashboard.html">News</a>
+        <a href="CG_Company_Summary.html">Company</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Industry Dashboard</h1>
+        <p>Economic indicators, state gaming revenue, regional data, sports betting, and tribal gaming metrics</p>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('economic')">Economic Indicators</button>
+        <button class="tab-btn" onclick="switchTab('state')">State Gaming Revenue</button>
+        <button class="tab-btn" onclick="switchTab('nevada')">Las Vegas &amp; Nevada</button>
+        <button class="tab-btn" onclick="switchTab('macau')">Macau &amp; International</button>
+        <button class="tab-btn" onclick="switchTab('sports')">Sports Betting &amp; iGaming</button>
+        <button class="tab-btn" onclick="switchTab('tribal')">Tribal Gaming</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 1: ECONOMIC INDICATORS -->
+    <!-- ============================================================ -->
+    <div class="tab-panel active" id="panel-economic">
+
+        <div class="kpi-grid" id="fredKpiGrid">
+            <div class="kpi-card">
+                <div class="kpi-label">Consumer Sentiment</div>
+                <div class="kpi-value" id="kpi-sentiment">—</div>
+                <div class="kpi-change" id="kpi-sentiment-chg"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Unemployment Rate</div>
+                <div class="kpi-value" id="kpi-unemployment">—</div>
+                <div class="kpi-change" id="kpi-unemployment-chg"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Fed Funds Rate</div>
+                <div class="kpi-value" id="kpi-fedfunds">—</div>
+                <div class="kpi-change" id="kpi-fedfunds-chg"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">VIX Volatility</div>
+                <div class="kpi-value" id="kpi-vix">—</div>
+                <div class="kpi-change" id="kpi-vix-chg"></div>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">FRED Indicator Detail</div>
+            <table id="fredTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('fredTable',0)">Series <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('fredTable',1)">Latest Value <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('fredTable',2)">30d Change <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('fredTable',3)">90d Change <span class="sort-arrow"></span></th>
+                        <th>Updated</th>
+                    </tr>
+                </thead>
+                <tbody id="fredTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="chart-wrap">
+            <div class="section-title">Consumer Sentiment Trend</div>
+            <canvas id="sentimentChart"></canvas>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 2: STATE GAMING REVENUE -->
+    <!-- ============================================================ -->
+    <div class="tab-panel" id="panel-state">
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">States Tracked</div>
+                <div class="kpi-value" id="kpi-stateCount">—</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Latest Data Period</div>
+                <div class="kpi-value" id="kpi-statePeriod" style="font-size:1.1em;">—</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Aggregate Revenue</div>
+                <div class="kpi-value" id="kpi-stateTotal">—</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Avg Month-over-Month</div>
+                <div class="kpi-value" id="kpi-stateMoM">—</div>
+                <div class="kpi-change" id="kpi-stateMoM-chg"></div>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">State-by-State Revenue</div>
+            <table id="stateTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('stateTable',0)">State <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('stateTable',1)">Latest Revenue <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('stateTable',2)">Prior Month <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('stateTable',3)">Change % <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="stateTableBody"></tbody>
+            </table>
+            <p class="data-note">Data sourced from state gaming commissions via state_gaming_fetcher.py</p>
+        </div>
+
+        <div class="chart-wrap">
+            <div class="section-title">State Revenue Comparison</div>
+            <canvas id="stateBarChart"></canvas>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 3: LAS VEGAS & NEVADA -->
+    <!-- ============================================================ -->
+    <div class="tab-panel" id="panel-nevada">
+
+        <div class="kpi-grid" id="nevadaKpiGrid"></div>
+
+        <div class="chart-wrap">
+            <div class="section-title">Nevada Gaming Revenue Trend</div>
+            <canvas id="nevadaRevenueChart"></canvas>
+        </div>
+
+        <div class="grid-2">
+            <div class="data-section">
+                <div class="section-title">Las Vegas Strip Metrics</div>
+                <table>
+                    <thead>
+                        <tr><th>Metric</th><th>Value</th><th>YoY Change</th></tr>
+                    </thead>
+                    <tbody id="stripMetricsBody"></tbody>
+                </table>
+            </div>
+            <div class="data-section">
+                <div class="section-title">Visitor Volume</div>
+                <table>
+                    <thead>
+                        <tr><th>Period</th><th>Visitors</th><th>Change</th></tr>
+                    </thead>
+                    <tbody id="visitorBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 4: MACAU & INTERNATIONAL -->
+    <!-- ============================================================ -->
+    <div class="tab-panel" id="panel-macau">
+
+        <div class="chart-wrap">
+            <div class="section-title">Macau Monthly GGR Trend</div>
+            <canvas id="macauGgrChart"></canvas>
+        </div>
+
+        <div class="grid-2">
+            <div class="data-section">
+                <div class="section-title">Macau Market Share by Operator</div>
+                <table>
+                    <thead>
+                        <tr><th>Operator</th><th>Market Share</th><th>Change</th></tr>
+                    </thead>
+                    <tbody id="macauShareBody"></tbody>
+                </table>
+            </div>
+            <div class="data-section">
+                <div class="section-title">Philippines PAGCOR Data</div>
+                <table>
+                    <thead>
+                        <tr><th>Metric</th><th>Value</th><th>Period</th></tr>
+                    </thead>
+                    <tbody id="pagcorBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">Asia Gaming Recovery Tracker</div>
+            <table>
+                <thead>
+                    <tr><th>Market</th><th>Recovery %</th><th>Latest GGR</th><th>Pre-COVID GGR</th><th>Status</th></tr>
+                </thead>
+                <tbody id="asiaRecoveryBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 5: SPORTS BETTING & iGAMING -->
+    <!-- ============================================================ -->
+    <div class="tab-panel" id="panel-sports">
+
+        <div class="data-section">
+            <div class="section-title">State Legalization Status</div>
+            <div class="state-list" id="legalizationList"></div>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">Handle &amp; GGR by State</div>
+            <table id="sportsTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('sportsTable',0)">State <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('sportsTable',1)">Handle <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('sportsTable',2)">GGR <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('sportsTable',3)">Online % <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('sportsTable',4)">Retail % <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="sportsTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="chart-wrap">
+            <div class="section-title">Monthly Sports Betting Trend</div>
+            <canvas id="sportsTrendChart"></canvas>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 6: TRIBAL GAMING -->
+    <!-- ============================================================ -->
+    <div class="tab-panel" id="panel-tribal">
+
+        <div class="grid-2">
+            <div class="data-section">
+                <div class="section-title">Connecticut Tribal Slot Revenue</div>
+                <table>
+                    <thead>
+                        <tr><th>Property</th><th>Revenue</th><th>YoY Change</th><th>Period</th></tr>
+                    </thead>
+                    <tbody id="ctTribalBody"></tbody>
+                </table>
+            </div>
+            <div class="data-section">
+                <div class="section-title">National Tribal Gaming Overview</div>
+                <table>
+                    <thead>
+                        <tr><th>Metric</th><th>Value</th><th>Year</th></tr>
+                    </thead>
+                    <tbody id="tribalOverviewBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">NIGC Annual Revenue by Region</div>
+            <table id="nigcTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('nigcTable',0)">Region <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('nigcTable',1)">Revenue <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('nigcTable',2)">Share % <span class="sort-arrow"></span></th>
+                        <th onclick="sortTable('nigcTable',3)">YoY Change <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="nigcTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">Oklahoma Gaming Compliance</div>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>Value</th><th>Period</th></tr>
+                </thead>
+                <tbody id="oklahomaBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// INJECTED_DATA_START
+var INDUSTRY_DATA = {};
+var FRED_DATA = {};
+var STATE_REVENUE = {};
+var VEGAS_DATA = {};
+var INTERNATIONAL_DATA = {};
+var SPORTS_BETTING = {};
+var TRIBAL_DATA = {};
+// INJECTED_DATA_END
+
+// ============================================================
+// Chart.js global config
+// ============================================================
+Chart.defaults.color = '#9aa0a6';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+Chart.defaults.font.size = 11;
+
+// Chart instances for cleanup
+var charts = {};
+
+// ============================================================
+// Tab switching
+// ============================================================
+function switchTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('panel-' + id).classList.add('active');
+    event.target.classList.add('active');
+
+    // Lazy-render charts on first view
+    if (id === 'economic' && !charts.sentiment) renderEconomicCharts();
+    if (id === 'state' && !charts.stateBar) renderStateCharts();
+    if (id === 'nevada' && !charts.nevadaRevenue) renderNevadaCharts();
+    if (id === 'macau' && !charts.macauGgr) renderMacauCharts();
+    if (id === 'sports' && !charts.sportsTrend) renderSportsCharts();
+}
+
+// ============================================================
+// Initialization
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    renderEconomicTab();
+    renderStateTab();
+    renderNevadaTab();
+    renderMacauTab();
+    renderSportsTab();
+    renderTribalTab();
+    renderEconomicCharts();
+});
+
+// ============================================================
+// TAB 1: Economic Indicators
+// ============================================================
+function renderEconomicTab() {
+    var d = INDUSTRY_DATA.fred_indicators || FRED_DATA || {};
+    var indicators = d.indicators || [];
+    var kpiMap = d.kpi || {};
+
+    // KPI cards
+    setKpi('kpi-sentiment', kpiMap.consumer_sentiment);
+    setKpi('kpi-unemployment', kpiMap.unemployment);
+    setKpi('kpi-fedfunds', kpiMap.fed_funds);
+    setKpi('kpi-vix', kpiMap.vix);
+
+    // Table
+    var tbody = document.getElementById('fredTableBody');
+    indicators.forEach(function(row) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(row.series || '') + '</td>' +
+            '<td>' + esc(fmtNum(row.latest_value)) + '</td>' +
+            '<td class="' + chgClass(row.change_30d) + '">' + fmtChange(row.change_30d) + '</td>' +
+            '<td class="' + chgClass(row.change_90d) + '">' + fmtChange(row.change_90d) + '</td>' +
+            '<td>' + esc(row.updated || '') + '</td>';
+        tbody.appendChild(tr);
+    });
+}
+
+function renderEconomicCharts() {
+    var d = INDUSTRY_DATA.fred_indicators || FRED_DATA || {};
+    var trend = d.sentiment_trend || { labels: [], values: [] };
+    var ctx = document.getElementById('sentimentChart');
+    if (!ctx) return;
+    charts.sentiment = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: trend.labels || [],
+            datasets: [{
+                label: 'Consumer Sentiment',
+                data: trend.values || [],
+                borderColor: '#ffd700',
+                backgroundColor: 'rgba(255,215,0,0.08)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 2,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false } },
+                y: { beginAtZero: false }
+            }
+        }
+    });
+}
+
+// ============================================================
+// TAB 2: State Gaming Revenue
+// ============================================================
+function renderStateTab() {
+    var d = INDUSTRY_DATA.state_revenue || STATE_REVENUE || {};
+    var states = d.states || [];
+    var summary = d.summary || {};
+
+    document.getElementById('kpi-stateCount').textContent = states.length || '—';
+    document.getElementById('kpi-statePeriod').textContent = summary.latest_period || '—';
+    document.getElementById('kpi-stateTotal').textContent = summary.aggregate_revenue ? '$' + fmtNum(summary.aggregate_revenue) : '—';
+    setKpi('kpi-stateMoM', summary.avg_mom);
+
+    var tbody = document.getElementById('stateTableBody');
+    states.forEach(function(s) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(s.state || '') + '</td>' +
+            '<td>$' + fmtNum(s.latest_revenue) + '</td>' +
+            '<td>$' + fmtNum(s.prior_month) + '</td>' +
+            '<td class="' + chgClass(s.change_pct) + '">' + fmtChange(s.change_pct) + '%</td>';
+        tbody.appendChild(tr);
+    });
+}
+
+function renderStateCharts() {
+    var d = INDUSTRY_DATA.state_revenue || STATE_REVENUE || {};
+    var states = d.states || [];
+    var labels = states.map(function(s) { return s.state; });
+    var values = states.map(function(s) { return s.latest_revenue || 0; });
+
+    var ctx = document.getElementById('stateBarChart');
+    if (!ctx) return;
+    charts.stateBar = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Latest Revenue',
+                data: values,
+                backgroundColor: 'rgba(255,215,0,0.6)',
+                borderColor: '#ffd700',
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: labels.length > 12 ? 'y' : 'x',
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false } },
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+
+// ============================================================
+// TAB 3: Las Vegas & Nevada
+// ============================================================
+function renderNevadaTab() {
+    var d = INDUSTRY_DATA.nevada_data || VEGAS_DATA || {};
+    var kpis = d.kpi || [];
+    var stripMetrics = d.strip_metrics || [];
+    var visitors = d.visitor_data || [];
+
+    // Dynamic KPI cards
+    var grid = document.getElementById('nevadaKpiGrid');
+    kpis.forEach(function(k) {
+        var card = document.createElement('div');
+        card.className = 'kpi-card';
+        card.innerHTML =
+            '<div class="kpi-label">' + esc(k.label || '') + '</div>' +
+            '<div class="kpi-value">' + esc(k.value || '—') + '</div>' +
+            (k.change != null ? '<div class="kpi-change ' + chgClass(k.change) + '">' + fmtChange(k.change) + '%</div>' : '');
+        grid.appendChild(card);
+    });
+
+    // Strip metrics
+    var tbody1 = document.getElementById('stripMetricsBody');
+    stripMetrics.forEach(function(m) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(m.metric || '') + '</td>' +
+            '<td>' + esc(m.value || '') + '</td>' +
+            '<td class="' + chgClass(m.yoy_change) + '">' + fmtChange(m.yoy_change) + '%</td>';
+        tbody1.appendChild(tr);
+    });
+
+    // Visitors
+    var tbody2 = document.getElementById('visitorBody');
+    visitors.forEach(function(v) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(v.period || '') + '</td>' +
+            '<td>' + esc(fmtNum(v.visitors)) + '</td>' +
+            '<td class="' + chgClass(v.change) + '">' + fmtChange(v.change) + '%</td>';
+        tbody2.appendChild(tr);
+    });
+}
+
+function renderNevadaCharts() {
+    var d = INDUSTRY_DATA.nevada_data || VEGAS_DATA || {};
+    var trend = d.revenue_trend || { labels: [], values: [] };
+    var ctx = document.getElementById('nevadaRevenueChart');
+    if (!ctx) return;
+    charts.nevadaRevenue = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: trend.labels || [],
+            datasets: [{
+                label: 'Nevada Gaming Revenue ($M)',
+                data: trend.values || [],
+                borderColor: '#4fc3f7',
+                backgroundColor: 'rgba(79,195,247,0.08)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 2,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false } },
+                y: { beginAtZero: false }
+            }
+        }
+    });
+}
+
+// ============================================================
+// TAB 4: Macau & International
+// ============================================================
+function renderMacauTab() {
+    var d = INDUSTRY_DATA.macau_data || INTERNATIONAL_DATA || {};
+    var shares = d.market_share || [];
+    var pagcor = d.pagcor || [];
+    var recovery = d.recovery_tracker || [];
+
+    var tbody1 = document.getElementById('macauShareBody');
+    shares.forEach(function(s) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(s.operator || '') + '</td>' +
+            '<td>' + esc(s.share || '') + '</td>' +
+            '<td class="' + chgClass(s.change) + '">' + fmtChange(s.change) + '</td>';
+        tbody1.appendChild(tr);
+    });
+
+    var tbody2 = document.getElementById('pagcorBody');
+    pagcor.forEach(function(p) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(p.metric || '') + '</td>' +
+            '<td>' + esc(p.value || '') + '</td>' +
+            '<td>' + esc(p.period || '') + '</td>';
+        tbody2.appendChild(tr);
+    });
+
+    var tbody3 = document.getElementById('asiaRecoveryBody');
+    recovery.forEach(function(r) {
+        var tr = document.createElement('tr');
+        var pct = r.recovery_pct;
+        var statusColor = pct >= 100 ? 'val-positive' : (pct >= 80 ? 'val-neutral' : 'val-negative');
+        tr.innerHTML =
+            '<td>' + esc(r.market || '') + '</td>' +
+            '<td class="' + statusColor + '">' + fmtNum(pct) + '%</td>' +
+            '<td>' + esc(r.latest_ggr || '') + '</td>' +
+            '<td>' + esc(r.pre_covid_ggr || '') + '</td>' +
+            '<td>' + esc(r.status || '') + '</td>';
+        tbody3.appendChild(tr);
+    });
+}
+
+function renderMacauCharts() {
+    var d = INDUSTRY_DATA.macau_data || INTERNATIONAL_DATA || {};
+    var trend = d.ggr_trend || { labels: [], values: [] };
+    var ctx = document.getElementById('macauGgrChart');
+    if (!ctx) return;
+    charts.macauGgr = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: trend.labels || [],
+            datasets: [{
+                label: 'Macau Monthly GGR (MOP B)',
+                data: trend.values || [],
+                borderColor: '#ba68c8',
+                backgroundColor: 'rgba(186,104,200,0.08)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 2,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false } },
+                y: { beginAtZero: false }
+            }
+        }
+    });
+}
+
+// ============================================================
+// TAB 5: Sports Betting & iGaming
+// ============================================================
+function renderSportsTab() {
+    var d = INDUSTRY_DATA.sports_betting || SPORTS_BETTING || {};
+    var legalization = d.legalization || [];
+    var stateData = d.state_data || [];
+
+    // Legalization map
+    var list = document.getElementById('legalizationList');
+    var statusClasses = { 'Legal': 'status-legal', 'Pending': 'status-pending', 'Not Legal': 'status-not-legal', 'Partial': 'status-partial' };
+    legalization.forEach(function(s) {
+        var item = document.createElement('div');
+        item.className = 'state-item';
+        var dotClass = statusClasses[s.status] || 'status-pending';
+        item.innerHTML =
+            '<span class="status-dot ' + dotClass + '"></span>' +
+            '<span class="state-name">' + esc(s.state || '') + '</span>' +
+            '<span class="state-status">' + esc(s.status || '') + '</span>';
+        list.appendChild(item);
+    });
+
+    // Handle / GGR table
+    var tbody = document.getElementById('sportsTableBody');
+    stateData.forEach(function(s) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(s.state || '') + '</td>' +
+            '<td>$' + fmtNum(s.handle) + '</td>' +
+            '<td>$' + fmtNum(s.ggr) + '</td>' +
+            '<td>' + fmtNum(s.online_pct) + '%</td>' +
+            '<td>' + fmtNum(s.retail_pct) + '%</td>';
+        tbody.appendChild(tr);
+    });
+}
+
+function renderSportsCharts() {
+    var d = INDUSTRY_DATA.sports_betting || SPORTS_BETTING || {};
+    var trend = d.monthly_trend || { labels: [], handle: [], ggr: [] };
+    var ctx = document.getElementById('sportsTrendChart');
+    if (!ctx) return;
+    charts.sportsTrend = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: trend.labels || [],
+            datasets: [
+                {
+                    label: 'Handle ($M)',
+                    data: trend.handle || [],
+                    borderColor: '#4fc3f7',
+                    backgroundColor: 'rgba(79,195,247,0.06)',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 2,
+                    borderWidth: 2,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'GGR ($M)',
+                    data: trend.ggr || [],
+                    borderColor: '#81c784',
+                    backgroundColor: 'rgba(129,199,132,0.06)',
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 2,
+                    borderWidth: 2,
+                    yAxisID: 'y1'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'top' } },
+            scales: {
+                x: { grid: { display: false } },
+                y: { position: 'left', beginAtZero: true, title: { display: true, text: 'Handle ($M)' } },
+                y1: { position: 'right', beginAtZero: true, grid: { drawOnChartArea: false }, title: { display: true, text: 'GGR ($M)' } }
+            }
+        }
+    });
+}
+
+// ============================================================
+// TAB 6: Tribal Gaming
+// ============================================================
+function renderTribalTab() {
+    var d = INDUSTRY_DATA.tribal_gaming || TRIBAL_DATA || {};
+
+    // Connecticut tribal
+    var ctData = d.connecticut || [];
+    var tbody1 = document.getElementById('ctTribalBody');
+    ctData.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(r.property || '') + '</td>' +
+            '<td>$' + fmtNum(r.revenue) + '</td>' +
+            '<td class="' + chgClass(r.yoy_change) + '">' + fmtChange(r.yoy_change) + '%</td>' +
+            '<td>' + esc(r.period || '') + '</td>';
+        tbody1.appendChild(tr);
+    });
+
+    // National overview
+    var overview = d.national_overview || [];
+    var tbody2 = document.getElementById('tribalOverviewBody');
+    overview.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(r.metric || '') + '</td>' +
+            '<td>' + esc(r.value || '') + '</td>' +
+            '<td>' + esc(r.year || '') + '</td>';
+        tbody2.appendChild(tr);
+    });
+
+    // NIGC by region
+    var nigc = d.nigc_regions || [];
+    var tbody3 = document.getElementById('nigcTableBody');
+    nigc.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(r.region || '') + '</td>' +
+            '<td>$' + fmtNum(r.revenue) + '</td>' +
+            '<td>' + fmtNum(r.share_pct) + '%</td>' +
+            '<td class="' + chgClass(r.yoy_change) + '">' + fmtChange(r.yoy_change) + '%</td>';
+        tbody3.appendChild(tr);
+    });
+
+    // Oklahoma
+    var okData = d.oklahoma || [];
+    var tbody4 = document.getElementById('oklahomaBody');
+    okData.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(r.metric || '') + '</td>' +
+            '<td>' + esc(r.value || '') + '</td>' +
+            '<td>' + esc(r.period || '') + '</td>';
+        tbody4.appendChild(tr);
+    });
+}
+
+// ============================================================
+// Table Sorting
+// ============================================================
+var sortState = {};
+
+function sortTable(tableId, colIdx) {
+    var table = document.getElementById(tableId);
+    var tbody = table.querySelector('tbody');
+    var rows = Array.from(tbody.querySelectorAll('tr'));
+    var key = tableId + '-' + colIdx;
+    var asc = sortState[key] !== 'asc';
+    sortState[key] = asc ? 'asc' : 'desc';
+
+    rows.sort(function(a, b) {
+        var aText = a.cells[colIdx].textContent.trim();
+        var bText = b.cells[colIdx].textContent.trim();
+        var aNum = parseFloat(aText.replace(/[$,%]/g, ''));
+        var bNum = parseFloat(bText.replace(/[$,%]/g, ''));
+
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+            return asc ? aNum - bNum : bNum - aNum;
+        }
+        return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+    });
+
+    rows.forEach(function(row) { tbody.appendChild(row); });
+
+    // Update sort arrows
+    var ths = table.querySelectorAll('thead th');
+    ths.forEach(function(th, i) {
+        var arrow = th.querySelector('.sort-arrow');
+        if (arrow) arrow.textContent = i === colIdx ? (asc ? ' \u25B2' : ' \u25BC') : '';
+    });
+}
+
+// ============================================================
+// Utility Functions
+// ============================================================
+function setKpi(id, obj) {
+    if (!obj) return;
+    var el = document.getElementById(id);
+    if (el && obj.value != null) el.textContent = obj.value;
+    var chgEl = document.getElementById(id + '-chg');
+    if (chgEl && obj.change != null) {
+        chgEl.textContent = fmtChange(obj.change) + '%';
+        chgEl.className = 'kpi-change ' + chgClass(obj.change);
+    }
+}
+
+function fmtNum(v) {
+    if (v == null || v === '') return '—';
+    var n = Number(v);
+    if (isNaN(n)) return String(v);
+    if (Math.abs(n) >= 1e9) return (n / 1e9).toFixed(2) + 'B';
+    if (Math.abs(n) >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+    if (Math.abs(n) >= 1e3) return n.toLocaleString('en-US', { maximumFractionDigits: 1 });
+    return n.toFixed(2);
+}
+
+function fmtChange(v) {
+    if (v == null || v === '') return '—';
+    var n = Number(v);
+    if (isNaN(n)) return String(v);
+    var prefix = n > 0 ? '+' : '';
+    return prefix + n.toFixed(2);
+}
+
+function chgClass(v) {
+    if (v == null) return 'val-neutral';
+    var n = Number(v);
+    if (isNaN(n) || n === 0) return 'val-neutral';
+    return n > 0 ? 'val-positive' : 'val-negative';
+}
+
+function esc(s) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(String(s)));
+    return div.innerHTML;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Gaming Intel — Company Summary</title>
+    <script src="auth.js"></script>
+    <script src="export-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+    <style>
+        :root {
+            --bg-primary: #0f1117;
+            --bg-card: #1a1d29;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #ffd700;
+            --accent2: #4fc3f7;
+            --accent3: #81c784;
+            --accent4: #ba68c8;
+            --positive: #4caf50;
+            --negative: #f44336;
+            --radius: 10px;
+            --border: 1px solid rgba(255,255,255,0.06);
+            --gap: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 4px;
+            background: #111318;
+            padding: 8px 24px;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+        .nav-bar a.active { background: rgba(255,215,0,0.12); color: var(--accent); }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a1d29 0%, #16213e 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .page-header h1 {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        /* Company Picker */
+        .company-picker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .company-picker label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .company-picker select {
+            padding: 8px 14px;
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            min-width: 280px;
+            cursor: pointer;
+        }
+        .company-picker select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .container { max-width: 1500px; margin: 0 auto; padding: 24px; }
+
+        /* Company Header Card */
+        .company-header-card {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-bottom: var(--gap);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .company-info { display: flex; flex-direction: column; gap: 4px; }
+        .company-name { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); }
+        .company-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .company-ticker { font-weight: 700; color: var(--accent); font-size: 1rem; }
+        .category-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border: 1px solid;
+        }
+        .price-block { text-align: right; }
+        .price-current { font-size: 2.2rem; font-weight: 700; color: var(--text-primary); }
+        .price-change { font-size: 1rem; font-weight: 600; margin-top: 2px; }
+        .price-change.pos { color: var(--positive); }
+        .price-change.neg { color: var(--negative); }
+
+        /* KPI Row */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--gap);
+            margin-bottom: var(--gap);
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            border-top: 3px solid var(--accent);
+            transition: transform 0.2s;
+        }
+        .kpi-card:hover { transform: translateY(-3px); }
+        .kpi-label {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .kpi-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .kpi-sub {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .kpi-sub.pos { color: var(--positive); }
+        .kpi-sub.neg { color: var(--negative); }
+
+        /* Two-column grid */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+            margin-bottom: var(--gap);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: var(--gap);
+        }
+        .card-title {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th {
+            text-align: left;
+            padding: 9px 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.76rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        td {
+            padding: 9px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-primary);
+        }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        .td-label { color: var(--text-secondary); font-weight: 500; }
+        .td-val { text-align: right; font-weight: 600; }
+        td.pos { color: var(--positive); font-weight: 600; }
+        td.neg { color: var(--negative); font-weight: 600; }
+
+        /* Chart */
+        .chart-wrap { position: relative; height: 300px; }
+
+        /* Analyst Consensus */
+        .consensus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .consensus-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+        }
+        .consensus-val { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+        .consensus-label { font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px; }
+
+        /* Price Performance Grid */
+        .perf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .perf-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+        }
+        .perf-period { font-size: 0.76rem; color: var(--text-secondary); margin-bottom: 4px; }
+        .perf-val { font-size: 1.05rem; font-weight: 700; }
+        .perf-val.pos { color: var(--positive); }
+        .perf-val.neg { color: var(--negative); }
+
+        /* Insider Activity */
+        .insider-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+        .insider-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+        }
+        .insider-val { font-size: 1.2rem; font-weight: 700; color: var(--accent2); }
+        .insider-label { font-size: 0.76rem; color: var(--text-secondary); margin-top: 4px; }
+
+        /* Transcript Section */
+        .transcript-section { margin-bottom: var(--gap); }
+        .transcript-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .badge-positive { background: rgba(76,175,80,0.15); color: var(--positive); border: 1px solid rgba(76,175,80,0.3); }
+        .badge-negative { background: rgba(244,67,54,0.15); color: var(--negative); border: 1px solid rgba(244,67,54,0.3); }
+        .badge-neutral { background: rgba(255,215,0,0.12); color: var(--accent); border: 1px solid rgba(255,215,0,0.25); }
+        .badge-guidance-up { background: rgba(76,175,80,0.15); color: var(--positive); border: 1px solid rgba(76,175,80,0.3); }
+        .badge-guidance-down { background: rgba(244,67,54,0.15); color: var(--negative); border: 1px solid rgba(244,67,54,0.3); }
+        .badge-guidance-flat { background: rgba(158,158,158,0.15); color: #bdbdbd; border: 1px solid rgba(158,158,158,0.3); }
+
+        .highlights-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+        .highlights-list li {
+            padding: 8px 0 8px 20px;
+            position: relative;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .highlights-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .summary-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .summary-text p { margin-bottom: 12px; }
+
+        /* SEC Filings */
+        .filing-type {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(79,195,247,0.12);
+            color: var(--accent2);
+        }
+
+        /* No data state */
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1100px) {
+            .two-col { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .kpi-row { grid-template-columns: repeat(2, 1fr); }
+            .company-header-card { flex-direction: column; align-items: flex-start; }
+            .price-block { text-align: left; }
+            .perf-grid { grid-template-columns: repeat(2, 1fr); }
+            .insider-grid { grid-template-columns: 1fr; }
+            .consensus-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <a href="index.html">Home</a>
+    <a href="CG_Equities_Dashboard.html">Equities</a>
+    <a href="CG_Peer_Analysis.html">Peer Analysis</a>
+    <a href="CG_Industry_Dashboard.html">Industry</a>
+    <a href="CG_News_Dashboard.html">News</a>
+    <a href="CG_Company_Summary.html" class="active">Company</a>
+</div>
+
+<div class="page-header">
+    <h1>Company Summary</h1>
+    <div class="company-picker">
+        <label for="company-select">Company:</label>
+        <select id="company-select" onchange="selectCompany(this.value)"></select>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Company Header Card -->
+    <div class="company-header-card" id="company-header">
+        <div class="company-info">
+            <div class="company-name" id="hdr-name">Select a Company</div>
+            <div class="company-meta">
+                <span class="company-ticker" id="hdr-ticker">—</span>
+                <span id="hdr-exchange">—</span>
+                <span class="category-badge" id="hdr-category">—</span>
+            </div>
+        </div>
+        <div class="price-block">
+            <div class="price-current" id="hdr-price">—</div>
+            <div class="price-change" id="hdr-change">—</div>
+        </div>
+    </div>
+
+    <!-- KPI Row -->
+    <div class="kpi-row">
+        <div class="kpi-card">
+            <div class="kpi-label">Market Cap</div>
+            <div class="kpi-value" id="kpi-mktcap">—</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">P/E Ratio</div>
+            <div class="kpi-value" id="kpi-pe">—</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">EV/EBITDA</div>
+            <div class="kpi-value" id="kpi-evebitda">—</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Revenue</div>
+            <div class="kpi-value" id="kpi-revenue">—</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">EBITDA Margin</div>
+            <div class="kpi-value" id="kpi-margin">—</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Analyst Target</div>
+            <div class="kpi-value" id="kpi-target">—</div>
+            <div class="kpi-sub" id="kpi-upside"></div>
+        </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="two-col">
+        <!-- Left Column -->
+        <div>
+            <!-- Financial Snapshot -->
+            <div class="card">
+                <div class="card-title">Financial Snapshot</div>
+                <table id="fin-table">
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Revenue & EBITDA Trend -->
+            <div class="card">
+                <div class="card-title">Revenue & EBITDA Trend</div>
+                <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+            <!-- Analyst Consensus -->
+            <div class="card">
+                <div class="card-title">Analyst Consensus</div>
+                <div class="consensus-grid" id="consensus-grid">
+                    <div class="consensus-item">
+                        <div class="consensus-val" id="cons-target">—</div>
+                        <div class="consensus-label">Target Price</div>
+                    </div>
+                    <div class="consensus-item">
+                        <div class="consensus-val" id="cons-upside">—</div>
+                        <div class="consensus-label">Upside %</div>
+                    </div>
+                    <div class="consensus-item">
+                        <div class="consensus-val" id="cons-rec">—</div>
+                        <div class="consensus-label">Recommendation</div>
+                    </div>
+                    <div class="consensus-item">
+                        <div class="consensus-val" id="cons-analysts">—</div>
+                        <div class="consensus-label"># Analysts</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Performance -->
+            <div class="card">
+                <div class="card-title">Price Performance</div>
+                <div class="perf-grid" id="perf-grid"></div>
+            </div>
+
+            <!-- Insider Activity -->
+            <div class="card">
+                <div class="card-title">Ownership & Short Interest</div>
+                <div class="insider-grid" id="insider-grid">
+                    <div class="insider-item">
+                        <div class="insider-val" id="own-insider">—</div>
+                        <div class="insider-label">Insider %</div>
+                    </div>
+                    <div class="insider-item">
+                        <div class="insider-val" id="own-inst">—</div>
+                        <div class="insider-label">Institutional %</div>
+                    </div>
+                    <div class="insider-item">
+                        <div class="insider-val" id="own-short">—</div>
+                        <div class="insider-label">Short Interest %</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transcript Summary Section -->
+    <div class="card transcript-section" id="transcript-section">
+        <div class="card-title">Latest Earnings Call Summary</div>
+        <div id="transcript-content">
+            <div class="no-data">No transcript data available for this company.</div>
+        </div>
+    </div>
+
+    <!-- SEC Filings Table -->
+    <div class="card">
+        <div class="card-title">Recent SEC Filings</div>
+        <div style="overflow-x:auto;">
+            <table id="filings-table">
+                <thead>
+                    <tr>
+                        <th>Filing Type</th>
+                        <th>Description</th>
+                        <th>Date Filed</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody id="filings-body">
+                    <tr><td colspan="4" class="no-data">No filings data available.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Peer Comparison Mini Table -->
+    <div class="card">
+        <div class="card-title">Peer Comparison</div>
+        <div style="overflow-x:auto;">
+            <table id="peer-table">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Company</th>
+                        <th>Price</th>
+                        <th>Market Cap</th>
+                        <th>P/E</th>
+                        <th>EV/EBITDA</th>
+                        <th>EBITDA Margin</th>
+                        <th>YTD %</th>
+                    </tr>
+                </thead>
+                <tbody id="peer-body">
+                    <tr><td colspan="8" class="no-data">Select a company to view peers.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Company News Feed -->
+    <div class="card">
+        <div class="card-title">Company News</div>
+        <div id="company-news-feed">
+            <div class="no-data">No news available for this company.</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// INJECTED_DATA_START
+var MARKET_DATA = {};
+var PRICE_HISTORY = {};
+var SEC_FILINGS = {};
+var TRANSCRIPT_SUMMARIES = {};
+var NEWS_DATA = [];
+// INJECTED_DATA_END
+
+// Backward-compatible aliases
+var MD = MARKET_DATA;
+var SUMMARIES = TRANSCRIPT_SUMMARIES;
+
+var CATEGORY_COLORS = {
+    'Integrated Resorts': '#ffd700',
+    'Regional Operators': '#4fc3f7',
+    'Online & iGaming': '#81c784',
+    'Gaming Equipment': '#ba68c8'
+};
+
+var CATEGORIES = ['Integrated Resorts', 'Regional Operators', 'Online & iGaming', 'Gaming Equipment'];
+
+var FIN_METRICS = [
+    { key: 'revenue', label: 'Revenue', fmt: '$B' },
+    { key: 'ebitda', label: 'EBITDA', fmt: '$B' },
+    { key: 'netIncome', label: 'Net Income', fmt: '$B' },
+    { key: 'grossMargin', label: 'Gross Margin', fmt: '%' },
+    { key: 'ebitdaMargin', label: 'EBITDA Margin', fmt: '%' },
+    { key: 'netMargin', label: 'Net Margin', fmt: '%' },
+    { key: 'roe', label: 'ROE', fmt: '%' },
+    { key: 'roa', label: 'ROA', fmt: '%' },
+    { key: 'debtEquity', label: 'Debt/Equity', fmt: 'x' },
+    { key: 'currentRatio', label: 'Current Ratio', fmt: 'x' },
+    { key: 'fcf', label: 'Free Cash Flow', fmt: '$B' }
+];
+
+var PERF_PERIODS = [
+    { key: 'change1D', label: '1D' },
+    { key: 'change1W', label: '1W' },
+    { key: 'change1M', label: '1M' },
+    { key: 'change3M', label: '3M' },
+    { key: 'ytdChange', label: 'YTD' },
+    { key: 'change1Y', label: '1Y' }
+];
+
+var trendChart = null;
+var currentTicker = null;
+
+// ---- Helpers ----
+function fmtVal(val, fmt) {
+    if (val == null || val === '' || isNaN(val)) return '—';
+    var n = Number(val);
+    if (fmt === '$') return '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (fmt === '$B') {
+        var abs = Math.abs(n);
+        if (abs >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
+        if (abs >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+        if (abs >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+        return '$' + n.toLocaleString();
+    }
+    if (fmt === '%') {
+        var pct = Math.abs(n) < 5 ? n * 100 : n;
+        return pct.toFixed(2) + '%';
+    }
+    if (fmt === 'x') return n.toFixed(2) + 'x';
+    return String(val);
+}
+
+function pctClass(val) {
+    if (val == null || isNaN(val)) return '';
+    return Number(val) >= 0 ? 'pos' : 'neg';
+}
+
+function pctFmt(val) {
+    if (val == null || isNaN(val)) return '—';
+    var n = Number(val);
+    var pct = Math.abs(n) < 5 ? n * 100 : n;
+    return (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+}
+
+function updateHashParam(key, val) {
+    var params = new URLSearchParams(window.location.hash.replace('#', ''));
+    params.set(key, val);
+    window.location.hash = params.toString();
+}
+
+// ---- Populate company picker ----
+function buildCompanyPicker() {
+    var sel = document.getElementById('company-select');
+    sel.innerHTML = '<option value="">Select a company...</option>';
+
+    var grouped = {};
+    CATEGORIES.forEach(function(cat) { grouped[cat] = []; });
+    grouped['Other'] = [];
+
+    Object.keys(MD).forEach(function(ticker) {
+        var d = MD[ticker];
+        var cat = d.category || 'Other';
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push({ ticker: ticker, company: d.company || ticker });
+    });
+
+    CATEGORIES.concat(['Other']).forEach(function(cat) {
+        var items = grouped[cat];
+        if (!items || !items.length) return;
+        items.sort(function(a, b) { return a.company.localeCompare(b.company); });
+        var optgroup = document.createElement('optgroup');
+        optgroup.label = cat;
+        items.forEach(function(item) {
+            var opt = document.createElement('option');
+            opt.value = item.ticker;
+            opt.textContent = item.ticker + ' — ' + item.company;
+            optgroup.appendChild(opt);
+        });
+        sel.appendChild(optgroup);
+    });
+}
+
+// ---- Select Company ----
+function selectCompany(ticker) {
+    var data = MD[ticker];
+    if (!data) return;
+    currentTicker = ticker;
+    updateHeader(ticker, data);
+    updateKPIs(data);
+    updateFinancials(data);
+    updateCharts(ticker, data);
+    updateTranscript(ticker);
+    updateFilings(ticker);
+    updateHashParam('company', ticker);
+
+    document.getElementById('company-select').value = ticker;
+}
+
+function updateHeader(ticker, data) {
+    var catColor = CATEGORY_COLORS[data.category] || '#888';
+    document.getElementById('hdr-name').textContent = data.company || ticker;
+    document.getElementById('hdr-ticker').textContent = ticker;
+    document.getElementById('hdr-exchange').textContent = data.exchange || '';
+
+    var badge = document.getElementById('hdr-category');
+    badge.textContent = data.category || 'Other';
+    badge.style.color = catColor;
+    badge.style.borderColor = catColor;
+    badge.style.background = catColor + '18';
+
+    document.getElementById('hdr-price').textContent = data.price != null ? '$' + Number(data.price).toFixed(2) : '—';
+
+    var changeEl = document.getElementById('hdr-change');
+    if (data.change != null && data.changePercent != null) {
+        var sign = data.change >= 0 ? '+' : '';
+        changeEl.textContent = sign + Number(data.change).toFixed(2) + ' (' + sign + Number(data.changePercent).toFixed(2) + '%)';
+        changeEl.className = 'price-change ' + (data.change >= 0 ? 'pos' : 'neg');
+    } else {
+        changeEl.textContent = '—';
+        changeEl.className = 'price-change';
+    }
+}
+
+function updateKPIs(data) {
+    document.getElementById('kpi-mktcap').textContent = fmtVal(data.marketCap, '$B');
+    document.getElementById('kpi-pe').textContent = data.peRatio != null ? Number(data.peRatio).toFixed(1) + 'x' : '—';
+    document.getElementById('kpi-evebitda').textContent = data.evEbitda != null ? Number(data.evEbitda).toFixed(1) + 'x' : '—';
+    document.getElementById('kpi-revenue').textContent = fmtVal(data.revenue, '$B');
+    document.getElementById('kpi-margin').textContent = data.ebitdaMargin != null ? (Math.abs(data.ebitdaMargin) < 5 ? (data.ebitdaMargin * 100).toFixed(1) : Number(data.ebitdaMargin).toFixed(1)) + '%' : '—';
+
+    var target = data.analystTarget;
+    document.getElementById('kpi-target').textContent = target != null ? '$' + Number(target).toFixed(2) : '—';
+    var upsideEl = document.getElementById('kpi-upside');
+    if (target != null && data.price != null && data.price > 0) {
+        var upside = ((target - data.price) / data.price) * 100;
+        upsideEl.textContent = (upside >= 0 ? '+' : '') + upside.toFixed(1) + '% upside';
+        upsideEl.className = 'kpi-sub ' + (upside >= 0 ? 'pos' : 'neg');
+    } else {
+        upsideEl.textContent = '';
+    }
+}
+
+function updateFinancials(data) {
+    var html = '';
+    FIN_METRICS.forEach(function(m) {
+        var val = data[m.key];
+        html += '<tr><td class="td-label">' + m.label + '</td><td class="td-val">' + fmtVal(val, m.fmt) + '</td></tr>';
+    });
+    document.querySelector('#fin-table tbody').innerHTML = html;
+}
+
+function updateCharts(ticker, data) {
+    if (trendChart) trendChart.destroy();
+
+    var years = data.historicalYears || [];
+    var revHist = data.historicalRevenue || [];
+    var ebitdaHist = data.historicalEbitda || [];
+
+    if (!years.length) {
+        document.getElementById('trendChart').parentElement.innerHTML = '<div class="no-data">No historical trend data available.</div>';
+        return;
+    }
+
+    trendChart = new Chart(document.getElementById('trendChart'), {
+        type: 'bar',
+        data: {
+            labels: years,
+            datasets: [
+                {
+                    label: 'Revenue',
+                    data: revHist.map(function(v) { return v / 1e9; }),
+                    backgroundColor: 'rgba(255,215,0,0.3)',
+                    borderColor: '#ffd700',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    order: 2
+                },
+                {
+                    label: 'EBITDA',
+                    data: ebitdaHist.map(function(v) { return v / 1e9; }),
+                    type: 'line',
+                    borderColor: '#4fc3f7',
+                    backgroundColor: 'rgba(79,195,247,0.1)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#4fc3f7',
+                    fill: true,
+                    tension: 0.3,
+                    order: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'top', labels: { color: '#9aa0a6', usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } },
+                y: {
+                    grid: { color: 'rgba(255,255,255,0.04)' },
+                    ticks: { color: '#9aa0a6', callback: function(v) { return '$' + v.toFixed(1) + 'B'; } }
+                }
+            }
+        }
+    });
+}
+
+function updateAnalystConsensus(data) {
+    document.getElementById('cons-target').textContent = data.analystTarget != null ? '$' + Number(data.analystTarget).toFixed(2) : '—';
+
+    if (data.analystTarget != null && data.price != null && data.price > 0) {
+        var upside = ((data.analystTarget - data.price) / data.price) * 100;
+        var upsideEl = document.getElementById('cons-upside');
+        upsideEl.textContent = (upside >= 0 ? '+' : '') + upside.toFixed(1) + '%';
+        upsideEl.style.color = upside >= 0 ? 'var(--positive)' : 'var(--negative)';
+    } else {
+        document.getElementById('cons-upside').textContent = '—';
+    }
+
+    document.getElementById('cons-rec').textContent = data.recommendation || data.analystRec || '—';
+    document.getElementById('cons-analysts').textContent = data.numAnalysts != null ? data.numAnalysts : '—';
+}
+
+function updatePricePerformance(data) {
+    var html = '';
+    PERF_PERIODS.forEach(function(p) {
+        var val = data[p.key];
+        html += '<div class="perf-item">' +
+            '<div class="perf-period">' + p.label + '</div>' +
+            '<div class="perf-val ' + pctClass(val) + '">' + pctFmt(val) + '</div>' +
+            '</div>';
+    });
+    document.getElementById('perf-grid').innerHTML = html;
+}
+
+function updateOwnership(data) {
+    document.getElementById('own-insider').textContent = data.insiderPercent != null ? Number(data.insiderPercent).toFixed(1) + '%' : '—';
+    document.getElementById('own-inst').textContent = data.institutionalPercent != null ? Number(data.institutionalPercent).toFixed(1) + '%' : '—';
+    document.getElementById('own-short').textContent = data.shortInterest != null ? Number(data.shortInterest).toFixed(1) + '%' : '—';
+}
+
+function updateTranscript(ticker) {
+    var contentEl = document.getElementById('transcript-content');
+
+    // Find latest summary for this ticker
+    var latestKey = null;
+    var latestDate = '';
+    Object.keys(SUMMARIES).forEach(function(key) {
+        if (key.startsWith(ticker + '_')) {
+            if (key > (latestKey || '')) { latestKey = key; }
+        }
+    });
+
+    if (!latestKey || !SUMMARIES[latestKey]) {
+        contentEl.innerHTML = '<div class="no-data">No transcript data available for this company.</div>';
+        return;
+    }
+
+    var s = SUMMARIES[latestKey];
+    var html = '';
+
+    // Header with badges
+    html += '<div class="transcript-header">';
+    html += '<strong style="color:var(--text-primary);font-size:1rem;">' + (s.title || latestKey.replace(/_/g, ' ')) + '</strong>';
+
+    if (s.sentiment != null) {
+        var sentClass = s.sentiment > 0.2 ? 'badge-positive' : (s.sentiment < -0.2 ? 'badge-negative' : 'badge-neutral');
+        var sentLabel = s.sentiment > 0.2 ? 'Positive' : (s.sentiment < -0.2 ? 'Negative' : 'Neutral');
+        html += '<span class="badge ' + sentClass + '">Sentiment: ' + sentLabel + ' (' + Number(s.sentiment).toFixed(2) + ')</span>';
+    }
+
+    if (s.guidanceDirection) {
+        var gClass = s.guidanceDirection === 'up' ? 'badge-guidance-up' : (s.guidanceDirection === 'down' ? 'badge-guidance-down' : 'badge-guidance-flat');
+        html += '<span class="badge ' + gClass + '">Guidance: ' + s.guidanceDirection.charAt(0).toUpperCase() + s.guidanceDirection.slice(1) + '</span>';
+    }
+    html += '</div>';
+
+    // Key Highlights
+    if (s.highlights && s.highlights.length) {
+        html += '<h4 style="color:var(--accent);font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Key Highlights</h4>';
+        html += '<ul class="highlights-list">';
+        s.highlights.forEach(function(h) {
+            html += '<li>' + h + '</li>';
+        });
+        html += '</ul>';
+    }
+
+    // Summary
+    if (s.summary) {
+        html += '<h4 style="color:var(--accent);font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Summary</h4>';
+        html += '<div class="summary-text">';
+        var paragraphs = Array.isArray(s.summary) ? s.summary : s.summary.split('\n\n');
+        paragraphs.forEach(function(p) {
+            if (p.trim()) html += '<p>' + p.trim() + '</p>';
+        });
+        html += '</div>';
+    }
+
+    contentEl.innerHTML = html;
+}
+
+function updateFilings(ticker) {
+    var body = document.getElementById('filings-body');
+    var data = MD[ticker];
+    var filings = (SEC_FILINGS && SEC_FILINGS[ticker]) || (data && data.filings ? data.filings : []);
+
+    if (!filings.length) {
+        body.innerHTML = '<tr><td colspan="4" class="no-data">No filings data available.</td></tr>';
+        return;
+    }
+
+    var html = '';
+    filings.forEach(function(f) {
+        html += '<tr>' +
+            '<td><span class="filing-type">' + (f.type || f.formType || '—') + '</span></td>' +
+            '<td>' + (f.description || f.title || '—') + '</td>' +
+            '<td>' + (f.date || f.filedDate || '—') + '</td>' +
+            '<td>' + (f.url ? '<a href="' + f.url + '" target="_blank" style="color:var(--accent2);">View</a>' : '—') + '</td>' +
+            '</tr>';
+    });
+    body.innerHTML = html;
+}
+
+// ---- Combined update for right-column cards ----
+function updateRightColumn(data) {
+    updateAnalystConsensus(data);
+    updatePricePerformance(data);
+    updateOwnership(data);
+}
+
+// ---- Peer Comparison ----
+function updatePeerTable(ticker) {
+    var body = document.getElementById('peer-body');
+    var data = MD[ticker];
+    if (!data) { body.innerHTML = '<tr><td colspan="8" class="no-data">No peer data available.</td></tr>'; return; }
+    var cat = data.category;
+    var peers = Object.keys(MD).filter(function(t) { return t !== ticker && MD[t].category === cat; });
+    if (!peers.length) { body.innerHTML = '<tr><td colspan="8" class="no-data">No peers found in this sector.</td></tr>'; return; }
+
+    var html = '';
+    peers.sort(function(a, b) {
+        var ma = MD[a].marketCap || 0, mb = MD[b].marketCap || 0;
+        return mb - ma;
+    });
+    peers.forEach(function(t) {
+        var p = MD[t];
+        var ytd = p.ytdChange;
+        var ytdPct = ytd != null ? (Math.abs(ytd) < 5 ? ytd * 100 : ytd) : null;
+        var ytdCls = ytdPct != null ? (ytdPct >= 0 ? 'pos' : 'neg') : '';
+        html += '<tr>' +
+            '<td style="font-weight:600;color:var(--accent);">' + t + '</td>' +
+            '<td>' + (p.company || '') + '</td>' +
+            '<td>' + (p.price != null ? '$' + Number(p.price).toFixed(2) : '—') + '</td>' +
+            '<td>' + fmtVal(p.marketCap, '$B') + '</td>' +
+            '<td>' + (p.peRatio != null ? Number(p.peRatio).toFixed(1) + 'x' : '—') + '</td>' +
+            '<td>' + (p.evEbitda != null ? Number(p.evEbitda).toFixed(1) + 'x' : '—') + '</td>' +
+            '<td>' + (p.ebitdaMargin != null ? (Math.abs(p.ebitdaMargin) < 5 ? (p.ebitdaMargin * 100).toFixed(1) : Number(p.ebitdaMargin).toFixed(1)) + '%' : '—') + '</td>' +
+            '<td class="' + ytdCls + '">' + (ytdPct != null ? (ytdPct >= 0 ? '+' : '') + ytdPct.toFixed(2) + '%' : '—') + '</td>' +
+            '</tr>';
+    });
+    body.innerHTML = html;
+}
+
+// ---- Company News Feed ----
+function updateNewsFeed(ticker) {
+    var container = document.getElementById('company-news-feed');
+    var articles = (NEWS_DATA || []).filter(function(a) {
+        var tickers = a.tickers || [];
+        return tickers.indexOf(ticker) !== -1;
+    });
+    if (!articles.length) {
+        container.innerHTML = '<div class="no-data">No news available for this company.</div>';
+        return;
+    }
+    var html = '';
+    articles.slice(0, 10).forEach(function(a) {
+        html += '<div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);">' +
+            '<div style="font-weight:600;margin-bottom:4px;">' +
+            (a.url ? '<a href="' + a.url + '" target="_blank" rel="noopener" style="color:var(--text-primary);text-decoration:none;">' + (a.headline || 'Untitled') + '</a>' : (a.headline || 'Untitled')) +
+            '</div>' +
+            '<div style="display:flex;gap:8px;align-items:center;font-size:0.8rem;color:var(--text-secondary);">' +
+            (a.source ? '<span style="background:rgba(79,195,247,0.15);color:var(--accent2);padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:600;">' + a.source + '</span>' : '') +
+            (a.published ? '<span>' + a.published + '</span>' : '') +
+            '</div></div>';
+    });
+    container.innerHTML = html;
+}
+
+// Override selectCompany to include right column
+var _origSelectCompany = selectCompany;
+selectCompany = function(ticker) {
+    var data = MD[ticker];
+    if (!data) return;
+    currentTicker = ticker;
+    updateHeader(ticker, data);
+    updateKPIs(data);
+    updateFinancials(data);
+    updateRightColumn(data);
+    updateCharts(ticker, data);
+    updateTranscript(ticker);
+    updateFilings(ticker);
+    updatePeerTable(ticker);
+    updateNewsFeed(ticker);
+    updateHashParam('company', ticker);
+    document.getElementById('company-select').value = ticker;
+};
+
+// ---- Init ----
+function init() {
+    buildCompanyPicker();
+
+    // Check URL hash for pre-selected company
+    var params = new URLSearchParams(window.location.hash.replace('#', ''));
+    var company = params.get('company');
+
+    if (company && MD[company]) {
+        selectCompany(company);
+    } else {
+        // Auto-select first company
+        var tickers = Object.keys(MD).sort();
+        if (tickers.length) {
+            selectCompany(tickers[0]);
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Gaming Intel — News Dashboard</title>
+    <style>
+        :root {
+            --bg-primary: #0f1117;
+            --bg-card: #1a1d29;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #ffd700;
+            --accent2: #4fc3f7;
+            --accent3: #81c784;
+            --accent4: #ba68c8;
+            --positive: #4caf50;
+            --negative: #f44336;
+            --radius: 10px;
+            --border: 1px solid rgba(255,255,255,0.06);
+            --gap: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--gap);
+            background: var(--bg-card);
+            padding: 8px;
+            border-radius: var(--radius);
+            border: var(--border);
+            flex-wrap: wrap;
+        }
+        .nav-bar a {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
+        .nav-bar a.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--accent);
+            padding: 28px 32px;
+            margin-bottom: var(--gap);
+            border-radius: var(--radius);
+            border: var(--border);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            font-size: 2em;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(255,215,0,0.2);
+            margin-bottom: 4px;
+        }
+        .header p { color: var(--text-secondary); font-size: 0.9em; }
+
+        /* Search / Filter Bar */
+        .filter-bar {
+            background: var(--bg-card);
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            border: var(--border);
+            margin-bottom: var(--gap);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .filter-bar input[type="text"] {
+            flex: 1 1 260px;
+            padding: 9px 14px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 13px;
+            outline: none;
+        }
+        .filter-bar input[type="text"]:focus { border-color: var(--accent); }
+        .filter-bar select {
+            padding: 9px 14px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+            min-width: 160px;
+        }
+        .filter-bar select:focus { border-color: var(--accent); }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: var(--gap);
+            margin-bottom: var(--gap);
+            flex-wrap: wrap;
+        }
+        .stat-chip {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 14px 22px;
+            flex: 1 1 180px;
+            text-align: center;
+        }
+        .stat-chip .stat-value {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-chip .stat-label {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* News Feed */
+        .news-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: var(--gap);
+        }
+        .article-card {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            border-color: rgba(255,215,0,0.2);
+            box-shadow: 0 2px 12px rgba(255,215,0,0.06);
+        }
+        .article-headline {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .article-headline a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .article-headline a:hover { color: var(--accent); }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.72em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-source { background: rgba(79,195,247,0.15); color: var(--accent2); }
+        .badge-time { background: rgba(255,255,255,0.06); color: var(--text-secondary); font-weight: 400; }
+        .badge-category-industry { background: rgba(129,199,132,0.15); color: var(--accent3); }
+        .badge-category-multi { background: rgba(186,104,200,0.15); color: var(--accent4); }
+        .badge-category-company { background: rgba(255,215,0,0.12); color: var(--accent); }
+
+        .ticker-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+        .ticker-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .ticker-integrated { background: rgba(255,215,0,0.15); color: var(--accent); }
+        .ticker-regional { background: rgba(79,195,247,0.15); color: var(--accent2); }
+        .ticker-online { background: rgba(129,199,132,0.15); color: var(--accent3); }
+        .ticker-equipment { background: rgba(186,104,200,0.15); color: var(--accent4); }
+
+        .relevance-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .relevance-label { font-size: 0.7em; color: var(--text-secondary); }
+        .relevance-bar {
+            flex: 1;
+            max-width: 160px;
+            height: 5px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .relevance-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            transition: width 0.4s;
+        }
+        .relevance-val { font-size: 0.72em; color: var(--accent); font-weight: 600; }
+
+        /* Load More */
+        .load-more-wrap { text-align: center; margin: var(--gap) 0; }
+        .load-more-btn {
+            padding: 10px 36px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .load-more-btn:hover { background: rgba(255,215,0,0.1); }
+        .load-more-btn:disabled { opacity: 0.4; cursor: default; }
+
+        /* Section headings */
+        .section-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+        }
+
+        /* Tables */
+        .data-section {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            margin-bottom: var(--gap);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead th {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        tbody td {
+            padding: 10px 12px;
+            font-size: 0.88em;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        tbody tr:hover { background: rgba(255,255,255,0.02); }
+        td a { color: var(--accent2); text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+
+        .form-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
+            background: rgba(255,215,0,0.12);
+            color: var(--accent);
+        }
+
+        /* Two-column layout for filings / earnings */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .bottom-grid { grid-template-columns: 1fr; }
+            .filter-bar { flex-direction: column; }
+            .filter-bar input[type="text"],
+            .filter-bar select { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Nav Bar -->
+    <div class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="CG_Equities_Dashboard.html">Equities</a>
+        <a href="CG_Peer_Analysis.html">Peer Analysis</a>
+        <a href="CG_Industry_Dashboard.html">Industry</a>
+        <a href="CG_News_Dashboard.html" class="active">News</a>
+        <a href="CG_Company_Summary.html">Company</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Casino Gaming News</h1>
+        <p>Aggregated news, SEC filings, and earnings calendar for casino and gaming companies</p>
+    </div>
+
+    <!-- Search / Filter Bar -->
+    <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Search headlines, tickers, sources…" />
+        <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option value="Industry-Wide">Industry-Wide</option>
+            <option value="Multi-Company">Multi-Company</option>
+            <option value="Company-Specific">Company-Specific</option>
+        </select>
+        <select id="sectorFilter">
+            <option value="All">All Sectors</option>
+            <option value="Integrated Resorts">Integrated Resorts</option>
+            <option value="Regional Operators">Regional Operators</option>
+            <option value="Online & iGaming">Online &amp; iGaming</option>
+            <option value="Gaming Equipment">Gaming Equipment</option>
+        </select>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-chip">
+            <div class="stat-value" id="statArticles">0</div>
+            <div class="stat-label">Total Articles</div>
+        </div>
+        <div class="stat-chip">
+            <div class="stat-value" id="statSources">0</div>
+            <div class="stat-label">Sources</div>
+        </div>
+        <div class="stat-chip">
+            <div class="stat-value" id="statFilings">0</div>
+            <div class="stat-label">SEC Filings</div>
+        </div>
+        <div class="stat-chip">
+            <div class="stat-value" id="statUpdate">—</div>
+            <div class="stat-label">Latest Update</div>
+        </div>
+    </div>
+
+    <!-- News Feed -->
+    <div id="newsFeed" class="news-feed"></div>
+    <div class="load-more-wrap">
+        <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More</button>
+    </div>
+
+    <!-- SEC Filings & Earnings Calendar -->
+    <div class="bottom-grid">
+        <!-- SEC Filings -->
+        <div class="data-section">
+            <div class="section-title">Recent SEC Filings</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Form</th>
+                        <th>Filed</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody id="filingsBody"></tbody>
+            </table>
+            <div class="empty-state" id="filingsEmpty" style="display:none;">No recent filings available.</div>
+        </div>
+
+        <!-- Earnings Calendar -->
+        <div class="data-section">
+            <div class="section-title">Upcoming Earnings</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Ticker</th>
+                        <th>Report Date</th>
+                        <th>Time</th>
+                        <th>Est. EPS</th>
+                    </tr>
+                </thead>
+                <tbody id="earningsBody"></tbody>
+            </table>
+            <div class="empty-state" id="earningsEmpty" style="display:none;">No upcoming earnings dates.</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// INJECTED_DATA_START
+var NEWS_DATA = { articles: [], filings: [], earnings_calendar: [] };
+// INJECTED_DATA_END
+
+// ============================================================
+// Constants
+// ============================================================
+var PAGE_SIZE = 20;
+var currentPage = 0;
+var filteredArticles = [];
+
+var SECTOR_TICKER_CLASS = {
+    'Integrated Resorts': 'ticker-integrated',
+    'Regional Operators': 'ticker-regional',
+    'Online & iGaming': 'ticker-online',
+    'Gaming Equipment': 'ticker-equipment'
+};
+
+var CATEGORY_BADGE_CLASS = {
+    'Industry-Wide': 'badge-category-industry',
+    'Multi-Company': 'badge-category-multi',
+    'Company-Specific': 'badge-category-company'
+};
+
+// ============================================================
+// Initialization
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    populateStats();
+    applyFilters();
+    renderFilings();
+    renderEarnings();
+
+    document.getElementById('searchInput').addEventListener('input', debounce(applyFilters, 250));
+    document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+    document.getElementById('sectorFilter').addEventListener('change', applyFilters);
+});
+
+// ============================================================
+// Stats
+// ============================================================
+function populateStats() {
+    var articles = NEWS_DATA.articles || [];
+    var filings = NEWS_DATA.filings || [];
+    document.getElementById('statArticles').textContent = articles.length;
+
+    var sources = {};
+    articles.forEach(function(a) { if (a.source) sources[a.source] = true; });
+    document.getElementById('statSources').textContent = Object.keys(sources).length;
+    document.getElementById('statFilings').textContent = filings.length;
+
+    if (articles.length > 0 && articles[0].published) {
+        document.getElementById('statUpdate').textContent = formatTime(articles[0].published);
+    }
+}
+
+// ============================================================
+// Filtering
+// ============================================================
+function applyFilters() {
+    var query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+    var cat = document.getElementById('categoryFilter').value;
+    var sector = document.getElementById('sectorFilter').value;
+    var articles = NEWS_DATA.articles || [];
+
+    filteredArticles = articles.filter(function(a) {
+        // Text search
+        if (query) {
+            var haystack = ((a.headline || '') + ' ' + (a.source || '') + ' ' + (a.tickers || []).join(' ')).toLowerCase();
+            if (haystack.indexOf(query) === -1) return false;
+        }
+        // Category filter
+        if (cat !== 'All' && a.category !== cat) return false;
+        // Sector filter
+        if (sector !== 'All') {
+            var tickers = a.tickers || [];
+            var sectors = a.ticker_sectors || {};
+            var match = tickers.some(function(t) { return sectors[t] === sector; });
+            if (!match && a.sector !== sector) return false;
+        }
+        return true;
+    });
+
+    currentPage = 0;
+    document.getElementById('newsFeed').innerHTML = '';
+    renderPage();
+    updateLoadMoreBtn();
+}
+
+// ============================================================
+// Rendering articles
+// ============================================================
+function renderPage() {
+    var feed = document.getElementById('newsFeed');
+    var start = currentPage * PAGE_SIZE;
+    var end = Math.min(start + PAGE_SIZE, filteredArticles.length);
+
+    if (filteredArticles.length === 0) {
+        feed.innerHTML = '<div class="empty-state">No articles match your filters.</div>';
+        return;
+    }
+
+    for (var i = start; i < end; i++) {
+        feed.appendChild(createArticleCard(filteredArticles[i]));
+    }
+}
+
+function createArticleCard(article) {
+    var card = document.createElement('div');
+    card.className = 'article-card';
+
+    // Headline
+    var headlineDiv = document.createElement('div');
+    headlineDiv.className = 'article-headline';
+    var link = document.createElement('a');
+    link.href = article.url || '#';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = article.headline || 'Untitled';
+    headlineDiv.appendChild(link);
+    card.appendChild(headlineDiv);
+
+    // Meta row: source + time + category
+    var meta = document.createElement('div');
+    meta.className = 'article-meta';
+
+    if (article.source) {
+        var srcBadge = document.createElement('span');
+        srcBadge.className = 'badge badge-source';
+        srcBadge.textContent = article.source;
+        meta.appendChild(srcBadge);
+    }
+
+    if (article.published) {
+        var timeBadge = document.createElement('span');
+        timeBadge.className = 'badge badge-time';
+        timeBadge.textContent = formatTime(article.published);
+        meta.appendChild(timeBadge);
+    }
+
+    if (article.category) {
+        var catBadge = document.createElement('span');
+        catBadge.className = 'badge ' + (CATEGORY_BADGE_CLASS[article.category] || 'badge-time');
+        catBadge.textContent = article.category;
+        meta.appendChild(catBadge);
+    }
+
+    card.appendChild(meta);
+
+    // Ticker badges
+    var tickers = article.tickers || [];
+    if (tickers.length > 0) {
+        var tickerDiv = document.createElement('div');
+        tickerDiv.className = 'ticker-badges';
+        var sectors = article.ticker_sectors || {};
+        tickers.forEach(function(t) {
+            var tb = document.createElement('span');
+            var cls = SECTOR_TICKER_CLASS[sectors[t]] || 'ticker-integrated';
+            tb.className = 'ticker-badge ' + cls;
+            tb.textContent = t;
+            tickerDiv.appendChild(tb);
+        });
+        card.appendChild(tickerDiv);
+    }
+
+    // Relevance bar
+    var score = article.relevance_score;
+    if (typeof score === 'number') {
+        var wrap = document.createElement('div');
+        wrap.className = 'relevance-bar-wrap';
+        var lbl = document.createElement('span');
+        lbl.className = 'relevance-label';
+        lbl.textContent = 'Relevance';
+        var bar = document.createElement('div');
+        bar.className = 'relevance-bar';
+        var fill = document.createElement('div');
+        fill.className = 'relevance-fill';
+        fill.style.width = Math.min(score, 100) + '%';
+        bar.appendChild(fill);
+        var val = document.createElement('span');
+        val.className = 'relevance-val';
+        val.textContent = score + '%';
+        wrap.appendChild(lbl);
+        wrap.appendChild(bar);
+        wrap.appendChild(val);
+        card.appendChild(wrap);
+    }
+
+    return card;
+}
+
+// ============================================================
+// Load More
+// ============================================================
+function loadMore() {
+    currentPage++;
+    renderPage();
+    updateLoadMoreBtn();
+}
+
+function updateLoadMoreBtn() {
+    var btn = document.getElementById('loadMoreBtn');
+    var shown = Math.min((currentPage + 1) * PAGE_SIZE, filteredArticles.length);
+    if (shown >= filteredArticles.length) {
+        btn.disabled = true;
+        btn.textContent = 'All articles loaded';
+    } else {
+        btn.disabled = false;
+        btn.textContent = 'Load More (' + (filteredArticles.length - shown) + ' remaining)';
+    }
+}
+
+// ============================================================
+// SEC Filings
+// ============================================================
+function renderFilings() {
+    var tbody = document.getElementById('filingsBody');
+    var filings = NEWS_DATA.filings || [];
+    if (filings.length === 0) {
+        document.getElementById('filingsEmpty').style.display = 'block';
+        return;
+    }
+    filings.forEach(function(f) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(f.company || '') + '</td>' +
+            '<td><span class="form-badge">' + esc(f.form_type || '') + '</span></td>' +
+            '<td>' + esc(f.filed_date || '') + '</td>' +
+            '<td>' + (f.url ? '<a href="' + esc(f.url) + '" target="_blank" rel="noopener">View</a>' : '—') + '</td>';
+        tbody.appendChild(tr);
+    });
+}
+
+// ============================================================
+// Earnings Calendar
+// ============================================================
+function renderEarnings() {
+    var tbody = document.getElementById('earningsBody');
+    var earnings = NEWS_DATA.earnings_calendar || [];
+    if (earnings.length === 0) {
+        document.getElementById('earningsEmpty').style.display = 'block';
+        return;
+    }
+    earnings.forEach(function(e) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td>' + esc(e.company || '') + '</td>' +
+            '<td><span class="ticker-badge ticker-integrated">' + esc(e.ticker || '') + '</span></td>' +
+            '<td>' + esc(e.report_date || '') + '</td>' +
+            '<td>' + esc(e.time || '') + '</td>' +
+            '<td>' + esc(e.est_eps != null ? e.est_eps : '—') + '</td>';
+        tbody.appendChild(tr);
+    });
+}
+
+// ============================================================
+// Utilities
+// ============================================================
+function formatTime(str) {
+    if (!str) return '—';
+    try {
+        var d = new Date(str);
+        if (isNaN(d.getTime())) return str;
+        var now = new Date();
+        var diff = (now - d) / 1000;
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+        if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    } catch (e) { return str; }
+}
+
+function esc(s) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(String(s)));
+    return div.innerHTML;
+}
+
+function debounce(fn, ms) {
+    var timer;
+    return function() {
+        clearTimeout(timer);
+        timer = setTimeout(fn, ms);
+    };
+}
+</script>
+<script src="auth.js"></script>
+<script src="export-utils.js"></script>
+</body>
+</html>

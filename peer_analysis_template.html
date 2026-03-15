@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Gaming Intel — Peer Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+    <style>
+        :root {
+            --bg-primary: #0f1117;
+            --bg-card: #1a1d29;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --accent: #ffd700;
+            --accent2: #4fc3f7;
+            --accent3: #81c784;
+            --accent4: #ba68c8;
+            --positive: #4caf50;
+            --negative: #f44336;
+            --radius: 10px;
+            --border: 1px solid rgba(255,255,255,0.06);
+            --gap: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 4px;
+            background: #111318;
+            padding: 8px 24px;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+        .nav-bar a.active { background: rgba(255,215,0,0.12); color: var(--accent); }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a1d29 0%, #16213e 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 28px 32px;
+        }
+        .page-header h1 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .page-header p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .container { max-width: 1500px; margin: 0 auto; padding: 24px; }
+
+        /* Tabs */
+        .tab-strip {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 0;
+        }
+        .tab-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .tab-btn:hover { color: var(--text-primary); }
+        .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Category filter buttons */
+        .cat-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .cat-btn {
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .cat-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--text-primary); }
+        .cat-btn.active { background: rgba(255,215,0,0.12); border-color: var(--accent); color: var(--accent); }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: var(--gap);
+        }
+        .card-title {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            cursor: pointer;
+            user-select: none;
+        }
+        th:hover { color: var(--accent); }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-primary);
+        }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+
+        /* Category dot */
+        .cat-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        /* Composite bar */
+        .score-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .score-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 120px;
+        }
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent3));
+            transition: width 0.4s ease;
+        }
+        .score-val { font-weight: 600; min-width: 36px; text-align: right; }
+
+        /* Comparison */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 200px repeat(4, 1fr);
+            gap: 0;
+        }
+        .compare-header {
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .compare-select {
+            width: 100%;
+            padding: 8px;
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-family: inherit;
+        }
+        .compare-metric {
+            padding: 10px 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            align-items: center;
+        }
+        .compare-cell {
+            padding: 10px 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .compare-cell.best { color: var(--positive); font-weight: 600; }
+        .compare-cell.worst { color: var(--negative); }
+
+        /* Scatter */
+        .scatter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+        }
+        .chart-wrap {
+            position: relative;
+            height: 400px;
+        }
+
+        /* Relative Performance */
+        .time-btns {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .time-btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .time-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--text-primary); }
+        .time-btn.active { background: rgba(255,215,0,0.12); border-color: var(--accent); color: var(--accent); }
+
+        .perf-chart-wrap { position: relative; height: 480px; }
+
+        .legend-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 3px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .legend-item:hover { background: rgba(255,255,255,0.04); }
+        .legend-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        /* Rank cell coloring */
+        .rank-top { color: var(--positive); font-weight: 600; }
+        .rank-mid { color: var(--accent); }
+        .rank-low { color: var(--negative); }
+
+        @media (max-width: 900px) {
+            .scatter-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 140px repeat(4, 1fr); font-size: 0.8rem; }
+            .nav-bar { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <a href="index.html">Home</a>
+    <a href="CG_Equities_Dashboard.html">Equities</a>
+    <a href="CG_Peer_Analysis.html" class="active">Peer Analysis</a>
+    <a href="CG_Industry_Dashboard.html">Industry</a>
+    <a href="CG_News_Dashboard.html">News</a>
+    <a href="CG_Company_Summary.html">Company</a>
+</div>
+
+<div class="page-header">
+    <h1>Peer Analysis</h1>
+    <p>Comparative rankings, valuations, and performance across the casino gaming sector</p>
+</div>
+
+<div class="container">
+
+    <!-- Tab Strip -->
+    <div class="tab-strip">
+        <button class="tab-btn active" onclick="switchTab('rankings')">Rankings</button>
+        <button class="tab-btn" onclick="switchTab('comparison')">Comparison</button>
+        <button class="tab-btn" onclick="switchTab('scatter')">Scatter Plots</button>
+        <button class="tab-btn" onclick="switchTab('performance')">Relative Performance</button>
+    </div>
+
+    <!-- TAB 1: Rankings -->
+    <div id="tab-rankings" class="tab-panel active">
+        <div class="cat-filters">
+            <button class="cat-btn active" data-cat="all" onclick="filterCategory('all')">All</button>
+            <button class="cat-btn" data-cat="Integrated Resorts" onclick="filterCategory('Integrated Resorts')">Integrated Resorts</button>
+            <button class="cat-btn" data-cat="Regional Operators" onclick="filterCategory('Regional Operators')">Regional Operators</button>
+            <button class="cat-btn" data-cat="Online & iGaming" onclick="filterCategory('Online & iGaming')">Online & iGaming</button>
+            <button class="cat-btn" data-cat="Gaming Equipment" onclick="filterCategory('Gaming Equipment')">Gaming Equipment</button>
+        </div>
+        <div class="card">
+            <div class="card-title">Peer Ranking Table</div>
+            <div style="overflow-x:auto;">
+                <table id="ranking-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortRankings('rank')">Rank</th>
+                            <th onclick="sortRankings('ticker')">Ticker</th>
+                            <th onclick="sortRankings('company')">Company</th>
+                            <th onclick="sortRankings('category')">Category</th>
+                            <th onclick="sortRankings('mktcap_rank')">Market Cap Rank</th>
+                            <th onclick="sortRankings('val_rank')">Valuation Rank</th>
+                            <th onclick="sortRankings('growth_rank')">Growth Rank</th>
+                            <th onclick="sortRankings('profit_rank')">Profitability Rank</th>
+                            <th onclick="sortRankings('composite')">Composite Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: Comparison -->
+    <div id="tab-comparison" class="tab-panel">
+        <div class="card">
+            <div class="card-title">Side-by-Side Comparison (Select up to 4 Companies)</div>
+            <div class="compare-grid" id="compare-grid">
+                <div class="compare-header">Metric</div>
+                <div class="compare-header"><select class="compare-select" id="comp-sel-0" onchange="updateComparison()"><option value="">Select...</option></select></div>
+                <div class="compare-header"><select class="compare-select" id="comp-sel-1" onchange="updateComparison()"><option value="">Select...</option></select></div>
+                <div class="compare-header"><select class="compare-select" id="comp-sel-2" onchange="updateComparison()"><option value="">Select...</option></select></div>
+                <div class="compare-header"><select class="compare-select" id="comp-sel-3" onchange="updateComparison()"><option value="">Select...</option></select></div>
+            </div>
+            <div id="compare-body"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: Scatter Plots -->
+    <div id="tab-scatter" class="tab-panel">
+        <div class="scatter-grid">
+            <div class="card">
+                <div class="card-title">Revenue Growth vs EBITDA Margin</div>
+                <div class="chart-wrap"><canvas id="scatter1"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">EV/EBITDA vs Revenue Growth</div>
+                <div class="chart-wrap"><canvas id="scatter2"></canvas></div>
+            </div>
+        </div>
+        <div class="legend-row" id="scatter-legend"></div>
+    </div>
+
+    <!-- TAB 4: Relative Performance -->
+    <div id="tab-performance" class="tab-panel">
+        <div class="card">
+            <div class="card-title">Rebased Price Performance (Indexed to 100)</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+                <div class="time-btns">
+                    <button class="time-btn" data-range="1M" onclick="setTimeRange('1M')">1M</button>
+                    <button class="time-btn" data-range="3M" onclick="setTimeRange('3M')">3M</button>
+                    <button class="time-btn" data-range="6M" onclick="setTimeRange('6M')">6M</button>
+                    <button class="time-btn active" data-range="YTD" onclick="setTimeRange('YTD')">YTD</button>
+                    <button class="time-btn" data-range="1Y" onclick="setTimeRange('1Y')">1Y</button>
+                </div>
+                <div class="cat-filters" id="perf-cat-filters">
+                    <button class="cat-btn active" data-cat="Integrated Resorts" onclick="togglePerfCategory(this)" style="border-color:#ffd700;color:#ffd700;">Integrated Resorts</button>
+                    <button class="cat-btn active" data-cat="Regional Operators" onclick="togglePerfCategory(this)" style="border-color:#4fc3f7;color:#4fc3f7;">Regional Operators</button>
+                    <button class="cat-btn active" data-cat="Online & iGaming" onclick="togglePerfCategory(this)" style="border-color:#81c784;color:#81c784;">Online & iGaming</button>
+                    <button class="cat-btn active" data-cat="Gaming Equipment" onclick="togglePerfCategory(this)" style="border-color:#ba68c8;color:#ba68c8;">Gaming Equipment</button>
+                </div>
+            </div>
+            <div class="perf-chart-wrap"><canvas id="perfChart"></canvas></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// INJECTED_DATA_START
+var PEER_DATA = {};
+var MD = {};
+// INJECTED_DATA_END
+
+var CATEGORY_COLORS = {
+    'Integrated Resorts': '#ffd700',
+    'Regional Operators': '#4fc3f7',
+    'Online & iGaming': '#81c784',
+    'Gaming Equipment': '#ba68c8'
+};
+
+var COMPARE_METRICS = [
+    { key: 'price', label: 'Price', fmt: '$', higher: null },
+    { key: 'marketCap', label: 'Market Cap', fmt: '$B', higher: true },
+    { key: 'peRatio', label: 'P/E', fmt: 'x', higher: false },
+    { key: 'evEbitda', label: 'EV/EBITDA', fmt: 'x', higher: false },
+    { key: 'revenueGrowth', label: 'Revenue Growth', fmt: '%', higher: true },
+    { key: 'ebitdaMargin', label: 'EBITDA Margin', fmt: '%', higher: true },
+    { key: 'roe', label: 'ROE', fmt: '%', higher: true },
+    { key: 'debtEquity', label: 'Debt/Equity', fmt: 'x', higher: false },
+    { key: 'dividendYield', label: 'Dividend Yield', fmt: '%', higher: true },
+    { key: 'analystTarget', label: 'Analyst Target', fmt: '$', higher: null },
+    { key: 'ytdChange', label: 'YTD %', fmt: '%', higher: true }
+];
+
+var currentSort = { col: 'composite', dir: -1 };
+var currentCategory = 'all';
+var currentTimeRange = 'YTD';
+var activePerfCategories = new Set(['Integrated Resorts', 'Regional Operators', 'Online & iGaming', 'Gaming Equipment']);
+var scatterChart1 = null, scatterChart2 = null, perfChart = null;
+
+// ---- Tab switching ----
+function switchTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+
+    if (name === 'scatter') buildScatterCharts();
+    if (name === 'performance') buildPerfChart();
+}
+
+// ---- Rankings ----
+function getRankClass(rank, total) {
+    var pct = rank / total;
+    if (pct <= 0.33) return 'rank-top';
+    if (pct <= 0.66) return 'rank-mid';
+    return 'rank-low';
+}
+
+function buildRankings() {
+    var peers = PEER_DATA.rankings || [];
+    if (!peers.length) return;
+    var filtered = currentCategory === 'all' ? peers : peers.filter(function(p) { return p.category === currentCategory; });
+
+    filtered.sort(function(a, b) {
+        var av = a[currentSort.col], bv = b[currentSort.col];
+        if (typeof av === 'string') return currentSort.dir * av.localeCompare(bv);
+        return currentSort.dir * ((av || 0) - (bv || 0));
+    });
+
+    var total = filtered.length;
+    var html = '';
+    filtered.forEach(function(p, i) {
+        var catColor = CATEGORY_COLORS[p.category] || '#888';
+        var composite = p.composite || 0;
+        var barW = Math.min(100, Math.max(0, composite));
+        html += '<tr>' +
+            '<td>' + (i + 1) + '</td>' +
+            '<td style="font-weight:600;color:var(--accent)">' + (p.ticker || '') + '</td>' +
+            '<td>' + (p.company || '') + '</td>' +
+            '<td><span class="cat-dot" style="background:' + catColor + '"></span>' + (p.category || '') + '</td>' +
+            '<td class="' + getRankClass(p.mktcap_rank, total) + '">' + (p.mktcap_rank || '-') + '</td>' +
+            '<td class="' + getRankClass(p.val_rank, total) + '">' + (p.val_rank || '-') + '</td>' +
+            '<td class="' + getRankClass(p.growth_rank, total) + '">' + (p.growth_rank || '-') + '</td>' +
+            '<td class="' + getRankClass(p.profit_rank, total) + '">' + (p.profit_rank || '-') + '</td>' +
+            '<td><div class="score-bar-wrap"><span class="score-val">' + composite.toFixed(1) + '</span>' +
+            '<div class="score-bar"><div class="score-bar-fill" style="width:' + barW + '%"></div></div></div></td>' +
+            '</tr>';
+    });
+    document.getElementById('ranking-body').innerHTML = html;
+}
+
+function filterCategory(cat) {
+    currentCategory = cat;
+    document.querySelectorAll('#tab-rankings .cat-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.cat === cat);
+    });
+    buildRankings();
+}
+
+function sortRankings(col) {
+    if (currentSort.col === col) currentSort.dir *= -1;
+    else { currentSort.col = col; currentSort.dir = col === 'composite' ? -1 : 1; }
+    buildRankings();
+}
+
+// ---- Comparison ----
+function populateCompareSelects() {
+    var tickers = Object.keys(MD).sort();
+    for (var i = 0; i < 4; i++) {
+        var sel = document.getElementById('comp-sel-' + i);
+        tickers.forEach(function(t) {
+            var o = document.createElement('option');
+            o.value = t;
+            o.textContent = t + (MD[t] && MD[t].company ? ' — ' + MD[t].company : '');
+            sel.appendChild(o);
+        });
+    }
+}
+
+function fmtVal(val, fmt) {
+    if (val == null || val === '' || isNaN(val)) return '—';
+    if (fmt === '$') return '$' + Number(val).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (fmt === '$B') return '$' + (Number(val) / 1e9).toFixed(2) + 'B';
+    if (fmt === '%') return (Number(val) * (Math.abs(val) < 5 ? 100 : 1)).toFixed(2) + '%';
+    if (fmt === 'x') return Number(val).toFixed(2) + 'x';
+    return String(val);
+}
+
+function updateComparison() {
+    var selected = [];
+    for (var i = 0; i < 4; i++) {
+        var t = document.getElementById('comp-sel-' + i).value;
+        selected.push(t && MD[t] ? t : null);
+    }
+
+    var html = '';
+    COMPARE_METRICS.forEach(function(m) {
+        var vals = selected.map(function(t) { return t ? (MD[t][m.key] || null) : null; });
+        var numVals = vals.filter(function(v) { return v != null && !isNaN(v); });
+        var best = null, worst = null;
+        if (m.higher !== null && numVals.length > 1) {
+            var sorted = numVals.slice().sort(function(a, b) { return a - b; });
+            best = m.higher ? sorted[sorted.length - 1] : sorted[0];
+            worst = m.higher ? sorted[0] : sorted[sorted.length - 1];
+        }
+
+        html += '<div class="compare-grid">';
+        html += '<div class="compare-metric">' + m.label + '</div>';
+        vals.forEach(function(v) {
+            var cls = '';
+            if (v != null && v === best) cls = ' best';
+            else if (v != null && v === worst) cls = ' worst';
+            html += '<div class="compare-cell' + cls + '">' + fmtVal(v, m.fmt) + '</div>';
+        });
+        html += '</div>';
+    });
+    document.getElementById('compare-body').innerHTML = html;
+}
+
+// ---- Scatter Plots ----
+function getScatterData(xKey, yKey) {
+    var datasets = {};
+    Object.keys(MD).forEach(function(t) {
+        var d = MD[t];
+        if (d[xKey] == null || d[yKey] == null) return;
+        var cat = d.category || 'Other';
+        if (!datasets[cat]) datasets[cat] = { label: cat, data: [], backgroundColor: CATEGORY_COLORS[cat] || '#888', borderColor: 'transparent' };
+        var mktCap = d.marketCap || 1e9;
+        var radius = Math.max(5, Math.min(25, Math.sqrt(mktCap / 1e9) * 3));
+        datasets[cat].data.push({ x: d[xKey], y: d[yKey], r: radius, label: t + ' (' + (d.company || '') + ')' });
+    });
+    return Object.values(datasets);
+}
+
+function buildScatterCharts() {
+    if (scatterChart1) scatterChart1.destroy();
+    if (scatterChart2) scatterChart2.destroy();
+
+    var scatterOpts = function(xLabel, yLabel) {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(ctx) {
+                            var p = ctx.raw;
+                            return p.label + ': ' + xLabel + '=' + p.x.toFixed(2) + ', ' + yLabel + '=' + p.y.toFixed(2);
+                        }
+                    }
+                },
+                legend: { display: false }
+            },
+            scales: {
+                x: { title: { display: true, text: xLabel, color: '#9aa0a6' }, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } },
+                y: { title: { display: true, text: yLabel, color: '#9aa0a6' }, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } }
+            }
+        };
+    };
+
+    scatterChart1 = new Chart(document.getElementById('scatter1'), {
+        type: 'bubble',
+        data: { datasets: getScatterData('revenueGrowth', 'ebitdaMargin') },
+        options: scatterOpts('Revenue Growth (%)', 'EBITDA Margin (%)')
+    });
+
+    scatterChart2 = new Chart(document.getElementById('scatter2'), {
+        type: 'bubble',
+        data: { datasets: getScatterData('evEbitda', 'revenueGrowth') },
+        options: scatterOpts('EV/EBITDA (x)', 'Revenue Growth (%)')
+    });
+
+    // Build legend
+    var legendHtml = '';
+    Object.keys(CATEGORY_COLORS).forEach(function(cat) {
+        legendHtml += '<div class="legend-item"><div class="legend-swatch" style="background:' + CATEGORY_COLORS[cat] + '"></div>' + cat + '</div>';
+    });
+    document.getElementById('scatter-legend').innerHTML = legendHtml;
+}
+
+// ---- Relative Performance ----
+function setTimeRange(range) {
+    currentTimeRange = range;
+    document.querySelectorAll('.time-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.range === range);
+    });
+    buildPerfChart();
+}
+
+function togglePerfCategory(btn) {
+    var cat = btn.dataset.cat;
+    btn.classList.toggle('active');
+    if (activePerfCategories.has(cat)) activePerfCategories.delete(cat);
+    else activePerfCategories.add(cat);
+    buildPerfChart();
+}
+
+function getFilteredStartDate(range) {
+    var now = new Date();
+    switch (range) {
+        case '1M': return new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+        case '3M': return new Date(now.getFullYear(), now.getMonth() - 3, now.getDate());
+        case '6M': return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate());
+        case 'YTD': return new Date(now.getFullYear(), 0, 1);
+        case '1Y': return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+        default: return new Date(now.getFullYear(), 0, 1);
+    }
+}
+
+function buildPerfChart() {
+    if (perfChart) perfChart.destroy();
+
+    var startDate = getFilteredStartDate(currentTimeRange);
+    var datasets = [];
+    var allDates = new Set();
+
+    Object.keys(MD).forEach(function(ticker) {
+        var d = MD[ticker];
+        var cat = d.category || 'Other';
+        if (!activePerfCategories.has(cat)) return;
+        var prices = d.priceHistory || d.prices || [];
+        if (!prices.length) return;
+
+        var filtered = prices.filter(function(p) { return new Date(p.date) >= startDate; });
+        if (!filtered.length) return;
+        var base = filtered[0].close || filtered[0].price || 1;
+        var points = filtered.map(function(p) {
+            allDates.add(p.date);
+            return { x: p.date, y: ((p.close || p.price) / base) * 100 };
+        });
+
+        datasets.push({
+            label: ticker,
+            data: points,
+            borderColor: CATEGORY_COLORS[cat] || '#888',
+            backgroundColor: 'transparent',
+            borderWidth: 1.5,
+            pointRadius: 0,
+            tension: 0.3
+        });
+    });
+
+    var labels = Array.from(allDates).sort();
+
+    perfChart = new Chart(document.getElementById('perfChart'), {
+        type: 'line',
+        data: { labels: labels, datasets: datasets },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'nearest', intersect: false },
+            plugins: {
+                legend: { display: true, position: 'bottom', labels: { color: '#9aa0a6', usePointStyle: true, pointStyle: 'line', font: { size: 11 } } },
+                tooltip: {
+                    callbacks: {
+                        label: function(ctx) { return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1); }
+                    }
+                }
+            },
+            scales: {
+                x: { display: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6', maxTicksLimit: 12, font: { size: 11 } } },
+                y: {
+                    display: true,
+                    grid: { color: 'rgba(255,255,255,0.04)' },
+                    ticks: { color: '#9aa0a6', callback: function(v) { return v.toFixed(0); } },
+                    title: { display: true, text: 'Rebased (100)', color: '#9aa0a6' }
+                }
+            }
+        }
+    });
+}
+
+// ---- Init ----
+function init() {
+    buildRankings();
+    populateCompareSelects();
+
+    // Auto-select first 4 tickers for comparison
+    var tickers = Object.keys(MD).sort();
+    for (var i = 0; i < Math.min(4, tickers.length); i++) {
+        document.getElementById('comp-sel-' + i).value = tickers[i];
+    }
+    updateComparison();
+
+    // Check URL hash for tab
+    var hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById('tab-' + hash)) {
+        switchTabDirect(hash);
+    }
+}
+
+function switchTabDirect(name) {
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+        b.classList.remove('active');
+        if (b.textContent.toLowerCase().replace(/\s+/g, '') === name.toLowerCase().replace(/\s+/g, '')) b.classList.add('active');
+    });
+    document.getElementById('tab-' + name).classList.add('active');
+    if (name === 'scatter') buildScatterCharts();
+    if (name === 'performance') buildPerfChart();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+<script src="auth.js"></script>
+<script src="export-utils.js"></script>
+</body>
+</html>
