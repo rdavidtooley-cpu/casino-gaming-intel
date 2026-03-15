@@ -16,6 +16,7 @@
     "pe_trailing": 48.26316,
     "pe_forward": 15.630593,
     "ev_ebitda": 16.781,
+    "ev_ebitdar": 11.6,
     "ev_revenue": 2.253,
     "price_to_book": 3.8992243,
     "price_to_sales": 0.5720377,
@@ -1163,7 +1164,7 @@
         "value": 189.2
       }
     ],
-    "timestamp": "2026-03-14T21:19:25.149051",
+    "timestamp": "2026-03-14T22:30:05.889457",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 50.0,
     "rank_pe_trailing": 4,
@@ -1195,6 +1196,7 @@
     "pe_trailing": null,
     "pe_forward": 30.335135,
     "ev_ebitda": 8.763,
+    "ev_ebitdar": 7.3,
     "ev_revenue": 2.667,
     "price_to_book": 1.6226219,
     "price_to_sales": 0.49863034,
@@ -2342,7 +2344,7 @@
         "value": 138.6
       }
     ],
-    "timestamp": "2026-03-14T21:19:25.980750",
+    "timestamp": "2026-03-14T22:30:06.676004",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 25.0,
     "rank_pe_trailing": null,
@@ -2374,6 +2376,7 @@
     "pe_trailing": 31.984076,
     "pe_forward": 16.791367,
     "ev_ebitda": 11.313,
+    "ev_ebitdar": 9.1,
     "ev_revenue": 2.773,
     "price_to_book": -37.36235,
     "price_to_sales": 1.4672573,
@@ -3521,7 +3524,7 @@
         "value": 136.7
       }
     ],
-    "timestamp": "2026-03-14T21:19:27.506931",
+    "timestamp": "2026-03-14T22:30:07.512234",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 75.0,
     "rank_pe_trailing": 3,
@@ -3553,6 +3556,7 @@
     "pe_trailing": 22.842554,
     "pe_forward": 14.285942,
     "ev_ebitda": 10.722,
+    "ev_ebitdar": 9.1,
     "ev_revenue": 3.734,
     "price_to_book": 22.784382,
     "price_to_sales": 2.788269,
@@ -4700,7 +4704,7 @@
         "value": 300.9
       }
     ],
-    "timestamp": "2026-03-14T21:19:28.608826",
+    "timestamp": "2026-03-14T22:30:08.395527",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
@@ -4732,6 +4736,7 @@
     "pe_trailing": 12.152174,
     "pe_forward": 7.0262322,
     "ev_ebitda": 11.293,
+    "ev_ebitdar": 8.9,
     "ev_revenue": 2.498,
     "price_to_book": -1.751802,
     "price_to_sales": 0.42297187,
@@ -5879,7 +5884,7 @@
         "value": 21.2
       }
     ],
-    "timestamp": "2026-03-14T21:19:29.983979",
+    "timestamp": "2026-03-14T22:30:09.161590",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": 1,
@@ -5911,6 +5916,7 @@
     "pe_trailing": null,
     "pe_forward": 8.221634,
     "ev_ebitda": 17.161,
+    "ev_ebitdar": 10.9,
     "ev_revenue": 1.78,
     "price_to_book": 0.9850623,
     "price_to_sales": 0.2745363,
@@ -7058,7 +7064,7 @@
         "value": 44.3
       }
     ],
-    "timestamp": "2026-03-14T21:19:32.029439",
+    "timestamp": "2026-03-14T22:30:10.052415",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 57.1,
     "rank_pe_trailing": null,
@@ -7090,6 +7096,7 @@
     "pe_trailing": 3.6187944,
     "pe_forward": 10.020362,
     "ev_ebitda": 7.094,
+    "ev_ebitdar": 5.9,
     "ev_revenue": 2.082,
     "price_to_book": 2.3901396,
     "price_to_sales": 1.5061584,
@@ -8237,7 +8244,7 @@
         "value": 110.8
       }
     ],
-    "timestamp": "2026-03-14T21:19:34.295545",
+    "timestamp": "2026-03-14T22:30:10.961883",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 1,
@@ -8269,6 +8276,7 @@
     "pe_trailing": 18.538462,
     "pe_forward": 17.602324,
     "ev_ebitda": 8.396,
+    "ev_ebitdar": 7.3,
     "ev_revenue": 3.397,
     "price_to_book": 16.19261,
     "price_to_sales": 2.9567776,
@@ -9416,7 +9424,7 @@
         "value": 68.8
       }
     ],
-    "timestamp": "2026-03-14T21:19:35.349279",
+    "timestamp": "2026-03-14T22:30:11.782305",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 71.4,
     "rank_pe_trailing": 4,
@@ -9448,6 +9456,7 @@
     "pe_trailing": 16.325142,
     "pe_forward": 11.630915,
     "ev_ebitda": 11.562,
+    "ev_ebitdar": 9.8,
     "ev_revenue": 3.781,
     "price_to_book": 5.952988,
     "price_to_sales": 2.058093,
@@ -10595,7 +10604,7 @@
         "value": 106.7
       }
     ],
-    "timestamp": "2026-03-14T21:19:42.407195",
+    "timestamp": "2026-03-14T22:30:14.198109",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 85.7,
     "rank_pe_trailing": 2,
@@ -10627,6 +10636,7 @@
     "pe_trailing": 18.491714,
     "pe_forward": 16.889824,
     "ev_ebitda": 8.981,
+    "ev_ebitdar": 7.7,
     "ev_revenue": 3.142,
     "price_to_book": 3.3276994,
     "price_to_sales": 3.2945569,
@@ -11774,7 +11784,7 @@
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-14T21:19:43.376342",
+    "timestamp": "2026-03-14T22:30:15.011108",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 42.9,
     "rank_pe_trailing": 3,
@@ -11806,6 +11816,7 @@
     "pe_trailing": null,
     "pe_forward": 22.809917,
     "ev_ebitda": 9.715,
+    "ev_ebitdar": 7.4,
     "ev_revenue": 1.868,
     "price_to_book": 1.7170587,
     "price_to_sales": 1.1475738,
@@ -12953,7 +12964,7 @@
         "value": 12.9
       }
     ],
-    "timestamp": "2026-03-14T21:19:45.280904",
+    "timestamp": "2026-03-14T22:30:15.965031",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 28.6,
     "rank_pe_trailing": null,
@@ -12985,6 +12996,7 @@
     "pe_trailing": null,
     "pe_forward": -6.3658533,
     "ev_ebitda": 12.968,
+    "ev_ebitdar": 9.3,
     "ev_revenue": 1.97,
     "price_to_book": 6.641221,
     "price_to_sales": 0.31178766,
@@ -14132,7 +14144,7 @@
         "value": 1.3
       }
     ],
-    "timestamp": "2026-03-14T21:19:46.288891",
+    "timestamp": "2026-03-14T22:30:16.837375",
     "rank_market_cap_b": 8,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -14164,6 +14176,7 @@
     "pe_trailing": null,
     "pe_forward": -8.516778,
     "ev_ebitda": 18.942,
+    "ev_ebitdar": 13.0,
     "ev_revenue": 2.46,
     "price_to_book": 1.1954781,
     "price_to_sales": 0.250468,
@@ -15311,7 +15324,7 @@
         "value": 0.8
       }
     ],
-    "timestamp": "2026-03-14T21:19:47.614710",
+    "timestamp": "2026-03-14T22:30:17.618932",
     "rank_market_cap_b": 7,
     "pctile_market_cap_b": 14.3,
     "rank_pe_trailing": null,
@@ -15343,6 +15356,7 @@
     "pe_trailing": null,
     "pe_forward": 13.265647,
     "ev_ebitda": 49.53,
+    "ev_ebitdar": 21.2,
     "ev_revenue": 2.232,
     "price_to_book": 20.274296,
     "price_to_sales": 2.1269011,
@@ -16490,7 +16504,7 @@
         "value": 259.4
       }
     ],
-    "timestamp": "2026-03-14T21:19:49.380377",
+    "timestamp": "2026-03-14T22:30:18.405745",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": null,
@@ -16522,6 +16536,7 @@
     "pe_trailing": null,
     "pe_forward": 10.0341015,
     "ev_ebitda": 14.39,
+    "ev_ebitdar": 9.8,
     "ev_revenue": 1.873,
     "price_to_book": 2.1010082,
     "price_to_sales": 1.1597214,
@@ -17669,7 +17684,7 @@
         "value": 433.9
       }
     ],
-    "timestamp": "2026-03-14T21:19:51.139148",
+    "timestamp": "2026-03-14T22:30:19.216583",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -17701,6 +17716,7 @@
     "pe_trailing": 65.32258,
     "pe_forward": 27.060255,
     "ev_ebitda": null,
+    "ev_ebitdar": null,
     "ev_revenue": null,
     "price_to_book": 13.747454,
     "price_to_sales": 4.1552987,
@@ -18848,7 +18864,7 @@
         "value": 45.3
       }
     ],
-    "timestamp": "2026-03-14T21:19:52.567212",
+    "timestamp": "2026-03-14T22:30:19.956034",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 20.0,
     "rank_pe_trailing": 3,
@@ -18880,6 +18896,7 @@
     "pe_trailing": 51.833332,
     "pe_forward": 22.93427,
     "ev_ebitda": 10.447,
+    "ev_ebitdar": 9.1,
     "ev_revenue": 4.11,
     "price_to_book": 4.994715,
     "price_to_sales": 4.2810907,
@@ -20027,7 +20044,7 @@
         "value": 59.0
       }
     ],
-    "timestamp": "2026-03-14T21:20:00.754459",
+    "timestamp": "2026-03-14T22:30:22.386433",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": 2,
@@ -20059,6 +20076,7 @@
     "pe_trailing": 25.547619,
     "pe_forward": 12.370159,
     "ev_ebitda": 10.226,
+    "ev_ebitdar": 7.9,
     "ev_revenue": 2.142,
     "price_to_book": 7.284453,
     "price_to_sales": 2.3157043,
@@ -21206,7 +21224,7 @@
         "value": 21.4
       }
     ],
-    "timestamp": "2026-03-14T21:20:01.907002",
+    "timestamp": "2026-03-14T22:30:23.193453",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": 1,
@@ -21238,6 +21256,7 @@
     "pe_trailing": null,
     "pe_forward": 5.383838,
     "ev_ebitda": -14.998,
+    "ev_ebitdar": null,
     "ev_revenue": 1.587,
     "price_to_book": 1.8123087,
     "price_to_sales": 1.9609172,
@@ -22385,7 +22404,7 @@
         "value": 28.9
       }
     ],
-    "timestamp": "2026-03-14T21:20:02.850123",
+    "timestamp": "2026-03-14T22:30:24.094297",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -22400,1184 +22419,109 @@
     "pctile_change_ytd": 0.0,
     "composite_score": 12.0
   },
-  "BRSL": {
-    "ticker": "BRSL",
-    "display_ticker": "BRSL",
-    "company": "Brightstar Lottery",
-    "name": "Brightstar Lottery",
+  "IGT": {
+    "ticker": "IGT",
+    "display_ticker": "IGT",
+    "company": "International Game Technology",
+    "name": "International Game Technology",
     "category": "Gaming Equipment",
     "exchange": "NYSE",
-    "price": 12.67,
-    "price_usd": 12.67,
+    "price": 0,
+    "price_usd": 0,
     "currency": "USD",
-    "market_cap": 2344025088,
-    "market_cap_b": 2.344,
-    "enterprise_value_b": 5.906,
-    "mcap_tier": "Mid-Cap ($2B-$10B)",
+    "market_cap": 0,
+    "market_cap_b": 0,
+    "enterprise_value_b": null,
+    "mcap_tier": "Unknown",
     "pe_trailing": null,
-    "pe_forward": 11.758264,
-    "ev_ebitda": 6.696,
-    "ev_revenue": 2.352,
-    "price_to_book": 2.7055306,
-    "price_to_sales": 0.9335026,
-    "eps_trailing": -0.01,
-    "eps_forward": 1.07754,
-    "book_value": 4.683,
-    "revenue_per_share": 12.746,
-    "revenue_growth": 0.026,
-    "earnings_growth": -0.706,
-    "quarterly_earnings_growth": -0.72,
-    "gross_margins": 0.50458,
-    "operating_margins": 0.26198,
-    "profit_margins": 0.05854,
-    "ebitda_margins": 0.35125,
-    "roe": 0.07395,
-    "roa": 0.04251,
-    "revenue_b": 2.511,
-    "ebitda_b": 0.882,
-    "net_income_b": -0.001,
-    "operating_cashflow_b": -0.099,
-    "free_cashflow_b": 5.592,
-    "total_debt_b": 4.299,
-    "total_cash_b": 1.446,
-    "debt_to_equity": 270.377,
-    "current_ratio": 0.76,
-    "quick_ratio": 0.675,
-    "beta": 1.082,
-    "target_high": 22.0,
-    "target_low": 15.0,
-    "target_mean": 18.08,
-    "target_median": 17.0,
-    "recommendation_key": "buy",
-    "recommendation_mean": 2.0,
-    "num_analysts": 5,
-    "shares_short": 4092356,
-    "short_ratio": 2.42,
-    "short_pct_float": 0.0226,
-    "held_pct_insiders": 0.48116,
-    "held_pct_institutions": 0.4612,
-    "dividend_yield": 7.26,
-    "dividend_rate": 0.92,
-    "payout_ratio": 8.8889,
-    "fifty_two_week_high": 18.57,
-    "fifty_two_week_low": 12.6,
-    "fifty_day_avg": 14.0448,
-    "two_hundred_day_avg": 15.5021,
-    "avg_volume_10d": 1477680,
-    "avg_volume_3mo": 1612953,
-    "day_high": 12.765,
-    "day_low": 12.6,
-    "open_price": 12.65,
-    "previous_close": 12.64,
-    "daily_change": 0.0299997,
-    "daily_change_pct": 0.23734,
-    "employees": 5746,
-    "industry_yf": "Gambling",
-    "sector_yf": "Consumer Cyclical",
-    "country": "United Kingdom",
-    "website": "https://www.brightstarlottery.com",
-    "most_recent_quarter": "2025-12-30",
-    "earnings_timestamp": "2026-02-24",
-    "next_earnings_date": "2026-05-12",
-    "pct_off_high": -31.8,
-    "vs_50dma_pct": -9.8,
-    "vs_200dma_pct": -18.3,
-    "upside_pct": 42.7,
-    "change_1y": -3.4,
-    "trend_1y": 16.0,
-    "price_series": [
-      {
-        "d": "2025-03-14",
-        "p": 13.12
-      },
-      {
-        "d": "2025-03-17",
-        "p": 13.68
-      },
-      {
-        "d": "2025-03-18",
-        "p": 13.36
-      },
-      {
-        "d": "2025-03-19",
-        "p": 13.64
-      },
-      {
-        "d": "2025-03-20",
-        "p": 13.5
-      },
-      {
-        "d": "2025-03-21",
-        "p": 13.43
-      },
-      {
-        "d": "2025-03-24",
-        "p": 13.45
-      },
-      {
-        "d": "2025-03-25",
-        "p": 13.3
-      },
-      {
-        "d": "2025-03-26",
-        "p": 13.36
-      },
-      {
-        "d": "2025-03-27",
-        "p": 12.97
-      },
-      {
-        "d": "2025-03-28",
-        "p": 12.8
-      },
-      {
-        "d": "2025-03-31",
-        "p": 12.81
-      },
-      {
-        "d": "2025-04-01",
-        "p": 12.66
-      },
-      {
-        "d": "2025-04-02",
-        "p": 13.03
-      },
-      {
-        "d": "2025-04-03",
-        "p": 12.07
-      },
-      {
-        "d": "2025-04-04",
-        "p": 11.45
-      },
-      {
-        "d": "2025-04-07",
-        "p": 11.6
-      },
-      {
-        "d": "2025-04-08",
-        "p": 11.38
-      },
-      {
-        "d": "2025-04-09",
-        "p": 12.57
-      },
-      {
-        "d": "2025-04-10",
-        "p": 12.15
-      },
-      {
-        "d": "2025-04-11",
-        "p": 12.33
-      },
-      {
-        "d": "2025-04-14",
-        "p": 12.3
-      },
-      {
-        "d": "2025-04-15",
-        "p": 12.56
-      },
-      {
-        "d": "2025-04-16",
-        "p": 12.39
-      },
-      {
-        "d": "2025-04-17",
-        "p": 12.65
-      },
-      {
-        "d": "2025-04-21",
-        "p": 12.66
-      },
-      {
-        "d": "2025-04-22",
-        "p": 13.01
-      },
-      {
-        "d": "2025-04-23",
-        "p": 12.89
-      },
-      {
-        "d": "2025-04-24",
-        "p": 12.86
-      },
-      {
-        "d": "2025-04-25",
-        "p": 12.9
-      },
-      {
-        "d": "2025-04-28",
-        "p": 12.93
-      },
-      {
-        "d": "2025-04-29",
-        "p": 13.04
-      },
-      {
-        "d": "2025-04-30",
-        "p": 12.92
-      },
-      {
-        "d": "2025-05-01",
-        "p": 12.94
-      },
-      {
-        "d": "2025-05-02",
-        "p": 13.11
-      },
-      {
-        "d": "2025-05-05",
-        "p": 13.2
-      },
-      {
-        "d": "2025-05-06",
-        "p": 13.14
-      },
-      {
-        "d": "2025-05-07",
-        "p": 13.35
-      },
-      {
-        "d": "2025-05-08",
-        "p": 13.61
-      },
-      {
-        "d": "2025-05-09",
-        "p": 13.57
-      },
-      {
-        "d": "2025-05-12",
-        "p": 14.1
-      },
-      {
-        "d": "2025-05-13",
-        "p": 12.76
-      },
-      {
-        "d": "2025-05-14",
-        "p": 13.2
-      },
-      {
-        "d": "2025-05-15",
-        "p": 13.1
-      },
-      {
-        "d": "2025-05-16",
-        "p": 13.32
-      },
-      {
-        "d": "2025-05-19",
-        "p": 12.66
-      },
-      {
-        "d": "2025-05-20",
-        "p": 12.23
-      },
-      {
-        "d": "2025-05-21",
-        "p": 11.81
-      },
-      {
-        "d": "2025-05-22",
-        "p": 11.98
-      },
-      {
-        "d": "2025-05-23",
-        "p": 12.05
-      },
-      {
-        "d": "2025-05-27",
-        "p": 12.37
-      },
-      {
-        "d": "2025-05-28",
-        "p": 12.17
-      },
-      {
-        "d": "2025-05-29",
-        "p": 11.94
-      },
-      {
-        "d": "2025-05-30",
-        "p": 11.74
-      },
-      {
-        "d": "2025-06-02",
-        "p": 11.67
-      },
-      {
-        "d": "2025-06-03",
-        "p": 11.61
-      },
-      {
-        "d": "2025-06-04",
-        "p": 11.62
-      },
-      {
-        "d": "2025-06-05",
-        "p": 11.65
-      },
-      {
-        "d": "2025-06-06",
-        "p": 11.65
-      },
-      {
-        "d": "2025-06-09",
-        "p": 11.76
-      },
-      {
-        "d": "2025-06-10",
-        "p": 12.12
-      },
-      {
-        "d": "2025-06-11",
-        "p": 12.01
-      },
-      {
-        "d": "2025-06-12",
-        "p": 12.03
-      },
-      {
-        "d": "2025-06-13",
-        "p": 11.65
-      },
-      {
-        "d": "2025-06-16",
-        "p": 12.04
-      },
-      {
-        "d": "2025-06-17",
-        "p": 12.16
-      },
-      {
-        "d": "2025-06-18",
-        "p": 11.98
-      },
-      {
-        "d": "2025-06-20",
-        "p": 11.97
-      },
-      {
-        "d": "2025-06-23",
-        "p": 12.14
-      },
-      {
-        "d": "2025-06-24",
-        "p": 12.48
-      },
-      {
-        "d": "2025-06-25",
-        "p": 12.4
-      },
-      {
-        "d": "2025-06-26",
-        "p": 12.39
-      },
-      {
-        "d": "2025-06-27",
-        "p": 12.56
-      },
-      {
-        "d": "2025-06-30",
-        "p": 12.62
-      },
-      {
-        "d": "2025-07-01",
-        "p": 13.0
-      },
-      {
-        "d": "2025-07-02",
-        "p": 13.25
-      },
-      {
-        "d": "2025-07-03",
-        "p": 13.69
-      },
-      {
-        "d": "2025-07-07",
-        "p": 13.66
-      },
-      {
-        "d": "2025-07-08",
-        "p": 13.85
-      },
-      {
-        "d": "2025-07-09",
-        "p": 14.14
-      },
-      {
-        "d": "2025-07-10",
-        "p": 14.37
-      },
-      {
-        "d": "2025-07-11",
-        "p": 14.48
-      },
-      {
-        "d": "2025-07-14",
-        "p": 14.1
-      },
-      {
-        "d": "2025-07-15",
-        "p": 13.79
-      },
-      {
-        "d": "2025-07-16",
-        "p": 13.88
-      },
-      {
-        "d": "2025-07-17",
-        "p": 13.78
-      },
-      {
-        "d": "2025-07-18",
-        "p": 13.8
-      },
-      {
-        "d": "2025-07-21",
-        "p": 13.81
-      },
-      {
-        "d": "2025-07-22",
-        "p": 13.82
-      },
-      {
-        "d": "2025-07-23",
-        "p": 14.09
-      },
-      {
-        "d": "2025-07-24",
-        "p": 13.72
-      },
-      {
-        "d": "2025-07-25",
-        "p": 13.92
-      },
-      {
-        "d": "2025-07-28",
-        "p": 13.67
-      },
-      {
-        "d": "2025-07-29",
-        "p": 14.71
-      },
-      {
-        "d": "2025-07-30",
-        "p": 14.36
-      },
-      {
-        "d": "2025-07-31",
-        "p": 14.19
-      },
-      {
-        "d": "2025-08-01",
-        "p": 14.05
-      },
-      {
-        "d": "2025-08-04",
-        "p": 14.36
-      },
-      {
-        "d": "2025-08-05",
-        "p": 15.04
-      },
-      {
-        "d": "2025-08-06",
-        "p": 14.85
-      },
-      {
-        "d": "2025-08-07",
-        "p": 14.56
-      },
-      {
-        "d": "2025-08-08",
-        "p": 14.44
-      },
-      {
-        "d": "2025-08-11",
-        "p": 14.29
-      },
-      {
-        "d": "2025-08-12",
-        "p": 14.61
-      },
-      {
-        "d": "2025-08-13",
-        "p": 15.16
-      },
-      {
-        "d": "2025-08-14",
-        "p": 15.05
-      },
-      {
-        "d": "2025-08-15",
-        "p": 15.01
-      },
-      {
-        "d": "2025-08-18",
-        "p": 14.93
-      },
-      {
-        "d": "2025-08-19",
-        "p": 15.15
-      },
-      {
-        "d": "2025-08-20",
-        "p": 15.23
-      },
-      {
-        "d": "2025-08-21",
-        "p": 15.32
-      },
-      {
-        "d": "2025-08-22",
-        "p": 15.77
-      },
-      {
-        "d": "2025-08-25",
-        "p": 15.89
-      },
-      {
-        "d": "2025-08-26",
-        "p": 15.86
-      },
-      {
-        "d": "2025-08-27",
-        "p": 15.85
-      },
-      {
-        "d": "2025-08-28",
-        "p": 16.01
-      },
-      {
-        "d": "2025-08-29",
-        "p": 16.13
-      },
-      {
-        "d": "2025-09-02",
-        "p": 15.91
-      },
-      {
-        "d": "2025-09-03",
-        "p": 15.79
-      },
-      {
-        "d": "2025-09-04",
-        "p": 16.22
-      },
-      {
-        "d": "2025-09-05",
-        "p": 16.26
-      },
-      {
-        "d": "2025-09-08",
-        "p": 16.3
-      },
-      {
-        "d": "2025-09-09",
-        "p": 16.26
-      },
-      {
-        "d": "2025-09-10",
-        "p": 16.01
-      },
-      {
-        "d": "2025-09-11",
-        "p": 16.28
-      },
-      {
-        "d": "2025-09-12",
-        "p": 15.97
-      },
-      {
-        "d": "2025-09-15",
-        "p": 16.29
-      },
-      {
-        "d": "2025-09-16",
-        "p": 16.19
-      },
-      {
-        "d": "2025-09-17",
-        "p": 16.07
-      },
-      {
-        "d": "2025-09-18",
-        "p": 16.16
-      },
-      {
-        "d": "2025-09-19",
-        "p": 16.04
-      },
-      {
-        "d": "2025-09-22",
-        "p": 16.37
-      },
-      {
-        "d": "2025-09-23",
-        "p": 16.52
-      },
-      {
-        "d": "2025-09-24",
-        "p": 16.64
-      },
-      {
-        "d": "2025-09-25",
-        "p": 16.42
-      },
-      {
-        "d": "2025-09-26",
-        "p": 16.6
-      },
-      {
-        "d": "2025-09-29",
-        "p": 16.8
-      },
-      {
-        "d": "2025-09-30",
-        "p": 16.72
-      },
-      {
-        "d": "2025-10-01",
-        "p": 16.92
-      },
-      {
-        "d": "2025-10-02",
-        "p": 17.35
-      },
-      {
-        "d": "2025-10-03",
-        "p": 17.75
-      },
-      {
-        "d": "2025-10-06",
-        "p": 17.49
-      },
-      {
-        "d": "2025-10-07",
-        "p": 16.88
-      },
-      {
-        "d": "2025-10-08",
-        "p": 16.84
-      },
-      {
-        "d": "2025-10-09",
-        "p": 16.49
-      },
-      {
-        "d": "2025-10-10",
-        "p": 15.9
-      },
-      {
-        "d": "2025-10-13",
-        "p": 16.22
-      },
-      {
-        "d": "2025-10-14",
-        "p": 16.44
-      },
-      {
-        "d": "2025-10-15",
-        "p": 16.42
-      },
-      {
-        "d": "2025-10-16",
-        "p": 16.29
-      },
-      {
-        "d": "2025-10-17",
-        "p": 16.2
-      },
-      {
-        "d": "2025-10-20",
-        "p": 16.23
-      },
-      {
-        "d": "2025-10-21",
-        "p": 16.26
-      },
-      {
-        "d": "2025-10-22",
-        "p": 16.1
-      },
-      {
-        "d": "2025-10-23",
-        "p": 16.28
-      },
-      {
-        "d": "2025-10-24",
-        "p": 16.1
-      },
-      {
-        "d": "2025-10-27",
-        "p": 16.41
-      },
-      {
-        "d": "2025-10-28",
-        "p": 16.48
-      },
-      {
-        "d": "2025-10-29",
-        "p": 16.17
-      },
-      {
-        "d": "2025-10-30",
-        "p": 16.09
-      },
-      {
-        "d": "2025-10-31",
-        "p": 16.15
-      },
-      {
-        "d": "2025-11-03",
-        "p": 16.05
-      },
-      {
-        "d": "2025-11-04",
-        "p": 16.12
-      },
-      {
-        "d": "2025-11-05",
-        "p": 16.18
-      },
-      {
-        "d": "2025-11-06",
-        "p": 16.16
-      },
-      {
-        "d": "2025-11-07",
-        "p": 16.04
-      },
-      {
-        "d": "2025-11-10",
-        "p": 16.39
-      },
-      {
-        "d": "2025-11-11",
-        "p": 16.29
-      },
-      {
-        "d": "2025-11-12",
-        "p": 16.13
-      },
-      {
-        "d": "2025-11-13",
-        "p": 16.09
-      },
-      {
-        "d": "2025-11-14",
-        "p": 15.98
-      },
-      {
-        "d": "2025-11-17",
-        "p": 15.7
-      },
-      {
-        "d": "2025-11-18",
-        "p": 15.48
-      },
-      {
-        "d": "2025-11-19",
-        "p": 15.21
-      },
-      {
-        "d": "2025-11-20",
-        "p": 15.19
-      },
-      {
-        "d": "2025-11-21",
-        "p": 15.43
-      },
-      {
-        "d": "2025-11-24",
-        "p": 15.37
-      },
-      {
-        "d": "2025-11-25",
-        "p": 15.65
-      },
-      {
-        "d": "2025-11-26",
-        "p": 15.38
-      },
-      {
-        "d": "2025-11-28",
-        "p": 15.37
-      },
-      {
-        "d": "2025-12-01",
-        "p": 15.38
-      },
-      {
-        "d": "2025-12-02",
-        "p": 15.06
-      },
-      {
-        "d": "2025-12-03",
-        "p": 15.08
-      },
-      {
-        "d": "2025-12-04",
-        "p": 14.84
-      },
-      {
-        "d": "2025-12-05",
-        "p": 14.72
-      },
-      {
-        "d": "2025-12-08",
-        "p": 14.64
-      },
-      {
-        "d": "2025-12-09",
-        "p": 15.04
-      },
-      {
-        "d": "2025-12-10",
-        "p": 15.25
-      },
-      {
-        "d": "2025-12-11",
-        "p": 15.68
-      },
-      {
-        "d": "2025-12-12",
-        "p": 15.68
-      },
-      {
-        "d": "2025-12-15",
-        "p": 15.73
-      },
-      {
-        "d": "2025-12-16",
-        "p": 15.53
-      },
-      {
-        "d": "2025-12-17",
-        "p": 15.41
-      },
-      {
-        "d": "2025-12-18",
-        "p": 15.78
-      },
-      {
-        "d": "2025-12-19",
-        "p": 15.81
-      },
-      {
-        "d": "2025-12-22",
-        "p": 15.72
-      },
-      {
-        "d": "2025-12-23",
-        "p": 15.4
-      },
-      {
-        "d": "2025-12-24",
-        "p": 15.4
-      },
-      {
-        "d": "2025-12-26",
-        "p": 15.46
-      },
-      {
-        "d": "2025-12-29",
-        "p": 15.26
-      },
-      {
-        "d": "2025-12-30",
-        "p": 15.23
-      },
-      {
-        "d": "2025-12-31",
-        "p": 15.21
-      },
-      {
-        "d": "2026-01-02",
-        "p": 15.04
-      },
-      {
-        "d": "2026-01-05",
-        "p": 15.14
-      },
-      {
-        "d": "2026-01-06",
-        "p": 15.42
-      },
-      {
-        "d": "2026-01-07",
-        "p": 14.73
-      },
-      {
-        "d": "2026-01-08",
-        "p": 15.05
-      },
-      {
-        "d": "2026-01-09",
-        "p": 14.87
-      },
-      {
-        "d": "2026-01-12",
-        "p": 14.7
-      },
-      {
-        "d": "2026-01-13",
-        "p": 14.44
-      },
-      {
-        "d": "2026-01-14",
-        "p": 14.34
-      },
-      {
-        "d": "2026-01-15",
-        "p": 14.36
-      },
-      {
-        "d": "2026-01-16",
-        "p": 14.0
-      },
-      {
-        "d": "2026-01-20",
-        "p": 13.68
-      },
-      {
-        "d": "2026-01-21",
-        "p": 13.71
-      },
-      {
-        "d": "2026-01-22",
-        "p": 13.8
-      },
-      {
-        "d": "2026-01-23",
-        "p": 13.84
-      },
-      {
-        "d": "2026-01-26",
-        "p": 13.89
-      },
-      {
-        "d": "2026-01-27",
-        "p": 13.97
-      },
-      {
-        "d": "2026-01-28",
-        "p": 13.7
-      },
-      {
-        "d": "2026-01-29",
-        "p": 13.88
-      },
-      {
-        "d": "2026-01-30",
-        "p": 14.23
-      },
-      {
-        "d": "2026-02-02",
-        "p": 14.11
-      },
-      {
-        "d": "2026-02-03",
-        "p": 13.93
-      },
-      {
-        "d": "2026-02-04",
-        "p": 14.14
-      },
-      {
-        "d": "2026-02-05",
-        "p": 13.88
-      },
-      {
-        "d": "2026-02-06",
-        "p": 14.03
-      },
-      {
-        "d": "2026-02-09",
-        "p": 14.02
-      },
-      {
-        "d": "2026-02-10",
-        "p": 14.11
-      },
-      {
-        "d": "2026-02-11",
-        "p": 13.99
-      },
-      {
-        "d": "2026-02-12",
-        "p": 13.27
-      },
-      {
-        "d": "2026-02-13",
-        "p": 13.22
-      },
-      {
-        "d": "2026-02-17",
-        "p": 13.19
-      },
-      {
-        "d": "2026-02-18",
-        "p": 13.34
-      },
-      {
-        "d": "2026-02-19",
-        "p": 13.36
-      },
-      {
-        "d": "2026-02-20",
-        "p": 13.23
-      },
-      {
-        "d": "2026-02-23",
-        "p": 12.82
-      },
-      {
-        "d": "2026-02-24",
-        "p": 13.48
-      },
-      {
-        "d": "2026-02-25",
-        "p": 13.58
-      },
-      {
-        "d": "2026-02-26",
-        "p": 13.53
-      },
-      {
-        "d": "2026-02-27",
-        "p": 13.33
-      },
-      {
-        "d": "2026-03-02",
-        "p": 13.2
-      },
-      {
-        "d": "2026-03-03",
-        "p": 13.2
-      },
-      {
-        "d": "2026-03-04",
-        "p": 13.34
-      },
-      {
-        "d": "2026-03-05",
-        "p": 13.41
-      },
-      {
-        "d": "2026-03-06",
-        "p": 13.17
-      },
-      {
-        "d": "2026-03-09",
-        "p": 13.06
-      },
-      {
-        "d": "2026-03-10",
-        "p": 12.76
-      },
-      {
-        "d": "2026-03-11",
-        "p": 12.97
-      },
-      {
-        "d": "2026-03-12",
-        "p": 12.64
-      },
-      {
-        "d": "2026-03-13",
-        "p": 12.67
-      }
-    ],
-    "change_ytd": -15.7,
-    "institutional_holders": [
-      {
-        "holder": "Lazard Asset Management LLC",
-        "shares": 9504747,
-        "date_reported": "2025-12-31",
-        "pct_out": 5.15,
-        "value": 120.4
-      },
-      {
-        "holder": "Massachusetts Financial Services Co.",
-        "shares": 8382186,
-        "date_reported": "2025-12-31",
-        "pct_out": 4.54,
-        "value": 106.2
-      },
-      {
-        "holder": "Samlyn Capital, LLC",
-        "shares": 7183757,
-        "date_reported": "2025-12-31",
-        "pct_out": 3.89,
-        "value": 91.0
-      },
-      {
-        "holder": "Neuberger Berman Group, LLC",
-        "shares": 6424991,
-        "date_reported": "2025-12-31",
-        "pct_out": 3.48,
-        "value": 81.4
-      },
-      {
-        "holder": "Blackrock Inc.",
-        "shares": 5818117,
-        "date_reported": "2025-12-31",
-        "pct_out": 3.15,
-        "value": 73.7
-      },
-      {
-        "holder": "Brown Advisory  Inc.",
-        "shares": 2895356,
-        "date_reported": "2025-12-31",
-        "pct_out": 1.57,
-        "value": 36.7
-      },
-      {
-        "holder": "Solel Partners LP",
-        "shares": 2795324,
-        "date_reported": "2025-12-31",
-        "pct_out": 1.51,
-        "value": 35.4
-      },
-      {
-        "holder": "State Street Corporation",
-        "shares": 1928942,
-        "date_reported": "2025-12-31",
-        "pct_out": 1.05,
-        "value": 24.4
-      },
-      {
-        "holder": "Goldman Sachs Group Inc",
-        "shares": 1825363,
-        "date_reported": "2025-12-31",
-        "pct_out": 0.99,
-        "value": 23.1
-      },
-      {
-        "holder": "Royce & Associates LP",
-        "shares": 1607713,
-        "date_reported": "2025-12-31",
-        "pct_out": 0.87,
-        "value": 20.4
-      }
-    ],
-    "timestamp": "2026-03-14T21:20:04.296905",
+    "pe_forward": null,
+    "ev_ebitda": null,
+    "ev_ebitdar": null,
+    "ev_revenue": null,
+    "price_to_book": null,
+    "price_to_sales": null,
+    "eps_trailing": null,
+    "eps_forward": null,
+    "book_value": null,
+    "revenue_per_share": null,
+    "revenue_growth": null,
+    "earnings_growth": null,
+    "quarterly_earnings_growth": null,
+    "gross_margins": null,
+    "operating_margins": null,
+    "profit_margins": null,
+    "ebitda_margins": null,
+    "roe": null,
+    "roa": null,
+    "revenue_b": null,
+    "ebitda_b": null,
+    "net_income_b": null,
+    "operating_cashflow_b": null,
+    "free_cashflow_b": null,
+    "total_debt_b": null,
+    "total_cash_b": null,
+    "debt_to_equity": null,
+    "current_ratio": null,
+    "quick_ratio": null,
+    "beta": null,
+    "target_high": null,
+    "target_low": null,
+    "target_mean": null,
+    "target_median": null,
+    "recommendation_key": null,
+    "recommendation_mean": null,
+    "num_analysts": null,
+    "shares_short": null,
+    "short_ratio": null,
+    "short_pct_float": null,
+    "held_pct_insiders": null,
+    "held_pct_institutions": null,
+    "dividend_yield": null,
+    "dividend_rate": null,
+    "payout_ratio": null,
+    "fifty_two_week_high": 0,
+    "fifty_two_week_low": 0,
+    "fifty_day_avg": null,
+    "two_hundred_day_avg": null,
+    "avg_volume_10d": null,
+    "avg_volume_3mo": null,
+    "day_high": null,
+    "day_low": null,
+    "open_price": null,
+    "previous_close": null,
+    "daily_change": null,
+    "daily_change_pct": null,
+    "employees": null,
+    "industry_yf": null,
+    "sector_yf": null,
+    "country": null,
+    "website": null,
+    "most_recent_quarter": null,
+    "earnings_timestamp": null,
+    "next_earnings_date": null,
+    "pct_off_high": null,
+    "vs_50dma_pct": null,
+    "vs_200dma_pct": null,
+    "upside_pct": null,
+    "change_1y": 0,
+    "trend_1y": null,
+    "price_series": [],
+    "change_ytd": 0,
+    "institutional_holders": [],
+    "timestamp": "2026-03-14T22:30:25.287148",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": null,
     "pctile_pe_trailing": null,
-    "rank_revenue_growth": 2,
-    "pctile_revenue_growth": 75.0,
-    "rank_ebitda_margins": 2,
-    "pctile_ebitda_margins": 75.0,
-    "rank_roe": 4,
-    "pctile_roe": 0.0,
-    "rank_change_ytd": 4,
-    "pctile_change_ytd": 40.0,
-    "composite_score": 50.0
+    "rank_revenue_growth": null,
+    "pctile_revenue_growth": null,
+    "rank_ebitda_margins": null,
+    "pctile_ebitda_margins": null,
+    "rank_roe": null,
+    "pctile_roe": null,
+    "rank_change_ytd": 1,
+    "pctile_change_ytd": 100.0,
+    "composite_score": 80.0
   },
   "LNW": {
     "ticker": "LNW",
@@ -23596,6 +22540,7 @@
     "pe_trailing": null,
     "pe_forward": null,
     "ev_ebitda": null,
+    "ev_ebitdar": null,
     "ev_revenue": null,
     "price_to_book": null,
     "price_to_sales": null,
@@ -23800,9 +22745,9 @@
     ],
     "change_ytd": -23.9,
     "institutional_holders": [],
-    "timestamp": "2026-03-14T21:20:05.327072",
-    "rank_market_cap_b": 6,
-    "pctile_market_cap_b": 0.0,
+    "timestamp": "2026-03-14T22:30:26.005859",
+    "rank_market_cap_b": 4,
+    "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": null,
     "pctile_pe_trailing": null,
     "rank_revenue_growth": null,
@@ -23813,7 +22758,111 @@
     "pctile_roe": null,
     "rank_change_ytd": 5,
     "pctile_change_ytd": 20.0,
-    "composite_score": 10.0
+    "composite_score": 30.0
+  },
+  "EVRI": {
+    "ticker": "EVRI",
+    "display_ticker": "EVRI",
+    "company": "Everi Holdings",
+    "name": "Everi Holdings",
+    "category": "Gaming Equipment",
+    "exchange": "NYSE",
+    "price": 0,
+    "price_usd": 0,
+    "currency": "USD",
+    "market_cap": 0,
+    "market_cap_b": 0,
+    "enterprise_value_b": null,
+    "mcap_tier": "Unknown",
+    "pe_trailing": null,
+    "pe_forward": null,
+    "ev_ebitda": null,
+    "ev_ebitdar": null,
+    "ev_revenue": null,
+    "price_to_book": null,
+    "price_to_sales": null,
+    "eps_trailing": null,
+    "eps_forward": null,
+    "book_value": null,
+    "revenue_per_share": null,
+    "revenue_growth": null,
+    "earnings_growth": null,
+    "quarterly_earnings_growth": null,
+    "gross_margins": null,
+    "operating_margins": null,
+    "profit_margins": null,
+    "ebitda_margins": null,
+    "roe": null,
+    "roa": null,
+    "revenue_b": null,
+    "ebitda_b": null,
+    "net_income_b": null,
+    "operating_cashflow_b": null,
+    "free_cashflow_b": null,
+    "total_debt_b": null,
+    "total_cash_b": null,
+    "debt_to_equity": null,
+    "current_ratio": null,
+    "quick_ratio": null,
+    "beta": null,
+    "target_high": null,
+    "target_low": null,
+    "target_mean": null,
+    "target_median": null,
+    "recommendation_key": null,
+    "recommendation_mean": null,
+    "num_analysts": null,
+    "shares_short": null,
+    "short_ratio": null,
+    "short_pct_float": null,
+    "held_pct_insiders": null,
+    "held_pct_institutions": null,
+    "dividend_yield": null,
+    "dividend_rate": null,
+    "payout_ratio": null,
+    "fifty_two_week_high": 0,
+    "fifty_two_week_low": 0,
+    "fifty_day_avg": null,
+    "two_hundred_day_avg": null,
+    "avg_volume_10d": null,
+    "avg_volume_3mo": null,
+    "day_high": null,
+    "day_low": null,
+    "open_price": null,
+    "previous_close": null,
+    "daily_change": null,
+    "daily_change_pct": null,
+    "employees": null,
+    "industry_yf": null,
+    "sector_yf": null,
+    "country": null,
+    "website": null,
+    "most_recent_quarter": null,
+    "earnings_timestamp": null,
+    "next_earnings_date": null,
+    "pct_off_high": null,
+    "vs_50dma_pct": null,
+    "vs_200dma_pct": null,
+    "upside_pct": null,
+    "change_1y": 0,
+    "trend_1y": null,
+    "price_series": [],
+    "change_ytd": 0,
+    "institutional_holders": [],
+    "timestamp": "2026-03-14T22:30:27.227351",
+    "rank_market_cap_b": 5,
+    "pctile_market_cap_b": 20.0,
+    "rank_pe_trailing": null,
+    "pctile_pe_trailing": null,
+    "rank_revenue_growth": null,
+    "pctile_revenue_growth": null,
+    "rank_ebitda_margins": null,
+    "pctile_ebitda_margins": null,
+    "rank_roe": null,
+    "pctile_roe": null,
+    "rank_change_ytd": 2,
+    "pctile_change_ytd": 80.0,
+    "composite_score": 50.0
   },
   "ACEL": {
     "ticker": "ACEL",
@@ -23832,6 +22881,7 @@
     "pe_trailing": 18.816666,
     "pe_forward": 12.19183,
     "ev_ebitda": 6.582,
+    "ev_ebitdar": 4.6,
     "ev_revenue": 0.935,
     "price_to_book": 3.4452243,
     "price_to_sales": 0.7058196,
@@ -24979,20 +24029,124 @@
         "value": 10.3
       }
     ],
-    "timestamp": "2026-03-14T21:20:06.252918",
-    "rank_market_cap_b": 4,
-    "pctile_market_cap_b": 40.0,
+    "timestamp": "2026-03-14T22:30:27.988121",
+    "rank_market_cap_b": 1,
+    "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
-    "pctile_pe_trailing": 66.7,
+    "pctile_pe_trailing": 0.0,
     "rank_revenue_growth": 1,
     "pctile_revenue_growth": 100.0,
-    "rank_ebitda_margins": 5,
+    "rank_ebitda_margins": 2,
     "pctile_ebitda_margins": 0.0,
     "rank_roe": 1,
-    "pctile_roe": 100.0,
-    "rank_change_ytd": 2,
-    "pctile_change_ytd": 80.0,
-    "composite_score": 64.5
+    "pctile_roe": 50.0,
+    "rank_change_ytd": 4,
+    "pctile_change_ytd": 40.0,
+    "composite_score": 48.3
+  },
+  "AGS": {
+    "ticker": "AGS",
+    "display_ticker": "AGS",
+    "company": "PlayAGS",
+    "name": "PlayAGS",
+    "category": "Gaming Equipment",
+    "exchange": "NYSE",
+    "price": 0,
+    "price_usd": 0,
+    "currency": "USD",
+    "market_cap": 0,
+    "market_cap_b": 0,
+    "enterprise_value_b": null,
+    "mcap_tier": "Unknown",
+    "pe_trailing": null,
+    "pe_forward": null,
+    "ev_ebitda": null,
+    "ev_ebitdar": null,
+    "ev_revenue": null,
+    "price_to_book": null,
+    "price_to_sales": null,
+    "eps_trailing": null,
+    "eps_forward": null,
+    "book_value": null,
+    "revenue_per_share": null,
+    "revenue_growth": null,
+    "earnings_growth": null,
+    "quarterly_earnings_growth": null,
+    "gross_margins": null,
+    "operating_margins": null,
+    "profit_margins": null,
+    "ebitda_margins": null,
+    "roe": null,
+    "roa": null,
+    "revenue_b": null,
+    "ebitda_b": null,
+    "net_income_b": null,
+    "operating_cashflow_b": null,
+    "free_cashflow_b": null,
+    "total_debt_b": null,
+    "total_cash_b": null,
+    "debt_to_equity": null,
+    "current_ratio": null,
+    "quick_ratio": null,
+    "beta": null,
+    "target_high": null,
+    "target_low": null,
+    "target_mean": null,
+    "target_median": null,
+    "recommendation_key": null,
+    "recommendation_mean": null,
+    "num_analysts": null,
+    "shares_short": null,
+    "short_ratio": null,
+    "short_pct_float": null,
+    "held_pct_insiders": null,
+    "held_pct_institutions": null,
+    "dividend_yield": null,
+    "dividend_rate": null,
+    "payout_ratio": null,
+    "fifty_two_week_high": 0,
+    "fifty_two_week_low": 0,
+    "fifty_day_avg": null,
+    "two_hundred_day_avg": null,
+    "avg_volume_10d": null,
+    "avg_volume_3mo": null,
+    "day_high": null,
+    "day_low": null,
+    "open_price": null,
+    "previous_close": null,
+    "daily_change": null,
+    "daily_change_pct": null,
+    "employees": null,
+    "industry_yf": null,
+    "sector_yf": null,
+    "country": null,
+    "website": null,
+    "most_recent_quarter": null,
+    "earnings_timestamp": null,
+    "next_earnings_date": null,
+    "pct_off_high": null,
+    "vs_50dma_pct": null,
+    "vs_200dma_pct": null,
+    "upside_pct": null,
+    "change_1y": 0,
+    "trend_1y": null,
+    "price_series": [],
+    "change_ytd": 0,
+    "institutional_holders": [],
+    "timestamp": "2026-03-14T22:30:29.213639",
+    "rank_market_cap_b": 6,
+    "pctile_market_cap_b": 0.0,
+    "rank_pe_trailing": null,
+    "pctile_pe_trailing": null,
+    "rank_revenue_growth": null,
+    "pctile_revenue_growth": null,
+    "rank_ebitda_margins": null,
+    "pctile_ebitda_margins": null,
+    "rank_roe": null,
+    "pctile_roe": null,
+    "rank_change_ytd": 3,
+    "pctile_change_ytd": 60.0,
+    "composite_score": 30.0
   },
   "INSE": {
     "ticker": "INSE",
@@ -25011,6 +24165,7 @@
     "pe_trailing": 3.3571427,
     "pe_forward": 8.783171,
     "ev_ebitda": 6.847,
+    "ev_ebitdar": 5.5,
     "ev_revenue": 1.673,
     "price_to_book": -10.9121065,
     "price_to_sales": 0.5826333,
@@ -26158,2257 +25313,19 @@
         "value": 4.3
       }
     ],
-    "timestamp": "2026-03-14T21:20:07.869978",
-    "rank_market_cap_b": 5,
-    "pctile_market_cap_b": 20.0,
+    "timestamp": "2026-03-14T22:30:30.736231",
+    "rank_market_cap_b": 2,
+    "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": 1,
     "pctile_pe_trailing": 100.0,
-    "rank_revenue_growth": 5,
+    "rank_revenue_growth": 2,
     "pctile_revenue_growth": 0.0,
-    "rank_ebitda_margins": 4,
-    "pctile_ebitda_margins": 25.0,
+    "rank_ebitda_margins": 1,
+    "pctile_ebitda_margins": 100.0,
     "rank_roe": null,
     "pctile_roe": null,
     "rank_change_ytd": 6,
     "pctile_change_ytd": 0.0,
-    "composite_score": 29.0
-  },
-  "ARLUF": {
-    "ticker": "ARLUF",
-    "display_ticker": "ARLUF",
-    "company": "Aristocrat Leisure Limited",
-    "name": "Aristocrat Leisure",
-    "category": "Gaming Equipment",
-    "exchange": "OTC",
-    "price": 38.75,
-    "price_usd": 38.75,
-    "currency": "USD",
-    "market_cap": 23743182848,
-    "market_cap_b": 23.743,
-    "enterprise_value_b": 20.052,
-    "mcap_tier": "Large-Cap ($10B-$200B)",
-    "pe_trailing": 28.703703,
-    "pe_forward": 22.017046,
-    "ev_ebitda": 8.578,
-    "ev_revenue": 3.184,
-    "price_to_book": 5.216576,
-    "price_to_sales": 3.7705548,
-    "eps_trailing": 1.35,
-    "eps_forward": 1.76,
-    "book_value": 7.428244,
-    "revenue_per_share": 10.09,
-    "revenue_growth": -0.021,
-    "earnings_growth": 0.151,
-    "quarterly_earnings_growth": 0.132,
-    "gross_margins": 0.60943,
-    "operating_margins": 0.3093,
-    "profit_margins": 0.26049,
-    "ebitda_margins": 0.37122002,
-    "roe": 0.18448,
-    "roa": 0.11576,
-    "revenue_b": 6.297,
-    "ebitda_b": 2.338,
-    "net_income_b": 1.184,
-    "operating_cashflow_b": 1.934,
-    "free_cashflow_b": 1.26,
-    "total_debt_b": 2.03,
-    "total_cash_b": 1.292,
-    "debt_to_equity": 30.961,
-    "current_ratio": 1.647,
-    "quick_ratio": 1.5,
-    "beta": 0.36,
-    "target_high": null,
-    "target_low": null,
-    "target_mean": null,
-    "target_median": null,
-    "recommendation_key": "none",
-    "recommendation_mean": null,
-    "num_analysts": null,
-    "shares_short": null,
-    "short_ratio": null,
-    "short_pct_float": null,
-    "held_pct_insiders": 0.11071,
-    "held_pct_institutions": 0.47224998,
-    "dividend_yield": 1.96,
-    "dividend_rate": 0.61,
-    "payout_ratio": 0.45560002,
-    "fifty_two_week_high": 47.56,
-    "fifty_two_week_low": 31.15,
-    "fifty_day_avg": 36.3672,
-    "two_hundred_day_avg": 40.9223,
-    "avg_volume_10d": 80,
-    "avg_volume_3mo": 771,
-    "day_high": 38.75,
-    "day_low": 38.75,
-    "open_price": 38.75,
-    "previous_close": 36.45,
-    "daily_change": 2.2999992,
-    "daily_change_pct": 6.3100114,
-    "employees": 7400,
-    "industry_yf": "Gambling",
-    "sector_yf": "Consumer Cyclical",
-    "country": "Australia",
-    "website": "https://www.aristocrat.com",
-    "most_recent_quarter": "2025-09-29",
-    "earnings_timestamp": "2026-05-13",
-    "next_earnings_date": "2026-05-13",
-    "pct_off_high": -18.5,
-    "vs_50dma_pct": 6.6,
-    "vs_200dma_pct": -5.3,
-    "upside_pct": null,
-    "change_1y": -11.5,
-    "trend_1y": -14.5,
-    "price_series": [
-      {
-        "d": "2025-03-14",
-        "p": 43.78
-      },
-      {
-        "d": "2025-03-17",
-        "p": 41.9
-      },
-      {
-        "d": "2025-03-18",
-        "p": 38.89
-      },
-      {
-        "d": "2025-03-19",
-        "p": 39.47
-      },
-      {
-        "d": "2025-03-20",
-        "p": 39.47
-      },
-      {
-        "d": "2025-03-21",
-        "p": 39.47
-      },
-      {
-        "d": "2025-03-24",
-        "p": 43.83
-      },
-      {
-        "d": "2025-03-25",
-        "p": 40.86
-      },
-      {
-        "d": "2025-03-26",
-        "p": 44.24
-      },
-      {
-        "d": "2025-03-27",
-        "p": 44.24
-      },
-      {
-        "d": "2025-03-28",
-        "p": 38.38
-      },
-      {
-        "d": "2025-03-31",
-        "p": 38.38
-      },
-      {
-        "d": "2025-04-01",
-        "p": 38.38
-      },
-      {
-        "d": "2025-04-02",
-        "p": 38.38
-      },
-      {
-        "d": "2025-04-03",
-        "p": 38.13
-      },
-      {
-        "d": "2025-04-04",
-        "p": 36.74
-      },
-      {
-        "d": "2025-04-07",
-        "p": 32.73
-      },
-      {
-        "d": "2025-04-08",
-        "p": 35.25
-      },
-      {
-        "d": "2025-04-09",
-        "p": 39.88
-      },
-      {
-        "d": "2025-04-10",
-        "p": 39.88
-      },
-      {
-        "d": "2025-04-11",
-        "p": 40.9
-      },
-      {
-        "d": "2025-04-14",
-        "p": 40.96
-      },
-      {
-        "d": "2025-04-15",
-        "p": 40.96
-      },
-      {
-        "d": "2025-04-16",
-        "p": 39.56
-      },
-      {
-        "d": "2025-04-17",
-        "p": 39.67
-      },
-      {
-        "d": "2025-04-21",
-        "p": 38.73
-      },
-      {
-        "d": "2025-04-22",
-        "p": 38.51
-      },
-      {
-        "d": "2025-04-23",
-        "p": 40.22
-      },
-      {
-        "d": "2025-04-24",
-        "p": 40.22
-      },
-      {
-        "d": "2025-04-25",
-        "p": 42.29
-      },
-      {
-        "d": "2025-04-28",
-        "p": 39.63
-      },
-      {
-        "d": "2025-04-29",
-        "p": 41.89
-      },
-      {
-        "d": "2025-04-30",
-        "p": 41.89
-      },
-      {
-        "d": "2025-05-01",
-        "p": 41.89
-      },
-      {
-        "d": "2025-05-02",
-        "p": 41.89
-      },
-      {
-        "d": "2025-05-05",
-        "p": 41.89
-      },
-      {
-        "d": "2025-05-06",
-        "p": 41.39
-      },
-      {
-        "d": "2025-05-07",
-        "p": 41.39
-      },
-      {
-        "d": "2025-05-08",
-        "p": 41.39
-      },
-      {
-        "d": "2025-05-09",
-        "p": 40.28
-      },
-      {
-        "d": "2025-05-12",
-        "p": 40.28
-      },
-      {
-        "d": "2025-05-13",
-        "p": 43.49
-      },
-      {
-        "d": "2025-05-14",
-        "p": 41.84
-      },
-      {
-        "d": "2025-05-15",
-        "p": 41.84
-      },
-      {
-        "d": "2025-05-16",
-        "p": 42.04
-      },
-      {
-        "d": "2025-05-19",
-        "p": 42.19
-      },
-      {
-        "d": "2025-05-20",
-        "p": 42.19
-      },
-      {
-        "d": "2025-05-21",
-        "p": 40.12
-      },
-      {
-        "d": "2025-05-22",
-        "p": 40.84
-      },
-      {
-        "d": "2025-05-23",
-        "p": 39.55
-      },
-      {
-        "d": "2025-05-27",
-        "p": 39.55
-      },
-      {
-        "d": "2025-05-28",
-        "p": 39.55
-      },
-      {
-        "d": "2025-05-29",
-        "p": 37.25
-      },
-      {
-        "d": "2025-05-30",
-        "p": 37.25
-      },
-      {
-        "d": "2025-06-02",
-        "p": 41.84
-      },
-      {
-        "d": "2025-06-03",
-        "p": 41.69
-      },
-      {
-        "d": "2025-06-04",
-        "p": 41.5
-      },
-      {
-        "d": "2025-06-05",
-        "p": 41.5
-      },
-      {
-        "d": "2025-06-06",
-        "p": 41.5
-      },
-      {
-        "d": "2025-06-09",
-        "p": 41.5
-      },
-      {
-        "d": "2025-06-10",
-        "p": 42.0
-      },
-      {
-        "d": "2025-06-11",
-        "p": 42.0
-      },
-      {
-        "d": "2025-06-12",
-        "p": 42.0
-      },
-      {
-        "d": "2025-06-13",
-        "p": 42.0
-      },
-      {
-        "d": "2025-06-16",
-        "p": 42.8
-      },
-      {
-        "d": "2025-06-17",
-        "p": 42.5
-      },
-      {
-        "d": "2025-06-18",
-        "p": 42.5
-      },
-      {
-        "d": "2025-06-20",
-        "p": 41.41
-      },
-      {
-        "d": "2025-06-23",
-        "p": 41.41
-      },
-      {
-        "d": "2025-06-24",
-        "p": 41.41
-      },
-      {
-        "d": "2025-06-25",
-        "p": 41.41
-      },
-      {
-        "d": "2025-06-26",
-        "p": 41.41
-      },
-      {
-        "d": "2025-06-27",
-        "p": 42.18
-      },
-      {
-        "d": "2025-06-30",
-        "p": 42.18
-      },
-      {
-        "d": "2025-07-01",
-        "p": 42.18
-      },
-      {
-        "d": "2025-07-02",
-        "p": 43.25
-      },
-      {
-        "d": "2025-07-03",
-        "p": 41.36
-      },
-      {
-        "d": "2025-07-07",
-        "p": 41.36
-      },
-      {
-        "d": "2025-07-08",
-        "p": 41.36
-      },
-      {
-        "d": "2025-07-09",
-        "p": 44.7
-      },
-      {
-        "d": "2025-07-10",
-        "p": 43.12
-      },
-      {
-        "d": "2025-07-11",
-        "p": 45.84
-      },
-      {
-        "d": "2025-07-14",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-15",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-16",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-17",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-18",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-21",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-22",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-23",
-        "p": 46.19
-      },
-      {
-        "d": "2025-07-24",
-        "p": 44.2
-      },
-      {
-        "d": "2025-07-25",
-        "p": 46.14
-      },
-      {
-        "d": "2025-07-28",
-        "p": 46.14
-      },
-      {
-        "d": "2025-07-29",
-        "p": 46.14
-      },
-      {
-        "d": "2025-07-30",
-        "p": 46.14
-      },
-      {
-        "d": "2025-07-31",
-        "p": 46.14
-      },
-      {
-        "d": "2025-08-01",
-        "p": 46.14
-      },
-      {
-        "d": "2025-08-04",
-        "p": 44.8
-      },
-      {
-        "d": "2025-08-05",
-        "p": 42.65
-      },
-      {
-        "d": "2025-08-06",
-        "p": 45.05
-      },
-      {
-        "d": "2025-08-07",
-        "p": 45.88
-      },
-      {
-        "d": "2025-08-08",
-        "p": 45.75
-      },
-      {
-        "d": "2025-08-11",
-        "p": 43.25
-      },
-      {
-        "d": "2025-08-12",
-        "p": 43.25
-      },
-      {
-        "d": "2025-08-13",
-        "p": 43.25
-      },
-      {
-        "d": "2025-08-14",
-        "p": 43.25
-      },
-      {
-        "d": "2025-08-15",
-        "p": 45.7
-      },
-      {
-        "d": "2025-08-18",
-        "p": 45.7
-      },
-      {
-        "d": "2025-08-19",
-        "p": 45.7
-      },
-      {
-        "d": "2025-08-20",
-        "p": 45.7
-      },
-      {
-        "d": "2025-08-21",
-        "p": 44.27
-      },
-      {
-        "d": "2025-08-22",
-        "p": 44.27
-      },
-      {
-        "d": "2025-08-25",
-        "p": 43.55
-      },
-      {
-        "d": "2025-08-26",
-        "p": 46.5
-      },
-      {
-        "d": "2025-08-27",
-        "p": 46.5
-      },
-      {
-        "d": "2025-08-28",
-        "p": 47.56
-      },
-      {
-        "d": "2025-08-29",
-        "p": 47.56
-      },
-      {
-        "d": "2025-09-02",
-        "p": 47.56
-      },
-      {
-        "d": "2025-09-03",
-        "p": 47.56
-      },
-      {
-        "d": "2025-09-04",
-        "p": 47.56
-      },
-      {
-        "d": "2025-09-05",
-        "p": 47.56
-      },
-      {
-        "d": "2025-09-08",
-        "p": 46.48
-      },
-      {
-        "d": "2025-09-09",
-        "p": 46.48
-      },
-      {
-        "d": "2025-09-10",
-        "p": 43.85
-      },
-      {
-        "d": "2025-09-11",
-        "p": 45.8
-      },
-      {
-        "d": "2025-09-12",
-        "p": 44.85
-      },
-      {
-        "d": "2025-09-15",
-        "p": 43.75
-      },
-      {
-        "d": "2025-09-16",
-        "p": 43.75
-      },
-      {
-        "d": "2025-09-17",
-        "p": 45.89
-      },
-      {
-        "d": "2025-09-18",
-        "p": 45.89
-      },
-      {
-        "d": "2025-09-19",
-        "p": 45.89
-      },
-      {
-        "d": "2025-09-22",
-        "p": 45.89
-      },
-      {
-        "d": "2025-09-23",
-        "p": 43.01
-      },
-      {
-        "d": "2025-09-24",
-        "p": 43.01
-      },
-      {
-        "d": "2025-09-25",
-        "p": 43.01
-      },
-      {
-        "d": "2025-09-26",
-        "p": 45.44
-      },
-      {
-        "d": "2025-09-29",
-        "p": 45.44
-      },
-      {
-        "d": "2025-09-30",
-        "p": 45.44
-      },
-      {
-        "d": "2025-10-01",
-        "p": 45.0
-      },
-      {
-        "d": "2025-10-02",
-        "p": 45.0
-      },
-      {
-        "d": "2025-10-03",
-        "p": 45.0
-      },
-      {
-        "d": "2025-10-06",
-        "p": 45.0
-      },
-      {
-        "d": "2025-10-07",
-        "p": 43.67
-      },
-      {
-        "d": "2025-10-08",
-        "p": 43.67
-      },
-      {
-        "d": "2025-10-09",
-        "p": 43.67
-      },
-      {
-        "d": "2025-10-10",
-        "p": 42.2
-      },
-      {
-        "d": "2025-10-13",
-        "p": 42.2
-      },
-      {
-        "d": "2025-10-14",
-        "p": 42.2
-      },
-      {
-        "d": "2025-10-15",
-        "p": 42.2
-      },
-      {
-        "d": "2025-10-16",
-        "p": 40.49
-      },
-      {
-        "d": "2025-10-17",
-        "p": 41.15
-      },
-      {
-        "d": "2025-10-20",
-        "p": 41.15
-      },
-      {
-        "d": "2025-10-21",
-        "p": 41.15
-      },
-      {
-        "d": "2025-10-22",
-        "p": 40.01
-      },
-      {
-        "d": "2025-10-23",
-        "p": 40.01
-      },
-      {
-        "d": "2025-10-24",
-        "p": 40.01
-      },
-      {
-        "d": "2025-10-27",
-        "p": 40.9
-      },
-      {
-        "d": "2025-10-28",
-        "p": 40.9
-      },
-      {
-        "d": "2025-10-29",
-        "p": 40.9
-      },
-      {
-        "d": "2025-10-30",
-        "p": 40.9
-      },
-      {
-        "d": "2025-10-31",
-        "p": 40.9
-      },
-      {
-        "d": "2025-11-03",
-        "p": 40.9
-      },
-      {
-        "d": "2025-11-04",
-        "p": 40.9
-      },
-      {
-        "d": "2025-11-05",
-        "p": 41.25
-      },
-      {
-        "d": "2025-11-06",
-        "p": 41.25
-      },
-      {
-        "d": "2025-11-07",
-        "p": 42.57
-      },
-      {
-        "d": "2025-11-10",
-        "p": 42.0
-      },
-      {
-        "d": "2025-11-11",
-        "p": 42.95
-      },
-      {
-        "d": "2025-11-12",
-        "p": 42.95
-      },
-      {
-        "d": "2025-11-13",
-        "p": 42.95
-      },
-      {
-        "d": "2025-11-14",
-        "p": 36.62
-      },
-      {
-        "d": "2025-11-17",
-        "p": 36.91
-      },
-      {
-        "d": "2025-11-18",
-        "p": 36.33
-      },
-      {
-        "d": "2025-11-19",
-        "p": 36.33
-      },
-      {
-        "d": "2025-11-20",
-        "p": 36.53
-      },
-      {
-        "d": "2025-11-21",
-        "p": 36.53
-      },
-      {
-        "d": "2025-11-24",
-        "p": 39.64
-      },
-      {
-        "d": "2025-11-25",
-        "p": 39.2
-      },
-      {
-        "d": "2025-11-26",
-        "p": 39.2
-      },
-      {
-        "d": "2025-11-28",
-        "p": 39.2
-      },
-      {
-        "d": "2025-12-01",
-        "p": 39.2
-      },
-      {
-        "d": "2025-12-02",
-        "p": 39.2
-      },
-      {
-        "d": "2025-12-03",
-        "p": 36.71
-      },
-      {
-        "d": "2025-12-04",
-        "p": 36.71
-      },
-      {
-        "d": "2025-12-05",
-        "p": 36.71
-      },
-      {
-        "d": "2025-12-08",
-        "p": 40.21
-      },
-      {
-        "d": "2025-12-09",
-        "p": 39.0
-      },
-      {
-        "d": "2025-12-10",
-        "p": 37.31
-      },
-      {
-        "d": "2025-12-11",
-        "p": 37.31
-      },
-      {
-        "d": "2025-12-12",
-        "p": 39.1
-      },
-      {
-        "d": "2025-12-15",
-        "p": 36.15
-      },
-      {
-        "d": "2025-12-16",
-        "p": 37.9
-      },
-      {
-        "d": "2025-12-17",
-        "p": 37.9
-      },
-      {
-        "d": "2025-12-18",
-        "p": 37.9
-      },
-      {
-        "d": "2025-12-19",
-        "p": 37.9
-      },
-      {
-        "d": "2025-12-22",
-        "p": 39.79
-      },
-      {
-        "d": "2025-12-23",
-        "p": 39.79
-      },
-      {
-        "d": "2025-12-24",
-        "p": 39.79
-      },
-      {
-        "d": "2025-12-26",
-        "p": 39.0
-      },
-      {
-        "d": "2025-12-29",
-        "p": 39.0
-      },
-      {
-        "d": "2025-12-30",
-        "p": 38.26
-      },
-      {
-        "d": "2025-12-31",
-        "p": 38.7
-      },
-      {
-        "d": "2026-01-02",
-        "p": 38.7
-      },
-      {
-        "d": "2026-01-05",
-        "p": 37.05
-      },
-      {
-        "d": "2026-01-06",
-        "p": 36.9
-      },
-      {
-        "d": "2026-01-07",
-        "p": 36.9
-      },
-      {
-        "d": "2026-01-08",
-        "p": 36.9
-      },
-      {
-        "d": "2026-01-09",
-        "p": 36.9
-      },
-      {
-        "d": "2026-01-12",
-        "p": 38.59
-      },
-      {
-        "d": "2026-01-13",
-        "p": 38.59
-      },
-      {
-        "d": "2026-01-14",
-        "p": 38.59
-      },
-      {
-        "d": "2026-01-15",
-        "p": 38.05
-      },
-      {
-        "d": "2026-01-16",
-        "p": 38.05
-      },
-      {
-        "d": "2026-01-20",
-        "p": 38.19
-      },
-      {
-        "d": "2026-01-21",
-        "p": 38.19
-      },
-      {
-        "d": "2026-01-22",
-        "p": 39.0
-      },
-      {
-        "d": "2026-01-23",
-        "p": 39.0
-      },
-      {
-        "d": "2026-01-26",
-        "p": 39.0
-      },
-      {
-        "d": "2026-01-27",
-        "p": 39.0
-      },
-      {
-        "d": "2026-01-28",
-        "p": 39.0
-      },
-      {
-        "d": "2026-01-29",
-        "p": 39.0
-      },
-      {
-        "d": "2026-01-30",
-        "p": 37.12
-      },
-      {
-        "d": "2026-02-02",
-        "p": 35.41
-      },
-      {
-        "d": "2026-02-03",
-        "p": 36.45
-      },
-      {
-        "d": "2026-02-04",
-        "p": 36.45
-      },
-      {
-        "d": "2026-02-05",
-        "p": 36.45
-      },
-      {
-        "d": "2026-02-06",
-        "p": 37.24
-      },
-      {
-        "d": "2026-02-09",
-        "p": 37.24
-      },
-      {
-        "d": "2026-02-10",
-        "p": 37.24
-      },
-      {
-        "d": "2026-02-11",
-        "p": 39.59
-      },
-      {
-        "d": "2026-02-12",
-        "p": 39.59
-      },
-      {
-        "d": "2026-02-13",
-        "p": 35.84
-      },
-      {
-        "d": "2026-02-17",
-        "p": 35.84
-      },
-      {
-        "d": "2026-02-18",
-        "p": 35.84
-      },
-      {
-        "d": "2026-02-19",
-        "p": 35.84
-      },
-      {
-        "d": "2026-02-20",
-        "p": 34.14
-      },
-      {
-        "d": "2026-02-23",
-        "p": 31.5
-      },
-      {
-        "d": "2026-02-24",
-        "p": 31.5
-      },
-      {
-        "d": "2026-02-25",
-        "p": 33.5
-      },
-      {
-        "d": "2026-02-26",
-        "p": 33.8
-      },
-      {
-        "d": "2026-02-27",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-02",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-03",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-04",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-05",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-06",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-09",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-10",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-11",
-        "p": 34.54
-      },
-      {
-        "d": "2026-03-12",
-        "p": 31.31
-      },
-      {
-        "d": "2026-03-13",
-        "p": 31.31
-      }
-    ],
-    "change_ytd": 0.1,
-    "institutional_holders": [
-      {
-        "holder": "Aristotle Capital Management, LLC",
-        "shares": 1286040,
-        "date_reported": "2025-12-31",
-        "pct_out": 0.21,
-        "value": 49.8
-      },
-      {
-        "holder": "Bancfirst Trust & Investment Management",
-        "shares": 6089,
-        "date_reported": "2025-12-31",
-        "pct_out": 0.0,
-        "value": 0.2
-      },
-      {
-        "holder": "Pacer Advisors, Inc.",
-        "shares": 7772,
-        "date_reported": "2025-12-31",
-        "pct_out": 0.0,
-        "value": 0.3
-      }
-    ],
-    "timestamp": "2026-03-14T21:20:09.232005",
-    "rank_market_cap_b": 1,
-    "pctile_market_cap_b": 100.0,
-    "rank_pe_trailing": 3,
-    "pctile_pe_trailing": 33.3,
-    "rank_revenue_growth": 4,
-    "pctile_revenue_growth": 25.0,
-    "rank_ebitda_margins": 1,
-    "pctile_ebitda_margins": 100.0,
-    "rank_roe": 2,
-    "pctile_roe": 66.7,
-    "rank_change_ytd": 1,
-    "pctile_change_ytd": 100.0,
-    "composite_score": 70.8
-  },
-  "KNAMF": {
-    "ticker": "KNAMF",
-    "display_ticker": "KNAMF",
-    "company": "Konami Group Corporation",
-    "name": "Konami Group",
-    "category": "Gaming Equipment",
-    "exchange": "OTC",
-    "price": 124.51,
-    "price_usd": 124.51,
-    "currency": "USD",
-    "market_cap": 16943719424,
-    "market_cap_b": 16.944,
-    "enterprise_value_b": -214.7,
-    "mcap_tier": "Large-Cap ($10B-$200B)",
-    "pe_trailing": 31.28392,
-    "pe_forward": null,
-    "ev_ebitda": -1.384,
-    "ev_revenue": -0.463,
-    "price_to_book": 5.022737,
-    "price_to_sales": 0.036532935,
-    "eps_trailing": 3.98,
-    "eps_forward": null,
-    "book_value": 24.789274,
-    "revenue_per_share": 3421.393,
-    "revenue_growth": 0.011,
-    "earnings_growth": 0.043,
-    "quarterly_earnings_growth": 0.043,
-    "gross_margins": 0.48459998,
-    "operating_margins": 0.29999,
-    "profit_margins": 0.18527001,
-    "ebitda_margins": 0.33446997,
-    "roe": 0.16981001,
-    "roa": 0.11316,
-    "revenue_b": 463.793,
-    "ebitda_b": 155.127,
-    "net_income_b": 85.929,
-    "operating_cashflow_b": 121.849,
-    "free_cashflow_b": 41.051,
-    "total_debt_b": 55.17,
-    "total_cash_b": 286.764,
-    "debt_to_equity": 10.277,
-    "current_ratio": 3.579,
-    "quick_ratio": 3.236,
-    "beta": 0.397,
-    "target_high": null,
-    "target_low": null,
-    "target_mean": null,
-    "target_median": null,
-    "recommendation_key": "none",
-    "recommendation_mean": null,
-    "num_analysts": null,
-    "shares_short": null,
-    "short_ratio": null,
-    "short_pct_float": null,
-    "held_pct_insiders": 0.27815,
-    "held_pct_institutions": 0.35900003,
-    "dividend_yield": 1.02,
-    "dividend_rate": 1.28,
-    "payout_ratio": 0.2879,
-    "fifty_two_week_high": 143.82,
-    "fifty_two_week_low": 61.77,
-    "fifty_day_avg": 130.4837,
-    "two_hundred_day_avg": 135.72153,
-    "avg_volume_10d": 0,
-    "avg_volume_3mo": 36,
-    "day_high": 143.82,
-    "day_low": 143.82,
-    "open_price": 143.82,
-    "previous_close": 124.51,
-    "daily_change": 0.0,
-    "daily_change_pct": 0.0,
-    "employees": 5045,
-    "industry_yf": "Electronic Gaming & Multimedia",
-    "sector_yf": "Communication Services",
-    "country": "Japan",
-    "website": "https://www.konami.com",
-    "most_recent_quarter": "2025-12-30",
-    "earnings_timestamp": "2026-01-29",
-    "next_earnings_date": "2026-05-07",
-    "pct_off_high": -13.4,
-    "vs_50dma_pct": -4.6,
-    "vs_200dma_pct": -8.3,
-    "upside_pct": null,
-    "change_1y": 0,
-    "trend_1y": 175.7,
-    "price_series": [
-      {
-        "d": "2025-03-14",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-17",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-18",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-19",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-20",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-21",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-24",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-25",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-26",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-27",
-        "p": -15.02
-      },
-      {
-        "d": "2025-03-28",
-        "p": 24.59
-      },
-      {
-        "d": "2025-03-31",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-01",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-02",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-03",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-04",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-07",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-08",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-09",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-10",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-11",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-14",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-15",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-16",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-17",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-21",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-22",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-23",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-24",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-25",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-28",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-29",
-        "p": 24.59
-      },
-      {
-        "d": "2025-04-30",
-        "p": 24.59
-      },
-      {
-        "d": "2025-05-01",
-        "p": 24.59
-      },
-      {
-        "d": "2025-05-02",
-        "p": 24.59
-      },
-      {
-        "d": "2025-05-05",
-        "p": 24.59
-      },
-      {
-        "d": "2025-05-06",
-        "p": 24.59
-      },
-      {
-        "d": "2025-05-07",
-        "p": 24.59
-      },
-      {
-        "d": "2025-05-08",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-09",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-12",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-13",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-14",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-15",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-16",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-19",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-20",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-21",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-22",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-23",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-27",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-28",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-29",
-        "p": 53.84
-      },
-      {
-        "d": "2025-05-30",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-02",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-03",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-04",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-05",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-06",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-09",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-10",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-11",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-12",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-13",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-16",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-17",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-18",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-20",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-23",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-24",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-25",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-26",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-27",
-        "p": 53.84
-      },
-      {
-        "d": "2025-06-30",
-        "p": 53.84
-      },
-      {
-        "d": "2025-07-01",
-        "p": 53.84
-      },
-      {
-        "d": "2025-07-02",
-        "p": 53.84
-      },
-      {
-        "d": "2025-07-03",
-        "p": 53.84
-      },
-      {
-        "d": "2025-07-07",
-        "p": 53.84
-      },
-      {
-        "d": "2025-07-08",
-        "p": 53.84
-      },
-      {
-        "d": "2025-07-09",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-10",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-11",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-14",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-15",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-16",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-17",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-18",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-21",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-22",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-23",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-24",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-25",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-28",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-29",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-30",
-        "p": 54.9
-      },
-      {
-        "d": "2025-07-31",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-01",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-04",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-05",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-06",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-07",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-08",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-11",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-12",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-13",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-14",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-15",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-18",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-19",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-20",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-21",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-22",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-25",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-26",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-27",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-28",
-        "p": 54.9
-      },
-      {
-        "d": "2025-08-29",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-02",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-03",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-04",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-05",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-08",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-09",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-10",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-11",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-12",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-15",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-16",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-17",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-18",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-19",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-22",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-23",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-24",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-25",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-26",
-        "p": 54.9
-      },
-      {
-        "d": "2025-09-29",
-        "p": 137.9
-      },
-      {
-        "d": "2025-09-30",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-01",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-02",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-03",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-06",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-07",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-08",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-09",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-10",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-13",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-14",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-15",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-16",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-17",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-20",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-21",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-22",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-23",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-24",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-27",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-28",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-29",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-30",
-        "p": 137.9
-      },
-      {
-        "d": "2025-10-31",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-03",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-04",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-05",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-06",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-07",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-10",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-11",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-12",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-13",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-14",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-17",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-18",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-19",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-20",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-21",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-24",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-25",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-26",
-        "p": 137.9
-      },
-      {
-        "d": "2025-11-28",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-01",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-02",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-03",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-04",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-05",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-08",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-09",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-10",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-11",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-12",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-15",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-16",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-17",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-18",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-19",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-22",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-23",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-24",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-26",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-29",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-30",
-        "p": 137.9
-      },
-      {
-        "d": "2025-12-31",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-02",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-05",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-06",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-07",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-08",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-09",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-12",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-13",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-14",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-15",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-16",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-20",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-21",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-22",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-23",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-26",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-27",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-28",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-29",
-        "p": 136.16
-      },
-      {
-        "d": "2026-01-30",
-        "p": 143.82
-      },
-      {
-        "d": "2026-02-02",
-        "p": 143.82
-      },
-      {
-        "d": "2026-02-03",
-        "p": 143.82
-      },
-      {
-        "d": "2026-02-04",
-        "p": 143.82
-      },
-      {
-        "d": "2026-02-05",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-06",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-09",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-10",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-11",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-12",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-13",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-17",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-18",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-19",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-20",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-23",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-24",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-25",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-26",
-        "p": 124.51
-      },
-      {
-        "d": "2026-02-27",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-02",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-03",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-04",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-05",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-06",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-09",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-10",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-11",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-12",
-        "p": 124.51
-      },
-      {
-        "d": "2026-03-13",
-        "p": 124.51
-      }
-    ],
-    "change_ytd": -8.6,
-    "institutional_holders": [],
-    "timestamp": "2026-03-14T21:20:11.346439",
-    "rank_market_cap_b": 2,
-    "pctile_market_cap_b": 80.0,
-    "rank_pe_trailing": 4,
-    "pctile_pe_trailing": 0.0,
-    "rank_revenue_growth": 3,
-    "pctile_revenue_growth": 50.0,
-    "rank_ebitda_margins": 3,
-    "pctile_ebitda_margins": 50.0,
-    "rank_roe": 3,
-    "pctile_roe": 33.3,
-    "rank_change_ytd": 3,
-    "pctile_change_ytd": 60.0,
-    "composite_score": 45.6
+    "composite_score": 56.0
   }
 }
