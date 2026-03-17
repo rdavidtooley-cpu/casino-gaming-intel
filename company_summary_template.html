@@ -887,13 +887,30 @@ function updateTranscript(ticker) {
         html += '</ul>';
     }
 
-    // Summary
+    // Summary — parse **bold** section headers and bullet lists
     if (s.summary) {
-        html += '<h4 style="color:var(--accent);font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Summary</h4>';
+        var raw = Array.isArray(s.summary) ? s.summary.join('\n\n') : s.summary;
+        // Convert **bold** to <strong>
+        var formatted = raw.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        var sections = formatted.split('\n\n').filter(function(sec) { return sec.trim(); });
         html += '<div class="summary-text">';
-        var paragraphs = Array.isArray(s.summary) ? s.summary : s.summary.split('\n\n');
-        paragraphs.forEach(function(p) {
-            if (p.trim()) html += '<p>' + p.trim() + '</p>';
+        sections.forEach(function(sec) {
+            var lines = sec.trim().split('\n');
+            var isBulletList = lines.every(function(l) {
+                return l.trim().startsWith('- ') || l.trim().startsWith('<strong>');
+            });
+            if (isBulletList) {
+                lines.forEach(function(l) {
+                    var trimmed = l.trim();
+                    if (trimmed.startsWith('<strong>')) {
+                        html += '<p style="margin:14px 0 6px;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);">' + trimmed + '</p>';
+                    } else if (trimmed.startsWith('- ')) {
+                        html += '<div style="margin:4px 0 4px 16px;padding-left:12px;border-left:2px solid rgba(79,195,247,0.3);font-size:0.85rem;line-height:1.5;">' + trimmed.substring(2) + '</div>';
+                    }
+                });
+            } else {
+                html += '<p>' + sec.trim() + '</p>';
+            }
         });
         html += '</div>';
     }
