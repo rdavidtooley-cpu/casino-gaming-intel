@@ -2,8 +2,7 @@
 // Password is SHA-256 hashed, never stored in plain text
 (function() {
     const HASHES = [
-        '8bbb30fe407c0f4d8a283ceaed3a317484ded04ac454d5f1747d58f43dc6fe54',
-        'd4954c0f9b5689697223c8579f5d936dae0527a27b67e17045c33c151365680f'
+        'e9f38ebfb639bc196f5f7ea5ae422f3dcdbd58bf708717c4d3ae06becea5addd'
     ];
     const SESSION_KEY = 'cgi_auth';
     const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
