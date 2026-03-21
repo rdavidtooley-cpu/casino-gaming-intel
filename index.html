@@ -833,9 +833,9 @@ var INJECTED_COMMAND_CENTER = {
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-03-21T16:14:04.883476",
+  "generated_at": "2026-03-21T16:17:03.366160",
   "transcript_analysis": {
-    "generated_at": "2026-03-21T16:14:04.774506",
+    "generated_at": "2026-03-21T16:17:03.260330",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
@@ -7782,6 +7782,15 @@ var INJECTED_COMMAND_CENTER = {
   }
 };
 // INJECTED_DATA_END
+
+// Map injected command center to expected variable names
+if (typeof INJECTED_COMMAND_CENTER !== 'undefined') {
+    var MARKET_DATA = INJECTED_COMMAND_CENTER.market_data || {};
+    var NEWS_DATA = INJECTED_COMMAND_CENTER.news_items || [];
+    var TRANSCRIPT_DATA = INJECTED_COMMAND_CENTER.transcript_analysis || {};
+    var INDEX_HISTORY = INJECTED_COMMAND_CENTER.gaming25 || {};
+    var COMMAND_CENTER = INJECTED_COMMAND_CENTER;
+}
 </script>
 
 <script>
