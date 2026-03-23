@@ -497,7 +497,7 @@ function renderHeader() {
         var arrow = (idxDailyPct || 0) >= 0 ? '\u25B2' : '\u25BC';
         document.getElementById('header-gaming25').innerHTML =
             '<div class="idx-label">Gaming-25 Index</div>' +
-            '<div class="idx-val">' + Number(idxVal).toFixed(2) + '</div>' +
+            '<div class="idx-val">' + Number(idxVal).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) + '</div>' +
             '<div class="idx-chg" style="color:' + chgColor + '">' + arrow + ' ' + ((idxDailyPct || 0) >= 0 ? '+' : '') + (idxDailyPct || 0).toFixed(2) + '%' +
             (idxYtdPct != null ? ' | YTD ' + (idxYtdPct >= 0 ? '+' : '') + idxYtdPct.toFixed(1) + '%' : '') + '</div>';
     }
@@ -536,7 +536,7 @@ function renderKPIs() {
     var loserChg = topLoser ? (topLoser.change_pct || 0) : 0;
 
     document.getElementById('kpi-row').innerHTML =
-        '<div class="kpi-card"><div class="kpi-label" data-tip="Current value of the equal-weighted Gaming-25 composite index.">Gaming-25 Index</div><div class="kpi-value" style="color:var(--accent)">' + (idxVal != null ? Number(idxVal).toFixed(0) : DASH) + '</div><div class="kpi-sub">Composite index</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Current value of the equal-weighted Gaming-25 composite index.">Gaming-25 Index</div><div class="kpi-value" style="color:var(--accent)">' + (idxVal != null ? Number(idxVal).toLocaleString('en-US', {maximumFractionDigits:0}) : DASH) + '</div><div class="kpi-sub">Composite index</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Sum of market capitalizations for all 25 gaming companies.">Total Market Cap</div><div class="kpi-value">$' + totalMcap.toFixed(1) + 'B</div><div class="kpi-sub">' + tickers.length + ' companies</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Average trailing P/E ratio across companies with positive earnings.">Avg P/E Ratio</div><div class="kpi-value">' + (avgPE ? avgPE.toFixed(1) + 'x' : DASH) + '</div><div class="kpi-sub">Trailing 12 months</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Average dividend yield across companies that pay dividends.">Avg Dividend Yield</div><div class="kpi-value">' + (avgDiv ? avgDiv.toFixed(2) + '%' : DASH) + '</div><div class="kpi-sub">' + divCount + ' payers</div></div>' +
