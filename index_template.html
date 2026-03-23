@@ -409,7 +409,8 @@
 // INJECTED_DATA_START
 var MARKET_DATA = {};
 var PRICE_HISTORY = {};
-var INDEX_HISTORY = {};
+var INDEX_OBJ = {};
+var INDEX_HISTORY = [];
 var NEWS_DATA = [];
 var TRANSCRIPT_DATA = {};
 // INJECTED_DATA_END
@@ -419,7 +420,8 @@ if (typeof INJECTED_COMMAND_CENTER !== 'undefined') {
     var MARKET_DATA = INJECTED_COMMAND_CENTER.market_data || {};
     var NEWS_DATA = INJECTED_COMMAND_CENTER.news_items || [];
     var TRANSCRIPT_DATA = INJECTED_COMMAND_CENTER.transcript_analysis || {};
-    var INDEX_HISTORY = INJECTED_COMMAND_CENTER.gaming25 || {};
+    var INDEX_OBJ = INJECTED_COMMAND_CENTER.gaming25 || {};
+    var INDEX_HISTORY = INDEX_OBJ.index || [];
     var COMMAND_CENTER = INJECTED_COMMAND_CENTER;
 }
 </script>
@@ -473,9 +475,11 @@ function renderHeader() {
     if (!md || !Object.keys(md).length) return;
     var tickers = Object.keys(md);
 
-    // Compute Gaming-25 index value from INDEX_HISTORY or fallback
-    var idxVal = null, idxDailyPct = null, idxYtdPct = null;
-    if (INDEX_HISTORY && INDEX_HISTORY.length > 0) {
+    // Compute Gaming-25 index value from INDEX_OBJ or fallback to INDEX_HISTORY array
+    var idxVal = INDEX_OBJ.current || null;
+    var idxDailyPct = INDEX_OBJ.daily_pct || null;
+    var idxYtdPct = INDEX_OBJ.ytd_pct || null;
+    if (!idxVal && INDEX_HISTORY && INDEX_HISTORY.length > 0) {
         var last = INDEX_HISTORY[INDEX_HISTORY.length - 1];
         idxVal = last.value || last.close;
         if (INDEX_HISTORY.length > 1) {
@@ -522,8 +526,8 @@ function renderKPIs() {
 
     var avgPE = peCount > 0 ? (peSum / peCount) : null;
     var avgDiv = divCount > 0 ? (divSum / divCount) : null;
-    var idxVal = null;
-    if (INDEX_HISTORY && INDEX_HISTORY.length > 0) {
+    var idxVal = INDEX_OBJ.current || null;
+    if (!idxVal && INDEX_HISTORY && INDEX_HISTORY.length > 0) {
         var last = INDEX_HISTORY[INDEX_HISTORY.length - 1];
         idxVal = last.value || last.close;
     }
