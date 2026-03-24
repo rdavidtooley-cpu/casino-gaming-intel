@@ -248,9 +248,12 @@
             <a href="CG_News_Dashboard.html" class="view-all">View all news &rarr;</a>
         </div>
         <div class="card">
-            <div class="section-title" title="Key themes and sentiment extracted from recent earnings call transcripts. Shows what management is saying about guidance, risks, and strategic priorities.">Earnings Call Intelligence</div>
-            <div style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;line-height:1.5">How positive or negative each company's latest earnings call was, and whether they raised, maintained, or lowered their financial outlook.</div>
-            <div id="transcript-panel"></div>
+            <div class="section-title" title="Companies reporting earnings soon, sorted by date. Helps you prepare for potential stock moves around earnings announcements.">Upcoming Earnings</div>
+            <div id="upcoming-earnings"></div>
+            <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
+                <div class="section-title" title="Wall Street consensus ratings and price targets for all tracked companies. Shows how analysts collectively view each stock.">Analyst Consensus</div>
+                <div id="analyst-snapshot"></div>
+            </div>
         </div>
     </div>
 
@@ -276,6 +279,18 @@
                 </select>
             </h3>
             <canvas id="ti-topics-chart" style="max-height:220px;"></canvas>
+        </div>
+    </div>
+
+    <!-- Top Dividend Yields -->
+    <div class="grid-2even">
+        <div class="card">
+            <div class="section-title" title="Companies with the highest dividend yields in the gaming universe. Useful for income-focused investors.">Top Dividend Yields</div>
+            <div id="dividend-table"></div>
+        </div>
+        <div class="card">
+            <div class="section-title" title="Most recent regulatory filings (10-K annual reports, 10-Q quarterly reports, 8-K material events) submitted to the SEC.">Recent SEC Filings</div>
+            <div id="sec-filings-list"></div>
         </div>
     </div>
 
@@ -421,6 +436,7 @@ if (typeof INJECTED_COMMAND_CENTER !== 'undefined') {
     var TRANSCRIPT_DATA = INJECTED_COMMAND_CENTER.transcript_analysis || {};
     var INDEX_OBJ = INJECTED_COMMAND_CENTER.gaming25 || {};
     var INDEX_HISTORY = INDEX_OBJ.index || [];
+    var RECENT_FILINGS = INJECTED_COMMAND_CENTER.recent_filings || [];
     var COMMAND_CENTER = INJECTED_COMMAND_CENTER;
 }
 </script>
@@ -731,46 +747,94 @@ function renderNews() {
     container.innerHTML = html;
 }
 
-// ===== TRANSCRIPT INTELLIGENCE (Summary Panel) =====
-function renderTranscriptPanel() {
-    var ta = TRANSCRIPT_DATA;
-    if (!ta || !ta.companies || !Object.keys(ta.companies).length) {
-        document.getElementById('transcript-panel').innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:16px 0;">No transcript data available.</div>';
-        return;
-    }
-
-    var ls = ta.latest_sentiment || {};
-    var sentTickers = Object.keys(ls).sort(function(a, b) { return (ls[b].score || 0) - (ls[a].score || 0); });
-    var maxScore = Math.max.apply(null, sentTickers.map(function(t) { return Math.abs(ls[t].score || 0); }).concat([1]));
-
-    var gs = ta.guidance_summary || {};
-    var html = '<div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;">';
-    ['Raised','Maintained','Lowered'].forEach(function(label) {
-        var count = gs[label] || 0;
-        var color = label === 'Raised' ? '#4caf50' : label === 'Lowered' ? '#f44336' : '#ffc107';
-        html += '<div style="text-align:center;flex:1;min-width:80px;"><div style="font-size:20px;font-weight:700;color:' + color + '">' + count + '</div><div style="font-size:9px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px">' + label + '</div></div>';
-    });
-    html += '</div>';
-
-    html += '<table class="ti-rank-table"><thead><tr><th></th><th>Company</th><th>Score</th><th>Direction</th></tr></thead><tbody>';
-    var showCount = Math.min(8, sentTickers.length);
+// ===== UPCOMING EARNINGS =====
+function renderUpcomingEarnings() {
     var md = MARKET_DATA || {};
-    for (var i = 0; i < showCount; i++) {
-        var t = sentTickers[i];
-        var s = ls[t];
-        var score = s.score || 0;
-        var barColor = score > 20 ? '#4caf50' : score > 10 ? '#ffc107' : score > 0 ? '#ff9800' : '#f44336';
-        var barW = Math.abs(score) / maxScore * 50;
-        var guidanceCls = s.direction === 'Raised' ? 'ti-badge-raised' : s.direction === 'Lowered' ? 'ti-badge-lowered' : 'ti-badge-maintained';
-        var icon = i === 0 ? '\uD83E\uDD47' : i === 1 ? '\uD83E\uDD48' : i === 2 ? '\uD83E\uDD49' : '';
-        var companyLabel = (md[t] && md[t].name) ? esc(md[t].name) + ' <span style="color:#9aa0a6;font-weight:400">(' + esc(t) + ')</span>' : esc(t);
-        html += '<tr><td style="text-align:center;width:20px;font-size:12px">' + icon + '</td>' +
-            '<td><span style="color:var(--accent);font-weight:700;font-size:12px">' + companyLabel + '</span></td>' +
-            '<td style="white-space:nowrap"><span class="ti-score-bar" style="width:' + barW + 'px;background:' + barColor + '"></span> <span style="font-weight:600">' + (score >= 0 ? '+' : '') + score.toFixed(1) + '</span></td>' +
-            '<td>' + (s.direction && s.direction !== 'Not Detected' ? '<span class="ti-badge ' + guidanceCls + '">' + esc(s.direction) + '</span>' : '<span style="color:#555;font-size:10px">' + DASH + '</span>') + '</td></tr>';
+    var tickers = Object.keys(md);
+    var now = new Date();
+    var upcoming = [];
+    tickers.forEach(function(t) {
+        var d = md[t];
+        var ed = d.next_earnings_date;
+        if (!ed) return;
+        var dt = new Date(ed);
+        if (isNaN(dt.getTime())) return;
+        var diffDays = Math.ceil((dt - now) / 86400000);
+        if (diffDays < -7) return; // skip if more than a week ago
+        var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+        upcoming.push({ label: label, date: dt, diffDays: diffDays, dateStr: dt.toLocaleDateString('en-US', {month:'short', day:'numeric'}) });
+    });
+    upcoming.sort(function(a, b) { return a.date - b.date; });
+    var el = document.getElementById('upcoming-earnings');
+    if (!upcoming.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:8px 0;">No upcoming earnings dates available.</div>'; return; }
+    var html = '';
+    var show = Math.min(8, upcoming.length);
+    for (var i = 0; i < show; i++) {
+        var u = upcoming[i];
+        var daysLabel = u.diffDays === 0 ? '<span style="color:#f44336;font-weight:700">TODAY</span>' : u.diffDays === 1 ? '<span style="color:#ff9800;font-weight:700">Tomorrow</span>' : u.diffDays < 0 ? '<span style="color:var(--text-secondary)">' + Math.abs(u.diffDays) + 'd ago</span>' : u.diffDays <= 7 ? '<span style="color:#ffc107">' + u.diffDays + ' days</span>' : '<span style="color:var(--text-secondary)">' + u.diffDays + ' days</span>';
+        html += '<div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;">' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + u.label + '</span>' +
+            '<span style="min-width:55px;text-align:right;color:var(--text-secondary);margin-right:8px;">' + u.dateStr + '</span>' +
+            '<span style="min-width:55px;text-align:right;">' + daysLabel + '</span></div>';
     }
-    html += '</tbody></table>';
-    document.getElementById('transcript-panel').innerHTML = html;
+    el.innerHTML = html;
+}
+
+// ===== ANALYST CONSENSUS =====
+function renderAnalystSnapshot() {
+    var md = MARKET_DATA || {};
+    var tickers = Object.keys(md);
+    var buy = 0, hold = 0, sell = 0, upsideList = [];
+    tickers.forEach(function(t) {
+        var d = md[t];
+        var rec = (d.recommendation_key || '').toLowerCase();
+        if (rec === 'buy' || rec === 'strong_buy' || rec === 'strongbuy') buy++;
+        else if (rec === 'hold') hold++;
+        else if (rec === 'sell' || rec === 'strong_sell' || rec === 'strongsell' || rec === 'underperform') sell++;
+        if (d.upside_pct != null && d.target_mean && d.price) {
+            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            upsideList.push({ label: label, upside: d.upside_pct, target: d.target_mean, price: d.price, rec: rec });
+        }
+    });
+    upsideList.sort(function(a, b) { return b.upside - a.upside; });
+    var el = document.getElementById('analyst-snapshot');
+    var total = buy + hold + sell;
+    var html = '';
+    if (total > 0) {
+        var buyPct = (buy / total * 100).toFixed(0);
+        var holdPct = (hold / total * 100).toFixed(0);
+        var sellPct = (sell / total * 100).toFixed(0);
+        html += '<div style="display:flex;gap:12px;margin-bottom:10px;font-size:12px;font-weight:600;">' +
+            '<span style="color:#4caf50">' + buy + ' Buy (' + buyPct + '%)</span>' +
+            '<span style="color:#ffc107">' + hold + ' Hold (' + holdPct + '%)</span>' +
+            '<span style="color:#f44336">' + sell + ' Sell (' + sellPct + '%)</span></div>';
+        html += '<div style="height:6px;border-radius:3px;display:flex;overflow:hidden;margin-bottom:12px;">' +
+            '<div style="width:' + buyPct + '%;background:#4caf50"></div>' +
+            '<div style="width:' + holdPct + '%;background:#ffc107"></div>' +
+            '<div style="width:' + sellPct + '%;background:#f44336"></div></div>';
+    }
+    // Top 3 upside
+    html += '<div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Highest Upside to Target</div>';
+    var top3 = upsideList.slice(0, 3);
+    top3.forEach(function(u) {
+        html += '<div style="display:flex;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.05);">' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + u.label + '</span>' +
+            '<span style="min-width:55px;text-align:right;color:var(--text-secondary);">$' + Number(u.target).toFixed(0) + '</span>' +
+            '<span style="min-width:50px;text-align:right;font-weight:700;color:#4caf50;">+' + u.upside.toFixed(0) + '%</span></div>';
+    });
+    // Bottom 3 (lowest upside / most downside)
+    if (upsideList.length >= 3) {
+        html += '<div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Lowest Upside / Most Overvalued</div>';
+        var bot3 = upsideList.slice(-3).reverse();
+        bot3.forEach(function(u) {
+            var color = u.upside >= 0 ? '#ffc107' : '#f44336';
+            html += '<div style="display:flex;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.05);">' +
+                '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + u.label + '</span>' +
+                '<span style="min-width:55px;text-align:right;color:var(--text-secondary);">$' + Number(u.target).toFixed(0) + '</span>' +
+                '<span style="min-width:50px;text-align:right;font-weight:700;color:' + color + ';">' + (u.upside >= 0 ? '+' : '') + u.upside.toFixed(0) + '%</span></div>';
+        });
+    }
+    el.innerHTML = html;
 }
 
 // ===== TRANSCRIPT DETAIL SECTION =====
@@ -879,6 +943,50 @@ function renderTranscriptDetail() {
     renderTopicChart();
 }
 
+// ===== DIVIDEND YIELDS =====
+function renderDividendTable() {
+    var md = MARKET_DATA || {};
+    var tickers = Object.keys(md);
+    var divPayers = [];
+    tickers.forEach(function(t) {
+        var d = md[t];
+        if (d.dividend_yield && d.dividend_yield > 0) {
+            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var mcap = d.market_cap_b ? '$' + Number(d.market_cap_b).toFixed(1) + 'B' : (d.market_cap ? '$' + (d.market_cap / 1e9).toFixed(1) + 'B' : DASH);
+            divPayers.push({ label: label, yield: d.dividend_yield, price: d.price, mcap: mcap });
+        }
+    });
+    divPayers.sort(function(a, b) { return b.yield - a.yield; });
+    var el = document.getElementById('dividend-table');
+    if (!divPayers.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:8px 0;">No dividend payers in the universe.</div>'; return; }
+    var html = '<table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="text-align:left;padding:6px 8px;color:var(--text-secondary);font-weight:600;">#</th><th style="text-align:left;padding:6px 8px;color:var(--text-secondary);font-weight:600;">Company</th><th style="text-align:right;padding:6px 8px;color:var(--text-secondary);font-weight:600;">Yield</th><th style="text-align:right;padding:6px 8px;color:var(--text-secondary);font-weight:600;">Price</th><th style="text-align:right;padding:6px 8px;color:var(--text-secondary);font-weight:600;">MCap</th></tr></thead><tbody>';
+    divPayers.forEach(function(d, i) {
+        html += '<tr style="border-bottom:1px solid rgba(255,255,255,0.04);"><td style="padding:6px 8px;color:var(--text-secondary);">' + (i+1) + '</td><td style="padding:6px 8px;">' + d.label + '</td><td style="padding:6px 8px;text-align:right;font-weight:700;color:var(--accent);">' + d.yield.toFixed(2) + '%</td><td style="padding:6px 8px;text-align:right;">$' + Number(d.price).toFixed(2) + '</td><td style="padding:6px 8px;text-align:right;color:var(--text-secondary);">' + d.mcap + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    el.innerHTML = html;
+}
+
+// ===== RECENT SEC FILINGS =====
+function renderSecFilings() {
+    var filings = (typeof RECENT_FILINGS !== 'undefined') ? RECENT_FILINGS : [];
+    var el = document.getElementById('sec-filings-list');
+    if (!filings.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:8px 0;">No recent filings available.</div>'; return; }
+    var typeColors = { '10-K': '#4caf50', '10-Q': '#42a5f5', '8-K': '#ff9800', '8-K_Earnings': '#ff9800', '20-F': '#ba68c8', '6-K': '#ba68c8' };
+    var html = '';
+    var show = Math.min(10, filings.length);
+    for (var i = 0; i < show; i++) {
+        var f = filings[i];
+        var typeLabel = (f.type || '').replace('_Earnings', '');
+        var color = typeColors[f.type] || 'var(--accent)';
+        html += '<div style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;">' +
+            '<span style="background:' + color + '22;color:' + color + ';font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;min-width:32px;text-align:center;">' + esc(typeLabel) + '</span>' +
+            '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="min-width:65px;text-align:right;color:var(--text-secondary);">' + esc(f.date || '') + '</span></div>';
+    }
+    el.innerHTML = html;
+}
+
 // ===== INFO TOOLTIP POSITIONING =====
 function initInfoTooltips() {
     document.querySelectorAll('.info-trigger').forEach(function(trigger) {
@@ -912,8 +1020,11 @@ document.addEventListener('DOMContentLoaded', function() {
     renderSectorChart();
     renderMovers();
     renderNews();
-    renderTranscriptPanel();
+    renderUpcomingEarnings();
+    renderAnalystSnapshot();
     renderTranscriptDetail();
+    renderDividendTable();
+    renderSecFilings();
     initInfoTooltips();
 
     // Footer timestamp

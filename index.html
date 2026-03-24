@@ -248,9 +248,12 @@
             <a href="CG_News_Dashboard.html" class="view-all">View all news &rarr;</a>
         </div>
         <div class="card">
-            <div class="section-title" title="Key themes and sentiment extracted from recent earnings call transcripts. Shows what management is saying about guidance, risks, and strategic priorities.">Earnings Call Intelligence</div>
-            <div style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;line-height:1.5">How positive or negative each company's latest earnings call was, and whether they raised, maintained, or lowered their financial outlook.</div>
-            <div id="transcript-panel"></div>
+            <div class="section-title" title="Companies reporting earnings soon, sorted by date. Helps you prepare for potential stock moves around earnings announcements.">Upcoming Earnings</div>
+            <div id="upcoming-earnings"></div>
+            <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
+                <div class="section-title" title="Wall Street consensus ratings and price targets for all tracked companies. Shows how analysts collectively view each stock.">Analyst Consensus</div>
+                <div id="analyst-snapshot"></div>
+            </div>
         </div>
     </div>
 
@@ -276,6 +279,18 @@
                 </select>
             </h3>
             <canvas id="ti-topics-chart" style="max-height:220px;"></canvas>
+        </div>
+    </div>
+
+    <!-- Top Dividend Yields -->
+    <div class="grid-2even">
+        <div class="card">
+            <div class="section-title" title="Companies with the highest dividend yields in the gaming universe. Useful for income-focused investors.">Top Dividend Yields</div>
+            <div id="dividend-table"></div>
+        </div>
+        <div class="card">
+            <div class="section-title" title="Most recent regulatory filings (10-K annual reports, 10-Q quarterly reports, 8-K material events) submitted to the SEC.">Recent SEC Filings</div>
+            <div id="sec-filings-list"></div>
         </div>
     </div>
 
@@ -409,19 +424,19 @@
 var INJECTED_COMMAND_CENTER = {
   "market_data": {
     "MGM": {
-      "price": 37.23,
-      "change_pct": 0.75777745,
-      "market_cap_b": 10.183,
+      "price": 37.09,
+      "change_pct": 0.39242342,
+      "market_cap_b": 10.146,
       "name": "MGM Resorts International",
       "display_ticker": "MGM",
       "category": "Integrated Resorts",
-      "pe_ratio": 48.986843,
+      "pe_ratio": 48.80921,
       "dividend_yield": null
     },
     "CZR": {
-      "price": 26.33,
-      "change_pct": -0.4160386,
-      "market_cap_b": 5.374,
+      "price": 26.34,
+      "change_pct": -0.39713106,
+      "market_cap_b": 5.375,
       "name": "Caesars Entertainment",
       "display_ticker": "CZR",
       "category": "Integrated Resorts",
@@ -429,13 +444,13 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "WYNN": {
-      "price": 102.89,
-      "change_pct": 1.7403364,
-      "market_cap_b": 10.73,
+      "price": 102.97,
+      "change_pct": 1.8243858,
+      "market_cap_b": 10.739,
       "name": "Wynn Resorts",
       "display_ticker": "WYNN",
       "category": "Integrated Resorts",
-      "pe_ratio": 32.767513,
+      "pe_ratio": 32.794586,
       "dividend_yield": 0.99
     },
     "LVS": {
@@ -449,19 +464,19 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": 1.94
     },
     "MLCO": {
-      "price": 5.54,
-      "change_pct": 1.2797107,
-      "market_cap_b": 2.254,
+      "price": 5.55,
+      "change_pct": 1.4625303,
+      "market_cap_b": 2.258,
       "name": "Melco Resorts",
       "display_ticker": "MLCO",
       "category": "Integrated Resorts",
-      "pe_ratio": 12.043478,
+      "pe_ratio": 12.065218,
       "dividend_yield": null
     },
     "PENN": {
-      "price": 14.53,
-      "change_pct": 0.58864295,
-      "market_cap_b": 1.94,
+      "price": 14.49,
+      "change_pct": 0.3462617,
+      "market_cap_b": 1.935,
       "name": "Penn Entertainment",
       "display_ticker": "PENN",
       "category": "Regional Operators",
@@ -469,49 +484,49 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "BYD": {
-      "price": 83.92,
-      "change_pct": 2.4102983,
-      "market_cap_b": 6.335,
+      "price": 84.26,
+      "change_pct": 2.8313396,
+      "market_cap_b": 6.361,
       "name": "Boyd Gaming",
       "display_ticker": "BYD",
       "category": "Regional Operators",
-      "pe_ratio": 3.7196367,
+      "pe_ratio": 3.7349293,
       "dividend_yield": 0.9
     },
     "RRR": {
-      "price": 58.63,
-      "change_pct": 0.9450702,
-      "market_cap_b": 6.029,
+      "price": 58.53,
+      "change_pct": 0.78339875,
+      "market_cap_b": 6.019,
       "name": "Red Rock Resorts",
       "display_ticker": "RRR",
       "category": "Regional Operators",
-      "pe_ratio": 18.791315,
+      "pe_ratio": 18.761219,
       "dividend_yield": 1.79
     },
     "CHDN": {
-      "price": 85.83,
-      "change_pct": 1.4358264,
-      "market_cap_b": 5.982,
+      "price": 85.92,
+      "change_pct": 1.5303688,
+      "market_cap_b": 5.988,
       "name": "Churchill Downs",
       "display_ticker": "CHDN",
       "category": "Regional Operators",
-      "pe_ratio": 16.225899,
+      "pe_ratio": 16.24102,
       "dividend_yield": 0.52
     },
     "MCRI": {
-      "price": 98.72,
-      "change_pct": 0.4681448,
-      "market_cap_b": 1.766,
+      "price": 98.49,
+      "change_pct": 0.23406851,
+      "market_cap_b": 1.762,
       "name": "Monarch Casino & Resort",
       "display_ticker": "MCRI",
       "category": "Regional Operators",
-      "pe_ratio": 18.18048,
+      "pe_ratio": 18.138123,
       "dividend_yield": 1.22
     },
     "GDEN": {
-      "price": 26.75,
-      "change_pct": 1.4795121,
-      "market_cap_b": 0.706,
+      "price": 26.71,
+      "change_pct": 1.3467357,
+      "market_cap_b": 0.705,
       "name": "Golden Entertainment",
       "display_ticker": "GDEN",
       "category": "Regional Operators",
@@ -519,9 +534,9 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": 3.8
     },
     "FLL": {
-      "price": 2.29,
-      "change_pct": -1.2919884,
-      "market_cap_b": 0.083,
+      "price": 2.27,
+      "change_pct": -2.3706822,
+      "market_cap_b": 0.082,
       "name": "Full House Resorts",
       "display_ticker": "FLL",
       "category": "Regional Operators",
@@ -529,9 +544,9 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "BALY": {
-      "price": 11.83,
-      "change_pct": -2.3121367,
-      "market_cap_b": 0.582,
+      "price": 11.76,
+      "change_pct": -2.931458,
+      "market_cap_b": 0.578,
       "name": "Bally's Corporation",
       "display_ticker": "BALY",
       "category": "Regional Operators",
@@ -539,9 +554,9 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "DKNG": {
-      "price": 23.4,
-      "change_pct": -2.2352197,
-      "market_cap_b": 11.648,
+      "price": 23.43,
+      "change_pct": -2.1307719,
+      "market_cap_b": 11.66,
       "name": "DraftKings",
       "display_ticker": "DKNG",
       "category": "Online & iGaming",
@@ -549,9 +564,9 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "FLUT": {
-      "price": 107.67,
-      "change_pct": -1.5633563,
-      "market_cap_b": 18.856,
+      "price": 107.54,
+      "change_pct": -1.6821902,
+      "market_cap_b": 18.834,
       "name": "Flutter Entertainment",
       "display_ticker": "FLUT",
       "category": "Online & iGaming",
@@ -559,39 +574,39 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "RSI": {
-      "price": 22.11,
-      "change_pct": 1.6551752,
-      "market_cap_b": 5.147,
+      "price": 22.02,
+      "change_pct": 1.2413814,
+      "market_cap_b": 5.126,
       "name": "Rush Street Interactive",
       "display_ticker": "RSI",
       "category": "Online & iGaming",
-      "pe_ratio": 71.32258,
+      "pe_ratio": 71.03226,
       "dividend_yield": null
     },
     "SRAD": {
-      "price": 19.33,
-      "change_pct": -1.0245773,
-      "market_cap_b": 5.721,
+      "price": 19.37,
+      "change_pct": -0.8192516,
+      "market_cap_b": 5.733,
       "name": "Sportradar Group",
       "display_ticker": "SRAD",
       "category": "Online & iGaming",
-      "pe_ratio": 53.694168,
+      "pe_ratio": 53.805557,
       "dividend_yield": null
     },
     "SGHC": {
-      "price": 10.89,
-      "change_pct": 2.01311,
-      "market_cap_b": 5.509,
+      "price": 10.83,
+      "change_pct": 1.4044908,
+      "market_cap_b": 5.476,
       "name": "Super Group",
       "display_ticker": "SGHC",
       "category": "Online & iGaming",
-      "pe_ratio": 25.940477,
+      "pe_ratio": 25.785715,
       "dividend_yield": 1.59
     },
     "GENI": {
-      "price": 4.51,
-      "change_pct": -3.9361691,
-      "market_cap_b": 1.161,
+      "price": 4.54,
+      "change_pct": -3.5143015,
+      "market_cap_b": 1.167,
       "name": "Genius Sports",
       "display_ticker": "GENI",
       "category": "Online & iGaming",
@@ -619,13 +634,13 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_yield": null
     },
     "ACEL": {
-      "price": 11.29,
-      "change_pct": 0.26642746,
-      "market_cap_b": 0.921,
+      "price": 11.27,
+      "change_pct": 0.08881198,
+      "market_cap_b": 0.919,
       "name": "Accel Entertainment",
       "display_ticker": "ACEL",
       "category": "Gaming Equipment",
-      "pe_ratio": 18.816666,
+      "pe_ratio": 18.783333,
       "dividend_yield": null
     },
     "INSE": {
@@ -643,132 +658,132 @@ var INJECTED_COMMAND_CENTER = {
   "top_mover": {
     "ticker": "GENI",
     "name": "Genius Sports",
-    "change_pct": -3.9361691
+    "change_pct": -3.5143015
   },
   "gaming25": {
-    "current": 1067.69,
-    "daily_pct": 1.01,
-    "ytd_pct": -15.27,
+    "current": 1066.28,
+    "daily_pct": 0.9,
+    "ytd_pct": -15.37,
     "index": [
       {
         "date": "2026-02-10",
-        "value": 1104.32
+        "value": 1104.22
       },
       {
         "date": "2026-02-11",
-        "value": 1089.88
+        "value": 1089.79
       },
       {
         "date": "2026-02-12",
-        "value": 1053.15
+        "value": 1053.07
       },
       {
         "date": "2026-02-13",
-        "value": 1044.01
+        "value": 1043.91
       },
       {
         "date": "2026-02-17",
-        "value": 1058.74
+        "value": 1058.63
       },
       {
         "date": "2026-02-18",
-        "value": 1091.97
+        "value": 1091.84
       },
       {
         "date": "2026-02-19",
-        "value": 1086.89
+        "value": 1086.76
       },
       {
         "date": "2026-02-20",
-        "value": 1087.01
+        "value": 1086.86
       },
       {
         "date": "2026-02-23",
-        "value": 1043.92
+        "value": 1043.78
       },
       {
         "date": "2026-02-24",
-        "value": 1058.42
+        "value": 1058.26
       },
       {
         "date": "2026-02-25",
-        "value": 1062.32
+        "value": 1062.14
       },
       {
         "date": "2026-02-26",
-        "value": 1090.96
+        "value": 1090.76
       },
       {
         "date": "2026-02-27",
-        "value": 1078.37
+        "value": 1078.18
       },
       {
         "date": "2026-03-02",
-        "value": 1073.24
+        "value": 1073.05
       },
       {
         "date": "2026-03-03",
-        "value": 1069.16
+        "value": 1068.95
       },
       {
         "date": "2026-03-04",
-        "value": 1084.62
+        "value": 1084.39
       },
       {
         "date": "2026-03-05",
-        "value": 1082.28
+        "value": 1082.05
       },
       {
         "date": "2026-03-06",
-        "value": 1050.82
-      },
-      {
-        "date": "2026-03-09",
-        "value": 1052.38
-      },
-      {
-        "date": "2026-03-10",
-        "value": 1051.46
-      },
-      {
-        "date": "2026-03-11",
-        "value": 1065.83
-      },
-      {
-        "date": "2026-03-12",
-        "value": 1051.72
-      },
-      {
-        "date": "2026-03-13",
-        "value": 1053.63
-      },
-      {
-        "date": "2026-03-16",
-        "value": 1046.21
-      },
-      {
-        "date": "2026-03-17",
-        "value": 1058.5
-      },
-      {
-        "date": "2026-03-18",
         "value": 1050.6
       },
       {
+        "date": "2026-03-09",
+        "value": 1052.16
+      },
+      {
+        "date": "2026-03-10",
+        "value": 1051.25
+      },
+      {
+        "date": "2026-03-11",
+        "value": 1065.61
+      },
+      {
+        "date": "2026-03-12",
+        "value": 1051.5
+      },
+      {
+        "date": "2026-03-13",
+        "value": 1053.43
+      },
+      {
+        "date": "2026-03-16",
+        "value": 1046.01
+      },
+      {
+        "date": "2026-03-17",
+        "value": 1058.29
+      },
+      {
+        "date": "2026-03-18",
+        "value": 1050.4
+      },
+      {
         "date": "2026-03-19",
-        "value": 1063.24
+        "value": 1063.03
       },
       {
         "date": "2026-03-20",
-        "value": 1035.18
+        "value": 1034.97
       },
       {
         "date": "2026-03-23",
-        "value": 1056.99
+        "value": 1056.76
       },
       {
         "date": "2026-03-24",
-        "value": 1067.69
+        "value": 1066.28
       }
     ]
   },
@@ -796,14 +811,24 @@ var INJECTED_COMMAND_CENTER = {
   },
   "big_movers": [
     {
+      "ticker": "SRAD",
+      "display_ticker": "SRAD",
+      "company": "Sportradar Group",
+      "category": "Online & iGaming",
+      "prev_price": 19.53,
+      "curr_price": 19.37,
+      "pct_change": -81.93,
+      "market_cap_b": 5.733
+    },
+    {
       "ticker": "RRR",
       "display_ticker": "RRR",
       "company": "Red Rock Resorts",
       "category": "Regional Operators",
       "prev_price": 58.08,
-      "curr_price": 58.63,
-      "pct_change": 94.51,
-      "market_cap_b": 6.029
+      "curr_price": 58.53,
+      "pct_change": 78.34,
+      "market_cap_b": 6.019
     },
     {
       "ticker": "INSE",
@@ -816,53 +841,43 @@ var INJECTED_COMMAND_CENTER = {
       "market_cap_b": 0.175
     },
     {
+      "ticker": "CZR",
+      "display_ticker": "CZR",
+      "company": "Caesars Entertainment",
+      "category": "Integrated Resorts",
+      "prev_price": 26.44,
+      "curr_price": 26.34,
+      "pct_change": -39.71,
+      "market_cap_b": 5.375
+    },
+    {
       "ticker": "MGM",
       "display_ticker": "MGM",
       "company": "MGM Resorts International",
       "category": "Integrated Resorts",
       "prev_price": 36.95,
-      "curr_price": 37.23,
-      "pct_change": 75.78,
-      "market_cap_b": 10.183
-    },
-    {
-      "ticker": "PENN",
-      "display_ticker": "PENN",
-      "company": "Penn Entertainment",
-      "category": "Regional Operators",
-      "prev_price": 14.44,
-      "curr_price": 14.53,
-      "pct_change": 58.86,
-      "market_cap_b": 1.94
-    },
-    {
-      "ticker": "MCRI",
-      "display_ticker": "MCRI",
-      "company": "Monarch Casino & Resort",
-      "category": "Regional Operators",
-      "prev_price": 98.26,
-      "curr_price": 98.72,
-      "pct_change": 46.81,
-      "market_cap_b": 1.766
+      "curr_price": 37.09,
+      "pct_change": 39.24,
+      "market_cap_b": 10.146
     }
   ],
   "category_summary": {
     "Integrated Resorts": {
       "count": 5,
-      "total_mcap": 65.7,
-      "avg_change_ytd": -8.7,
+      "total_mcap": 65.6,
+      "avg_change_ytd": -8.8,
       "color": "#ffd700"
     },
     "Regional Operators": {
       "count": 8,
       "total_mcap": 23.4,
-      "avg_change_ytd": -8.5,
+      "avg_change_ytd": -8.8,
       "color": "#4fc3f7"
     },
     "Online & iGaming": {
       "count": 6,
       "total_mcap": 48.0,
-      "avg_change_ytd": -25.3,
+      "avg_change_ytd": -25.4,
       "color": "#81c784"
     },
     "Gaming Equipment": {
@@ -872,9 +887,9 @@ var INJECTED_COMMAND_CENTER = {
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-03-24T14:15:34.456785",
+  "generated_at": "2026-03-24T14:29:35.432919",
   "transcript_analysis": {
-    "generated_at": "2026-03-24T14:15:34.348529",
+    "generated_at": "2026-03-24T14:29:35.332294",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
@@ -8056,6 +8071,68 @@ var INJECTED_COMMAND_CENTER = {
       "relevance_score": 4,
       "source_file": "news_2026-03-24.json"
     }
+  ],
+  "recent_filings": [
+    {
+      "ticker": "ACEL",
+      "company": "Accel Entertainment (ACEL)",
+      "type": "10-K",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "ACEL",
+      "company": "Accel Entertainment (ACEL)",
+      "type": "10-K",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "ACEL",
+      "company": "Accel Entertainment (ACEL)",
+      "type": "10-K",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "ACEL",
+      "company": "Accel Entertainment (ACEL)",
+      "type": "10-Q",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "ACEL",
+      "company": "Accel Entertainment (ACEL)",
+      "type": "10-Q",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "BALY",
+      "company": "Ballys Corporation (BALY)",
+      "type": "10-K",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "BALY",
+      "company": "Ballys Corporation (BALY)",
+      "type": "10-K",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "BALY",
+      "company": "Ballys Corporation (BALY)",
+      "type": "10-K",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "BALY",
+      "company": "Ballys Corporation (BALY)",
+      "type": "10-Q",
+      "date": "2026-03-14"
+    },
+    {
+      "ticker": "BALY",
+      "company": "Ballys Corporation (BALY)",
+      "type": "10-Q",
+      "date": "2026-03-14"
+    }
   ]
 };
 // INJECTED_DATA_END
@@ -8067,6 +8144,7 @@ if (typeof INJECTED_COMMAND_CENTER !== 'undefined') {
     var TRANSCRIPT_DATA = INJECTED_COMMAND_CENTER.transcript_analysis || {};
     var INDEX_OBJ = INJECTED_COMMAND_CENTER.gaming25 || {};
     var INDEX_HISTORY = INDEX_OBJ.index || [];
+    var RECENT_FILINGS = INJECTED_COMMAND_CENTER.recent_filings || [];
     var COMMAND_CENTER = INJECTED_COMMAND_CENTER;
 }
 </script>
@@ -8377,46 +8455,94 @@ function renderNews() {
     container.innerHTML = html;
 }
 
-// ===== TRANSCRIPT INTELLIGENCE (Summary Panel) =====
-function renderTranscriptPanel() {
-    var ta = TRANSCRIPT_DATA;
-    if (!ta || !ta.companies || !Object.keys(ta.companies).length) {
-        document.getElementById('transcript-panel').innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:16px 0;">No transcript data available.</div>';
-        return;
-    }
-
-    var ls = ta.latest_sentiment || {};
-    var sentTickers = Object.keys(ls).sort(function(a, b) { return (ls[b].score || 0) - (ls[a].score || 0); });
-    var maxScore = Math.max.apply(null, sentTickers.map(function(t) { return Math.abs(ls[t].score || 0); }).concat([1]));
-
-    var gs = ta.guidance_summary || {};
-    var html = '<div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;">';
-    ['Raised','Maintained','Lowered'].forEach(function(label) {
-        var count = gs[label] || 0;
-        var color = label === 'Raised' ? '#4caf50' : label === 'Lowered' ? '#f44336' : '#ffc107';
-        html += '<div style="text-align:center;flex:1;min-width:80px;"><div style="font-size:20px;font-weight:700;color:' + color + '">' + count + '</div><div style="font-size:9px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px">' + label + '</div></div>';
-    });
-    html += '</div>';
-
-    html += '<table class="ti-rank-table"><thead><tr><th></th><th>Company</th><th>Score</th><th>Direction</th></tr></thead><tbody>';
-    var showCount = Math.min(8, sentTickers.length);
+// ===== UPCOMING EARNINGS =====
+function renderUpcomingEarnings() {
     var md = MARKET_DATA || {};
-    for (var i = 0; i < showCount; i++) {
-        var t = sentTickers[i];
-        var s = ls[t];
-        var score = s.score || 0;
-        var barColor = score > 20 ? '#4caf50' : score > 10 ? '#ffc107' : score > 0 ? '#ff9800' : '#f44336';
-        var barW = Math.abs(score) / maxScore * 50;
-        var guidanceCls = s.direction === 'Raised' ? 'ti-badge-raised' : s.direction === 'Lowered' ? 'ti-badge-lowered' : 'ti-badge-maintained';
-        var icon = i === 0 ? '\uD83E\uDD47' : i === 1 ? '\uD83E\uDD48' : i === 2 ? '\uD83E\uDD49' : '';
-        var companyLabel = (md[t] && md[t].name) ? esc(md[t].name) + ' <span style="color:#9aa0a6;font-weight:400">(' + esc(t) + ')</span>' : esc(t);
-        html += '<tr><td style="text-align:center;width:20px;font-size:12px">' + icon + '</td>' +
-            '<td><span style="color:var(--accent);font-weight:700;font-size:12px">' + companyLabel + '</span></td>' +
-            '<td style="white-space:nowrap"><span class="ti-score-bar" style="width:' + barW + 'px;background:' + barColor + '"></span> <span style="font-weight:600">' + (score >= 0 ? '+' : '') + score.toFixed(1) + '</span></td>' +
-            '<td>' + (s.direction && s.direction !== 'Not Detected' ? '<span class="ti-badge ' + guidanceCls + '">' + esc(s.direction) + '</span>' : '<span style="color:#555;font-size:10px">' + DASH + '</span>') + '</td></tr>';
+    var tickers = Object.keys(md);
+    var now = new Date();
+    var upcoming = [];
+    tickers.forEach(function(t) {
+        var d = md[t];
+        var ed = d.next_earnings_date;
+        if (!ed) return;
+        var dt = new Date(ed);
+        if (isNaN(dt.getTime())) return;
+        var diffDays = Math.ceil((dt - now) / 86400000);
+        if (diffDays < -7) return; // skip if more than a week ago
+        var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+        upcoming.push({ label: label, date: dt, diffDays: diffDays, dateStr: dt.toLocaleDateString('en-US', {month:'short', day:'numeric'}) });
+    });
+    upcoming.sort(function(a, b) { return a.date - b.date; });
+    var el = document.getElementById('upcoming-earnings');
+    if (!upcoming.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:8px 0;">No upcoming earnings dates available.</div>'; return; }
+    var html = '';
+    var show = Math.min(8, upcoming.length);
+    for (var i = 0; i < show; i++) {
+        var u = upcoming[i];
+        var daysLabel = u.diffDays === 0 ? '<span style="color:#f44336;font-weight:700">TODAY</span>' : u.diffDays === 1 ? '<span style="color:#ff9800;font-weight:700">Tomorrow</span>' : u.diffDays < 0 ? '<span style="color:var(--text-secondary)">' + Math.abs(u.diffDays) + 'd ago</span>' : u.diffDays <= 7 ? '<span style="color:#ffc107">' + u.diffDays + ' days</span>' : '<span style="color:var(--text-secondary)">' + u.diffDays + ' days</span>';
+        html += '<div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;">' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + u.label + '</span>' +
+            '<span style="min-width:55px;text-align:right;color:var(--text-secondary);margin-right:8px;">' + u.dateStr + '</span>' +
+            '<span style="min-width:55px;text-align:right;">' + daysLabel + '</span></div>';
     }
-    html += '</tbody></table>';
-    document.getElementById('transcript-panel').innerHTML = html;
+    el.innerHTML = html;
+}
+
+// ===== ANALYST CONSENSUS =====
+function renderAnalystSnapshot() {
+    var md = MARKET_DATA || {};
+    var tickers = Object.keys(md);
+    var buy = 0, hold = 0, sell = 0, upsideList = [];
+    tickers.forEach(function(t) {
+        var d = md[t];
+        var rec = (d.recommendation_key || '').toLowerCase();
+        if (rec === 'buy' || rec === 'strong_buy' || rec === 'strongbuy') buy++;
+        else if (rec === 'hold') hold++;
+        else if (rec === 'sell' || rec === 'strong_sell' || rec === 'strongsell' || rec === 'underperform') sell++;
+        if (d.upside_pct != null && d.target_mean && d.price) {
+            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            upsideList.push({ label: label, upside: d.upside_pct, target: d.target_mean, price: d.price, rec: rec });
+        }
+    });
+    upsideList.sort(function(a, b) { return b.upside - a.upside; });
+    var el = document.getElementById('analyst-snapshot');
+    var total = buy + hold + sell;
+    var html = '';
+    if (total > 0) {
+        var buyPct = (buy / total * 100).toFixed(0);
+        var holdPct = (hold / total * 100).toFixed(0);
+        var sellPct = (sell / total * 100).toFixed(0);
+        html += '<div style="display:flex;gap:12px;margin-bottom:10px;font-size:12px;font-weight:600;">' +
+            '<span style="color:#4caf50">' + buy + ' Buy (' + buyPct + '%)</span>' +
+            '<span style="color:#ffc107">' + hold + ' Hold (' + holdPct + '%)</span>' +
+            '<span style="color:#f44336">' + sell + ' Sell (' + sellPct + '%)</span></div>';
+        html += '<div style="height:6px;border-radius:3px;display:flex;overflow:hidden;margin-bottom:12px;">' +
+            '<div style="width:' + buyPct + '%;background:#4caf50"></div>' +
+            '<div style="width:' + holdPct + '%;background:#ffc107"></div>' +
+            '<div style="width:' + sellPct + '%;background:#f44336"></div></div>';
+    }
+    // Top 3 upside
+    html += '<div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Highest Upside to Target</div>';
+    var top3 = upsideList.slice(0, 3);
+    top3.forEach(function(u) {
+        html += '<div style="display:flex;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.05);">' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + u.label + '</span>' +
+            '<span style="min-width:55px;text-align:right;color:var(--text-secondary);">$' + Number(u.target).toFixed(0) + '</span>' +
+            '<span style="min-width:50px;text-align:right;font-weight:700;color:#4caf50;">+' + u.upside.toFixed(0) + '%</span></div>';
+    });
+    // Bottom 3 (lowest upside / most downside)
+    if (upsideList.length >= 3) {
+        html += '<div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Lowest Upside / Most Overvalued</div>';
+        var bot3 = upsideList.slice(-3).reverse();
+        bot3.forEach(function(u) {
+            var color = u.upside >= 0 ? '#ffc107' : '#f44336';
+            html += '<div style="display:flex;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.05);">' +
+                '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + u.label + '</span>' +
+                '<span style="min-width:55px;text-align:right;color:var(--text-secondary);">$' + Number(u.target).toFixed(0) + '</span>' +
+                '<span style="min-width:50px;text-align:right;font-weight:700;color:' + color + ';">' + (u.upside >= 0 ? '+' : '') + u.upside.toFixed(0) + '%</span></div>';
+        });
+    }
+    el.innerHTML = html;
 }
 
 // ===== TRANSCRIPT DETAIL SECTION =====
@@ -8525,6 +8651,50 @@ function renderTranscriptDetail() {
     renderTopicChart();
 }
 
+// ===== DIVIDEND YIELDS =====
+function renderDividendTable() {
+    var md = MARKET_DATA || {};
+    var tickers = Object.keys(md);
+    var divPayers = [];
+    tickers.forEach(function(t) {
+        var d = md[t];
+        if (d.dividend_yield && d.dividend_yield > 0) {
+            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var mcap = d.market_cap_b ? '$' + Number(d.market_cap_b).toFixed(1) + 'B' : (d.market_cap ? '$' + (d.market_cap / 1e9).toFixed(1) + 'B' : DASH);
+            divPayers.push({ label: label, yield: d.dividend_yield, price: d.price, mcap: mcap });
+        }
+    });
+    divPayers.sort(function(a, b) { return b.yield - a.yield; });
+    var el = document.getElementById('dividend-table');
+    if (!divPayers.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:8px 0;">No dividend payers in the universe.</div>'; return; }
+    var html = '<table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="text-align:left;padding:6px 8px;color:var(--text-secondary);font-weight:600;">#</th><th style="text-align:left;padding:6px 8px;color:var(--text-secondary);font-weight:600;">Company</th><th style="text-align:right;padding:6px 8px;color:var(--text-secondary);font-weight:600;">Yield</th><th style="text-align:right;padding:6px 8px;color:var(--text-secondary);font-weight:600;">Price</th><th style="text-align:right;padding:6px 8px;color:var(--text-secondary);font-weight:600;">MCap</th></tr></thead><tbody>';
+    divPayers.forEach(function(d, i) {
+        html += '<tr style="border-bottom:1px solid rgba(255,255,255,0.04);"><td style="padding:6px 8px;color:var(--text-secondary);">' + (i+1) + '</td><td style="padding:6px 8px;">' + d.label + '</td><td style="padding:6px 8px;text-align:right;font-weight:700;color:var(--accent);">' + d.yield.toFixed(2) + '%</td><td style="padding:6px 8px;text-align:right;">$' + Number(d.price).toFixed(2) + '</td><td style="padding:6px 8px;text-align:right;color:var(--text-secondary);">' + d.mcap + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    el.innerHTML = html;
+}
+
+// ===== RECENT SEC FILINGS =====
+function renderSecFilings() {
+    var filings = (typeof RECENT_FILINGS !== 'undefined') ? RECENT_FILINGS : [];
+    var el = document.getElementById('sec-filings-list');
+    if (!filings.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:12px;padding:8px 0;">No recent filings available.</div>'; return; }
+    var typeColors = { '10-K': '#4caf50', '10-Q': '#42a5f5', '8-K': '#ff9800', '8-K_Earnings': '#ff9800', '20-F': '#ba68c8', '6-K': '#ba68c8' };
+    var html = '';
+    var show = Math.min(10, filings.length);
+    for (var i = 0; i < show; i++) {
+        var f = filings[i];
+        var typeLabel = (f.type || '').replace('_Earnings', '');
+        var color = typeColors[f.type] || 'var(--accent)';
+        html += '<div style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;">' +
+            '<span style="background:' + color + '22;color:' + color + ';font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;min-width:32px;text-align:center;">' + esc(typeLabel) + '</span>' +
+            '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="min-width:65px;text-align:right;color:var(--text-secondary);">' + esc(f.date || '') + '</span></div>';
+    }
+    el.innerHTML = html;
+}
+
 // ===== INFO TOOLTIP POSITIONING =====
 function initInfoTooltips() {
     document.querySelectorAll('.info-trigger').forEach(function(trigger) {
@@ -8558,8 +8728,11 @@ document.addEventListener('DOMContentLoaded', function() {
     renderSectorChart();
     renderMovers();
     renderNews();
-    renderTranscriptPanel();
+    renderUpcomingEarnings();
+    renderAnalystSnapshot();
     renderTranscriptDetail();
+    renderDividendTable();
+    renderSecFilings();
     initInfoTooltips();
 
     // Footer timestamp
