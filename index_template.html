@@ -233,11 +233,11 @@
     <!-- Top Movers -->
     <div class="grid-2even">
         <div class="card">
-            <div class="section-title">Top Gainers</div>
+            <div class="section-title" title="The 5 companies with the largest percentage gains today.">Top Gainers</div>
             <div id="top-gainers"></div>
         </div>
         <div class="card">
-            <div class="section-title">Top Decliners</div>
+            <div class="section-title" title="The 5 companies with the largest percentage declines today.">Top Decliners</div>
             <div id="top-losers"></div>
         </div>
     </div>
@@ -245,12 +245,12 @@
     <!-- News Headlines + Transcript Intelligence -->
     <div class="grid-2even">
         <div class="card">
-            <div class="section-title">Latest News Headlines</div>
+            <div class="section-title" title="Recent news articles about gaming companies, sourced from major financial news outlets.">Latest News Headlines</div>
             <div id="news-feed"></div>
             <a href="CG_News_Dashboard.html" class="view-all">View all news &rarr;</a>
         </div>
         <div class="card">
-            <div class="section-title">Transcript Intelligence</div>
+            <div class="section-title" title="Key themes and sentiment extracted from recent earnings call transcripts. Shows what management is saying about guidance, risks, and strategic priorities.">Earnings Call Intelligence</div>
             <div id="transcript-panel"></div>
         </div>
     </div>
@@ -540,8 +540,8 @@ function renderKPIs() {
         '<div class="kpi-card"><div class="kpi-label" data-tip="Sum of market capitalizations for all 25 gaming companies.">Total Market Cap</div><div class="kpi-value">$' + totalMcap.toFixed(1) + 'B</div><div class="kpi-sub">' + tickers.length + ' companies</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Average trailing P/E ratio across companies with positive earnings.">Avg P/E Ratio</div><div class="kpi-value">' + (avgPE ? avgPE.toFixed(1) + 'x' : DASH) + '</div><div class="kpi-sub">Trailing 12 months</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Average dividend yield across companies that pay dividends.">Avg Dividend Yield</div><div class="kpi-value">' + (avgDiv ? avgDiv.toFixed(2) + '%' : DASH) + '</div><div class="kpi-sub">' + divCount + ' payers</div></div>' +
-        '<div class="kpi-card" style="flex:0 0 auto;min-width:100px;padding:12px 16px"><div class="kpi-label">Top Gainer</div><div style="font-size:14px;font-weight:600;margin-top:4px">' + (topGainer ? '<span class="positive">' + (topGainer.display_ticker || '') + ' +' + gainerChg.toFixed(1) + '%</span>' : DASH) + '</div></div>' +
-        '<div class="kpi-card" style="flex:0 0 auto;min-width:100px;padding:12px 16px"><div class="kpi-label">Top Decliner</div><div style="font-size:14px;font-weight:600;margin-top:4px">' + (topLoser ? '<span class="negative">' + (topLoser.display_ticker || '') + ' ' + loserChg.toFixed(1) + '%</span>' : DASH) + '</div></div>';
+        '<div class="kpi-card" style="flex:0 0 auto;min-width:140px;padding:12px 16px"><div class="kpi-label">Top Gainer</div><div style="font-size:13px;font-weight:600;margin-top:4px">' + (topGainer ? '<span class="positive">' + (topGainer.name ? esc(topGainer.name) + ' (' + (topGainer.display_ticker || '') + ')' : (topGainer.display_ticker || '')) + ' +' + gainerChg.toFixed(1) + '%</span>' : DASH) + '</div></div>' +
+        '<div class="kpi-card" style="flex:0 0 auto;min-width:140px;padding:12px 16px"><div class="kpi-label">Top Decliner</div><div style="font-size:13px;font-weight:600;margin-top:4px">' + (topLoser ? '<span class="negative">' + (topLoser.name ? esc(topLoser.name) + ' (' + (topLoser.display_ticker || '') + ')' : (topLoser.display_ticker || '')) + ' ' + loserChg.toFixed(1) + '%</span>' : DASH) + '</div></div>';
 }
 
 // ===== MARKET BREADTH =====
@@ -690,11 +690,11 @@ function renderMovers() {
             var d = md[t];
             var chg = d.change_pct || 0;
             var cls = chg >= 0 ? 'up' : 'down';
+            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
             html += '<div class="mover-card ' + cls + '" style="margin-bottom:8px;">' +
                 '<div style="display:flex;justify-content:space-between;align-items:center;">' +
-                '<span class="mover-ticker">' + esc(d.display_ticker || t) + '</span>' +
+                '<span class="mover-ticker" style="font-size:13px">' + label + '</span>' +
                 '<span class="mover-change ' + (chg >= 0 ? 'positive' : 'negative') + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%</span></div>' +
-                '<div class="mover-name">' + esc(d.name || '') + '</div>' +
                 '<div class="mover-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</div></div>';
         });
         document.getElementById(containerId).innerHTML = html;
