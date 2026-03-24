@@ -89,13 +89,11 @@
         .sort-arrow { font-size:8px; margin-left:3px; opacity:0.5; }
 
         /* Movers */
-        .mover-card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:14px 18px; border-left:3px solid; }
-        .mover-card.up { border-left-color:var(--positive); }
-        .mover-card.down { border-left-color:var(--negative); }
-        .mover-ticker { font-weight:700; font-size:14px; color:var(--accent); }
-        .mover-change { font-size:20px; font-weight:700; margin:4px 0; }
-        .mover-name { font-size:11px; color:var(--text-secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .mover-price { font-size:11px; color:var(--text-secondary); margin-top:4px; }
+        .mover-row { display:flex; align-items:center; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+        .mover-row:last-child { border-bottom:none; }
+        .mover-name { flex:1; font-size:12px; color:var(--text-primary); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .mover-price { font-size:11px; color:var(--text-secondary); width:60px; text-align:right; margin-right:8px; }
+        .mover-change { font-size:12px; font-weight:700; width:65px; text-align:right; }
 
         /* News Items */
         .news-item { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
@@ -691,11 +689,10 @@ function renderMovers() {
             var chg = d.change_pct || 0;
             var cls = chg >= 0 ? 'up' : 'down';
             var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
-            html += '<div class="mover-card ' + cls + '" style="margin-bottom:8px;">' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;">' +
-                '<span class="mover-ticker" style="font-size:13px">' + label + '</span>' +
-                '<span class="mover-change ' + (chg >= 0 ? 'positive' : 'negative') + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%</span></div>' +
-                '<div class="mover-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</div></div>';
+            html += '<div class="mover-row">' +
+                '<span class="mover-name">' + label + '</span>' +
+                '<span class="mover-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</span>' +
+                '<span class="mover-change ' + (chg >= 0 ? 'positive' : 'negative') + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%</span></div>';
         });
         document.getElementById(containerId).innerHTML = html;
     }
