@@ -1081,17 +1081,13 @@
   },
   "VIXCLS": {
     "label": "VIX Volatility Index",
-    "latest_value": 26.78,
-    "latest_date": "2026-03-20",
-    "change_30d": 6.55,
-    "change_30d_pct": 32.38,
-    "change_90d": 9.16,
-    "change_90d_pct": 51.99,
+    "latest_value": 26.15,
+    "latest_date": "2026-03-23",
+    "change_30d": 7.06,
+    "change_30d_pct": 36.98,
+    "change_90d": 9.28,
+    "change_90d_pct": 55.01,
     "history": [
-      {
-        "date": "2025-11-13",
-        "value": 20.0
-      },
       {
         "date": "2025-11-14",
         "value": 19.83
@@ -1447,6 +1443,10 @@
       {
         "date": "2026-03-20",
         "value": 26.78
+      },
+      {
+        "date": "2026-03-23",
+        "value": 26.15
       }
     ]
   },

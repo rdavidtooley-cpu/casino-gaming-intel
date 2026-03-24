@@ -237,7 +237,7 @@
             <div id="top-gainers"></div>
         </div>
         <div class="card">
-            <div class="section-title">Top Losers</div>
+            <div class="section-title">Top Decliners</div>
             <div id="top-losers"></div>
         </div>
     </div>
@@ -540,8 +540,8 @@ function renderKPIs() {
         '<div class="kpi-card"><div class="kpi-label" data-tip="Sum of market capitalizations for all 25 gaming companies.">Total Market Cap</div><div class="kpi-value">$' + totalMcap.toFixed(1) + 'B</div><div class="kpi-sub">' + tickers.length + ' companies</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Average trailing P/E ratio across companies with positive earnings.">Avg P/E Ratio</div><div class="kpi-value">' + (avgPE ? avgPE.toFixed(1) + 'x' : DASH) + '</div><div class="kpi-sub">Trailing 12 months</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Average dividend yield across companies that pay dividends.">Avg Dividend Yield</div><div class="kpi-value">' + (avgDiv ? avgDiv.toFixed(2) + '%' : DASH) + '</div><div class="kpi-sub">' + divCount + ' payers</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label">Top Gainer</div><div class="kpi-value positive" style="font-size:16px">' + (topGainer ? (topGainer.display_ticker || '') : DASH) + '</div><div class="kpi-sub positive">' + (topGainer ? '+' + gainerChg.toFixed(1) + '%' : '') + '</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label">Top Loser</div><div class="kpi-value negative" style="font-size:16px">' + (topLoser ? (topLoser.display_ticker || '') : DASH) + '</div><div class="kpi-sub negative">' + (topLoser ? loserChg.toFixed(1) + '%' : '') + '</div></div>';
+        '<div class="kpi-card" style="flex:0 0 auto;min-width:100px;padding:12px 16px"><div class="kpi-label">Top Gainer</div><div style="font-size:14px;font-weight:600;margin-top:4px">' + (topGainer ? '<span class="positive">' + (topGainer.display_ticker || '') + ' +' + gainerChg.toFixed(1) + '%</span>' : DASH) + '</div></div>' +
+        '<div class="kpi-card" style="flex:0 0 auto;min-width:100px;padding:12px 16px"><div class="kpi-label">Top Decliner</div><div style="font-size:14px;font-weight:600;margin-top:4px">' + (topLoser ? '<span class="negative">' + (topLoser.display_ticker || '') + ' ' + loserChg.toFixed(1) + '%</span>' : DASH) + '</div></div>';
 }
 
 // ===== MARKET BREADTH =====
