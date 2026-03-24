@@ -754,8 +754,9 @@ function renderTranscriptPanel() {
     });
     html += '</div>';
 
-    html += '<table class="ti-rank-table"><thead><tr><th></th><th>Ticker</th><th>Score</th><th>Direction</th></tr></thead><tbody>';
+    html += '<table class="ti-rank-table"><thead><tr><th></th><th>Company</th><th>Score</th><th>Direction</th></tr></thead><tbody>';
     var showCount = Math.min(8, sentTickers.length);
+    var md = MARKET_DATA || {};
     for (var i = 0; i < showCount; i++) {
         var t = sentTickers[i];
         var s = ls[t];
@@ -764,8 +765,9 @@ function renderTranscriptPanel() {
         var barW = Math.abs(score) / maxScore * 50;
         var guidanceCls = s.direction === 'Raised' ? 'ti-badge-raised' : s.direction === 'Lowered' ? 'ti-badge-lowered' : 'ti-badge-maintained';
         var icon = i === 0 ? '\uD83E\uDD47' : i === 1 ? '\uD83E\uDD48' : i === 2 ? '\uD83E\uDD49' : '';
+        var companyLabel = (md[t] && md[t].name) ? esc(md[t].name) + ' <span style="color:#9aa0a6;font-weight:400">(' + esc(t) + ')</span>' : esc(t);
         html += '<tr><td style="text-align:center;width:20px;font-size:12px">' + icon + '</td>' +
-            '<td><span style="color:var(--accent);font-weight:700">' + esc(t) + '</span></td>' +
+            '<td><span style="color:var(--accent);font-weight:700;font-size:12px">' + companyLabel + '</span></td>' +
             '<td style="white-space:nowrap"><span class="ti-score-bar" style="width:' + barW + 'px;background:' + barColor + '"></span> <span style="font-weight:600">' + (score >= 0 ? '+' : '') + score.toFixed(1) + '</span></td>' +
             '<td>' + (s.direction && s.direction !== 'Not Detected' ? '<span class="ti-badge ' + guidanceCls + '">' + esc(s.direction) + '</span>' : '<span style="color:#555;font-size:10px">' + DASH + '</span>') + '</td></tr>';
     }
@@ -806,7 +808,8 @@ function renderTranscriptDetail() {
     var sentTickers = Object.keys(ls).sort(function(a, b) { return (ls[b].score || 0) - (ls[a].score || 0); });
     var maxScore = Math.max.apply(null, sentTickers.map(function(t) { return Math.abs(ls[t].score || 0); }).concat([1]));
 
-    var html = '<table class="ti-rank-table"><thead><tr><th></th><th>Ticker</th><th>Sentiment</th><th>Guidance</th></tr></thead><tbody>';
+    var md2 = MARKET_DATA || {};
+    var html = '<table class="ti-rank-table"><thead><tr><th></th><th>Company</th><th>Sentiment</th><th>Guidance</th></tr></thead><tbody>';
     sentTickers.forEach(function(t, i) {
         var s = ls[t];
         var score = s.score || 0;
@@ -814,8 +817,9 @@ function renderTranscriptDetail() {
         var barW = Math.abs(score) / maxScore * 60;
         var guidanceCls = s.direction === 'Raised' ? 'ti-badge-raised' : s.direction === 'Lowered' ? 'ti-badge-lowered' : 'ti-badge-maintained';
         var icon = i === 0 ? '\uD83E\uDD47' : i === 1 ? '\uD83E\uDD48' : i === 2 ? '\uD83E\uDD49' : i >= sentTickers.length - 2 ? '\uD83D\uDCC9' : '';
+        var compLabel2 = (md2[t] && md2[t].name) ? esc(md2[t].name) + ' <span style="color:#9aa0a6;font-weight:400">(' + esc(t) + ')</span>' : esc(t);
         html += '<tr><td style="font-size:12px;text-align:center;width:24px">' + icon + '</td>' +
-            '<td><span style="color:var(--accent);font-weight:700">' + esc(t) + '</span><span style="font-size:10px;color:var(--text-secondary);margin-left:4px">' + esc(s.period || '') + '</span></td>' +
+            '<td><span style="color:var(--accent);font-weight:700;font-size:12px">' + compLabel2 + '</span><span style="font-size:10px;color:var(--text-secondary);margin-left:4px">' + esc(s.period || '') + '</span></td>' +
             '<td style="white-space:nowrap"><span class="ti-score-bar" style="width:' + barW + 'px;background:' + barColor + '"></span> <span style="font-weight:600;' + (score > 15 ? 'color:#4caf50' : score < 5 ? 'color:#ff9800' : '') + '">' + (score >= 0 ? '+' : '') + score.toFixed(1) + '</span></td>' +
             '<td>' + (s.direction && s.direction !== 'Not Detected' ? '<span class="ti-badge ' + guidanceCls + '">' + esc(s.direction) + '</span>' : '<span style="color:#555;font-size:10px">' + DASH + '</span>') + '</td></tr>';
     });
