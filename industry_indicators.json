@@ -340,24 +340,12 @@
   "DFF": {
     "label": "Federal Funds Rate (%)",
     "latest_value": 3.64,
-    "latest_date": "2026-03-20",
+    "latest_date": "2026-03-23",
     "change_30d": 0.0,
     "change_30d_pct": 0.0,
     "change_90d": 0.0,
     "change_90d_pct": 0.0,
     "history": [
-      {
-        "date": "2025-12-21",
-        "value": 3.64
-      },
-      {
-        "date": "2025-12-22",
-        "value": 3.64
-      },
-      {
-        "date": "2025-12-23",
-        "value": 3.64
-      },
       {
         "date": "2025-12-24",
         "value": 3.64
@@ -705,22 +693,30 @@
       {
         "date": "2026-03-20",
         "value": 3.64
+      },
+      {
+        "date": "2026-03-21",
+        "value": 3.64
+      },
+      {
+        "date": "2026-03-22",
+        "value": 3.64
+      },
+      {
+        "date": "2026-03-23",
+        "value": 3.64
       }
     ]
   },
   "T10Y2Y": {
     "label": "10Y-2Y Treasury Spread",
-    "latest_value": 0.51,
-    "latest_date": "2026-03-23",
-    "change_30d": -0.09,
-    "change_30d_pct": -15.0,
-    "change_90d": -0.16,
-    "change_90d_pct": -23.88,
+    "latest_value": 0.49,
+    "latest_date": "2026-03-24",
+    "change_30d": -0.11,
+    "change_30d_pct": -18.33,
+    "change_90d": -0.18,
+    "change_90d_pct": -26.87,
     "history": [
-      {
-        "date": "2025-11-10",
-        "value": 0.55
-      },
       {
         "date": "2025-11-12",
         "value": 0.52
@@ -1076,6 +1072,10 @@
       {
         "date": "2026-03-23",
         "value": 0.51
+      },
+      {
+        "date": "2026-03-24",
+        "value": 0.49
       }
     ]
   },
