@@ -423,16 +423,16 @@ var CATEGORY_COLORS = {
 
 var COMPARE_METRICS = [
     { key: 'price', label: 'Price', fmt: '$', higher: null },
-    { key: 'marketCap', label: 'Market Cap', fmt: '$B', higher: true },
-    { key: 'peRatio', label: 'P/E', fmt: 'x', higher: false },
-    { key: 'evEbitda', label: 'EV/EBITDA', fmt: 'x', higher: false },
-    { key: 'revenueGrowth', label: 'Revenue Growth', fmt: '%', higher: true },
-    { key: 'ebitdaMargin', label: 'EBITDA Margin', fmt: '%', higher: true },
+    { key: 'market_cap_b', label: 'Market Cap ($B)', fmt: 'x', higher: true },
+    { key: 'pe_trailing', label: 'P/E', fmt: 'x', higher: false },
+    { key: 'ev_ebitda', label: 'EV/EBITDA', fmt: 'x', higher: false },
+    { key: 'revenue_growth', label: 'Revenue Growth', fmt: '%', higher: true },
+    { key: 'ebitda_margins', label: 'EBITDA Margin', fmt: '%', higher: true },
     { key: 'roe', label: 'ROE', fmt: '%', higher: true },
-    { key: 'debtEquity', label: 'Debt/Equity', fmt: 'x', higher: false },
-    { key: 'dividendYield', label: 'Dividend Yield', fmt: '%', higher: true },
-    { key: 'analystTarget', label: 'Analyst Target', fmt: '$', higher: null },
-    { key: 'ytdChange', label: 'YTD %', fmt: '%', higher: true }
+    { key: 'debt_to_equity', label: 'Debt/Equity', fmt: 'x', higher: false },
+    { key: 'dividend_yield', label: 'Dividend Yield', fmt: '%', higher: true },
+    { key: 'target_mean', label: 'Analyst Target', fmt: '$', higher: null },
+    { key: 'change_ytd', label: 'YTD %', fmt: '%', higher: true }
 ];
 
 var currentSort = { col: 'composite', dir: -1 };
@@ -569,7 +569,7 @@ function getScatterData(xKey, yKey) {
         if (d[xKey] == null || d[yKey] == null) return;
         var cat = d.category || 'Other';
         if (!datasets[cat]) datasets[cat] = { label: cat, data: [], backgroundColor: CATEGORY_COLORS[cat] || '#888', borderColor: 'transparent' };
-        var mktCap = d.marketCap || 1e9;
+        var mktCap = d.market_cap_b ? d.market_cap_b * 1e9 : 1e9;
         var radius = Math.max(5, Math.min(25, Math.sqrt(mktCap / 1e9) * 3));
         datasets[cat].data.push({ x: d[xKey], y: d[yKey], r: radius, label: t + ' (' + (d.company || '') + ')' });
     });
@@ -604,7 +604,7 @@ function buildScatterCharts() {
 
     scatterChart1 = new Chart(document.getElementById('scatter1'), {
         type: 'bubble',
-        data: { datasets: getScatterData('revenueGrowth', 'ebitdaMargin') },
+        data: { datasets: getScatterData('revenue_growth', 'ebitda_margins') },
         options: scatterOpts('Revenue Growth (%)', 'EBITDA Margin (%)')
     });
 

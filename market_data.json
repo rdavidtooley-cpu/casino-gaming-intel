@@ -1098,6 +1098,169 @@
     "change_ytd": 3.0,
     "ytd_change": 3.0,
     "year_change": 18.9,
+    "earnings_date": "2026-04-29",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-24",
+        "type": "",
+        "shares": 1000000,
+        "value": 37223500.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-09",
+        "type": "",
+        "shares": 37500,
+        "value": 1285125.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 299,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-24",
+        "type": "",
+        "shares": 6083,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-24",
+        "type": "",
+        "shares": 12340,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-05",
+        "type": "",
+        "shares": 1098748,
+        "value": 39884552.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-01",
+        "type": "",
+        "shares": 15005,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-07",
+        "type": "",
+        "shares": 7299,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-07",
+        "type": "",
+        "shares": 12165,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-07",
+        "type": "",
+        "shares": 8921,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-07",
+        "type": "",
+        "shares": 32441,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-07",
+        "type": "",
+        "shares": 1379,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-07",
+        "type": "",
+        "shares": 12165,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 38668,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 31637,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 52729,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 52729,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 140610,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 4581,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-03",
+        "type": "",
+        "shares": 11284,
+        "value": NaN
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Davis Selected Advisers",
@@ -1170,7 +1333,7 @@
         "value": 193.8
       }
     ],
-    "timestamp": "2026-03-26T15:18:40.417016",
+    "timestamp": "2026-03-26T15:44:55.281768",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 50.0,
     "rank_pe_trailing": 4,
@@ -2284,6 +2447,169 @@
     "change_ytd": 14.1,
     "ytd_change": 14.1,
     "year_change": -0.4,
+    "earnings_date": "2026-04-28",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 3986,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 9824,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 2349,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 4413,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 25629,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 2135,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 11533,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 21072,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 44272,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 10469,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 9223,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 53398,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 23269,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-29",
+        "type": "",
+        "shares": 116454,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-23",
+        "type": "",
+        "shares": 10369,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-23",
+        "type": "",
+        "shares": 10369,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-23",
+        "type": "",
+        "shares": 10369,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-23",
+        "type": "",
+        "shares": 10369,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-23",
+        "type": "",
+        "shares": 10369,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 19251,
+        "value": NaN
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Blackrock Inc.",
@@ -2356,7 +2682,7 @@
         "value": 132.8
       }
     ],
-    "timestamp": "2026-03-26T15:18:41.178284",
+    "timestamp": "2026-03-26T15:44:56.124555",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 25.0,
     "rank_pe_trailing": null,
@@ -3470,6 +3796,169 @@
     "change_ytd": -18.7,
     "ytd_change": -18.7,
     "year_change": 16.5,
+    "earnings_date": "2026-05-06",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-07",
+        "type": "",
+        "shares": 70906,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-07",
+        "type": "",
+        "shares": 16952,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-07",
+        "type": "",
+        "shares": 12453,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-07",
+        "type": "",
+        "shares": 30312,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-07",
+        "type": "",
+        "shares": 5789,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-09-02",
+        "type": "",
+        "shares": 4438,
+        "value": 554750.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-09-02",
+        "type": "",
+        "shares": 4438,
+        "value": 302894.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-29",
+        "type": "",
+        "shares": 2262,
+        "value": 208375.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-29",
+        "type": "",
+        "shares": 2262,
+        "value": 154382.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 6066,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 3066,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 3066,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 3066,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 1533,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 3066,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-30",
+        "type": "",
+        "shares": 3066,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-15",
+        "type": "",
+        "shares": 96189,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-07",
+        "type": "",
+        "shares": 400000,
+        "value": 27872500.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-24",
+        "type": "",
+        "shares": 16500,
+        "value": 1381502.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-19",
+        "type": "",
+        "shares": 1600,
+        "value": 147904.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Capital World Investors",
@@ -3542,7 +4031,7 @@
         "value": 135.4
       }
     ],
-    "timestamp": "2026-03-26T15:18:41.892258",
+    "timestamp": "2026-03-26T15:44:56.892104",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 75.0,
     "rank_pe_trailing": 3,
@@ -4656,6 +5145,169 @@
     "change_ytd": -19.2,
     "ytd_change": -19.2,
     "year_change": 32.7,
+    "earnings_date": "2026-04-22",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-17",
+        "type": "",
+        "shares": 61740,
+        "value": 3243202.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-17",
+        "type": "",
+        "shares": 60165,
+        "value": 3294034.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 397197,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-06",
+        "type": "",
+        "shares": 195855,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-03",
+        "type": "",
+        "shares": 14036,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-03",
+        "type": "",
+        "shares": 33419,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-03",
+        "type": "",
+        "shares": 17378,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-03",
+        "type": "",
+        "shares": 65167,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-30",
+        "type": "",
+        "shares": 67019,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-30",
+        "type": "",
+        "shares": 18430,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-30",
+        "type": "",
+        "shares": 130688,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-30",
+        "type": "",
+        "shares": 20106,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-17",
+        "type": "",
+        "shares": 1250000,
+        "value": 62912500.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-17",
+        "type": "",
+        "shares": 1250000,
+        "value": 83392342.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-16",
+        "type": "",
+        "shares": 2316840,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-16",
+        "type": "",
+        "shares": 77991,
+        "value": 3187492.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-16",
+        "type": "",
+        "shares": 77991,
+        "value": 5269072.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-15",
+        "type": "",
+        "shares": 750000,
+        "value": 37747500.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-15",
+        "type": "",
+        "shares": 750000,
+        "value": 50092442.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-11",
+        "type": "",
+        "shares": 400000,
+        "value": 20132000.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Vanguard Group Inc",
@@ -4728,7 +5380,7 @@
         "value": 293.8
       }
     ],
-    "timestamp": "2026-03-26T15:18:42.746108",
+    "timestamp": "2026-03-26T15:44:57.650924",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
@@ -5842,6 +6494,7 @@
     "change_ytd": -26.4,
     "ytd_change": -26.4,
     "year_change": 2.4,
+    "earnings_date": "2026-04-30",
     "institutional_holders": [
       {
         "holder": "ARGA Investment Management, LP",
@@ -5914,7 +6567,7 @@
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-26T15:18:43.604404",
+    "timestamp": "2026-03-26T15:44:58.405346",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": 1,
@@ -7028,6 +7681,169 @@
     "change_ytd": -1.9,
     "ytd_change": -1.9,
     "year_change": -14.9,
+    "earnings_date": "2026-05-07",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 92968,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-09",
+        "type": "",
+        "shares": 17077,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-09",
+        "type": "",
+        "shares": 17077,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-09",
+        "type": "",
+        "shares": 17077,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-02",
+        "type": "",
+        "shares": 8000,
+        "value": 120720.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-26",
+        "type": "",
+        "shares": 24627,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-26",
+        "type": "",
+        "shares": 14404,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 25253,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 16835,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 16835,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 187373,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 16835,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 16835,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 62424,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 16835,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 55488,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-05",
+        "type": "",
+        "shares": 16835,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12994,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12994,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12994,
+        "value": NaN
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Blackrock Inc.",
@@ -7100,7 +7916,7 @@
         "value": 45.1
       }
     ],
-    "timestamp": "2026-03-26T15:18:44.250572",
+    "timestamp": "2026-03-26T15:44:59.038332",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 57.1,
     "rank_pe_trailing": null,
@@ -7185,8 +8001,8 @@
     "day_low": 82.86,
     "open_price": 84.44,
     "previous_close": 84.87,
-    "daily_change": -1.9300003,
-    "daily_change_pct": -2.2740667,
+    "daily_change": -1.93,
+    "daily_change_pct": -2.27407,
     "employees": 16009,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -8214,6 +9030,169 @@
     "change_ytd": -3.5,
     "ytd_change": -3.5,
     "year_change": 23.5,
+    "earnings_date": "2026-04-23",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 19530,
+        "value": 1632513.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-26",
+        "type": "",
+        "shares": 23924,
+        "value": 424651.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-26",
+        "type": "",
+        "shares": 23924,
+        "value": 2054115.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-23",
+        "type": "",
+        "shares": 35608,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-20",
+        "type": "",
+        "shares": 15798,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-20",
+        "type": "",
+        "shares": 32479,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-20",
+        "type": "",
+        "shares": 23455,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-20",
+        "type": "",
+        "shares": 8953,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-20",
+        "type": "",
+        "shares": 105918,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-20",
+        "type": "",
+        "shares": 1860,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-18",
+        "type": "",
+        "shares": 30000,
+        "value": 2545200.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-11-07",
+        "type": "",
+        "shares": 20000,
+        "value": 1607200.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-09-04",
+        "type": "",
+        "shares": 100000,
+        "value": 8662000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-25",
+        "type": "",
+        "shares": 50000,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-22",
+        "type": "",
+        "shares": 40035,
+        "value": 3419389.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-22",
+        "type": "",
+        "shares": 25000,
+        "value": 2130250.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-19",
+        "type": "",
+        "shares": 75000,
+        "value": 6252250.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-13",
+        "type": "",
+        "shares": 100000,
+        "value": 8417000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-12",
+        "type": "",
+        "shares": 13000,
+        "value": 1060801.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-08",
+        "type": "",
+        "shares": 2500,
+        "value": 205200.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Vanguard Group Inc",
@@ -8286,7 +9265,7 @@
         "value": 112.6
       }
     ],
-    "timestamp": "2026-03-26T15:18:45.121733",
+    "timestamp": "2026-03-26T15:44:59.857725",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 1,
@@ -9400,6 +10379,169 @@
     "change_ytd": -9.7,
     "ytd_change": -9.7,
     "year_change": 32.5,
+    "earnings_date": "2026-04-30",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-12",
+        "type": "",
+        "shares": 3221,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-12",
+        "type": "",
+        "shares": 3221,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-12",
+        "type": "",
+        "shares": 3221,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-22",
+        "type": "",
+        "shares": 37075,
+        "value": 2262539.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-13",
+        "type": "",
+        "shares": 5250,
+        "value": 320250.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-12",
+        "type": "",
+        "shares": 42325,
+        "value": 2480668.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-11",
+        "type": "",
+        "shares": 206355,
+        "value": 3780424.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-01",
+        "type": "",
+        "shares": 121400,
+        "value": 7288856.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-01",
+        "type": "",
+        "shares": 56653,
+        "value": 3412210.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-31",
+        "type": "",
+        "shares": 332369,
+        "value": 8013417.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-31",
+        "type": "",
+        "shares": 310210,
+        "value": 7479163.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-26",
+        "type": "",
+        "shares": 159174,
+        "value": 4713142.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 23033,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 3838,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 21593,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 93221,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 53983,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 21593,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 93221,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-02-13",
+        "type": "",
+        "shares": 3838,
+        "value": 0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "BAMCO Inc.",
@@ -9472,7 +10614,7 @@
         "value": 66.3
       }
     ],
-    "timestamp": "2026-03-26T15:18:46.048367",
+    "timestamp": "2026-03-26T15:45:00.589483",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 71.4,
     "rank_pe_trailing": 3,
@@ -10586,6 +11728,169 @@
     "change_ytd": -21.8,
     "ytd_change": -21.8,
     "year_change": -21.8,
+    "earnings_date": "2026-04-22",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-05",
+        "type": "",
+        "shares": 6104,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-05",
+        "type": "",
+        "shares": 37727,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-05",
+        "type": "",
+        "shares": 16648,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-05",
+        "type": "",
+        "shares": 12207,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-06",
+        "type": "",
+        "shares": 476,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-06",
+        "type": "",
+        "shares": 59,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-06",
+        "type": "",
+        "shares": 17,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-06",
+        "type": "",
+        "shares": 39,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-06",
+        "type": "",
+        "shares": 116,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-06",
+        "type": "",
+        "shares": 199,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 26711,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 13477,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 6060,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 5258,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 2959,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 302,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-26",
+        "type": "",
+        "shares": 5730,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-22",
+        "type": "",
+        "shares": 12800,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-30",
+        "type": "",
+        "shares": 151942,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-10-30",
+        "type": "",
+        "shares": 94966,
+        "value": NaN
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Blackrock Inc.",
@@ -10658,7 +11963,7 @@
         "value": 108.2
       }
     ],
-    "timestamp": "2026-03-26T15:18:47.829886",
+    "timestamp": "2026-03-26T15:45:01.937692",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 85.7,
     "rank_pe_trailing": 2,
@@ -10741,7 +12046,7 @@
     "avg_volume_3mo": 110723,
     "day_high": 100.325,
     "day_low": 96.97,
-    "open_price": 99.18,
+    "open_price": 99.56,
     "previous_close": 99.47,
     "daily_change": -2.25,
     "daily_change_pct": -2.2619884,
@@ -11772,6 +13077,97 @@
     "change_ytd": 1.5,
     "ytd_change": 1.5,
     "year_change": 22.3,
+    "earnings_date": "2026-04-21",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-16",
+        "type": "",
+        "shares": 3000,
+        "value": 295430.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-17",
+        "type": "",
+        "shares": 6000,
+        "value": 619480.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-09-29",
+        "type": "",
+        "shares": 13806,
+        "value": 1444108.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-22",
+        "type": "",
+        "shares": 2000,
+        "value": 211560.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-22",
+        "type": "",
+        "shares": 12200,
+        "value": 1287710.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-21",
+        "type": "",
+        "shares": 66666,
+        "value": 1174655.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-03",
+        "type": "",
+        "shares": 3000,
+        "value": 230700.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-10-23",
+        "type": "",
+        "shares": 27968,
+        "value": 2140111.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-07-30",
+        "type": "",
+        "shares": 66668,
+        "value": 821350.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-07-30",
+        "type": "",
+        "shares": 33333,
+        "value": 2040646.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-06-21",
+        "type": "",
+        "shares": 2000,
+        "value": 136000.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Blackrock Inc.",
@@ -11844,7 +13240,7 @@
         "value": 20.3
       }
     ],
-    "timestamp": "2026-03-26T15:18:48.595951",
+    "timestamp": "2026-03-26T15:45:02.685529",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 42.9,
     "rank_pe_trailing": 4,
@@ -12958,6 +14354,169 @@
     "change_ytd": -2.3,
     "ytd_change": -2.3,
     "year_change": -0.5,
+    "earnings_date": "2026-05-07",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 90717,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 15482,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 15482,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 15482,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 27419,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 53178,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 5815,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 1663,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-06-17",
+        "type": "",
+        "shares": 440000,
+        "value": 2349600.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-23",
+        "type": "",
+        "shares": 5375,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-02",
+        "type": "",
+        "shares": 46178,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-04-02",
+        "type": "",
+        "shares": 46178,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-14",
+        "type": "",
+        "shares": 76140,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-14",
+        "type": "",
+        "shares": 71047,
+        "value": 267000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-14",
+        "type": "",
+        "shares": 44240,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-14",
+        "type": "",
+        "shares": 5221,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-13",
+        "type": "",
+        "shares": 23979,
+        "value": 620337.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-12-20",
+        "type": "",
+        "shares": 16586,
+        "value": 518478.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-12-20",
+        "type": "",
+        "shares": 20000,
+        "value": 106800.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-09-20",
+        "type": "",
+        "shares": 10773,
+        "value": 346856.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Blackrock Inc.",
@@ -13030,7 +14589,7 @@
         "value": 12.4
       }
     ],
-    "timestamp": "2026-03-26T15:18:49.461169",
+    "timestamp": "2026-03-26T15:45:03.377178",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 28.6,
     "rank_pe_trailing": null,
@@ -14144,6 +15703,169 @@
     "change_ytd": -8.8,
     "ytd_change": -8.8,
     "year_change": -46.1,
+    "earnings_date": "2026-05-07",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-16",
+        "type": "",
+        "shares": 40000,
+        "value": 68000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-16",
+        "type": "",
+        "shares": 40000,
+        "value": 68000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-12",
+        "type": "",
+        "shares": 5888,
+        "value": 10010.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-13",
+        "type": "",
+        "shares": 10000,
+        "value": 35368.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-23",
+        "type": "",
+        "shares": 184200,
+        "value": 874950.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-11",
+        "type": "",
+        "shares": 6222,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-07-11",
+        "type": "",
+        "shares": 10371,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-06-13",
+        "type": "",
+        "shares": 276300,
+        "value": 837189.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 20436,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 20436,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 20436,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 28099,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 72377,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 20436,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-19",
+        "type": "",
+        "shares": 20436,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-13",
+        "type": "",
+        "shares": 25000,
+        "value": 85028.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-27",
+        "type": "",
+        "shares": 90524,
+        "value": 124018.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-24",
+        "type": "",
+        "shares": 104992,
+        "value": 143839.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-24",
+        "type": "",
+        "shares": 104992,
+        "value": 485546.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-21",
+        "type": "",
+        "shares": 8613,
+        "value": 11800.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Private Management Group, Inc.",
@@ -14216,7 +15938,7 @@
         "value": 1.2
       }
     ],
-    "timestamp": "2026-03-26T15:18:50.088038",
+    "timestamp": "2026-03-26T15:45:04.187124",
     "rank_market_cap_b": 8,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -15330,6 +17052,169 @@
     "change_ytd": -32.0,
     "ytd_change": -32.0,
     "year_change": -10.5,
+    "earnings_date": "2026-05-11",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-23",
+        "type": "",
+        "shares": 30357,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-23",
+        "type": "",
+        "shares": 7028,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-23",
+        "type": "",
+        "shares": 32144,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-23",
+        "type": "",
+        "shares": 7366,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 35714,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 8267,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 8184,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 3027,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 35714,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-09-30",
+        "type": "",
+        "shares": 4505,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-06-30",
+        "type": "",
+        "shares": 5219,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-15",
+        "type": "",
+        "shares": 9225,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-15",
+        "type": "",
+        "shares": 18450,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-15",
+        "type": "",
+        "shares": 18450,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-15",
+        "type": "",
+        "shares": 9225,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-05-15",
+        "type": "",
+        "shares": 9225,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-31",
+        "type": "",
+        "shares": 4065,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-21",
+        "type": "",
+        "shares": 20435,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-21",
+        "type": "",
+        "shares": 6987,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-03-21",
+        "type": "",
+        "shares": 25617,
+        "value": 0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Standard General L.P.",
@@ -15402,7 +17287,7 @@
         "value": 0.7
       }
     ],
-    "timestamp": "2026-03-26T15:18:50.702017",
+    "timestamp": "2026-03-26T15:45:04.907649",
     "rank_market_cap_b": 7,
     "pctile_market_cap_b": 14.3,
     "rank_pe_trailing": null,
@@ -16516,6 +18401,169 @@
     "change_ytd": -40.4,
     "ytd_change": -40.4,
     "year_change": -42.6,
+    "earnings_date": "2026-05-07",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-13",
+        "type": "",
+        "shares": 2150,
+        "value": 55040.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 484417,
+        "value": 12187932.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 484417,
+        "value": 305183.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-09",
+        "type": "",
+        "shares": 273488,
+        "value": 899776.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-03",
+        "type": "",
+        "shares": 2883,
+        "value": 70800.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 39658,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 9789,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 8045,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 67914,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 39658,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-27",
+        "type": "",
+        "shares": 21658,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-19",
+        "type": "",
+        "shares": 7268,
+        "value": 163530.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-18",
+        "type": "",
+        "shares": 200000,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-18",
+        "type": "",
+        "shares": 400000,
+        "value": 1316000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-17",
+        "type": "",
+        "shares": 100000,
+        "value": 2185000.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-13",
+        "type": "",
+        "shares": 25732,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-13",
+        "type": "",
+        "shares": 51464,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-13",
+        "type": "",
+        "shares": 87489,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-13",
+        "type": "",
+        "shares": 51464,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-13",
+        "type": "",
+        "shares": 43923,
+        "value": 0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Vanguard Group Inc",
@@ -16588,7 +18636,7 @@
         "value": 213.3
       }
     ],
-    "timestamp": "2026-03-26T15:18:51.662490",
+    "timestamp": "2026-03-26T15:45:05.620759",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": null,
@@ -17702,6 +19750,169 @@
     "change_ytd": -52.5,
     "ytd_change": -52.5,
     "year_change": -56.4,
+    "earnings_date": "2026-05-06",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 9394,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 14949,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 11893,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 15371,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 31684,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 13339,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 8895,
+        "value": 942099.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 4326,
+        "value": 467208.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 4613,
+        "value": 491054.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 17934,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 9170,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 9779,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-02",
+        "type": "",
+        "shares": 677,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-28",
+        "type": "",
+        "shares": 4097,
+        "value": 1253328.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-19",
+        "type": "",
+        "shares": 2112,
+        "value": 617591.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-14",
+        "type": "",
+        "shares": 2076,
+        "value": 606693.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-14",
+        "type": "",
+        "shares": 2076,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-11",
+        "type": "",
+        "shares": 1904,
+        "value": 536246.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-11",
+        "type": "",
+        "shares": 15283,
+        "value": 4352598.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-08-11",
+        "type": "",
+        "shares": 1904,
+        "value": NaN
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Vanguard Group Inc",
@@ -17774,7 +19985,7 @@
         "value": 414.6
       }
     ],
-    "timestamp": "2026-03-26T15:18:52.425150",
+    "timestamp": "2026-03-26T15:45:06.271253",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -18888,6 +21099,7 @@
     "change_ytd": 11.1,
     "ytd_change": 11.1,
     "year_change": 95.2,
+    "earnings_date": "2026-04-29",
     "institutional_holders": [
       {
         "holder": "Vanguard Group Inc",
@@ -18960,7 +21172,7 @@
         "value": 47.9
       }
     ],
-    "timestamp": "2026-03-26T15:18:53.153449",
+    "timestamp": "2026-03-26T15:45:06.964862",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 20.0,
     "rank_pe_trailing": 3,
@@ -19020,10 +21232,10 @@
     "current_ratio": 1.167,
     "quick_ratio": 1.041,
     "beta": 2.002,
-    "target_high": 37.15721,
-    "target_low": 22.938662,
-    "target_mean": 28.868347,
-    "target_median": 27.893034,
+    "target_high": 37.110058,
+    "target_low": 22.909552,
+    "target_mean": 28.831713,
+    "target_median": 27.857635,
     "recommendation_key": "strong_buy",
     "recommendation_mean": 1.33333,
     "num_analysts": 21,
@@ -19043,7 +21255,7 @@
     "avg_volume_3mo": 2657188,
     "day_high": 18.975,
     "day_low": 17.605,
-    "open_price": 18.56,
+    "open_price": 18.4501,
     "previous_close": 18.51,
     "daily_change": -0.5100002,
     "daily_change_pct": -2.7552686,
@@ -19058,7 +21270,7 @@
     "pct_off_high": -44.1,
     "vs_50dma_pct": -2.1,
     "vs_200dma_pct": -26.6,
-    "upside_pct": 60.4,
+    "upside_pct": 60.2,
     "change_1y": -20.0,
     "trend_1y": -30.1,
     "week_change": -8.2,
@@ -20074,6 +22286,7 @@
     "change_ytd": -22.8,
     "ytd_change": -22.8,
     "year_change": -20.0,
+    "earnings_date": "2026-05-11",
     "institutional_holders": [
       {
         "holder": "Canada Pension Plan Investment Board",
@@ -20146,7 +22359,7 @@
         "value": 56.9
       }
     ],
-    "timestamp": "2026-03-26T15:18:54.370923",
+    "timestamp": "2026-03-26T15:45:08.183254",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": 2,
@@ -21260,6 +23473,7 @@
     "change_ytd": -9.0,
     "ytd_change": -9.0,
     "year_change": 57.8,
+    "earnings_date": "2026-05-07",
     "institutional_holders": [
       {
         "holder": "Divisadero Street Capital Management, LP",
@@ -21332,7 +23546,7 @@
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-26T15:18:55.178369",
+    "timestamp": "2026-03-26T15:45:08.938977",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": 1,
@@ -22446,6 +24660,7 @@
     "change_ytd": -59.1,
     "ytd_change": -59.1,
     "year_change": -59.3,
+    "earnings_date": "2026-05-05",
     "institutional_holders": [
       {
         "holder": "Blackrock Inc.",
@@ -22518,7 +24733,7 @@
         "value": 24.0
       }
     ],
-    "timestamp": "2026-03-26T15:18:55.974738",
+    "timestamp": "2026-03-26T15:45:09.610138",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -23632,6 +25847,7 @@
     "change_ytd": -14.3,
     "ytd_change": -14.3,
     "year_change": -0.7,
+    "earnings_date": "2026-05-12",
     "institutional_holders": [
       {
         "holder": "Lazard Asset Management LLC",
@@ -23704,7 +25920,7 @@
         "value": 20.7
       }
     ],
-    "timestamp": "2026-03-26T15:18:56.763871",
+    "timestamp": "2026-03-26T15:45:10.392560",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -23976,8 +26192,9 @@
     "change_ytd": -23.9,
     "ytd_change": -23.9,
     "year_change": -23.9,
+    "earnings_date": "2026-05-06",
     "institutional_holders": [],
-    "timestamp": "2026-03-26T15:18:57.515717",
+    "timestamp": "2026-03-26T15:45:11.116274",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -25091,6 +27308,169 @@
     "change_ytd": -2.5,
     "ytd_change": -2.5,
     "year_change": 8.3,
+    "earnings_date": "2026-05-05",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-17",
+        "type": "",
+        "shares": 3938,
+        "value": 44223.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-16",
+        "type": "",
+        "shares": 36062,
+        "value": 404432.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-16",
+        "type": "",
+        "shares": 7125,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-13",
+        "type": "",
+        "shares": 20000,
+        "value": 227800.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-13",
+        "type": "",
+        "shares": 57686,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-13",
+        "type": "",
+        "shares": 39414,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-13",
+        "type": "",
+        "shares": 165955,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-13",
+        "type": "",
+        "shares": 1875,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-12",
+        "type": "",
+        "shares": 176709,
+        "value": 2009779.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-11",
+        "type": "",
+        "shares": 160561,
+        "value": 1827213.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 10000,
+        "value": 115260.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 2092,
+        "value": 23953.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 469885,
+        "value": 5386490.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 10445,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 7138,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 29345,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 4798,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-03-10",
+        "type": "",
+        "shares": 17514,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-02-18",
+        "type": "",
+        "shares": 25000,
+        "value": 276120.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-15",
+        "type": "",
+        "shares": 25000,
+        "value": 289442.0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "DARLINGTON PARTNERS CAPITAL MANAGEMENT, LP",
@@ -25163,7 +27543,7 @@
         "value": 10.1
       }
     ],
-    "timestamp": "2026-03-26T15:18:58.232144",
+    "timestamp": "2026-03-26T15:45:11.859054",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 66.7,
     "rank_pe_trailing": 1,
@@ -26277,6 +28657,169 @@
     "change_ytd": -23.4,
     "ytd_change": -23.4,
     "year_change": -22.5,
+    "earnings_date": "2026-05-07",
+    "insider_transactions": [
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 10952,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12047,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12047,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12047,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 10952,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 12047,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 46719,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2026-01-02",
+        "type": "",
+        "shares": 30398,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 2047,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-12-31",
+        "type": "",
+        "shares": 12456,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-11-26",
+        "type": "",
+        "shares": 50000,
+        "value": 405500.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-11-21",
+        "type": "",
+        "shares": 20000,
+        "value": 144300.0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-06",
+        "type": "",
+        "shares": 55182,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-06",
+        "type": "",
+        "shares": 37054,
+        "value": NaN
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-02",
+        "type": "",
+        "shares": 8743,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-02",
+        "type": "",
+        "shares": 8743,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-02",
+        "type": "",
+        "shares": 8743,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-02",
+        "type": "",
+        "shares": 7949,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2025-01-02",
+        "type": "",
+        "shares": 8743,
+        "value": 0
+      },
+      {
+        "insider": "",
+        "relation": "",
+        "date": "2024-06-28",
+        "type": "",
+        "shares": 493015,
+        "value": 0
+      }
+    ],
     "institutional_holders": [
       {
         "holder": "Macquarie Group Limited",
@@ -26349,7 +28892,7 @@
         "value": 4.5
       }
     ],
-    "timestamp": "2026-03-26T15:18:59.119400",
+    "timestamp": "2026-03-26T15:45:12.596278",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 33.3,
     "rank_pe_trailing": null,
