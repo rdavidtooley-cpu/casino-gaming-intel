@@ -66,6 +66,9 @@
         .kpi-label { font-size:10px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:4px; }
         .kpi-label[data-tip] { position:relative; cursor:help; border-bottom:1px dotted rgba(255,255,255,0.2); }
         .kpi-label[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:0; top:100%; margin-top:4px; background:#2d3748; color:#e8eaed; font-size:11px; padding:6px 10px; border-radius:6px; white-space:normal; width:220px; z-index:100; text-transform:none; letter-spacing:normal; line-height:1.4; box-shadow:0 4px 12px rgba(0,0,0,0.4); pointer-events:none; }
+        .info-icon { position:relative; cursor:help; font-size:13px; color:var(--text-secondary); opacity:0.6; }
+        .info-icon:hover { opacity:1; }
+        .info-icon:hover::after { content:attr(data-tip); position:absolute; left:50%; top:100%; transform:translateX(-50%); margin-top:6px; background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; z-index:100; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
         .kpi-value { font-size:24px; font-weight:700; margin-bottom:2px; }
         .kpi-sub { font-size:11px; color:var(--text-secondary); }
         .positive { color:var(--positive); } .negative { color:var(--negative); }
@@ -251,7 +254,7 @@
             <div class="section-title" title="Companies reporting earnings soon, sorted by date. Helps you prepare for potential stock moves around earnings announcements.">Upcoming Earnings</div>
             <div id="upcoming-earnings"></div>
             <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
-                <div class="section-title" title="Wall Street consensus ratings and price targets for all tracked companies. Shows how analysts collectively view each stock.">Analyst Consensus</div>
+                <div class="section-title" style="display:flex;align-items:center;gap:6px;">Analyst Consensus <span class="info-icon" data-tip="Aggregated Wall Street analyst ratings (Buy/Hold/Sell) and 12-month price targets across all 25 tracked companies. 'Upside to Target' shows how much the consensus price target exceeds the current stock price — higher % means analysts see more room to grow. Based on the latest available analyst coverage from major brokerages.">&#9432;</span></div>
                 <div id="analyst-snapshot"></div>
             </div>
         </div>
