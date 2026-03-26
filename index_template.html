@@ -267,16 +267,16 @@
     </div>
     <div class="grid-3col" id="ti-section">
         <div class="card">
-            <h3 title="Shows how many companies raised, maintained, or lowered their financial guidance in their most recent earnings call.">Guidance Direction (Latest Quarter)</h3>
+            <h3 style="display:flex;align-items:center;gap:6px;">Guidance Direction (Latest Quarter) <span class="info-icon" data-tip="Shows how many companies raised, maintained, or lowered their financial guidance (revenue and earnings forecasts) in their most recent earnings call. 'Raised' means management increased their outlook — a bullish signal. 'Lowered' means they cut expectations. A sector with mostly raised guidance indicates broad confidence in the business environment.">&#9432;</span></h3>
             <canvas id="ti-guidance-chart" style="max-height:200px;"></canvas>
         </div>
         <div class="card">
-            <h3 title="Ranks companies by how positive or negative their earnings call tone was. Higher scores mean more optimistic language from management.">Sentiment Leaders &amp; Laggards</h3>
+            <h3 style="display:flex;align-items:center;gap:6px;">Sentiment Leaders &amp; Laggards <span class="info-icon" data-tip="Ranks companies by the tone of their latest earnings call transcript. The sentiment score measures how positive or negative management's language was — higher scores mean more optimistic language about business outlook, growth, and performance. Scores are computed by analyzing word choice across the full transcript: positive words (growth, strong, exceeded, opportunity) add points, negative words (decline, headwinds, challenging, loss) subtract. A score of +20 or above suggests a strongly upbeat call; below +10 is more cautious.">&#9432;</span></h3>
             <div id="ti-sentiment-table"></div>
         </div>
         <div class="card">
             <h3 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-                <span>Topic Focus</span>
+                <span style="display:flex;align-items:center;gap:6px;">Topic Focus <span class="info-icon" data-tip="Shows which business topics management discussed most across earnings calls. Longer bars = more mentions across all transcripts. Filter by company to see what a specific management team focused on. Topics like 'Margins' or 'M&A' getting heavy discussion often signals where management sees the biggest opportunities or challenges.">&#9432;</span></span>
                 <select id="ti-topic-company" style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:11px;cursor:pointer" onchange="renderTopicChart()">
                     <option value="all">All Companies</option>
                 </select>

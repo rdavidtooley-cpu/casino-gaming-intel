@@ -267,16 +267,16 @@
     </div>
     <div class="grid-3col" id="ti-section">
         <div class="card">
-            <h3 title="Shows how many companies raised, maintained, or lowered their financial guidance in their most recent earnings call.">Guidance Direction (Latest Quarter)</h3>
+            <h3 style="display:flex;align-items:center;gap:6px;">Guidance Direction (Latest Quarter) <span class="info-icon" data-tip="Shows how many companies raised, maintained, or lowered their financial guidance (revenue and earnings forecasts) in their most recent earnings call. 'Raised' means management increased their outlook — a bullish signal. 'Lowered' means they cut expectations. A sector with mostly raised guidance indicates broad confidence in the business environment.">&#9432;</span></h3>
             <canvas id="ti-guidance-chart" style="max-height:200px;"></canvas>
         </div>
         <div class="card">
-            <h3 title="Ranks companies by how positive or negative their earnings call tone was. Higher scores mean more optimistic language from management.">Sentiment Leaders &amp; Laggards</h3>
+            <h3 style="display:flex;align-items:center;gap:6px;">Sentiment Leaders &amp; Laggards <span class="info-icon" data-tip="Ranks companies by the tone of their latest earnings call transcript. The sentiment score measures how positive or negative management's language was — higher scores mean more optimistic language about business outlook, growth, and performance. Scores are computed by analyzing word choice across the full transcript: positive words (growth, strong, exceeded, opportunity) add points, negative words (decline, headwinds, challenging, loss) subtract. A score of +20 or above suggests a strongly upbeat call; below +10 is more cautious.">&#9432;</span></h3>
             <div id="ti-sentiment-table"></div>
         </div>
         <div class="card">
             <h3 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-                <span>Topic Focus</span>
+                <span style="display:flex;align-items:center;gap:6px;">Topic Focus <span class="info-icon" data-tip="Shows which business topics management discussed most across earnings calls. Longer bars = more mentions across all transcripts. Filter by company to see what a specific management team focused on. Topics like 'Margins' or 'M&A' getting heavy discussion often signals where management sees the biggest opportunities or challenges.">&#9432;</span></span>
                 <select id="ti-topic-company" style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:11px;cursor:pointer" onchange="renderTopicChart()">
                     <option value="all">All Companies</option>
                 </select>
@@ -428,12 +428,12 @@ var INJECTED_COMMAND_CENTER = {
   "market_data": {
     "MGM": {
       "price": 37.51,
-      "change_pct": 0.04000904,
-      "market_cap_b": 10.258,
+      "change_pct": 0.053338602,
+      "market_cap_b": 10.259,
       "name": "MGM Resorts International",
       "display_ticker": "MGM",
       "category": "Integrated Resorts",
-      "pe_ratio": 49.348686,
+      "pe_ratio": 49.355263,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-29",
@@ -441,12 +441,12 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 42.66667,
       "upside_pct": 13.7,
       "num_analysts": 18,
-      "market_cap": 10257858560
+      "market_cap": 10259225600
     },
     "CZR": {
       "price": 26.8,
-      "change_pct": -0.09322998,
-      "market_cap_b": 5.469,
+      "change_pct": -0.055926137,
+      "market_cap_b": 5.471,
       "name": "Caesars Entertainment",
       "display_ticker": "CZR",
       "category": "Integrated Resorts",
@@ -458,16 +458,16 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 31.95778,
       "upside_pct": 19.2,
       "num_analysts": 18,
-      "market_cap": 5469072384
+      "market_cap": 5471113216
     },
     "WYNN": {
-      "price": 99.36,
-      "change_pct": -2.4781642,
-      "market_cap_b": 10.362,
+      "price": 99.4,
+      "change_pct": -2.44381,
+      "market_cap_b": 10.366,
       "name": "Wynn Resorts",
       "display_ticker": "WYNN",
       "category": "Integrated Resorts",
-      "pe_ratio": 31.644903,
+      "pe_ratio": 31.65605,
       "dividend_yield": 0.98,
       "dividend_rate": 1.0,
       "next_earnings_date": "2026-05-06",
@@ -475,33 +475,33 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 141.83333,
       "upside_pct": 42.7,
       "num_analysts": 18,
-      "market_cap": 10362108928
+      "market_cap": 10365759488
     },
     "LVS": {
-      "price": 52.49,
-      "change_pct": -3.1013412,
-      "market_cap_b": 35.49,
+      "price": 52.47,
+      "change_pct": -3.147495,
+      "market_cap_b": 35.473,
       "name": "Las Vegas Sands",
       "display_ticker": "LVS",
       "category": "Integrated Resorts",
-      "pe_ratio": 22.336172,
+      "pe_ratio": 22.325533,
       "dividend_yield": 1.94,
       "dividend_rate": 1.05,
       "next_earnings_date": "2026-04-22",
       "recommendation_key": "buy",
       "target_mean": 69.87368,
-      "upside_pct": 33.1,
+      "upside_pct": 33.2,
       "num_analysts": 19,
-      "market_cap": 35490299904
+      "market_cap": 35473395712
     },
     "MLCO": {
       "price": 5.5,
-      "change_pct": 0.36496314,
-      "market_cap_b": 2.237,
+      "change_pct": 0.4562061,
+      "market_cap_b": 2.239,
       "name": "Melco Resorts",
       "display_ticker": "MLCO",
       "category": "Integrated Resorts",
-      "pe_ratio": 11.956522,
+      "pe_ratio": 11.967391,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-30",
@@ -509,7 +509,7 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 9.24231,
       "upside_pct": 68.0,
       "num_analysts": 13,
-      "market_cap": 2237356032
+      "market_cap": 2239389952
     },
     "PENN": {
       "price": 14.51,
@@ -529,13 +529,13 @@ var INJECTED_COMMAND_CENTER = {
       "market_cap": 1937088640
     },
     "BYD": {
-      "price": 82.97,
-      "change_pct": -2.2321742,
-      "market_cap_b": 6.264,
+      "price": 82.93,
+      "change_pct": -2.2858517,
+      "market_cap_b": 6.261,
       "name": "Boyd Gaming",
       "display_ticker": "BYD",
       "category": "Regional Operators",
-      "pe_ratio": 3.67797,
+      "pe_ratio": 3.6759753,
       "dividend_yield": 0.87,
       "dividend_rate": 0.74,
       "next_earnings_date": "2026-04-23",
@@ -543,16 +543,16 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 94.46667,
       "upside_pct": 13.9,
       "num_analysts": 15,
-      "market_cap": 6263965696
+      "market_cap": 6260569088
     },
     "RRR": {
-      "price": 55.98,
-      "change_pct": -4.714895,
-      "market_cap_b": 5.756,
+      "price": 55.96,
+      "change_pct": -4.7489376,
+      "market_cap_b": 5.754,
       "name": "Red Rock Resorts",
       "display_ticker": "RRR",
       "category": "Regional Operators",
-      "pe_ratio": 17.942308,
+      "pe_ratio": 17.935898,
       "dividend_yield": 1.77,
       "dividend_rate": 1.04,
       "next_earnings_date": "2026-04-30",
@@ -560,24 +560,24 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 72.9375,
       "upside_pct": 30.3,
       "num_analysts": 16,
-      "market_cap": 5756249600
+      "market_cap": 5754192896
     },
     "CHDN": {
-      "price": 87.74,
-      "change_pct": 0.6192671,
-      "market_cap_b": 6.115,
+      "price": 87.72,
+      "change_pct": 0.5963352,
+      "market_cap_b": 6.114,
       "name": "Churchill Downs",
       "display_ticker": "CHDN",
       "category": "Regional Operators",
-      "pe_ratio": 16.586012,
+      "pe_ratio": 16.582232,
       "dividend_yield": 0.5,
       "dividend_rate": 0.44,
       "next_earnings_date": "2026-04-22",
       "recommendation_key": "strong_buy",
       "target_mean": 135.5,
-      "upside_pct": 54.4,
+      "upside_pct": 54.5,
       "num_analysts": 12,
-      "market_cap": 6115160064
+      "market_cap": 6113766400
     },
     "MCRI": {
       "price": 97.54,
@@ -597,8 +597,8 @@ var INJECTED_COMMAND_CENTER = {
       "market_cap": 1744612224
     },
     "GDEN": {
-      "price": 26.38,
-      "change_pct": -0.03789401,
+      "price": 26.36,
+      "change_pct": -0.113674805,
       "market_cap_b": 0.696,
       "name": "Golden Entertainment",
       "display_ticker": "GDEN",
@@ -609,9 +609,9 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "none",
       "target_mean": 30.5,
-      "upside_pct": 15.6,
+      "upside_pct": 15.7,
       "num_analysts": 4,
-      "market_cap": 696400640
+      "market_cap": 695872704
     },
     "FLL": {
       "price": 2.27,
@@ -631,9 +631,9 @@ var INJECTED_COMMAND_CENTER = {
       "market_cap": 82131960
     },
     "BALY": {
-      "price": 11.52,
-      "change_pct": -3.3976488,
-      "market_cap_b": 0.566,
+      "price": 11.42,
+      "change_pct": -4.1946306,
+      "market_cap_b": 0.561,
       "name": "Bally's Corporation",
       "display_ticker": "BALY",
       "category": "Regional Operators",
@@ -643,14 +643,14 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-11",
       "recommendation_key": "hold",
       "target_mean": 15.66667,
-      "upside_pct": 36.0,
+      "upside_pct": 37.2,
       "num_analysts": 3,
-      "market_cap": 566102016
+      "market_cap": 561431616
     },
     "DKNG": {
-      "price": 21.2,
-      "change_pct": -1.0037355,
-      "market_cap_b": 10.555,
+      "price": 21.23,
+      "change_pct": -0.8636763,
+      "market_cap_b": 10.57,
       "name": "DraftKings",
       "display_ticker": "DKNG",
       "category": "Online & iGaming",
@@ -660,14 +660,14 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "buy",
       "target_mean": 36.17353,
-      "upside_pct": 70.6,
+      "upside_pct": 70.4,
       "num_analysts": 34,
-      "market_cap": 10555266048
+      "market_cap": 10570200064
     },
     "FLUT": {
-      "price": 103.19,
-      "change_pct": -0.20309389,
-      "market_cap_b": 18.053,
+      "price": 103.27,
+      "change_pct": -0.12573005,
+      "market_cap_b": 18.067,
       "name": "Flutter Entertainment",
       "display_ticker": "FLUT",
       "category": "Online & iGaming",
@@ -677,9 +677,9 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-06",
       "recommendation_key": "buy",
       "target_mean": 207.44444,
-      "upside_pct": 101.0,
+      "upside_pct": 100.9,
       "num_analysts": 27,
-      "market_cap": 18053335040
+      "market_cap": 18067331072
     },
     "RSI": {
       "price": 21.62,
@@ -700,37 +700,37 @@ var INJECTED_COMMAND_CENTER = {
     },
     "SRAD": {
       "price": 17.82,
-      "change_pct": -3.7006993,
-      "market_cap_b": 5.275,
+      "change_pct": -3.7277176,
+      "market_cap_b": 5.274,
       "name": "Sportradar Group",
       "display_ticker": "SRAD",
       "category": "Online & iGaming",
-      "pe_ratio": 49.51389,
+      "pe_ratio": 49.499996,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-05-11",
       "recommendation_key": "strong_buy",
-      "target_mean": 28.815092,
+      "target_mean": 28.81177,
       "upside_pct": 61.7,
       "num_analysts": 21,
-      "market_cap": 5275338240
+      "market_cap": 5273858048
     },
     "SGHC": {
-      "price": 10.56,
-      "change_pct": 0.18975766,
-      "market_cap_b": 5.34,
+      "price": 10.55,
+      "change_pct": 0.09487883,
+      "market_cap_b": 5.334,
       "name": "Super Group",
       "display_ticker": "SGHC",
       "category": "Online & iGaming",
-      "pe_ratio": 25.142859,
+      "pe_ratio": 25.11905,
       "dividend_yield": 1.61,
       "dividend_rate": 0.17,
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "strong_buy",
       "target_mean": 17.375,
-      "upside_pct": 64.5,
+      "upside_pct": 64.7,
       "num_analysts": 8,
-      "market_cap": 5339533312
+      "market_cap": 5334476800
     },
     "GENI": {
       "price": 4.42,
@@ -784,21 +784,21 @@ var INJECTED_COMMAND_CENTER = {
       "market_cap": 0
     },
     "ACEL": {
-      "price": 11.06,
-      "change_pct": -1.7317997,
+      "price": 11.07,
+      "change_pct": -1.6429877,
       "market_cap_b": 0.903,
       "name": "Accel Entertainment",
       "display_ticker": "ACEL",
       "category": "Gaming Equipment",
-      "pe_ratio": 18.441666,
+      "pe_ratio": 18.458332,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-05-05",
       "recommendation_key": "strong_buy",
       "target_mean": 15.5,
-      "upside_pct": 40.1,
+      "upside_pct": 40.0,
       "num_analysts": 6,
-      "market_cap": 902607936
+      "market_cap": 903423680
     },
     "INSE": {
       "price": 6.83,
@@ -822,132 +822,132 @@ var INJECTED_COMMAND_CENTER = {
   "top_mover": {
     "ticker": "RRR",
     "name": "Red Rock Resorts",
-    "change_pct": -4.714895
+    "change_pct": -4.7489376
   },
   "gaming25": {
-    "current": 1060.0,
-    "daily_pct": -1.95,
-    "ytd_pct": -17.93,
+    "current": 1060.02,
+    "daily_pct": -1.93,
+    "ytd_pct": -17.92,
     "index": [
       {
         "date": "2026-02-12",
-        "value": 1079.22
+        "value": 1079.08
       },
       {
         "date": "2026-02-13",
-        "value": 1069.65
+        "value": 1069.48
       },
       {
         "date": "2026-02-17",
-        "value": 1084.77
+        "value": 1084.6
       },
       {
         "date": "2026-02-18",
-        "value": 1119.15
+        "value": 1118.98
       },
       {
         "date": "2026-02-19",
-        "value": 1114.05
+        "value": 1113.88
       },
       {
         "date": "2026-02-20",
-        "value": 1114.21
+        "value": 1114.03
       },
       {
         "date": "2026-02-23",
-        "value": 1070.18
+        "value": 1070.01
       },
       {
         "date": "2026-02-24",
-        "value": 1085.06
+        "value": 1084.89
       },
       {
         "date": "2026-02-25",
-        "value": 1089.21
+        "value": 1089.04
       },
       {
         "date": "2026-02-26",
-        "value": 1118.8
+        "value": 1118.64
       },
       {
         "date": "2026-02-27",
-        "value": 1105.87
+        "value": 1105.69
       },
       {
         "date": "2026-03-02",
-        "value": 1100.6
+        "value": 1100.43
       },
       {
         "date": "2026-03-03",
-        "value": 1096.67
+        "value": 1096.5
       },
       {
         "date": "2026-03-04",
-        "value": 1112.41
+        "value": 1112.24
       },
       {
         "date": "2026-03-05",
-        "value": 1110.13
+        "value": 1109.96
       },
       {
         "date": "2026-03-06",
-        "value": 1077.88
+        "value": 1077.73
       },
       {
         "date": "2026-03-09",
-        "value": 1079.36
+        "value": 1079.2
       },
       {
         "date": "2026-03-10",
-        "value": 1078.33
+        "value": 1078.17
       },
       {
         "date": "2026-03-11",
-        "value": 1093.51
+        "value": 1093.35
       },
       {
         "date": "2026-03-12",
-        "value": 1078.92
+        "value": 1078.76
       },
       {
         "date": "2026-03-13",
-        "value": 1080.83
+        "value": 1080.68
       },
       {
         "date": "2026-03-16",
-        "value": 1073.18
+        "value": 1073.02
       },
       {
         "date": "2026-03-17",
-        "value": 1085.74
+        "value": 1085.58
       },
       {
         "date": "2026-03-18",
-        "value": 1077.62
+        "value": 1077.47
       },
       {
         "date": "2026-03-19",
-        "value": 1090.51
+        "value": 1090.35
       },
       {
         "date": "2026-03-20",
-        "value": 1061.69
+        "value": 1061.53
       },
       {
         "date": "2026-03-23",
-        "value": 1084.18
+        "value": 1084.02
       },
       {
         "date": "2026-03-24",
-        "value": 1095.28
+        "value": 1095.11
       },
       {
         "date": "2026-03-25",
-        "value": 1081.07
+        "value": 1080.9
       },
       {
         "date": "2026-03-26",
-        "value": 1060.0
+        "value": 1060.02
       }
     ]
   },
@@ -975,14 +975,14 @@ var INJECTED_COMMAND_CENTER = {
   },
   "big_movers": [
     {
-      "ticker": "CHDN",
-      "display_ticker": "CHDN",
-      "company": "Churchill Downs",
-      "category": "Regional Operators",
-      "prev_price": 87.2,
-      "curr_price": 87.74,
-      "pct_change": 61.93,
-      "market_cap_b": 6.115
+      "ticker": "DKNG",
+      "display_ticker": "DKNG",
+      "company": "DraftKings",
+      "category": "Online & iGaming",
+      "prev_price": 21.42,
+      "curr_price": 21.23,
+      "pct_change": -86.37,
+      "market_cap_b": 10.57
     },
     {
       "ticker": "BRSL",
@@ -995,14 +995,24 @@ var INJECTED_COMMAND_CENTER = {
       "market_cap_b": 2.373
     },
     {
+      "ticker": "CHDN",
+      "display_ticker": "CHDN",
+      "company": "Churchill Downs",
+      "category": "Regional Operators",
+      "prev_price": 87.2,
+      "curr_price": 87.72,
+      "pct_change": 59.63,
+      "market_cap_b": 6.114
+    },
+    {
       "ticker": "MLCO",
       "display_ticker": "MLCO",
       "company": "Melco Resorts",
       "category": "Integrated Resorts",
       "prev_price": 5.48,
       "curr_price": 5.5,
-      "pct_change": 36.5,
-      "market_cap_b": 2.237
+      "pct_change": 45.62,
+      "market_cap_b": 2.239
     },
     {
       "ticker": "FLUT",
@@ -1010,19 +1020,9 @@ var INJECTED_COMMAND_CENTER = {
       "company": "Flutter Entertainment",
       "category": "Online & iGaming",
       "prev_price": 103.4,
-      "curr_price": 103.19,
-      "pct_change": -20.31,
-      "market_cap_b": 18.053
-    },
-    {
-      "ticker": "SGHC",
-      "display_ticker": "SGHC",
-      "company": "Super Group",
-      "category": "Online & iGaming",
-      "prev_price": 10.54,
-      "curr_price": 10.56,
-      "pct_change": 18.98,
-      "market_cap_b": 5.34
+      "curr_price": 103.27,
+      "pct_change": -12.57,
+      "market_cap_b": 18.067
     }
   ],
   "category_summary": {
@@ -1034,8 +1034,8 @@ var INJECTED_COMMAND_CENTER = {
     },
     "Regional Operators": {
       "count": 8,
-      "total_mcap": 23.2,
-      "avg_change_ytd": -9.7,
+      "total_mcap": 23.1,
+      "avg_change_ytd": -9.8,
       "color": "#4fc3f7"
     },
     "Online & iGaming": {
@@ -1051,9 +1051,9 @@ var INJECTED_COMMAND_CENTER = {
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-03-26T14:41:21.721967",
+  "generated_at": "2026-03-26T14:43:30.760015",
   "transcript_analysis": {
-    "generated_at": "2026-03-26T14:41:21.613265",
+    "generated_at": "2026-03-26T14:43:30.653291",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
