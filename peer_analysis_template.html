@@ -509,7 +509,7 @@ function sortRankings(col) {
 
 // ---- Comparison ----
 function populateCompareSelects() {
-    var tickers = Object.keys(MD).sort();
+    var tickers = Object.keys(MD).filter(function(k){return k.charAt(0)!=='_'&&typeof MD[k]==='object';}).sort();
     for (var i = 0; i < 4; i++) {
         var sel = document.getElementById('comp-sel-' + i);
         tickers.forEach(function(t) {
@@ -564,7 +564,7 @@ function updateComparison() {
 // ---- Scatter Plots ----
 function getScatterData(xKey, yKey) {
     var datasets = {};
-    Object.keys(MD).forEach(function(t) {
+    Object.keys(MD).filter(function(k){return k.charAt(0)!=='_'&&typeof MD[k]==='object';}).forEach(function(t) {
         var d = MD[t];
         if (d[xKey] == null || d[yKey] == null) return;
         var cat = d.category || 'Other';
@@ -610,7 +610,7 @@ function buildScatterCharts() {
 
     scatterChart2 = new Chart(document.getElementById('scatter2'), {
         type: 'bubble',
-        data: { datasets: getScatterData('evEbitda', 'revenueGrowth') },
+        data: { datasets: getScatterData('ev_ebitda', 'revenue_growth') },
         options: scatterOpts('EV/EBITDA (x)', 'Revenue Growth (%)')
     });
 
@@ -658,19 +658,20 @@ function buildPerfChart() {
     var datasets = [];
     var allDates = new Set();
 
-    Object.keys(MD).forEach(function(ticker) {
+    Object.keys(MD).filter(function(k){return k.charAt(0)!=='_'&&typeof MD[k]==='object';}).forEach(function(ticker) {
         var d = MD[ticker];
         var cat = d.category || 'Other';
         if (!activePerfCategories.has(cat)) return;
-        var prices = d.priceHistory || d.prices || [];
+        var prices = d.price_series || d.priceHistory || d.prices || [];
         if (!prices.length) return;
 
-        var filtered = prices.filter(function(p) { return new Date(p.date) >= startDate; });
+        var filtered = prices.filter(function(p) { return new Date(p.d || p.date) >= startDate; });
         if (!filtered.length) return;
-        var base = filtered[0].close || filtered[0].price || 1;
+        var base = filtered[0].p || filtered[0].close || filtered[0].price || 1;
         var points = filtered.map(function(p) {
-            allDates.add(p.date);
-            return { x: p.date, y: ((p.close || p.price) / base) * 100 };
+            var dt = p.d || p.date;
+            allDates.add(dt);
+            return { x: dt, y: ((p.p || p.close || p.price) / base) * 100 };
         });
 
         datasets.push({
@@ -720,7 +721,7 @@ function init() {
     populateCompareSelects();
 
     // Auto-select first 4 tickers for comparison
-    var tickers = Object.keys(MD).sort();
+    var tickers = Object.keys(MD).filter(function(k){return k.charAt(0)!=='_'&&typeof MD[k]==='object';}).sort();
     for (var i = 0; i < Math.min(4, tickers.length); i++) {
         document.getElementById('comp-sel-' + i).value = tickers[i];
     }
