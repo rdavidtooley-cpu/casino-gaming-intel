@@ -277,9 +277,14 @@
         <div class="card">
             <h3 style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
                 <span style="display:flex;align-items:center;gap:6px;">Topic Focus <span class="info-icon" data-tip="Shows which business topics management discussed most across earnings calls. Longer bars = more mentions across all transcripts. Filter by company to see what a specific management team focused on. Topics like 'Margins' or 'M&A' getting heavy discussion often signals where management sees the biggest opportunities or challenges.">&#9432;</span></span>
-                <select id="ti-topic-company" style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:11px;cursor:pointer" onchange="renderTopicChart()">
-                    <option value="all">All Companies</option>
-                </select>
+                <div style="display:flex;gap:6px;align-items:center;">
+                    <select id="ti-topic-company" style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:11px;cursor:pointer" onchange="renderTopicChart()">
+                        <option value="all">All Companies</option>
+                    </select>
+                    <select id="ti-topic-quarter" style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:11px;cursor:pointer" onchange="renderTopicChart()">
+                        <option value="all">All Calls</option>
+                    </select>
+                </div>
             </h3>
             <canvas id="ti-topics-chart" style="max-height:220px;"></canvas>
         </div>
@@ -900,23 +905,48 @@ function renderTranscriptDetail() {
         companySelect.appendChild(opt);
     });
 
+    // Populate quarter dropdown from topic_trends periods
+    var quarterSelect = document.getElementById('ti-topic-quarter');
+    var allPeriods = Object.keys(ta.topic_trends || {}).sort();
+    allPeriods.forEach(function(p) {
+        var opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        quarterSelect.appendChild(opt);
+    });
+
     var _topicChart = null;
     window.renderTopicChart = function() {
         var sel = companySelect.value;
+        var qtr = quarterSelect.value;
         var topicTotals = {};
         allTopics.forEach(function(t) { topicTotals[t] = 0; });
 
-        if (sel === 'all') {
+        if (sel === 'all' && qtr === 'all') {
+            // All companies, all quarters
             var tt = ta.topic_trends || {};
             Object.values(tt).forEach(function(period) {
                 allTopics.forEach(function(t) { topicTotals[t] += (period[t] || 0); });
             });
-        } else {
+        } else if (sel === 'all' && qtr !== 'all') {
+            // All companies, specific quarter
+            var period = (ta.topic_trends || {})[qtr];
+            if (period) { allTopics.forEach(function(t) { topicTotals[t] += (period[t] || 0); }); }
+        } else if (sel !== 'all' && qtr === 'all') {
+            // Specific company, all quarters
             var comp = (ta.companies || {})[sel];
             if (comp && comp.topic_history) {
                 comp.topic_history.forEach(function(period) {
                     allTopics.forEach(function(t) { topicTotals[t] += (period[t] || 0); });
                 });
+            }
+        } else {
+            // Specific company + specific quarter
+            var comp2 = (ta.companies || {})[sel];
+            if (comp2 && comp2.topic_history) {
+                var match = null;
+                comp2.topic_history.forEach(function(p) { if (p.period === qtr) match = p; });
+                if (match) { allTopics.forEach(function(t) { topicTotals[t] += (match[t] || 0); }); }
             }
         }
 
@@ -933,7 +963,7 @@ function renderTranscriptDetail() {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx) { return ctx.raw + ' mentions across transcripts'; } } } },
+                plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx) { return ctx.raw + ' mentions'; } } } },
                 scales: { x: { ticks: { color:'#9aa0a6', font:{size:9} }, grid: { color:'rgba(255,255,255,0.04)' } }, y: { ticks: { color:'#e8eaed', font:{size:10} }, grid: { display:false } } }
             }
         });
