@@ -340,16 +340,12 @@
   "DFF": {
     "label": "Federal Funds Rate (%)",
     "latest_value": 3.64,
-    "latest_date": "2026-03-23",
+    "latest_date": "2026-03-24",
     "change_30d": 0.0,
     "change_30d_pct": 0.0,
     "change_90d": 0.0,
     "change_90d_pct": 0.0,
     "history": [
-      {
-        "date": "2025-12-24",
-        "value": 3.64
-      },
       {
         "date": "2025-12-25",
         "value": 3.64
@@ -705,22 +701,22 @@
       {
         "date": "2026-03-23",
         "value": 3.64
+      },
+      {
+        "date": "2026-03-24",
+        "value": 3.64
       }
     ]
   },
   "T10Y2Y": {
     "label": "10Y-2Y Treasury Spread",
     "latest_value": 0.49,
-    "latest_date": "2026-03-24",
-    "change_30d": -0.11,
-    "change_30d_pct": -18.33,
-    "change_90d": -0.18,
-    "change_90d_pct": -26.87,
+    "latest_date": "2026-03-25",
+    "change_30d": -0.12,
+    "change_30d_pct": -19.67,
+    "change_90d": -0.17,
+    "change_90d_pct": -25.76,
     "history": [
-      {
-        "date": "2025-11-12",
-        "value": 0.52
-      },
       {
         "date": "2025-11-13",
         "value": 0.53
@@ -1076,22 +1072,22 @@
       {
         "date": "2026-03-24",
         "value": 0.49
+      },
+      {
+        "date": "2026-03-25",
+        "value": 0.49
       }
     ]
   },
   "VIXCLS": {
     "label": "VIX Volatility Index",
-    "latest_value": 26.15,
-    "latest_date": "2026-03-23",
-    "change_30d": 7.06,
-    "change_30d_pct": 36.98,
-    "change_90d": 9.28,
-    "change_90d_pct": 55.01,
+    "latest_value": 26.95,
+    "latest_date": "2026-03-24",
+    "change_30d": 5.94,
+    "change_30d_pct": 28.27,
+    "change_90d": 12.04,
+    "change_90d_pct": 80.75,
     "history": [
-      {
-        "date": "2025-11-14",
-        "value": 19.83
-      },
       {
         "date": "2025-11-17",
         "value": 22.38
@@ -1447,6 +1443,10 @@
       {
         "date": "2026-03-23",
         "value": 26.15
+      },
+      {
+        "date": "2026-03-24",
+        "value": 26.95
       }
     ]
   },
