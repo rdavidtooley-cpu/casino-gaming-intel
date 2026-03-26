@@ -1164,7 +1164,7 @@
         "value": 193.3
       }
     ],
-    "timestamp": "2026-03-25T21:30:42.007555",
+    "timestamp": "2026-03-25T22:30:07.566042",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 50.0,
     "rank_pe_trailing": 4,
@@ -2344,7 +2344,7 @@
         "value": 132.4
       }
     ],
-    "timestamp": "2026-03-25T21:30:42.713051",
+    "timestamp": "2026-03-25T22:30:08.333322",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 25.0,
     "rank_pe_trailing": null,
@@ -3524,7 +3524,7 @@
         "value": 138.6
       }
     ],
-    "timestamp": "2026-03-25T21:30:43.452992",
+    "timestamp": "2026-03-25T22:30:09.149373",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 75.0,
     "rank_pe_trailing": 3,
@@ -4704,7 +4704,7 @@
         "value": 303.7
       }
     ],
-    "timestamp": "2026-03-25T21:30:44.182449",
+    "timestamp": "2026-03-25T22:30:09.889181",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
@@ -5884,7 +5884,7 @@
         "value": 20.8
       }
     ],
-    "timestamp": "2026-03-25T21:30:44.887683",
+    "timestamp": "2026-03-25T22:30:10.697518",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": 1,
@@ -7064,7 +7064,7 @@
         "value": 45.4
       }
     ],
-    "timestamp": "2026-03-25T21:30:45.562156",
+    "timestamp": "2026-03-25T22:30:11.420381",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 57.1,
     "rank_pe_trailing": null,
@@ -8244,7 +8244,7 @@
         "value": 115.2
       }
     ],
-    "timestamp": "2026-03-25T21:30:46.303485",
+    "timestamp": "2026-03-25T22:30:12.174366",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 1,
@@ -9424,7 +9424,7 @@
         "value": 69.8
       }
     ],
-    "timestamp": "2026-03-25T21:30:47.088174",
+    "timestamp": "2026-03-25T22:30:12.931628",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 71.4,
     "rank_pe_trailing": 4,
@@ -10604,7 +10604,7 @@
         "value": 107.7
       }
     ],
-    "timestamp": "2026-03-25T21:30:48.378041",
+    "timestamp": "2026-03-25T22:30:14.339911",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 85.7,
     "rank_pe_trailing": 2,
@@ -11784,7 +11784,7 @@
         "value": 20.8
       }
     ],
-    "timestamp": "2026-03-25T21:30:49.009337",
+    "timestamp": "2026-03-25T22:30:15.034338",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 42.9,
     "rank_pe_trailing": 3,
@@ -12964,7 +12964,7 @@
         "value": 12.3
       }
     ],
-    "timestamp": "2026-03-25T21:30:49.754059",
+    "timestamp": "2026-03-25T22:30:15.787242",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 28.6,
     "rank_pe_trailing": null,
@@ -14144,7 +14144,7 @@
         "value": 1.2
       }
     ],
-    "timestamp": "2026-03-25T21:30:50.467717",
+    "timestamp": "2026-03-25T22:30:16.453367",
     "rank_market_cap_b": 8,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -15324,7 +15324,7 @@
         "value": 0.7
       }
     ],
-    "timestamp": "2026-03-25T21:30:51.188647",
+    "timestamp": "2026-03-25T22:30:17.189879",
     "rank_market_cap_b": 7,
     "pctile_market_cap_b": 14.3,
     "rank_pe_trailing": null,
@@ -16504,7 +16504,7 @@
         "value": 214.8
       }
     ],
-    "timestamp": "2026-03-25T21:30:51.936452",
+    "timestamp": "2026-03-25T22:30:18.052144",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": null,
@@ -17684,7 +17684,7 @@
         "value": 414.0
       }
     ],
-    "timestamp": "2026-03-25T21:30:52.717703",
+    "timestamp": "2026-03-25T22:30:18.823075",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -18864,7 +18864,7 @@
         "value": 49.0
       }
     ],
-    "timestamp": "2026-03-25T21:30:53.423502",
+    "timestamp": "2026-03-25T22:30:19.507148",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 20.0,
     "rank_pe_trailing": 3,
@@ -18924,10 +18924,10 @@
     "current_ratio": 1.167,
     "quick_ratio": 1.041,
     "beta": 2.002,
-    "target_high": 37.204487,
-    "target_low": 22.967846,
-    "target_mean": 28.905075,
-    "target_median": 27.92852,
+    "target_high": 37.221706,
+    "target_low": 22.978477,
+    "target_mean": 28.918455,
+    "target_median": 27.941448,
     "recommendation_key": "strong_buy",
     "recommendation_mean": 1.33333,
     "num_analysts": 21,
@@ -20044,7 +20044,7 @@
         "value": 58.5
       }
     ],
-    "timestamp": "2026-03-25T21:30:54.641420",
+    "timestamp": "2026-03-25T22:30:21.055449",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": 2,
@@ -21224,7 +21224,7 @@
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-25T21:30:55.297611",
+    "timestamp": "2026-03-25T22:30:21.764199",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": 1,
@@ -22404,7 +22404,7 @@
         "value": 25.0
       }
     ],
-    "timestamp": "2026-03-25T21:30:55.981003",
+    "timestamp": "2026-03-25T22:30:22.529121",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -23584,7 +23584,7 @@
         "value": 20.8
       }
     ],
-    "timestamp": "2026-03-25T21:30:56.761321",
+    "timestamp": "2026-03-25T22:30:23.335358",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -23853,7 +23853,7 @@
     ],
     "change_ytd": -23.9,
     "institutional_holders": [],
-    "timestamp": "2026-03-25T21:30:57.460951",
+    "timestamp": "2026-03-25T22:30:23.945092",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -25033,7 +25033,7 @@
         "value": 10.3
       }
     ],
-    "timestamp": "2026-03-25T21:30:58.158324",
+    "timestamp": "2026-03-25T22:30:24.662987",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 66.7,
     "rank_pe_trailing": 1,
@@ -26213,7 +26213,7 @@
         "value": 4.4
       }
     ],
-    "timestamp": "2026-03-25T21:30:58.873700",
+    "timestamp": "2026-03-25T22:30:25.353071",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 33.3,
     "rank_pe_trailing": null,
