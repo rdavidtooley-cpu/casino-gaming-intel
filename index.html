@@ -193,7 +193,7 @@
 
     <!-- Market Breadth Bar -->
     <div class="card" style="margin-bottom:var(--gap);padding:16px 24px;">
-        <h3 style="margin-bottom:10px;">Market Breadth</h3>
+        <h3 style="margin-bottom:10px;">Market Breadth <span class="info-icon" data-tip="Shows the ratio of advancing vs. declining stocks in the gaming universe today. A mostly green bar signals broad-based buying; mostly red suggests widespread selling pressure.">&#9432;</span></h3>
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
             <div class="breadth-bar" id="breadth-bar" style="flex:1;min-width:200px;"></div>
             <div id="breadth-stats" style="display:flex;gap:16px;font-size:12px;"></div>
@@ -204,13 +204,13 @@
     <div class="grid-2col">
         <!-- Universe Table -->
         <div class="card">
-            <h3>Gaming Universe Snapshot <span style="font-size:11px;font-weight:400;color:var(--text-secondary);margin-left:8px;" id="universe-count"></span></h3>
+            <h3>Gaming Universe Snapshot <span class="info-icon" data-tip="Summary of all 25 tracked gaming companies showing current price, daily change, and market cap. Click column headers to sort.">&#9432;</span> <span style="font-size:11px;font-weight:400;color:var(--text-secondary);margin-left:8px;" id="universe-count"></span></h3>
             <div style="max-height:700px;overflow-y:auto;" id="universe-table-wrap"></div>
         </div>
         <!-- Right Column: Chart + Doughnut -->
         <div>
             <div class="card" style="margin-bottom:var(--gap);">
-                <h3>Gaming-25 Index (1-Year)</h3>
+                <h3>Gaming-25 Index (1-Year) <span class="info-icon" data-tip="Tracks the equal-weighted performance of all 25 gaming stocks over the past year, normalized to a base of 100. Shows whether the sector as a whole is trending up or down.">&#9432;</span></h3>
                 <canvas id="gaming25-chart" style="max-height:240px;"></canvas>
             </div>
             <div class="card">
@@ -263,7 +263,7 @@
     <!-- Transcript Detail: Guidance + Sentiment + Topics -->
     <div class="ti-section-title" id="ti-title-row">
         <svg width="20" height="20" fill="none" stroke="#ffd700" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
-        Earnings Call Insights
+        Earnings Call Insights <span class="info-icon" data-tip="Analysis of the most recent earnings call transcripts across all tracked companies. Covers management guidance direction, sentiment tone, and key topics discussed.">&#9432;</span>
     </div>
     <div class="grid-3col" id="ti-section">
         <div class="card">
@@ -715,7 +715,7 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_rate": null,
       "next_earnings_date": "2026-05-11",
       "recommendation_key": "strong_buy",
-      "target_mean": 28.801807,
+      "target_mean": 28.798489,
       "upside_pct": 60.0,
       "num_analysts": 21,
       "market_cap": 5327129600
@@ -1056,9 +1056,9 @@ var INJECTED_COMMAND_CENTER = {
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-03-26T15:07:15.866680",
+  "generated_at": "2026-03-26T15:11:06.800191",
   "transcript_analysis": {
-    "generated_at": "2026-03-26T15:07:15.758830",
+    "generated_at": "2026-03-26T15:11:06.691783",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {

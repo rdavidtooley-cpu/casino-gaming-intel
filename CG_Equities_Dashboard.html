@@ -161,11 +161,11 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <div class="tab-content active" id="tab-overview">
         <div class="kpi-row" id="kpi-overview"></div>
         <div class="chart-row">
-            <div class="chart-container"><h3>Companies by Sector</h3><canvas id="sectorCountChart"></canvas></div>
-            <div class="chart-container"><h3>Market Cap by Sector ($B)</h3><canvas id="sectorMcapChart"></canvas></div>
+            <div class="chart-container"><h3>Companies by Sector <span class="info-icon" data-tip="Breakdown of the 25-company gaming universe by business category: Integrated Resorts, Regional Operators, Online & iGaming, and Gaming Equipment.">&#9432;</span></h3><canvas id="sectorCountChart"></canvas></div>
+            <div class="chart-container"><h3>Market Cap by Sector ($B) <span class="info-icon" data-tip="Total market capitalization for each gaming sub-sector in billions. Shows relative size and capital concentration across business models.">&#9432;</span></h3><canvas id="sectorMcapChart"></canvas></div>
         </div>
         <div class="table-section">
-            <h3>All Companies <span id="overviewCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
+            <h3>All Companies <span class="info-icon" data-tip="Complete table of all tracked gaming companies with key metrics. Click column headers to sort by any metric.">&#9432;</span> <span id="overviewCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
                 <button class="dl-btn" onclick="downloadCSV('overview')">&#11123; Download CSV</button>
             </h3>
             <div class="filter-row">
@@ -202,7 +202,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-performance">
         <div class="table-section">
-            <h3>Price Performance &amp; Returns <span id="perfCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
+            <h3>Price Performance &amp; Returns <span class="info-icon" data-tip="Historical price returns across multiple timeframes (1D, 1W, 1M, 3M, YTD, 1Y) for all tracked companies. Green cells indicate positive returns, red indicate negative.">&#9432;</span> <span id="perfCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
                 <button class="dl-btn" onclick="downloadCSV('performance')">&#11123; Download CSV</button>
             </h3>
             <div class="filter-row">
@@ -235,7 +235,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
             </div>
         </div>
         <div class="chart-container full" style="margin-top:var(--gap);">
-            <h3>Performance Heat Map (YTD Returns)</h3>
+            <h3>Performance Heat Map (YTD Returns) <span class="info-icon" data-tip="Visual heat map showing year-to-date stock returns. Larger boxes represent bigger market caps. Color intensity reflects magnitude of gains (green) or losses (red).">&#9432;</span></h3>
             <div id="heatMap" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
         </div>
     </div>
@@ -245,10 +245,10 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-valuation">
         <div class="chart-row">
-            <div class="chart-container full"><h3>Sector Comparison: Median Valuation Multiples</h3><canvas id="sectorValChart"></canvas></div>
+            <div class="chart-container full"><h3>Sector Comparison: Median Valuation Multiples <span class="info-icon" data-tip="Compares median P/E and EV/EBITDA multiples across gaming sub-sectors. Helps identify which segments trade at a premium or discount relative to peers.">&#9432;</span></h3><canvas id="sectorValChart"></canvas></div>
         </div>
         <div class="table-section">
-            <h3>Valuation Multiples <span id="valCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
+            <h3>Valuation Multiples <span class="info-icon" data-tip="Key valuation ratios (P/E, EV/EBITDA, P/S, P/B) for all tracked companies. Lower multiples may indicate relative value; higher multiples suggest growth expectations.">&#9432;</span> <span id="valCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
                 <button class="dl-btn" onclick="downloadCSV('valuation')">&#11123; Download CSV</button>
             </h3>
             <div class="filter-row">
@@ -285,7 +285,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-financials">
         <div class="table-section">
-            <h3>Financial Metrics <span id="finCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
+            <h3>Financial Metrics <span class="info-icon" data-tip="Core financial data including revenue, EBITDA, margins, debt levels, and growth rates. Sourced from the most recent quarterly filings.">&#9432;</span> <span id="finCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
                 <button class="dl-btn" onclick="downloadCSV('financials')">&#11123; Download CSV</button>
             </h3>
             <div class="filter-row">
@@ -322,14 +322,14 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-analysts">
         <div class="chart-row">
-            <div class="chart-container full"><h3>Analyst Consensus: Upside/Downside to Price Target (%)</h3><canvas id="analystChart"></canvas></div>
+            <div class="chart-container full"><h3>Analyst Consensus: Upside/Downside to Price Target (%) <span class="info-icon" data-tip="Shows the gap between current price and average analyst 12-month price target. Positive values indicate expected upside based on Wall Street consensus.">&#9432;</span></h3><canvas id="analystChart"></canvas></div>
         </div>
         <div class="chart-row">
-            <div class="chart-container"><h3>Rating Distribution</h3><canvas id="ratingDistChart"></canvas></div>
-            <div class="chart-container"><h3>Top Upside Targets</h3><canvas id="upsideChart"></canvas></div>
+            <div class="chart-container"><h3>Rating Distribution <span class="info-icon" data-tip="Aggregated analyst recommendations across Buy, Hold, and Sell categories for the full gaming universe. Shows overall Street sentiment.">&#9432;</span></h3><canvas id="ratingDistChart"></canvas></div>
+            <div class="chart-container"><h3>Top Upside Targets <span class="info-icon" data-tip="Companies with the largest percentage gap between current price and consensus analyst target. Higher upside suggests analysts see the most room for appreciation.">&#9432;</span></h3><canvas id="upsideChart"></canvas></div>
         </div>
         <div class="table-section">
-            <h3>Price Targets &amp; Ratings <span id="analystCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
+            <h3>Price Targets &amp; Ratings <span class="info-icon" data-tip="Detailed view of analyst price targets (low, average, high) and consensus rating for each company. Number of analysts covering each name is also shown.">&#9432;</span> <span id="analystCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
                 <button class="dl-btn" onclick="downloadCSV('analysts')">&#11123; Download CSV</button>
             </h3>
             <div class="filter-row">
@@ -367,14 +367,14 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <div class="tab-content" id="tab-calendar">
         <div class="chart-row" style="grid-template-columns:1fr 1fr;">
             <div class="table-section">
-                <h3>Upcoming Earnings Dates</h3>
+                <h3>Upcoming Earnings Dates <span class="info-icon" data-tip="Calendar of upcoming quarterly earnings reports for tracked gaming companies. Sorted by date to help plan around potential catalysts.">&#9432;</span></h3>
                 <table class="data-table"><thead><tr>
                     <th>Ticker</th><th>Company</th><th>Report Date</th><th>Time</th><th>Est. EPS</th>
                 </tr></thead><tbody id="earningsBody"></tbody></table>
                 <div id="earningsEmpty" style="display:none;text-align:center;padding:24px;color:var(--text-secondary);">No upcoming earnings dates available.</div>
             </div>
             <div class="table-section">
-                <h3>Ex-Dividend Dates</h3>
+                <h3>Ex-Dividend Dates <span class="info-icon" data-tip="Upcoming ex-dividend dates and yields for gaming companies that pay dividends. Must own shares before this date to receive the dividend.">&#9432;</span></h3>
                 <table class="data-table"><thead><tr>
                     <th>Ticker</th><th>Company</th><th>Ex-Div Date</th><th>Div Amount</th><th>Yield</th>
                 </tr></thead><tbody id="divBody"></tbody></table>
@@ -388,7 +388,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-insider">
         <div class="table-section">
-            <h3>Recent Insider Transactions <span id="insiderCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span></h3>
+            <h3>Recent Insider Transactions <span class="info-icon" data-tip="Latest stock purchases and sales by company executives and directors reported to the SEC. Insider buying can signal management confidence.">&#9432;</span> <span id="insiderCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span></h3>
             <div class="filter-row">
                 <label>Search:</label>
                 <input class="filter-input" type="text" id="insiderSearch" placeholder="Ticker or insider name..." oninput="renderInsider()">
@@ -415,7 +415,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
         <div class="kpi-row" id="kpi-g25"></div>
         <div class="chart-row">
             <div class="chart-container full">
-                <h3>Gaming-25 Index Performance
+                <h3>Gaming-25 Index Performance <span class="info-icon" data-tip="Performance of the equal-weighted Gaming-25 index versus market benchmarks (S&P 500, XLY). Shows how the gaming sector is performing relative to the broader market.">&#9432;</span>
                     <div class="range-btns" id="g25RangeBtns">
                         <button class="range-btn" onclick="setG25Range(30,this)">1M</button>
                         <button class="range-btn" onclick="setG25Range(90,this)">3M</button>
@@ -428,9 +428,9 @@ input.filter-input::placeholder{color:var(--text-secondary);}
             </div>
         </div>
         <div class="chart-row" style="grid-template-columns:1fr 1fr;">
-            <div class="chart-container"><h3>Sector Weights</h3><canvas id="g25SectorChart"></canvas></div>
+            <div class="chart-container"><h3>Sector Weights <span class="info-icon" data-tip="Pie chart showing each sub-sector's weight in the Gaming-25 index based on market capitalization.">&#9432;</span></h3><canvas id="g25SectorChart"></canvas></div>
             <div class="table-section" style="margin-bottom:0;">
-                <h3>Index Composition &amp; Weights</h3>
+                <h3>Index Composition &amp; Weights <span class="info-icon" data-tip="Full list of all 25 companies in the Gaming-25 index with their individual weights. Equal-weighted at rebalance, weights drift with price performance.">&#9432;</span></h3>
                 <table class="data-table"><thead><tr>
                     <th>Ticker</th><th>Company</th><th>Sector</th><th>Weight</th><th>MCap ($B)</th>
                 </tr></thead><tbody id="g25Body"></tbody></table>
@@ -1628,7 +1628,7 @@ var MARKET_DATA = {
         "value": 193.8
       }
     ],
-    "timestamp": "2026-03-26T15:06:15.747733",
+    "timestamp": "2026-03-26T15:10:08.910452",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 50.0,
     "rank_pe_trailing": 4,
@@ -2814,7 +2814,7 @@ var MARKET_DATA = {
         "value": 132.8
       }
     ],
-    "timestamp": "2026-03-26T15:06:16.584322",
+    "timestamp": "2026-03-26T15:10:09.787197",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 25.0,
     "rank_pe_trailing": null,
@@ -4000,7 +4000,7 @@ var MARKET_DATA = {
         "value": 135.4
       }
     ],
-    "timestamp": "2026-03-26T15:06:17.528651",
+    "timestamp": "2026-03-26T15:10:10.790410",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 75.0,
     "rank_pe_trailing": 3,
@@ -5186,7 +5186,7 @@ var MARKET_DATA = {
         "value": 293.8
       }
     ],
-    "timestamp": "2026-03-26T15:06:18.301484",
+    "timestamp": "2026-03-26T15:10:11.664776",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
@@ -6372,7 +6372,7 @@ var MARKET_DATA = {
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:19.145684",
+    "timestamp": "2026-03-26T15:10:12.414853",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": 1,
@@ -7558,7 +7558,7 @@ var MARKET_DATA = {
         "value": 45.1
       }
     ],
-    "timestamp": "2026-03-26T15:06:19.997092",
+    "timestamp": "2026-03-26T15:10:13.205113",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 57.1,
     "rank_pe_trailing": null,
@@ -8744,7 +8744,7 @@ var MARKET_DATA = {
         "value": 112.6
       }
     ],
-    "timestamp": "2026-03-26T15:06:20.830295",
+    "timestamp": "2026-03-26T15:10:13.907565",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 1,
@@ -9930,7 +9930,7 @@ var MARKET_DATA = {
         "value": 66.3
       }
     ],
-    "timestamp": "2026-03-26T15:06:21.591152",
+    "timestamp": "2026-03-26T15:10:14.690684",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 71.4,
     "rank_pe_trailing": 3,
@@ -11116,7 +11116,7 @@ var MARKET_DATA = {
         "value": 108.2
       }
     ],
-    "timestamp": "2026-03-26T15:06:22.988600",
+    "timestamp": "2026-03-26T15:10:16.522710",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 85.7,
     "rank_pe_trailing": 2,
@@ -12302,7 +12302,7 @@ var MARKET_DATA = {
         "value": 20.3
       }
     ],
-    "timestamp": "2026-03-26T15:06:23.741665",
+    "timestamp": "2026-03-26T15:10:17.225361",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 42.9,
     "rank_pe_trailing": 4,
@@ -13488,7 +13488,7 @@ var MARKET_DATA = {
         "value": 12.4
       }
     ],
-    "timestamp": "2026-03-26T15:06:24.569690",
+    "timestamp": "2026-03-26T15:10:18.035880",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 28.6,
     "rank_pe_trailing": null,
@@ -14674,7 +14674,7 @@ var MARKET_DATA = {
         "value": 1.2
       }
     ],
-    "timestamp": "2026-03-26T15:06:25.338921",
+    "timestamp": "2026-03-26T15:10:18.843201",
     "rank_market_cap_b": 8,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -15860,7 +15860,7 @@ var MARKET_DATA = {
         "value": 0.7
       }
     ],
-    "timestamp": "2026-03-26T15:06:26.087078",
+    "timestamp": "2026-03-26T15:10:19.653381",
     "rank_market_cap_b": 7,
     "pctile_market_cap_b": 14.3,
     "rank_pe_trailing": null,
@@ -17046,7 +17046,7 @@ var MARKET_DATA = {
         "value": 213.3
       }
     ],
-    "timestamp": "2026-03-26T15:06:26.849884",
+    "timestamp": "2026-03-26T15:10:20.419517",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": null,
@@ -18232,7 +18232,7 @@ var MARKET_DATA = {
         "value": 414.9
       }
     ],
-    "timestamp": "2026-03-26T15:06:27.569764",
+    "timestamp": "2026-03-26T15:10:21.131604",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -19418,7 +19418,7 @@ var MARKET_DATA = {
         "value": 48.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:28.306757",
+    "timestamp": "2026-03-26T15:10:21.805279",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 20.0,
     "rank_pe_trailing": 3,
@@ -19478,10 +19478,10 @@ var MARKET_DATA = {
     "current_ratio": 1.167,
     "quick_ratio": 1.041,
     "beta": 2.002,
-    "target_high": 37.071568,
-    "target_low": 22.88579,
-    "target_mean": 28.801807,
-    "target_median": 27.828741,
+    "target_high": 37.067295,
+    "target_low": 22.883152,
+    "target_mean": 28.798489,
+    "target_median": 27.825535,
     "recommendation_key": "strong_buy",
     "recommendation_mean": 1.33333,
     "num_analysts": 21,
@@ -20604,7 +20604,7 @@ var MARKET_DATA = {
         "value": 56.9
       }
     ],
-    "timestamp": "2026-03-26T15:06:29.649060",
+    "timestamp": "2026-03-26T15:10:23.013124",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": 2,
@@ -21790,7 +21790,7 @@ var MARKET_DATA = {
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:30.435381",
+    "timestamp": "2026-03-26T15:10:23.821779",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": 1,
@@ -22976,7 +22976,7 @@ var MARKET_DATA = {
         "value": 24.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:31.118497",
+    "timestamp": "2026-03-26T15:10:24.420487",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -24162,7 +24162,7 @@ var MARKET_DATA = {
         "value": 20.7
       }
     ],
-    "timestamp": "2026-03-26T15:06:32.039898",
+    "timestamp": "2026-03-26T15:10:25.454430",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -24435,7 +24435,7 @@ var MARKET_DATA = {
     "ytd_change": -23.9,
     "year_change": -23.9,
     "institutional_holders": [],
-    "timestamp": "2026-03-26T15:06:32.795272",
+    "timestamp": "2026-03-26T15:10:26.197176",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -25621,7 +25621,7 @@ var MARKET_DATA = {
         "value": 10.1
       }
     ],
-    "timestamp": "2026-03-26T15:06:33.635934",
+    "timestamp": "2026-03-26T15:10:27.027618",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 66.7,
     "rank_pe_trailing": 1,
@@ -26807,7 +26807,7 @@ var MARKET_DATA = {
         "value": 4.5
       }
     ],
-    "timestamp": "2026-03-26T15:06:34.434041",
+    "timestamp": "2026-03-26T15:10:27.915229",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 33.3,
     "rank_pe_trailing": null,
@@ -26822,7 +26822,7 @@ var MARKET_DATA = {
     "pctile_change_ytd": 33.3,
     "composite_score": 29.1
   },
-  "generated_at": "2026-03-26T15:07:15.866630"
+  "_generated_at": "2026-03-26T15:11:06.800141"
 };
 var PRICE_HISTORY = {
   "MGM": [
@@ -50407,7 +50407,7 @@ var INDEX_HISTORY = {
       },
       {
         "date": "2025-07-07",
-        "value": 1097.76
+        "value": 1097.75
       },
       {
         "date": "2025-07-08",
@@ -52170,7 +52170,7 @@ var INDEX_HISTORY = {
   "base_date": "2025-03-27",
   "num_constituents": 22,
   "total_mcap_b": 135.9,
-  "generated_at": "2026-03-26T15:06:37.353390"
+  "generated_at": "2026-03-26T15:10:30.881171"
 };
 // INJECTED_DATA_END
 </script>
@@ -52229,7 +52229,7 @@ function destroyChart(name) { if (charts[name]) { charts[name].destroy(); charts
 function getDataArray() {
     if (!MARKET_DATA) return [];
     if (Array.isArray(MARKET_DATA)) return MARKET_DATA;
-    return Object.keys(MARKET_DATA).map(function(t) {
+    return Object.keys(MARKET_DATA).filter(function(t) { return t.charAt(0) !== '_' && typeof MARKET_DATA[t] === 'object'; }).map(function(t) {
         var d = MARKET_DATA[t];
         d.ticker = d.ticker || d.display_ticker || t;
         d.company = d.company || d.name || t;

@@ -331,7 +331,7 @@
             <button class="cat-btn" data-cat="Gaming Equipment" onclick="filterCategory('Gaming Equipment')">Gaming Equipment</button>
         </div>
         <div class="card">
-            <div class="card-title">Peer Ranking Table</div>
+            <div class="card-title">Peer Ranking Table <span class="info-icon" data-tip="Ranks all companies across key metrics including valuation, growth, profitability, and momentum. Sortable by any column to identify sector leaders.">&#9432;</span></div>
             <div style="overflow-x:auto;">
                 <table id="ranking-table">
                     <thead>
@@ -356,7 +356,7 @@
     <!-- TAB 2: Comparison -->
     <div id="tab-comparison" class="tab-panel">
         <div class="card">
-            <div class="card-title">Side-by-Side Comparison (Select up to 4 Companies)</div>
+            <div class="card-title">Side-by-Side Comparison (Select up to 4 Companies) <span class="info-icon" data-tip="Select up to 4 companies to compare financial metrics, valuation, and performance in a detailed table view.">&#9432;</span></div>
             <div class="compare-grid" id="compare-grid">
                 <div class="compare-header">Metric</div>
                 <div class="compare-header"><select class="compare-select" id="comp-sel-0" onchange="updateComparison()"><option value="">Select...</option></select></div>
@@ -372,11 +372,11 @@
     <div id="tab-scatter" class="tab-panel">
         <div class="scatter-grid">
             <div class="card">
-                <div class="card-title">Revenue Growth vs EBITDA Margin</div>
+                <div class="card-title">Revenue Growth vs EBITDA Margin <span class="info-icon" data-tip="Scatter plot showing growth-profitability tradeoff. Companies in the upper-right quadrant combine high growth with strong margins — the ideal position.">&#9432;</span></div>
                 <div class="chart-wrap"><canvas id="scatter1"></canvas></div>
             </div>
             <div class="card">
-                <div class="card-title">EV/EBITDA vs Revenue Growth</div>
+                <div class="card-title">EV/EBITDA vs Revenue Growth <span class="info-icon" data-tip="Plots valuation multiple against growth rate. Companies above the trend line may be overvalued relative to growth; below may be undervalued.">&#9432;</span></div>
                 <div class="chart-wrap"><canvas id="scatter2"></canvas></div>
             </div>
         </div>
@@ -386,7 +386,7 @@
     <!-- TAB 4: Relative Performance -->
     <div id="tab-performance" class="tab-panel">
         <div class="card">
-            <div class="card-title">Rebased Price Performance (Indexed to 100)</div>
+            <div class="card-title">Rebased Price Performance (Indexed to 100) <span class="info-icon" data-tip="Compares stock price performance by indexing all selected companies to 100 at the start date. Makes it easy to see relative outperformance regardless of share price.">&#9432;</span></div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
                 <div class="time-btns">
                     <button class="time-btn" data-range="1M" onclick="setTimeRange('1M')">1M</button>

@@ -435,7 +435,7 @@
         <div>
             <!-- Financial Snapshot -->
             <div class="card">
-                <div class="card-title">Financial Snapshot</div>
+                <div class="card-title">Financial Snapshot <span class="info-icon" data-tip="Key financial metrics at a glance: revenue, EBITDA, margins, EPS, and debt ratios from the most recent quarter.">&#9432;</span></div>
                 <table id="fin-table">
                     <tbody></tbody>
                 </table>
@@ -443,7 +443,7 @@
 
             <!-- Revenue & EBITDA Trend -->
             <div class="card">
-                <div class="card-title">Revenue & EBITDA Trend</div>
+                <div class="card-title">Revenue & EBITDA Trend <span class="info-icon" data-tip="Quarterly revenue and EBITDA over the past 8 quarters, showing growth trajectory and profitability trends.">&#9432;</span></div>
                 <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
             </div>
         </div>
@@ -452,7 +452,7 @@
         <div>
             <!-- Analyst Consensus -->
             <div class="card">
-                <div class="card-title">Analyst Consensus</div>
+                <div class="card-title">Analyst Consensus <span class="info-icon" data-tip="Wall Street analyst ratings breakdown (Buy/Hold/Sell) and 12-month price target range. Shows consensus view on the stock.">&#9432;</span></div>
                 <div class="consensus-grid" id="consensus-grid">
                     <div class="consensus-item">
                         <div class="consensus-val" id="cons-target">—</div>
@@ -475,13 +475,13 @@
 
             <!-- Price Performance -->
             <div class="card">
-                <div class="card-title">Price Performance</div>
+                <div class="card-title">Price Performance <span class="info-icon" data-tip="Stock price chart with selectable timeframes and key technical levels including 50-day and 200-day moving averages.">&#9432;</span></div>
                 <div class="perf-grid" id="perf-grid"></div>
             </div>
 
             <!-- Insider Activity -->
             <div class="card">
-                <div class="card-title">Ownership & Short Interest</div>
+                <div class="card-title">Ownership & Short Interest <span class="info-icon" data-tip="Institutional vs. insider ownership breakdown and current short interest as a percentage of float. High short interest can indicate bearish sentiment or squeeze potential.">&#9432;</span></div>
                 <div class="insider-grid" id="insider-grid">
                     <div class="insider-item">
                         <div class="insider-val" id="own-insider">—</div>
@@ -502,7 +502,7 @@
 
     <!-- Transcript Summary Section -->
     <div class="card transcript-section" id="transcript-section">
-        <div class="card-title">Latest Earnings Call Summary</div>
+        <div class="card-title">Latest Earnings Call Summary <span class="info-icon" data-tip="AI-generated summary of the most recent earnings call transcript covering key highlights, guidance, sentiment, and risk factors.">&#9432;</span></div>
         <div id="transcript-content">
             <div class="no-data">No transcript data available for this company.</div>
         </div>
@@ -510,7 +510,7 @@
 
     <!-- SEC Filings Table -->
     <div class="card">
-        <div class="card-title">Recent SEC Filings</div>
+        <div class="card-title">Recent SEC Filings <span class="info-icon" data-tip="Latest regulatory filings (10-K, 10-Q, 8-K) submitted to the SEC. Click to view the full filing on EDGAR.">&#9432;</span></div>
         <div style="overflow-x:auto;">
             <table id="filings-table">
                 <thead>
@@ -530,7 +530,7 @@
 
     <!-- Peer Comparison Mini Table -->
     <div class="card">
-        <div class="card-title">Peer Comparison</div>
+        <div class="card-title">Peer Comparison <span class="info-icon" data-tip="Side-by-side comparison of key metrics against companies in the same gaming sub-sector. Highlights relative strengths and weaknesses.">&#9432;</span></div>
         <div style="overflow-x:auto;">
             <table id="peer-table">
                 <thead>
@@ -554,7 +554,7 @@
 
     <!-- Company News Feed -->
     <div class="card">
-        <div class="card-title">Company News</div>
+        <div class="card-title">Company News <span class="info-icon" data-tip="Recent news articles and press releases related to this company from financial news sources.">&#9432;</span></div>
         <div id="company-news-feed">
             <div class="no-data">No news available for this company.</div>
         </div>

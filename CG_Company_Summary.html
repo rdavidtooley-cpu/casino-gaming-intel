@@ -435,7 +435,7 @@
         <div>
             <!-- Financial Snapshot -->
             <div class="card">
-                <div class="card-title">Financial Snapshot</div>
+                <div class="card-title">Financial Snapshot <span class="info-icon" data-tip="Key financial metrics at a glance: revenue, EBITDA, margins, EPS, and debt ratios from the most recent quarter.">&#9432;</span></div>
                 <table id="fin-table">
                     <tbody></tbody>
                 </table>
@@ -443,7 +443,7 @@
 
             <!-- Revenue & EBITDA Trend -->
             <div class="card">
-                <div class="card-title">Revenue & EBITDA Trend</div>
+                <div class="card-title">Revenue & EBITDA Trend <span class="info-icon" data-tip="Quarterly revenue and EBITDA over the past 8 quarters, showing growth trajectory and profitability trends.">&#9432;</span></div>
                 <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
             </div>
         </div>
@@ -452,7 +452,7 @@
         <div>
             <!-- Analyst Consensus -->
             <div class="card">
-                <div class="card-title">Analyst Consensus</div>
+                <div class="card-title">Analyst Consensus <span class="info-icon" data-tip="Wall Street analyst ratings breakdown (Buy/Hold/Sell) and 12-month price target range. Shows consensus view on the stock.">&#9432;</span></div>
                 <div class="consensus-grid" id="consensus-grid">
                     <div class="consensus-item">
                         <div class="consensus-val" id="cons-target">—</div>
@@ -475,13 +475,13 @@
 
             <!-- Price Performance -->
             <div class="card">
-                <div class="card-title">Price Performance</div>
+                <div class="card-title">Price Performance <span class="info-icon" data-tip="Stock price chart with selectable timeframes and key technical levels including 50-day and 200-day moving averages.">&#9432;</span></div>
                 <div class="perf-grid" id="perf-grid"></div>
             </div>
 
             <!-- Insider Activity -->
             <div class="card">
-                <div class="card-title">Ownership & Short Interest</div>
+                <div class="card-title">Ownership & Short Interest <span class="info-icon" data-tip="Institutional vs. insider ownership breakdown and current short interest as a percentage of float. High short interest can indicate bearish sentiment or squeeze potential.">&#9432;</span></div>
                 <div class="insider-grid" id="insider-grid">
                     <div class="insider-item">
                         <div class="insider-val" id="own-insider">—</div>
@@ -502,7 +502,7 @@
 
     <!-- Transcript Summary Section -->
     <div class="card transcript-section" id="transcript-section">
-        <div class="card-title">Latest Earnings Call Summary</div>
+        <div class="card-title">Latest Earnings Call Summary <span class="info-icon" data-tip="AI-generated summary of the most recent earnings call transcript covering key highlights, guidance, sentiment, and risk factors.">&#9432;</span></div>
         <div id="transcript-content">
             <div class="no-data">No transcript data available for this company.</div>
         </div>
@@ -510,7 +510,7 @@
 
     <!-- SEC Filings Table -->
     <div class="card">
-        <div class="card-title">Recent SEC Filings</div>
+        <div class="card-title">Recent SEC Filings <span class="info-icon" data-tip="Latest regulatory filings (10-K, 10-Q, 8-K) submitted to the SEC. Click to view the full filing on EDGAR.">&#9432;</span></div>
         <div style="overflow-x:auto;">
             <table id="filings-table">
                 <thead>
@@ -530,7 +530,7 @@
 
     <!-- Peer Comparison Mini Table -->
     <div class="card">
-        <div class="card-title">Peer Comparison</div>
+        <div class="card-title">Peer Comparison <span class="info-icon" data-tip="Side-by-side comparison of key metrics against companies in the same gaming sub-sector. Highlights relative strengths and weaknesses.">&#9432;</span></div>
         <div style="overflow-x:auto;">
             <table id="peer-table">
                 <thead>
@@ -554,7 +554,7 @@
 
     <!-- Company News Feed -->
     <div class="card">
-        <div class="card-title">Company News</div>
+        <div class="card-title">Company News <span class="info-icon" data-tip="Recent news articles and press releases related to this company from financial news sources.">&#9432;</span></div>
         <div id="company-news-feed">
             <div class="no-data">No news available for this company.</div>
         </div>
@@ -1736,7 +1736,7 @@ var MARKET_DATA = {
         "value": 193.8
       }
     ],
-    "timestamp": "2026-03-26T15:06:15.747733",
+    "timestamp": "2026-03-26T15:10:08.910452",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 50.0,
     "rank_pe_trailing": 4,
@@ -2922,7 +2922,7 @@ var MARKET_DATA = {
         "value": 132.8
       }
     ],
-    "timestamp": "2026-03-26T15:06:16.584322",
+    "timestamp": "2026-03-26T15:10:09.787197",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 25.0,
     "rank_pe_trailing": null,
@@ -4108,7 +4108,7 @@ var MARKET_DATA = {
         "value": 135.4
       }
     ],
-    "timestamp": "2026-03-26T15:06:17.528651",
+    "timestamp": "2026-03-26T15:10:10.790410",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 75.0,
     "rank_pe_trailing": 3,
@@ -5294,7 +5294,7 @@ var MARKET_DATA = {
         "value": 293.8
       }
     ],
-    "timestamp": "2026-03-26T15:06:18.301484",
+    "timestamp": "2026-03-26T15:10:11.664776",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
@@ -6480,7 +6480,7 @@ var MARKET_DATA = {
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:19.145684",
+    "timestamp": "2026-03-26T15:10:12.414853",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": 1,
@@ -7666,7 +7666,7 @@ var MARKET_DATA = {
         "value": 45.1
       }
     ],
-    "timestamp": "2026-03-26T15:06:19.997092",
+    "timestamp": "2026-03-26T15:10:13.205113",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 57.1,
     "rank_pe_trailing": null,
@@ -8852,7 +8852,7 @@ var MARKET_DATA = {
         "value": 112.6
       }
     ],
-    "timestamp": "2026-03-26T15:06:20.830295",
+    "timestamp": "2026-03-26T15:10:13.907565",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 1,
@@ -10038,7 +10038,7 @@ var MARKET_DATA = {
         "value": 66.3
       }
     ],
-    "timestamp": "2026-03-26T15:06:21.591152",
+    "timestamp": "2026-03-26T15:10:14.690684",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 71.4,
     "rank_pe_trailing": 3,
@@ -11224,7 +11224,7 @@ var MARKET_DATA = {
         "value": 108.2
       }
     ],
-    "timestamp": "2026-03-26T15:06:22.988600",
+    "timestamp": "2026-03-26T15:10:16.522710",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 85.7,
     "rank_pe_trailing": 2,
@@ -12410,7 +12410,7 @@ var MARKET_DATA = {
         "value": 20.3
       }
     ],
-    "timestamp": "2026-03-26T15:06:23.741665",
+    "timestamp": "2026-03-26T15:10:17.225361",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 42.9,
     "rank_pe_trailing": 4,
@@ -13596,7 +13596,7 @@ var MARKET_DATA = {
         "value": 12.4
       }
     ],
-    "timestamp": "2026-03-26T15:06:24.569690",
+    "timestamp": "2026-03-26T15:10:18.035880",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 28.6,
     "rank_pe_trailing": null,
@@ -14782,7 +14782,7 @@ var MARKET_DATA = {
         "value": 1.2
       }
     ],
-    "timestamp": "2026-03-26T15:06:25.338921",
+    "timestamp": "2026-03-26T15:10:18.843201",
     "rank_market_cap_b": 8,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -15968,7 +15968,7 @@ var MARKET_DATA = {
         "value": 0.7
       }
     ],
-    "timestamp": "2026-03-26T15:06:26.087078",
+    "timestamp": "2026-03-26T15:10:19.653381",
     "rank_market_cap_b": 7,
     "pctile_market_cap_b": 14.3,
     "rank_pe_trailing": null,
@@ -17154,7 +17154,7 @@ var MARKET_DATA = {
         "value": 213.3
       }
     ],
-    "timestamp": "2026-03-26T15:06:26.849884",
+    "timestamp": "2026-03-26T15:10:20.419517",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": null,
@@ -18340,7 +18340,7 @@ var MARKET_DATA = {
         "value": 414.9
       }
     ],
-    "timestamp": "2026-03-26T15:06:27.569764",
+    "timestamp": "2026-03-26T15:10:21.131604",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -19526,7 +19526,7 @@ var MARKET_DATA = {
         "value": 48.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:28.306757",
+    "timestamp": "2026-03-26T15:10:21.805279",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 20.0,
     "rank_pe_trailing": 3,
@@ -19586,10 +19586,10 @@ var MARKET_DATA = {
     "current_ratio": 1.167,
     "quick_ratio": 1.041,
     "beta": 2.002,
-    "target_high": 37.071568,
-    "target_low": 22.88579,
-    "target_mean": 28.801807,
-    "target_median": 27.828741,
+    "target_high": 37.067295,
+    "target_low": 22.883152,
+    "target_mean": 28.798489,
+    "target_median": 27.825535,
     "recommendation_key": "strong_buy",
     "recommendation_mean": 1.33333,
     "num_analysts": 21,
@@ -20712,7 +20712,7 @@ var MARKET_DATA = {
         "value": 56.9
       }
     ],
-    "timestamp": "2026-03-26T15:06:29.649060",
+    "timestamp": "2026-03-26T15:10:23.013124",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": 2,
@@ -21898,7 +21898,7 @@ var MARKET_DATA = {
         "value": 21.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:30.435381",
+    "timestamp": "2026-03-26T15:10:23.821779",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": 1,
@@ -23084,7 +23084,7 @@ var MARKET_DATA = {
         "value": 24.0
       }
     ],
-    "timestamp": "2026-03-26T15:06:31.118497",
+    "timestamp": "2026-03-26T15:10:24.420487",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -24270,7 +24270,7 @@ var MARKET_DATA = {
         "value": 20.7
       }
     ],
-    "timestamp": "2026-03-26T15:06:32.039898",
+    "timestamp": "2026-03-26T15:10:25.454430",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -24543,7 +24543,7 @@ var MARKET_DATA = {
     "ytd_change": -23.9,
     "year_change": -23.9,
     "institutional_holders": [],
-    "timestamp": "2026-03-26T15:06:32.795272",
+    "timestamp": "2026-03-26T15:10:26.197176",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -25729,7 +25729,7 @@ var MARKET_DATA = {
         "value": 10.1
       }
     ],
-    "timestamp": "2026-03-26T15:06:33.635934",
+    "timestamp": "2026-03-26T15:10:27.027618",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 66.7,
     "rank_pe_trailing": 1,
@@ -26915,7 +26915,7 @@ var MARKET_DATA = {
         "value": 4.5
       }
     ],
-    "timestamp": "2026-03-26T15:06:34.434041",
+    "timestamp": "2026-03-26T15:10:27.915229",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 33.3,
     "rank_pe_trailing": null,
@@ -26930,7 +26930,7 @@ var MARKET_DATA = {
     "pctile_change_ytd": 33.3,
     "composite_score": 29.1
   },
-  "generated_at": "2026-03-26T15:07:15.866630"
+  "_generated_at": "2026-03-26T15:11:06.800141"
 };
 var PRICE_HISTORY = {
   "MGM": {
