@@ -623,8 +623,7 @@ function fmtVal(val, fmt) {
         return '$' + n.toLocaleString();
     }
     if (fmt === '%') {
-        var pct = Math.abs(n) < 5 ? n * 100 : n;
-        return pct.toFixed(2) + '%';
+        return n.toFixed(2) + '%';
     }
     if (fmt === 'x') return n.toFixed(2) + 'x';
     return String(val);
@@ -714,6 +713,11 @@ function normCompany(d) {
     d.ebitdaMargin = toPct(d.ebitdaMargin);
     d.grossMargin = toPct(d.grossMargin);
     d.netMargin = toPct(d.netMargin);
+    d.roe = toPct(d.roe);
+    d.roa = toPct(d.roa);
+    if (d.insiderPercent != null && d.insiderPercent < 1) d.insiderPercent = d.insiderPercent * 100;
+    if (d.institutionalPercent != null && d.institutionalPercent < 1) d.institutionalPercent = d.institutionalPercent * 100;
+    if (d.shortInterest != null && d.shortInterest < 1) d.shortInterest = d.shortInterest * 100;
 
     // Historical financials from PRICE_HISTORY
     var ph = (typeof PRICE_HISTORY !== 'undefined' && PRICE_HISTORY[d.ticker]) ? PRICE_HISTORY[d.ticker] : null;
