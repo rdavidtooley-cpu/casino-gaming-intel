@@ -49,7 +49,7 @@
             text-decoration: none;
             padding: 8px 18px;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 13px;
             font-weight: 500;
             transition: all 0.2s;
         }
@@ -657,7 +657,7 @@ function buildCompanyPicker() {
     CATEGORIES.forEach(function(cat) { grouped[cat] = []; });
     grouped['Other'] = [];
 
-    Object.keys(MD).forEach(function(ticker) {
+    Object.keys(MD).filter(function(t) { return t.charAt(0) !== '_' && typeof MD[t] === 'object'; }).forEach(function(ticker) {
         var d = MD[ticker];
         var cat = d.category || 'Other';
         if (!grouped[cat]) grouped[cat] = [];
@@ -1027,7 +1027,7 @@ function updatePeerTable(ticker) {
 function updateNewsFeed(ticker) {
     var container = document.getElementById('company-news-feed');
     var articles = (NEWS_DATA || []).filter(function(a) {
-        var tickers = a.tickers || [];
+        var tickers = a.matched_tickers || a.tickers || [];
         return tickers.indexOf(ticker) !== -1;
     });
     if (!articles.length) {
@@ -1038,7 +1038,7 @@ function updateNewsFeed(ticker) {
     articles.slice(0, 10).forEach(function(a) {
         html += '<div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);">' +
             '<div style="font-weight:600;margin-bottom:4px;">' +
-            (a.url ? '<a href="' + a.url + '" target="_blank" rel="noopener" style="color:var(--text-primary);text-decoration:none;">' + (a.headline || 'Untitled') + '</a>' : (a.headline || 'Untitled')) +
+            (a.url ? '<a href="' + a.url + '" target="_blank" rel="noopener" style="color:var(--text-primary);text-decoration:none;">' + (a.headline || a.title || 'Untitled') + '</a>' : (a.headline || a.title || 'Untitled')) +
             '</div>' +
             '<div style="display:flex;gap:8px;align-items:center;font-size:0.8rem;color:var(--text-secondary);">' +
             (a.source ? '<span style="background:rgba(79,195,247,0.15);color:var(--accent2);padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:600;">' + a.source + '</span>' : '') +
@@ -1051,7 +1051,8 @@ function updateNewsFeed(ticker) {
 // Override selectCompany to include right column
 var _origSelectCompany = selectCompany;
 selectCompany = function(ticker) {
-    var data = MD[ticker];
+    if (!MD[ticker] || typeof MD[ticker] !== 'object') return;
+    var data = normCompany(MD[ticker]);
     if (!data) return;
     currentTicker = ticker;
     updateHeader(ticker, data);

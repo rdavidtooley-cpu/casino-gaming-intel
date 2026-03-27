@@ -37,12 +37,14 @@
         .nav-bar {
             display: flex;
             gap: 4px;
-            margin-bottom: var(--gap);
-            background: var(--bg-card);
-            padding: 8px;
-            border-radius: var(--radius);
-            border: var(--border);
+            padding: 8px 24px;
+            background: #111318;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             flex-wrap: wrap;
+            align-items: center;
         }
         .nav-bar a {
             padding: 8px 16px;
@@ -431,6 +433,54 @@
 var NEWS_DATA = {
   "articles": [
     {
+      "title": "The Dealmaking 3: Pac-12 & Genius Sports Deal, YouTube & FIFA World Cup, NHL with COSM",
+      "url": "https://sports.yahoo.com/articles/dealmaking-3-pac-12-genius-005151733.html",
+      "source": "CorpGov.com",
+      "published": "2026-03-27T00:51:51Z",
+      "matched_tickers": [
+        "GENI"
+      ],
+      "sector": "Online & iGaming",
+      "category": "Company-Specific",
+      "relevance_score": 0,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
+      "title": "Resorts World to drop cashless wagering, Gaming Commission honors passing of former member Sue Wagner",
+      "url": "https://cdcgaming.com/resorts-world-to-drop-cashless-wagering-gaming-commission-honors-passing-of-former-member-sue-wagner/",
+      "source": "CDC Gaming Reports",
+      "published": "Fri, 27 Mar 2026 00:49:57 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 10,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
+      "title": "Wynn and Bally\u2019s execs talk UAE and Las Vegas; Michael Gaughan III awarded gaming license",
+      "url": "https://cdcgaming.com/wynn-and-ballys-execs-talk-uae-and-las-vegas-michael-gaughan-iii-awarded-gaming-license/",
+      "source": "CDC Gaming Reports",
+      "published": "Fri, 27 Mar 2026 00:41:39 +0000",
+      "matched_tickers": [
+        "WYNN"
+      ],
+      "sector": "Integrated Resorts",
+      "category": "Company-Specific",
+      "relevance_score": 11,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
+      "title": "Grupo Aposta Ganha Launches New Brand Receba.bet.br to Expand Market Presence",
+      "url": "https://www.igamingtoday.com/grupo-aposta-ganha-launches-new-brand-receba-bet-br-to-expand-market-presence/",
+      "source": "iGamingToday",
+      "published": "Fri, 27 Mar 2026 00:28:23 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
       "title": "Allwyn Consolidates 67.1% Voting Stake in Reef Casino Trust Amid Iris Takeover Talks",
       "url": "https://www.igamingtoday.com/allwyn-consolidates-67-1-voting-stake-in-reef-casino-trust-amid-iris-takeover-talks/",
       "source": "iGamingToday",
@@ -442,19 +492,6 @@ var NEWS_DATA = {
       "source_file": "news_2026-03-26.json"
     },
     {
-      "title": "Wynn and Bally\u2019s execs talk UAE and Las Vegas; Michael Gaughan III awarded gaming license",
-      "url": "https://cdcgaming.com/wynn-and-ballys-execs-talk-uae-and-las-vegas-michael-gaughan-iii-awarded-gaming-license/",
-      "source": "CDC Gaming Reports",
-      "published": "Thu, 26 Mar 2026 23:23:39 +0000",
-      "matched_tickers": [
-        "WYNN"
-      ],
-      "sector": "Integrated Resorts",
-      "category": "Company-Specific",
-      "relevance_score": 11,
-      "source_file": "news_2026-03-26.json"
-    },
-    {
       "title": "29% Drop in Sports Betting Revenue for Ontario in February - Casino.org",
       "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBSTDNUZndid0xWalpmUFdkcjlGUDBLeGhPT28yZEppZGt2bllQZHVxdUNCemVuc1pxTVlvSEdqNUpzN3JPRjE3YU9rUjRFUjBKLVI2eW1ISUxPNHNFQXRtYTMxdmxvaHhJX3c1V0MtUVBmQWlL?oc=5",
       "source": "Casino.org",
@@ -463,17 +500,6 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 4,
-      "source_file": "news_2026-03-26.json"
-    },
-    {
-      "title": "Resorts World to drop cashless wagering, Gaming Commission honors passing of former member Sue Wagner",
-      "url": "https://cdcgaming.com/resorts-world-to-drop-cashless-wagering-gaming-commission-honors-passing-of-former-member-sue-wagner/",
-      "source": "CDC Gaming Reports",
-      "published": "Thu, 26 Mar 2026 22:08:57 +0000",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 10,
       "source_file": "news_2026-03-26.json"
     },
     {
@@ -580,17 +606,6 @@ var NEWS_DATA = {
       "source_file": "news_2026-03-26.json"
     },
     {
-      "title": "Off-Strip casino has pool daybed offer for Las Vegas locals - Las Vegas Review-Journal",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOaDc1VGRQZTdjSmQwaUxOdjQtZ0kyR0QxQVFpQmozT21peVVKSFVLd3RULUU4RG5ReE91SE5MaG9PeGVWV1gtano0M2pBX0RXYWVjS3BYVUNadVZOUXJ5V0p0d195bDlZVWJZMzhiZ09ZODROSXo1VnN0YzhJSFE2dmdBZHpfNXkza1FVdDRmcWFiUDNxa2lPaEQ3RkJSdUFxWDJnaDJ2SmRaS0ZBQmRsdWJOQVFaVXdENkJpcTd1RQ?oc=5",
-      "source": "Google News - Las Vegas",
-      "published": "Thu, 26 Mar 2026 18:56:15 GMT",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 6,
-      "source_file": "news_2026-03-26.json"
-    },
-    {
       "title": "Las Vegas Strip Casino Revenue Rebounds in February - Casino.org",
       "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPb3JEVG83aVdoNkFwTFhJSVNVS3ZtZHY5QXpKZHBUX1I0a3ZKXzFaT3VyZFk0cVVsOXBHak0tcUlEUVJjNnpSWldyWi10Q25DajBOand4Qm1vNVVLejhyelV5OTZUR2liaS1EaGNDbWVwVW9fbmZCY2tLODVmeC1sWEVtd0xvXzQ?oc=5",
       "source": "Casino.org",
@@ -643,6 +658,17 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 5,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
+      "title": "Off-Strip casino has pool daybed offer for Las Vegas locals - Las Vegas Review-Journal",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOaDc1VGRQZTdjSmQwaUxOdjQtZ0kyR0QxQVFpQmozT21peVVKSFVLd3RULUU4RG5ReE91SE5MaG9PeGVWV1gtano0M2pBX0RXYWVjS3BYVUNadVZOUXJ5V0p0d195bDlZVWJZMzhiZ09ZODROSXo1VnN0YzhJSFE2dmdBZHpfNXkza1FVdDRmcWFiUDNxa2lPaEQ3RkJSdUFxWDJnaDJ2SmRaS0ZBQmRsdWJOQVFaVXdENkJpcTd1RQ?oc=5",
+      "source": "Google News - Las Vegas",
+      "published": "Thu, 26 Mar 2026 16:02:13 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 6,
       "source_file": "news_2026-03-26.json"
     },
     {
@@ -705,6 +731,19 @@ var NEWS_DATA = {
       "source_file": "news_2026-03-26.json"
     },
     {
+      "title": "Pennsylvania Gaming Regulators Fine BetMGM $100K For Failure to Prevent Fraudulent Behavior - Sports Betting Dime",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNSGV4c2VzT0xyTGFWX3lVWmNhbkZsMzNVQTZaSm9mUFBwUDRrOHpGRDJZTkxYUkpEcFFwenNpWTM5N1BhSTNjRW5jOEJmWUM4aTFvYWZvTWdialM0ZDBLVllHc2d0anNTSVZlQzVBSllxNFFJdWM5c2pnNXNmTUk3MXQ0eXg4ajZNN2hnNkZ6ZXBHQk5FMGlDQ2praVRmZld1TXR0Ykd2RTA1di1JTHBCWUdsVXhHWFZYWS0zNlZSdUxCVVpVV1JaZWhPSDNJMW9jSVlVbg?oc=5",
+      "source": "Sports Betting Dime",
+      "published": "Thu, 26 Mar 2026 15:13:00 GMT",
+      "matched_tickers": [
+        "MGM"
+      ],
+      "sector": "Integrated Resorts",
+      "category": "Company-Specific",
+      "relevance_score": 6,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
       "title": "Mississippi Sports Betting Bills to Authorize Online Sportsbooks Dead Again - Casino.org",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQTGhmd2ZxMEg1SjZIWEVEZ0p2V3pfajVlZzQxaFRVXzUzRmdpUWRGN2dWNVVhd3RQX20xOEpvQ2gxWVAzb0pZNEVCaWl3LXlpMnluNWMxYktEbURUa2VHcWtzVHRyWjNQSTdzdlhVTHBzbzBtMmNfdUp2R1JtZF9Tclc5Zm5iYWtIVnJWdC1Odi1LQS1MSGxQdG9QVkloTHM?oc=5",
       "source": "Casino.org",
@@ -735,19 +774,6 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 5,
-      "source_file": "news_2026-03-26.json"
-    },
-    {
-      "title": "BetMGM Hit With $100,000 Fine in Pennsylvania Over Identity Check Failures",
-      "url": "https://www.igamingtoday.com/betmgm-hit-with-100000-fine-in-pennsylvania-over-identity-check-failures/",
-      "source": "iGamingToday",
-      "published": "Thu, 26 Mar 2026 14:52:40 +0000",
-      "matched_tickers": [
-        "MGM"
-      ],
-      "sector": "Integrated Resorts",
-      "category": "Company-Specific",
-      "relevance_score": 3,
       "source_file": "news_2026-03-26.json"
     },
     {
@@ -858,6 +884,19 @@ var NEWS_DATA = {
       "source_file": "news_2026-03-26.json"
     },
     {
+      "title": "Q&A: Inside Playradar - Sportradar\u2019s new iGaming brand and the rise of casino sports entertainment - NEXT.io",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbVZOV0ZtM1RXWDVkYW9tN1JxcS1Vak9oZjkxRDNBYVF3QXFWUEtBd3FCSGotRzV2Y3JLYWJPc3U5aDBmVkFrS0QybW9JUGFUb0tIdGgtb2RnbThlVHYxZ0tBWkRrcG1JZmdvSjRrWktZdTNLZndiU056LXljMFJDMUN1ZHdjVUE?oc=5",
+      "source": "NEXT.io",
+      "published": "Thu, 26 Mar 2026 11:31:32 GMT",
+      "matched_tickers": [
+        "SRAD"
+      ],
+      "sector": "Online & iGaming",
+      "category": "Company-Specific",
+      "relevance_score": 4,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
       "title": "Boyd Group Services Independent Director Acquires 76% More Stock",
       "url": "https://finance.yahoo.com/markets/stocks/articles/boyd-group-services-independent-director-110018529.html",
       "source": "Simply Wall St.",
@@ -914,17 +953,6 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 4,
-      "source_file": "news_2026-03-26.json"
-    },
-    {
-      "title": "Michigan Digital Gaming Operators Report $313M in February Revenue - iGamingToday.com",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdWk5OThLcHBJNjdMYjNVak9yUDUweWRiazFSSkJIUmczZVFyemc0QnA0S3RuYWhDWlhKQkwxMWZYNm9sUGpsb0dnMzYySkhFSEVGbHNULWNZR0V3U01vb0otQTZlWDh0NTJtLVowUHlwX0hlZnZnOHpvdmZ3a1FvOWlQYTBqOVN3V3VwczBvM3NQSElYUFhBMkg3MA?oc=5",
-      "source": "iGamingToday.com",
-      "published": "Thu, 26 Mar 2026 09:09:12 GMT",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
       "source_file": "news_2026-03-26.json"
     },
     {
@@ -1032,17 +1060,6 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 1,
-      "source_file": "news_2026-03-25.json"
-    },
-    {
-      "title": "Las Vegas casinos keep tacking on fees - and visitors are losing patience - MSN",
-      "url": "https://news.google.com/rss/articles/CBMi6gJBVV95cUxQU3lmM1NFMHQ0dGN5dzRlT3dOSWJxaC0xVjg0Z1dSTXdBcnpsZXlpLThLejI4b2xSRXdYeGE4MjZvZFZOdnpnNHNOal9XTUNrNGRuWnVBRm4tQW9uZm1uOTRNOE9LRl9MT0JZVzhrTTg2SkF0QS02S3RLV3ZIN2JRUE9TNE1takY4dE1XZ252U09jcXVYUkhzNmlnenJBa3ZkMC1sNlZrWFlVdWFKQ3BuSjdUVkNvZmdNbDhBOXJ1dUE4ckpnbEFTeEFBMVlldlkxRVNwRWtBc0hDTnZRV2JfQTdRa2Q4Y3huOU9sZXRZdlZXSVU1LUNQNVF0cGE5MEpvTERST2NDRVlhUTB5LURwMTQtSVp2TnpfRWVEZC1yMHFoVjhpRmpkcnBNdmkzcmhWSDN6NF9fZ1U5V0VHNUdHSlpZbjluZFF2QW9pTnYwSEE4ekVrZWd2MTlpZEkwODNWWXVYanFiZEpBUQ?oc=5",
-      "source": "MSN",
-      "published": "Thu, 26 Mar 2026 01:04:42 GMT",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
       "source_file": "news_2026-03-25.json"
     },
     {
@@ -1206,6 +1223,17 @@ var NEWS_DATA = {
       "source_file": "news_2026-03-26.json"
     },
     {
+      "title": "Letter: Unions Urge Governor To Sign Tysons Casino Bill - Patch",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSEU3U3NqOC04SWZUTkkwQ1MtRGpVMXJvRlRaWG1QZjRCOXBmNXczcDZJU0JRWXhBWFRxVGRkdkhFc1JxRzU3a0tNUWFLM1hvOTZiV0kybERGdlhWNTVWaHZVVHFZZXhhSEdzTFNBSXJGMnFpbnlrbTVaOV90ME5NSk1hX3VBOEZtWDFlLTdR0gGjAUFVX3lxTE5SQ2dET1c2bkIxU1VGcVg4aG4tRlhPTGhGN1dzaWFPZnpfMDNLcnBLY1hDOU1HWkozU1pxMUdmdEMzUjk0TTl3S1dPTjFFVC1JYWVSZU9CU2hDUHo0MFNRLWQ1S3piaFBpMEd5QnZGUjBsUnFJSXJENEVWamViMWtPai1mUEZLcE5fbzhaa3liVm1Qb0lNYkdvcl9ySFBJU0pYVE0?oc=5",
+      "source": "Patch",
+      "published": "Wed, 25 Mar 2026 19:43:47 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
       "title": "ASX Stocks That Could Be Up To 42.5% Below Intrinsic Value Estimates",
       "url": "https://finance.yahoo.com/markets/stocks/articles/asx-stocks-could-42-5-193456602.html",
       "source": "Simply Wall St.",
@@ -1335,7 +1363,7 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 2,
-      "source_file": "news_2026-03-26.json"
+      "source_file": "news_2026-03-25.json"
     },
     {
       "title": "New York City Casinos Seen Posting up to $5.6B in Annual Revenue - Casino.org",
@@ -2255,7 +2283,7 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 2,
-      "source_file": "news_2026-03-26.json"
+      "source_file": "news_2026-03-25.json"
     },
     {
       "title": "5 Las Vegas hotels once owned by the mob - MSN",
@@ -2486,6 +2514,17 @@ var NEWS_DATA = {
       "category": "Company-Specific",
       "relevance_score": 4,
       "source_file": "news_2026-03-25.json"
+    },
+    {
+      "title": "German Hacker Claims MGA Breach, Threatens iGaming Expos\u00e9 - casino.com",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNTzVXMG90d3pBeVhtMHM2aFIyWTlLM0xCZXhVNktMeXBnMWx4bnhnMjcxVmdCV25nRjFobVpLVlVRNUZyV2pZdGRFLUpaQlFZd0ptWDZxcncwMWRMcFNPMzRKZG9pZ1JOT25mM25pSWlNVXBGU0ZTM01aR1JUNWhPOHNHcmlEWVF5NWVwbWR6aS1RU1JGUzN3UmV3?oc=5",
+      "source": "casino.com",
+      "published": "Tue, 24 Mar 2026 11:46:31 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-03-26.json"
     },
     {
       "title": "LGBTQIA+ Communities Face Higher Gambling Harm Risks, UK Study Finds - casino.com",
@@ -2799,6 +2838,17 @@ var NEWS_DATA = {
       ],
       "sector": "Integrated Resorts",
       "category": "Company-Specific",
+      "relevance_score": 2,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
+      "title": "Las Vegas casinos keep tacking on fees - and visitors are losing patience - MSN",
+      "url": "https://news.google.com/rss/articles/CBMi6gJBVV95cUxQU3lmM1NFMHQ0dGN5dzRlT3dOSWJxaC0xVjg0Z1dSTXdBcnpsZXlpLThLejI4b2xSRXdYeGE4MjZvZFZOdnpnNHNOal9XTUNrNGRuWnVBRm4tQW9uZm1uOTRNOE9LRl9MT0JZVzhrTTg2SkF0QS02S3RLV3ZIN2JRUE9TNE1takY4dE1XZ252U09jcXVYUkhzNmlnenJBa3ZkMC1sNlZrWFlVdWFKQ3BuSjdUVkNvZmdNbDhBOXJ1dUE4ckpnbEFTeEFBMVlldlkxRVNwRWtBc0hDTnZRV2JfQTdRa2Q4Y3huOU9sZXRZdlZXSVU1LUNQNVF0cGE5MEpvTERST2NDRVlhUTB5LURwMTQtSVp2TnpfRWVEZC1yMHFoVjhpRmpkcnBNdmkzcmhWSDN6NF9fZ1U5V0VHNUdHSlpZbjluZFF2QW9pTnYwSEE4ekVrZWd2MTlpZEkwODNWWXVYanFiZEpBUQ?oc=5",
+      "source": "MSN",
+      "published": "Tue, 24 Mar 2026 01:27:36 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
       "relevance_score": 2,
       "source_file": "news_2026-03-26.json"
     },
@@ -3573,6 +3623,19 @@ var NEWS_DATA = {
       "source_file": "news_2026-03-26.json"
     },
     {
+      "title": "Wall Street Bets: Las Vegas, New York OSB, gaming industry signs, SportRadar - CDC Gaming",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNZ2xwRjhXOVRMTjAwS05pWU5yVU1zdUFyNVI2OExDSFF3TkZDTWYwSVUxU21aNWJLMTA2VGhidG1KRkw2R2RwSVMyNUVqWW43NTF0NXcydTViOE5hZ1psN1pkVnRjRlNGbmdJQ184N2JzTGFFTzBINWt2TVVQQ2hVM0dqOUlKSng1MTluQkxrcTkwdHVwRUZvOXBJSQ?oc=5",
+      "source": "CDC Gaming",
+      "published": "Mon, 23 Mar 2026 14:03:14 GMT",
+      "matched_tickers": [
+        "SRAD"
+      ],
+      "sector": "Online & iGaming",
+      "category": "Company-Specific",
+      "relevance_score": 6,
+      "source_file": "news_2026-03-26.json"
+    },
+    {
       "title": "Wall Street Bets: Las Vegas, New York OSB, gaming industry signs, SportRadar",
       "url": "https://cdcgaming.com/wall-street-bets-las-vegas-new-york-osb-gaming-industry-signs-sportradar/",
       "source": "CDC Gaming Reports",
@@ -3828,7 +3891,7 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 2,
-      "source_file": "news_2026-03-23.json"
+      "source_file": "news_2026-03-26.json"
     },
     {
       "title": "Cir\u00f2 Marina (KR): Slot machines turned on at unauthorized times and other irregularities in two gaming halls, owners fined - PressGiochi",
@@ -4780,7 +4843,7 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 2,
-      "source_file": "news_2026-03-24.json"
+      "source_file": "news_2026-03-26.json"
     },
     {
       "title": "EndGame: No Betting On Politics In Alberta, \u2018Bonus Abuse\u2019 Irks Sportsbooks, Free Gas From FanDuel Predicts - ingame.com",
@@ -5441,7 +5504,7 @@ var NEWS_DATA = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 6,
-      "source_file": "news_2026-03-26.json"
+      "source_file": "news_2026-03-25.json"
     },
     {
       "title": "Kalshi Raises $1 Billion, Sends Valuation Soaring to $22 Billion",
@@ -15415,7 +15478,7 @@ var NEWS_DATA = {
       "sector": "Online & iGaming",
       "category": "Company-Specific",
       "relevance_score": 0,
-      "source_file": "news_2026-03-26.json"
+      "source_file": "news_2026-03-25.json"
     },
     {
       "title": "5 Broker-Liked Stocks to Monitor Amid the Ongoing Volatility",
@@ -17927,7 +17990,7 @@ var NEWS_DATA = {
       "est_eps": 1.07754
     }
   ],
-  "generated_at": "2026-03-26T19:45:45.771881"
+  "generated_at": "2026-03-26T20:04:09.020051"
 };
 // INJECTED_DATA_END
 
@@ -18045,7 +18108,7 @@ function createArticleCard(article) {
     link.href = article.url || '#';
     link.target = '_blank';
     link.rel = 'noopener';
-    link.textContent = article.headline || 'Untitled';
+    link.textContent = article.headline || article.title || 'Untitled';
     headlineDiv.appendChild(link);
     card.appendChild(headlineDiv);
 

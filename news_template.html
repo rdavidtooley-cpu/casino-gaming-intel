@@ -37,12 +37,14 @@
         .nav-bar {
             display: flex;
             gap: 4px;
-            margin-bottom: var(--gap);
-            background: var(--bg-card);
-            padding: 8px;
-            border-radius: var(--radius);
-            border: var(--border);
+            padding: 8px 24px;
+            background: #111318;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             flex-wrap: wrap;
+            align-items: center;
         }
         .nav-bar a {
             padding: 8px 16px;
@@ -545,7 +547,7 @@ function createArticleCard(article) {
     link.href = article.url || '#';
     link.target = '_blank';
     link.rel = 'noopener';
-    link.textContent = article.headline || 'Untitled';
+    link.textContent = article.headline || article.title || 'Untitled';
     headlineDiv.appendChild(link);
     card.appendChild(headlineDiv);
 
