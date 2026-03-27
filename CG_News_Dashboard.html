@@ -17787,8 +17787,147 @@ var NEWS_DATA = {
       "filename": "20-F_2024-03-22.htm"
     }
   ],
-  "earnings_calendar": [],
-  "generated_at": "2026-03-26T19:38:37.142338"
+  "earnings_calendar": [
+    {
+      "ticker": "MCRI",
+      "company": "Monarch Casino & Resort, Inc.",
+      "report_date": "2026-04-21",
+      "est_eps": 5.945
+    },
+    {
+      "ticker": "LVS",
+      "company": "Las Vegas Sands Corp.",
+      "report_date": "2026-04-22",
+      "est_eps": 3.75754
+    },
+    {
+      "ticker": "CHDN",
+      "company": "Churchill Downs Incorporated",
+      "report_date": "2026-04-22",
+      "est_eps": 7.42504
+    },
+    {
+      "ticker": "BYD",
+      "company": "Boyd Gaming Corporation",
+      "report_date": "2026-04-23",
+      "est_eps": 8.14741
+    },
+    {
+      "ticker": "CZR",
+      "company": "Caesars Entertainment, Inc.",
+      "report_date": "2026-04-28",
+      "est_eps": 1.026
+    },
+    {
+      "ticker": "MGM",
+      "company": "MGM Resorts International",
+      "report_date": "2026-04-29",
+      "est_eps": 2.34311
+    },
+    {
+      "ticker": "RSI",
+      "company": "Rush Street Interactive, Inc.",
+      "report_date": "2026-04-29",
+      "est_eps": 0.74604
+    },
+    {
+      "ticker": "MLCO",
+      "company": "Melco Resorts & Entertainment Limited",
+      "report_date": "2026-04-30",
+      "est_eps": 0.79559
+    },
+    {
+      "ticker": "RRR",
+      "company": "Red Rock Resorts, Inc.",
+      "report_date": "2026-04-30",
+      "est_eps": 3.28593
+    },
+    {
+      "ticker": "GENI",
+      "company": "Genius Sports Limited",
+      "report_date": "2026-05-05",
+      "est_eps": 0.99
+    },
+    {
+      "ticker": "ACEL",
+      "company": "Accel Entertainment, Inc.",
+      "report_date": "2026-05-05",
+      "est_eps": 0.92603
+    },
+    {
+      "ticker": "WYNN",
+      "company": "Wynn Resorts, Limited",
+      "report_date": "2026-05-06",
+      "est_eps": 5.94177
+    },
+    {
+      "ticker": "FLUT",
+      "company": "Flutter Entertainment plc",
+      "report_date": "2026-05-06",
+      "est_eps": 10.64497
+    },
+    {
+      "ticker": "LNW",
+      "company": "Light & Wonder",
+      "report_date": "2026-05-06",
+      "est_eps": null
+    },
+    {
+      "ticker": "PENN",
+      "company": "PENN Entertainment, Inc.",
+      "report_date": "2026-05-07",
+      "est_eps": 1.73053
+    },
+    {
+      "ticker": "GDEN",
+      "company": "Golden Entertainment, Inc.",
+      "report_date": "2026-05-07",
+      "est_eps": 1.21
+    },
+    {
+      "ticker": "FLL",
+      "company": "Full House Resorts, Inc.",
+      "report_date": "2026-05-07",
+      "est_eps": -0.41
+    },
+    {
+      "ticker": "DKNG",
+      "company": "DraftKings Inc.",
+      "report_date": "2026-05-07",
+      "est_eps": 1.9463
+    },
+    {
+      "ticker": "SGHC",
+      "company": "Super Group (SGHC) Limited",
+      "report_date": "2026-05-07",
+      "est_eps": 0.86741
+    },
+    {
+      "ticker": "INSE",
+      "company": "Inspired Entertainment, Inc.",
+      "report_date": "2026-05-07",
+      "est_eps": 0.74916
+    },
+    {
+      "ticker": "BALY",
+      "company": "Bally's Corporation",
+      "report_date": "2026-05-11",
+      "est_eps": -0.81
+    },
+    {
+      "ticker": "SRAD",
+      "company": "Sportradar Group AG",
+      "report_date": "2026-05-11",
+      "est_eps": 0.8202921
+    },
+    {
+      "ticker": "BRSL",
+      "company": "Brightstar Lottery",
+      "report_date": "2026-05-12",
+      "est_eps": 1.07754
+    }
+  ],
+  "generated_at": "2026-03-26T19:45:45.771881"
 };
 // INJECTED_DATA_END
 
@@ -18013,9 +18152,9 @@ function renderFilings() {
     filings.forEach(function(f) {
         var tr = document.createElement('tr');
         tr.innerHTML =
-            '<td>' + esc(f.company || '') + '</td>' +
-            '<td><span class="form-badge">' + esc(f.form_type || '') + '</span></td>' +
-            '<td>' + esc(f.filed_date || '') + '</td>' +
+            '<td>' + esc(f.company || f.ticker || '') + '</td>' +
+            '<td><span class="form-badge">' + esc(f.form_type || f.type || '') + '</span></td>' +
+            '<td>' + esc(f.filed_date || f.date || f.modified || '') + '</td>' +
             '<td>' + (f.url ? '<a href="' + esc(f.url) + '" target="_blank" rel="noopener">View</a>' : '—') + '</td>';
         tbody.appendChild(tr);
     });

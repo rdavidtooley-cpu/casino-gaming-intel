@@ -652,9 +652,9 @@ function renderFilings() {
     filings.forEach(function(f) {
         var tr = document.createElement('tr');
         tr.innerHTML =
-            '<td>' + esc(f.company || '') + '</td>' +
-            '<td><span class="form-badge">' + esc(f.form_type || '') + '</span></td>' +
-            '<td>' + esc(f.filed_date || '') + '</td>' +
+            '<td>' + esc(f.company || f.ticker || '') + '</td>' +
+            '<td><span class="form-badge">' + esc(f.form_type || f.type || '') + '</span></td>' +
+            '<td>' + esc(f.filed_date || f.date || f.modified || '') + '</td>' +
             '<td>' + (f.url ? '<a href="' + esc(f.url) + '" target="_blank" rel="noopener">View</a>' : '—') + '</td>';
         tbody.appendChild(tr);
     });

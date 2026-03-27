@@ -681,8 +681,49 @@ function buildCompanyPicker() {
 }
 
 // ---- Select Company ----
+function normCompany(d) {
+    if (d._norm) return d;
+    d.change = d.change || d.daily_change || 0;
+    d.changePercent = d.changePercent || d.daily_change_pct || 0;
+    d.marketCap = d.marketCap || d.market_cap || (d.market_cap_b ? d.market_cap_b * 1e9 : null);
+    d.peRatio = d.peRatio || d.pe_trailing;
+    d.evEbitda = d.evEbitda || d.ev_ebitda;
+    d.revenue = d.revenue || (d.revenue_b != null ? d.revenue_b * 1e9 : null);
+    d.ebitda = d.ebitda || (d.ebitda_b != null ? d.ebitda_b * 1e9 : null);
+    d.netIncome = d.netIncome || (d.net_income_b != null ? d.net_income_b * 1e9 : null);
+    d.ebitdaMargin = d.ebitdaMargin || d.ebitda_margins;
+    d.grossMargin = d.grossMargin || d.gross_margins;
+    d.netMargin = d.netMargin || d.profit_margins;
+    d.debtEquity = d.debtEquity || d.debt_to_equity;
+    d.currentRatio = d.currentRatio || d.current_ratio;
+    d.fcf = d.fcf || (d.free_cashflow_b != null ? d.free_cashflow_b * 1e9 : null);
+    d.analystTarget = d.analystTarget || d.target_mean;
+    d.recommendation = d.recommendation || d.recommendation_key;
+    d.analystRec = d.analystRec || d.recommendation_key;
+    d.numAnalysts = d.numAnalysts || d.num_analysts;
+    d.insiderPercent = d.insiderPercent || d.held_pct_insiders;
+    d.institutionalPercent = d.institutionalPercent || d.held_pct_institutions;
+    d.shortInterest = d.shortInterest || d.short_pct_float;
+    d.change1D = d.change1D || d.daily_change_pct || 0;
+    d.change1W = d.change1W || d.week_change;
+    d.change1M = d.change1M || d.month_change;
+    d.change3M = d.change3M || d.three_month_change;
+    d.ytdChange = d.ytdChange || d.ytd_change || d.change_ytd;
+    d.change1Y = d.change1Y || d.change_1y;
+    // Peer table aliases
+    d.ytdChange = d.ytdChange || d.change_ytd;
+    // Historical financials from PRICE_HISTORY
+    var ph = (typeof PRICE_HISTORY !== 'undefined' && PRICE_HISTORY[d.ticker]) ? PRICE_HISTORY[d.ticker] : null;
+    if (ph && ph.annual && !d.historicalYears) {
+        d.historicalYears = ph.annual.map(function(a) { return a.period || a.year; });
+        d.historicalRevenue = ph.annual.map(function(a) { return (a['Total Revenue'] || 0) * 1e9; });
+        d.historicalEbitda = ph.annual.map(function(a) { return (a['EBITDA'] || 0) * 1e9; });
+    }
+    d._norm = true;
+    return d;
+}
 function selectCompany(ticker) {
-    var data = MD[ticker];
+    var data = normCompany(MD[ticker]);
     if (!data) return;
     currentTicker = ticker;
     updateHeader(ticker, data);
@@ -921,9 +962,10 @@ function updateTranscript(ticker) {
 function updateFilings(ticker) {
     var body = document.getElementById('filings-body');
     var data = MD[ticker];
-    var filings = (SEC_FILINGS && SEC_FILINGS[ticker]) || (data && data.filings ? data.filings : []);
+    var raw = (SEC_FILINGS && SEC_FILINGS[ticker]) || {};
+    var filings = Array.isArray(raw) ? raw : (raw.filings || (data && data.filings ? data.filings : []));
 
-    if (!filings.length) {
+    if (!filings || !filings.length) {
         body.innerHTML = '<tr><td colspan="4" class="no-data">No filings data available.</td></tr>';
         return;
     }
@@ -932,9 +974,9 @@ function updateFilings(ticker) {
     filings.forEach(function(f) {
         html += '<tr>' +
             '<td><span class="filing-type">' + (f.type || f.formType || '—') + '</span></td>' +
-            '<td>' + (f.description || f.title || '—') + '</td>' +
-            '<td>' + (f.date || f.filedDate || '—') + '</td>' +
-            '<td>' + (f.url ? '<a href="' + f.url + '" target="_blank" style="color:var(--accent2);">View</a>' : '—') + '</td>' +
+            '<td>' + (f.filename || f.description || f.title || '—') + '</td>' +
+            '<td>' + (f.modified || f.date || f.filedDate || '—') + '</td>' +
+            '<td>' + (f.path ? '<a href="' + f.path + '" target="_blank" style="color:var(--accent2);">View</a>' : '—') + '</td>' +
             '</tr>';
     });
     body.innerHTML = html;
@@ -953,7 +995,8 @@ function updatePeerTable(ticker) {
     var data = MD[ticker];
     if (!data) { body.innerHTML = '<tr><td colspan="8" class="no-data">No peer data available.</td></tr>'; return; }
     var cat = data.category;
-    var peers = Object.keys(MD).filter(function(t) { return t !== ticker && MD[t].category === cat; });
+    var peers = Object.keys(MD).filter(function(t) { return t.charAt(0) !== '_' && typeof MD[t] === 'object' && t !== ticker && MD[t].category === cat; });
+    peers.forEach(function(t) { normCompany(MD[t]); });
     if (!peers.length) { body.innerHTML = '<tr><td colspan="8" class="no-data">No peers found in this sector.</td></tr>'; return; }
 
     var html = '';

@@ -513,15 +513,42 @@ function medianOf(arr) {
 
 function destroyChart(name) { if (charts[name]) { charts[name].destroy(); charts[name] = null; } }
 
+function normalizeFields(d) {
+    // Map snake_case data fields to template-expected names
+    if (d._normalized) return d;
+    d.change_pct = d.change_pct || d.daily_change_pct || 0;
+    d.pe_ratio = d.pe_ratio || d.pe_trailing;
+    d.forward_pe = d.forward_pe || d.pe_forward;
+    d.pb_ratio = d.pb_ratio || d.price_to_book;
+    d.ps_ratio = d.ps_ratio || d.price_to_sales;
+    d.peg_ratio = d.peg_ratio || d.peg_ratio_calc;
+    d.ytd_change = d.ytd_change || d.change_ytd || 0;
+    d.year_change = d.year_change || d.change_1y || 0;
+    d.revenue = d.revenue || (d.revenue_b != null ? d.revenue_b * 1e9 : null);
+    d.ebitda = d.ebitda || (d.ebitda_b != null ? d.ebitda_b * 1e9 : null);
+    d.net_income = d.net_income || (d.net_income_b != null ? d.net_income_b * 1e9 : null);
+    d.total_debt = d.total_debt || (d.total_debt_b != null ? d.total_debt_b * 1e9 : null);
+    d.ebitda_margin = d.ebitda_margin || d.ebitda_margins;
+    d.debt_ebitda = d.debt_ebitda || (d.total_debt_b && d.ebitda_b && d.ebitda_b > 0 ? +(d.total_debt_b / d.ebitda_b).toFixed(1) : null);
+    d.interest_coverage = d.interest_coverage || null;
+    d.recommendation = d.recommendation || d.recommendation_key;
+    d.earnings_date = d.earnings_date || d.next_earnings_date;
+    d.est_eps = d.est_eps || d.eps_forward;
+    d.earnings_time = d.earnings_time || null;
+    d.ex_div_date = d.ex_div_date || null;
+    d.div_amount = d.div_amount || d.dividend_rate;
+    d._normalized = true;
+    return d;
+}
 function getDataArray() {
     if (!MARKET_DATA) return [];
-    if (Array.isArray(MARKET_DATA)) return MARKET_DATA;
+    if (Array.isArray(MARKET_DATA)) return MARKET_DATA.map(normalizeFields);
     return Object.keys(MARKET_DATA).filter(function(t) { return t.charAt(0) !== '_' && typeof MARKET_DATA[t] === 'object'; }).map(function(t) {
         var d = MARKET_DATA[t];
         d.ticker = d.ticker || d.display_ticker || t;
         d.company = d.company || d.name || t;
         d.category = d.category || 'Other';
-        return d;
+        return normalizeFields(d);
     });
 }
 
