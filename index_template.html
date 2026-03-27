@@ -243,6 +243,18 @@
         </div>
     </div>
 
+    <!-- 52-Week Proximity -->
+    <div class="grid-2even">
+        <div class="card">
+            <div class="section-title" title="Shows how close each stock is trading to its 52-week high or low. Stocks near highs may have momentum; stocks near lows may offer value.">Near 52-Week Highs</div>
+            <div id="near52High" style="font-size:13px;"></div>
+        </div>
+        <div class="card">
+            <div class="section-title" title="Shows how close each stock is trading to its 52-week high or low. Stocks near highs may have momentum; stocks near lows may offer value.">Near 52-Week Lows</div>
+            <div id="near52Low" style="font-size:13px;"></div>
+        </div>
+    </div>
+
     <!-- News Headlines + Transcript Intelligence -->
     <div class="grid-2even">
         <div class="card">
@@ -720,6 +732,39 @@ function renderMovers() {
     renderList(losers, 'top-losers');
 }
 
+// ===== 52-WEEK PROXIMITY =====
+function render52Week() {
+    var md = MARKET_DATA || {};
+    var withRange = [];
+    Object.keys(md).forEach(function(t) {
+        var d = md[t];
+        if (!d.price || !d.fifty_two_week_high || !d.fifty_two_week_low || d.fifty_two_week_high <= d.fifty_two_week_low) return;
+        var range = d.fifty_two_week_high - d.fifty_two_week_low;
+        var pctFromHigh = ((d.fifty_two_week_high - d.price) / d.fifty_two_week_high * 100);
+        var pctFromLow = ((d.price - d.fifty_two_week_low) / d.fifty_two_week_low * 100);
+        var position = ((d.price - d.fifty_two_week_low) / range * 100);
+        withRange.push({ ticker: d.display_ticker || t, name: d.name || t, price: d.price, pctFromHigh: pctFromHigh, pctFromLow: pctFromLow, position: position });
+    });
+    var nearHigh = withRange.slice().sort(function(a,b){return a.pctFromHigh - b.pctFromHigh;}).slice(0,8);
+    var nearLow = withRange.slice().sort(function(a,b){return a.pctFromLow - b.pctFromLow;}).slice(0,8);
+
+    function renderList(items, el, mode) {
+        if (!el) return;
+        var barColor = mode === 'high' ? 'var(--positive, #4caf50)' : 'var(--negative, #f44336)';
+        el.innerHTML = items.map(function(c) {
+            var pct = mode === 'high' ? c.pctFromHigh : c.pctFromLow;
+            var label = mode === 'high' ? (pct < 0.01 ? 'AT HIGH' : pct.toFixed(1) + '% below') : (pct < 0.01 ? 'AT LOW' : pct.toFixed(1) + '% above');
+            return '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);">' +
+                '<span style="font-weight:700;color:var(--accent);min-width:48px;">' + esc(c.ticker) + '</span>' +
+                '<span style="flex:1;min-width:0;"><div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;position:relative;"><div style="position:absolute;left:0;top:0;height:100%;width:' + Math.min(100, c.position) + '%;background:' + barColor + ';border-radius:3px;"></div><div style="position:absolute;top:-3px;left:' + Math.min(100, c.position) + '%;width:6px;height:12px;background:#fff;border-radius:3px;transform:translateX(-50%);"></div></div></span>' +
+                '<span style="font-size:11px;color:var(--text-secondary);min-width:65px;text-align:right;">$' + c.price.toFixed(2) + '</span>' +
+                '<span style="font-size:10px;min-width:72px;text-align:right;font-weight:600;color:' + barColor + ';">' + label + '</span></div>';
+        }).join('') || '<div style="color:var(--text-secondary);padding:8px;font-size:12px;">No data available.</div>';
+    }
+    renderList(nearHigh, document.getElementById('near52High'), 'high');
+    renderList(nearLow, document.getElementById('near52Low'), 'low');
+}
+
 // ===== NEWS HEADLINES =====
 function renderNews() {
     var articles = (NEWS_DATA && NEWS_DATA.articles) ? NEWS_DATA.articles : (Array.isArray(NEWS_DATA) ? NEWS_DATA : []);
@@ -1047,6 +1092,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderIndexChart();
     renderSectorChart();
     renderMovers();
+    render52Week();
     renderNews();
     renderUpcomingEarnings();
     renderAnalystSnapshot();

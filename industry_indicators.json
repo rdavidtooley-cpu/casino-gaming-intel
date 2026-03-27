@@ -710,17 +710,13 @@
   },
   "T10Y2Y": {
     "label": "10Y-2Y Treasury Spread",
-    "latest_value": 0.49,
-    "latest_date": "2026-03-25",
-    "change_30d": -0.12,
-    "change_30d_pct": -19.67,
-    "change_90d": -0.17,
-    "change_90d_pct": -25.76,
+    "latest_value": 0.46,
+    "latest_date": "2026-03-26",
+    "change_30d": -0.14,
+    "change_30d_pct": -23.33,
+    "change_90d": -0.22,
+    "change_90d_pct": -32.35,
     "history": [
-      {
-        "date": "2025-11-13",
-        "value": 0.53
-      },
       {
         "date": "2025-11-14",
         "value": 0.52
@@ -1076,6 +1072,10 @@
       {
         "date": "2026-03-25",
         "value": 0.49
+      },
+      {
+        "date": "2026-03-26",
+        "value": 0.46
       }
     ]
   },
