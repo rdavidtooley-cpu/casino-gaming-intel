@@ -525,7 +525,7 @@ function fmtVal(val, fmt) {
     if (val == null || val === '' || isNaN(val)) return '—';
     if (fmt === '$') return '$' + Number(val).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     if (fmt === '$B') return '$' + (Number(val) / 1e9).toFixed(2) + 'B';
-    if (fmt === '%') return (Number(val) * (Math.abs(val) < 5 ? 100 : 1)).toFixed(2) + '%';
+    if (fmt === '%') { var n = Number(val); return (Math.abs(n) < 1 ? (n*100).toFixed(2) : n.toFixed(2)) + '%'; }
     if (fmt === 'x') return Number(val).toFixed(2) + 'x';
     return String(val);
 }

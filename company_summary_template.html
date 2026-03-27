@@ -638,8 +638,7 @@ function pctClass(val) {
 function pctFmt(val) {
     if (val == null || isNaN(val)) return '—';
     var n = Number(val);
-    var pct = Math.abs(n) < 5 ? n * 100 : n;
-    return (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+    return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
 }
 
 function updateHashParam(key, val) {
@@ -710,8 +709,12 @@ function normCompany(d) {
     d.change3M = d.change3M || d.three_month_change;
     d.ytdChange = d.ytdChange || d.ytd_change || d.change_ytd;
     d.change1Y = d.change1Y || d.change_1y;
-    // Peer table aliases
-    d.ytdChange = d.ytdChange || d.change_ytd;
+    // Convert decimal ratios to percentages (yfinance returns 0.14 for 14%)
+    function toPct(v) { return v != null && Math.abs(v) < 1 ? v * 100 : v; }
+    d.ebitdaMargin = toPct(d.ebitdaMargin);
+    d.grossMargin = toPct(d.grossMargin);
+    d.netMargin = toPct(d.netMargin);
+
     // Historical financials from PRICE_HISTORY
     var ph = (typeof PRICE_HISTORY !== 'undefined' && PRICE_HISTORY[d.ticker]) ? PRICE_HISTORY[d.ticker] : null;
     if (ph && ph.annual && !d.historicalYears) {
