@@ -1,46 +1,411 @@
 {
-  "kpis": {
-    "market_size_2025": 263.3,
-    "market_size_growth": 5.2,
-    "global_casinos_2025": 30000,
-    "online_gambling_share": 25,
-    "projected_2026": 280.0,
-    "projected_2026_growth": 6.3
+  "state_revenue": {
+    "states": [
+      {
+        "latest_revenue": 15563443000.0,
+        "prior_month": 1458611000.0,
+        "change_pct": 12.5,
+        "latest_period": "2024 (Annual)",
+        "year": "2024",
+        "state": "Nevada"
+      },
+      {
+        "latest_revenue": 2794707630.2,
+        "prior_month": null,
+        "change_pct": null,
+        "latest_period": "Latest",
+        "state": "Pennsylvania"
+      },
+      {
+        "latest_revenue": 1110659100,
+        "prior_month": 1088282609,
+        "change_pct": 4.8,
+        "latest_period": "2024 (Annual)",
+        "state": "Colorado"
+      },
+      {
+        "latest_revenue": 1003387904.87,
+        "prior_month": null,
+        "change_pct": null,
+        "latest_period": "Latest",
+        "state": "Michigan"
+      },
+      {
+        "latest_revenue": 140124664,
+        "prior_month": null,
+        "change_pct": null,
+        "latest_period": "2025",
+        "state": "New Jersey"
+      },
+      {
+        "latest_revenue": 121047690.5,
+        "prior_month": 105958256.12,
+        "change_pct": 14.2,
+        "latest_period": "2025",
+        "state": "Illinois"
+      },
+      {
+        "latest_revenue": 89034566,
+        "prior_month": null,
+        "change_pct": null,
+        "latest_period": "2025",
+        "state": "Ohio"
+      },
+      {
+        "latest_revenue": 10662200.04,
+        "prior_month": null,
+        "change_pct": null,
+        "latest_period": "2025",
+        "state": "Indiana"
+      }
+    ],
+    "summary": {
+      "latest_period": "2024 (Annual)",
+      "aggregate_revenue": 20833066755.61,
+      "avg_mom": 10.5,
+      "state_count": 8
+    }
   },
-  "metrics": [
-    { "year": 2018, "totalRevenue": 180.5, "landBasedRevenue": 155.0, "onlineRevenue": 25.5, "sportsRevenue": 8.2, "yoyGrowth": 4.5, "jurisdictions": 120 },
-    { "year": 2019, "totalRevenue": 195.2, "landBasedRevenue": 162.0, "onlineRevenue": 33.2, "sportsRevenue": 12.5, "yoyGrowth": 8.1, "jurisdictions": 125 },
-    { "year": 2020, "totalRevenue": 125.8, "landBasedRevenue": 80.0, "onlineRevenue": 45.8, "sportsRevenue": 18.0, "yoyGrowth": -35.6, "jurisdictions": 128 },
-    { "year": 2021, "totalRevenue": 215.0, "landBasedRevenue": 155.0, "onlineRevenue": 60.0, "sportsRevenue": 28.0, "yoyGrowth": 70.9, "jurisdictions": 132 },
-    { "year": 2022, "totalRevenue": 238.5, "landBasedRevenue": 170.0, "onlineRevenue": 68.5, "sportsRevenue": 35.0, "yoyGrowth": 10.9, "jurisdictions": 138 },
-    { "year": 2023, "totalRevenue": 250.0, "landBasedRevenue": 175.0, "onlineRevenue": 75.0, "sportsRevenue": 42.0, "yoyGrowth": 4.8, "jurisdictions": 142 },
-    { "year": 2024, "totalRevenue": 258.0, "landBasedRevenue": 178.0, "onlineRevenue": 80.0, "sportsRevenue": 48.0, "yoyGrowth": 3.2, "jurisdictions": 148 },
-    { "year": 2025, "totalRevenue": 263.3, "landBasedRevenue": 179.0, "onlineRevenue": 84.3, "sportsRevenue": 53.0, "yoyGrowth": 2.1, "jurisdictions": 155 },
-    { "year": 2026, "totalRevenue": 280.0, "landBasedRevenue": 182.0, "onlineRevenue": 98.0, "sportsRevenue": 62.0, "yoyGrowth": 6.3, "jurisdictions": 162 }
-  ],
-  "segment_revenue_2025": {
-    "labels": ["Land-Based Casinos", "Online Gambling", "Sports Betting"],
-    "data": [179.0, 84.3, 53.0]
+  "nevada_data": {
+    "kpi": [
+      {
+        "label": "Annual Gaming Win",
+        "value": "$15.6B",
+        "change": 0.6
+      },
+      {
+        "label": "Year",
+        "value": "2024",
+        "change": null
+      }
+    ],
+    "strip_metrics": [],
+    "visitor_data": [],
+    "revenue_trend": {
+      "labels": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "values": [
+        7.816702,
+        13.397723,
+        14.799216,
+        15.477634,
+        15.563443
+      ]
+    }
   },
-  "region_revenue_2025": {
-    "labels": ["North America", "Asia-Pacific", "Europe", "Latin America", "Middle East & Africa"],
-    "data": [105.0, 82.5, 52.0, 14.5, 9.3]
+  "macau_data": {
+    "market_share": [],
+    "pagcor": [],
+    "recovery_tracker": [
+      {
+        "market": "Macau 2021",
+        "recovery_pct": 24.8,
+        "latest_ggr": 9.03,
+        "pre_covid_ggr": 36.5,
+        "status": "Below 50%"
+      },
+      {
+        "market": "Macau 2022",
+        "recovery_pct": 14.4,
+        "latest_ggr": 5.27,
+        "pre_covid_ggr": 36.5,
+        "status": "Below 50%"
+      },
+      {
+        "market": "Macau 2023",
+        "recovery_pct": 60.7,
+        "latest_ggr": 22.16,
+        "pre_covid_ggr": 36.5,
+        "status": "Recovering"
+      },
+      {
+        "market": "Macau 2024",
+        "recovery_pct": 80.6,
+        "latest_ggr": 29.42,
+        "pre_covid_ggr": 36.5,
+        "status": "Recovering"
+      },
+      {
+        "market": "Macau 2025",
+        "recovery_pct": 19.7,
+        "latest_ggr": 7.21,
+        "pre_covid_ggr": 36.5,
+        "status": "Below 50%"
+      }
+    ],
+    "ggr_trend": {
+      "labels": [
+        "Jan 2021",
+        "Feb 2021",
+        "Mar 2021",
+        "Apr 2021",
+        "May 2021",
+        "Jun 2021",
+        "Jul 2021",
+        "Aug 2021",
+        "Sep 2021",
+        "Oct 2021",
+        "Nov 2021",
+        "Dec 2021",
+        "Jan 2022",
+        "Feb 2022",
+        "Mar 2022",
+        "Apr 2022",
+        "May 2022",
+        "Jun 2022",
+        "Jul 2022",
+        "Aug 2022",
+        "Sep 2022",
+        "Oct 2022",
+        "Nov 2022",
+        "Dec 2022",
+        "Jan 2023",
+        "Feb 2023",
+        "Mar 2023",
+        "Apr 2023",
+        "May 2023",
+        "Jun 2023",
+        "Jul 2023",
+        "Aug 2023",
+        "Sep 2023",
+        "Oct 2023",
+        "Nov 2023",
+        "Dec 2023",
+        "Jan 2024",
+        "Feb 2024",
+        "Mar 2024",
+        "Apr 2024",
+        "May 2024",
+        "Jun 2024",
+        "Jul 2024",
+        "Aug 2024",
+        "Sep 2024",
+        "Oct 2024",
+        "Nov 2024",
+        "Dec 2024",
+        "Jan 2025",
+        "Feb 2025",
+        "Mar 2025"
+      ],
+      "values": [
+        0.6175,
+        0.735,
+        0.70625,
+        0.72375,
+        0.81625,
+        0.72625,
+        0.8275,
+        0.8125,
+        0.385,
+        0.70875,
+        0.98,
+        0.995,
+        0.7925,
+        0.97,
+        0.45875,
+        0.335,
+        0.4175,
+        0.30875,
+        0.04975,
+        0.27375,
+        0.37,
+        0.4875,
+        0.375,
+        0.435,
+        1.45,
+        1.2875,
+        1.5875,
+        1.4625,
+        1.7625,
+        1.75,
+        2.0875,
+        2.15,
+        1.8625,
+        2.4375,
+        2.0,
+        2.325,
+        2.28125,
+        2.4675,
+        2.4575,
+        2.3575,
+        2.64875,
+        2.6325,
+        2.76625,
+        2.475,
+        2.1625,
+        2.5875,
+        2.305,
+        2.275,
+        2.28125,
+        2.4675,
+        2.4575
+      ]
+    }
   },
-  "us_state_revenue_2025": {
-    "labels": ["Nevada", "New Jersey", "Pennsylvania", "New York", "Michigan", "Indiana"],
-    "data": [15.2, 5.8, 5.5, 4.2, 2.8, 2.5]
+  "sports_betting": {
+    "legalization": [
+      {
+        "state": "Nevada",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "New Jersey",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Pennsylvania",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Illinois",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Colorado",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Michigan",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Indiana",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Iowa",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Mississippi",
+        "status": "Legal (Retail Only)"
+      },
+      {
+        "state": "New Mexico",
+        "status": "Legal (Tribal Only)"
+      },
+      {
+        "state": "West Virginia",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Ohio",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Maryland",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Louisiana",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Arizona",
+        "status": "Legal (Retail + Online)"
+      },
+      {
+        "state": "Connecticut",
+        "status": "Legal (Retail + Online)"
+      }
+    ],
+    "state_data": [],
+    "monthly_trend": {
+      "labels": [],
+      "handle": [],
+      "ggr": []
+    }
   },
-  "game_type_revenue_2025": {
-    "labels": ["Slots", "Table Games", "Sports Betting", "Poker", "Other"],
-    "data": [95.0, 45.0, 53.0, 12.0, 58.3]
+  "tribal_gaming": {
+    "connecticut": [],
+    "national_overview": [
+      {
+        "metric": "Total Tribal Gaming Revenue",
+        "value": "$41.4B",
+        "year": "2023"
+      },
+      {
+        "metric": "Number of Tribal Operations",
+        "value": "524",
+        "year": "2023"
+      },
+      {
+        "metric": "Number of Tribes with Gaming",
+        "value": "245",
+        "year": "2023"
+      },
+      {
+        "metric": "YoY Revenue Growth",
+        "value": "+3.2%",
+        "year": "2023"
+      }
+    ],
+    "nigc_regions": [
+      {
+        "region": "Portland (Pacific NW)",
+        "revenue": 6200000000,
+        "share_pct": 15.0,
+        "yoy_change": 2.1
+      },
+      {
+        "region": "Sacramento (California)",
+        "revenue": 10800000000,
+        "share_pct": 26.1,
+        "yoy_change": 4.5
+      },
+      {
+        "region": "Phoenix (Southwest)",
+        "revenue": 4500000000,
+        "share_pct": 10.9,
+        "yoy_change": 3.8
+      },
+      {
+        "region": "Oklahoma City",
+        "revenue": 5800000000,
+        "share_pct": 14.0,
+        "yoy_change": 2.9
+      },
+      {
+        "region": "Tulsa (Midwest)",
+        "revenue": 3200000000,
+        "share_pct": 7.7,
+        "yoy_change": 1.5
+      },
+      {
+        "region": "St. Paul (Great Plains)",
+        "revenue": 4100000000,
+        "share_pct": 9.9,
+        "yoy_change": 3.2
+      },
+      {
+        "region": "Washington DC (Eastern)",
+        "revenue": 6800000000,
+        "share_pct": 16.4,
+        "yoy_change": 3.7
+      }
+    ],
+    "oklahoma": [
+      {
+        "metric": "Total Tribal Gaming Revenue",
+        "value": "$5.8B",
+        "period": "2023"
+      },
+      {
+        "metric": "Exclusivity Fees Paid to State",
+        "value": "$182M",
+        "period": "2023"
+      },
+      {
+        "metric": "Number of Tribal Casinos",
+        "value": "130+",
+        "period": "2023"
+      }
+    ]
   },
-  "top_gaming_jurisdictions_2024": {
-    "labels": ["Macau", "Las Vegas Strip", "Singapore", "Atlantic City", "Pennsylvania", "Connecticut"],
-    "data": [30.2, 8.8, 6.5, 3.6, 5.5, 2.8]
-  },
-  "emerging_markets_2024": {
-    "labels": ["Japan (IR)", "Brazil", "UAE", "Thailand", "Philippines", "Vietnam"],
-    "data": [25, 18, 15, 12, 10, 8]
-  },
-  "last_updated": "2026-02-26"
+  "extracted_at": "2026-03-26T20:41:56.665588"
 }
