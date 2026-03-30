@@ -153,6 +153,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
         <button class="tab-btn" onclick="switchTab('calendar',this)">Calendar</button>
         <button class="tab-btn" onclick="switchTab('insider',this)">Insider</button>
         <button class="tab-btn" onclick="switchTab('gaming25',this)">Gaming-25</button>
+        <button class="tab-btn" onclick="switchTab('intel',this)">Transcript Intel</button>
     </div>
 
     <!-- ============================================================ -->
@@ -438,6 +439,50 @@ input.filter-input::placeholder{color:var(--text-secondary);}
         </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- TAB 9: TRANSCRIPT INTEL -->
+    <!-- ============================================================ -->
+    <div class="tab-content" id="tab-intel">
+        <!-- F1: Scorecard -->
+        <div class="table-section">
+            <h3>Earnings Season Scorecard <span class="info-icon" data-tip="Cross-company comparison for the latest full earnings season.">&#9432;</span> <span id="scorecardQuarter" style="font-weight:400;font-size:12px;color:var(--text-secondary);"></span></h3>
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
+                <input class="filter-input" type="text" id="scorecardSearch" placeholder="Search..." oninput="renderScorecard()" style="width:260px;">
+                <select id="scorecardSort" onchange="renderScorecard()" style="background:var(--bg-primary);color:var(--text-primary);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:6px 10px;font-size:12px;">
+                    <option value="sentiment">Sort: Sentiment</option>
+                    <option value="delta">Sort: Sentiment Change</option>
+                    <option value="credibility">Sort: Credibility</option>
+                    <option value="company">Sort: Company</option>
+                </select>
+            </div>
+            <div class="table-wrapper"><table class="data-table" id="scorecardTable"><thead><tr>
+                <th>Ticker</th><th>Company</th><th>Sub-Sector</th><th>Sentiment</th><th>&Delta; QoQ</th><th>Guidance</th><th>Credibility</th><th>Tone Shift</th><th>Revenue</th><th>EPS</th><th>EBITDA</th>
+            </tr></thead><tbody id="scorecardBody"></tbody></table></div>
+        </div>
+        <!-- F2+F4: Tone Shifts + Credibility -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);">
+            <div class="table-section">
+                <h3>Tone Shift Alerts <span class="info-icon" data-tip="Flags companies where management language changed meaningfully between quarters.">&#9432;</span></h3>
+                <div id="toneShiftsContainer" style="max-height:400px;overflow-y:auto;"></div>
+            </div>
+            <div class="table-section">
+                <h3>Management Credibility <span class="info-icon" data-tip="Tracks whether companies deliver on prior quarter guidance.">&#9432;</span></h3>
+                <div id="credibilityContainer" style="max-height:400px;overflow-y:auto;"></div>
+            </div>
+        </div>
+        <!-- F3+F7: Analyst Themes + Timeline -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);">
+            <div class="table-section">
+                <h3>What Analysts Are Asking <span class="info-icon" data-tip="Clusters analyst questions by theme across all companies.">&#9432;</span></h3>
+                <canvas id="analystThemesChart" height="300"></canvas>
+            </div>
+            <div class="table-section">
+                <h3>Earnings Season Timeline <span class="info-icon" data-tip="When each company reported, sentiment, and guidance direction.">&#9432;</span></h3>
+                <canvas id="earningsTimelineChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="footer" id="main-footer">
@@ -459,6 +504,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
 var MARKET_DATA = {};
 var PRICE_HISTORY = {};
 var INDEX_HISTORY = {};
+var INTEL = {};
 // INJECTED_DATA_END
 </script>
 
@@ -594,6 +640,7 @@ function switchTab(id, btn) {
     if (id === 'analysts') renderAnalystCharts();
     if (id === 'gaming25') renderG25Tab();
     if (id === 'performance') renderHeatMap();
+    if (id === 'intel') renderTranscriptIntel();
 }
 
 /* -- Generic Sort -- */
@@ -1079,6 +1126,81 @@ function renderG25Composition() {
     });
     document.getElementById('g25Body').innerHTML = html;
 }
+
+/* ================================================================
+   TAB 9: TRANSCRIPT INTELLIGENCE
+   ================================================================ */
+function renderScorecard() {
+    var sc = INTEL.scorecard || {};
+    var keys = Object.keys(sc);
+    if (!keys.length) { document.getElementById('scorecardBody').innerHTML = '<tr><td colspan="11" style="text-align:center;color:var(--text-secondary);padding:20px;">No scorecard data available.</td></tr>'; return; }
+    var q = (INTEL.latest_quarter || '').replace('_', ' ');
+    var qEl = document.getElementById('scorecardQuarter');
+    if (qEl) qEl.textContent = q ? '(' + q + ' season)' : '';
+    var search = (document.getElementById('scorecardSearch').value || '').toLowerCase();
+    var sortBy = document.getElementById('scorecardSort').value;
+    var rows = keys.map(function(tk) { var s = sc[tk]; s._tk = tk; return s; });
+    if (search) rows = rows.filter(function(r) { return r._tk.toLowerCase().indexOf(search) >= 0 || (r.company || '').toLowerCase().indexOf(search) >= 0; });
+    rows.sort(function(a, b) {
+        if (sortBy === 'sentiment') return (b.sentiment || 0) - (a.sentiment || 0);
+        if (sortBy === 'delta') return (b.sentiment_delta || 0) - (a.sentiment_delta || 0);
+        if (sortBy === 'credibility') return (b.credibility_score || 0) - (a.credibility_score || 0);
+        return (a.company || '').localeCompare(b.company || '');
+    });
+    var html = '';
+    rows.forEach(function(r) {
+        var sentCls = r.sentiment > 10 ? 'color:var(--positive)' : (r.sentiment < -2 ? 'color:var(--negative)' : 'color:var(--text-secondary)');
+        var deltaCls = r.sentiment_delta > 0 ? 'color:var(--positive)' : (r.sentiment_delta < 0 ? 'color:var(--negative)' : '');
+        var gBadge = r.guidance === 'Raised' ? '<span style="color:var(--positive);">&#9650; Raised</span>' : r.guidance === 'Lowered' ? '<span style="color:var(--negative);">&#9660; Lowered</span>' : r.guidance === 'Maintained' ? '<span style="color:var(--text-secondary);">&#9679; Maintained</span>' : '<span style="color:var(--text-secondary);">\u2014</span>';
+        var credStr = r.credibility_score != null ? r.credibility_score + '%' : '\u2014';
+        var credCls = r.credibility_score >= 80 ? 'color:var(--positive)' : (r.credibility_score != null && r.credibility_score < 60 ? 'color:var(--negative)' : '');
+        var toneBadge = r.tone_shift_severity === 'high' ? '<span style="background:rgba(244,67,54,0.2);color:#f44336;padding:2px 8px;border-radius:4px;font-size:11px;">High</span>' : r.tone_shift_severity === 'medium' ? '<span style="background:rgba(255,152,0,0.2);color:#ff9800;padding:2px 8px;border-radius:4px;font-size:11px;">Med</span>' : '<span style="color:var(--text-secondary);">\u2014</span>';
+        html += '<tr><td style="font-weight:600;">' + r._tk + '</td><td>' + (r.company || '') + '</td><td style="font-size:11px;color:var(--text-secondary);">' + (r.subsector || '') + '</td><td style="' + sentCls + ';font-weight:600;">' + (r.sentiment != null ? r.sentiment.toFixed(1) : '\u2014') + '</td><td style="' + deltaCls + ';">' + (r.sentiment_delta != null ? (r.sentiment_delta > 0 ? '+' : '') + r.sentiment_delta.toFixed(1) : '\u2014') + '</td><td>' + gBadge + '</td><td style="' + credCls + ';">' + credStr + '</td><td>' + toneBadge + '</td><td>' + (r.revenue || '\u2014') + '</td><td>' + (r.eps || '\u2014') + '</td><td>' + (r.ebitda || '\u2014') + '</td></tr>';
+    });
+    document.getElementById('scorecardBody').innerHTML = html;
+}
+function renderToneShifts() {
+    var ts = INTEL.tone_shifts || {};
+    var keys = Object.keys(ts);
+    var container = document.getElementById('toneShiftsContainer');
+    if (!keys.length) { container.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-secondary);">No tone shift alerts.</div>'; return; }
+    var sorted = keys.map(function(tk) { var v = ts[tk]; v._tk = tk; return v; }).sort(function(a, b) { var ord = {high:0,medium:1,low:2}; return (ord[a.severity]||3) - (ord[b.severity]||3); });
+    var html = '';
+    sorted.slice(0, 20).forEach(function(s) {
+        var sevColor = s.severity === 'high' ? '#f44336' : (s.severity === 'medium' ? '#ff9800' : '#4caf50');
+        html += '<div style="padding:10px 12px;margin-bottom:8px;border-radius:8px;background:var(--bg-primary);border-left:3px solid ' + sevColor + ';"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:600;color:var(--text-primary);">' + s._tk + '</span><span style="font-size:10px;text-transform:uppercase;color:' + sevColor + ';font-weight:600;">' + s.severity + '</span></div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">' + (s.description || '') + '</div><div style="font-size:10px;color:var(--text-secondary);margin-top:2px;">' + (s.latest_quarter || '').replace('_',' ') + ' vs ' + (s.prior_quarter || '').replace('_',' ') + '</div></div>';
+    });
+    container.innerHTML = html;
+}
+function renderCredibility() {
+    var cr = INTEL.credibility || {};
+    var keys = Object.keys(cr);
+    var container = document.getElementById('credibilityContainer');
+    if (!keys.length) { container.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-secondary);">No credibility data.</div>'; return; }
+    var sorted = keys.map(function(tk) { var v = cr[tk]; v._tk = tk; return v; }).sort(function(a, b) { return b.score - a.score; });
+    var html = '<table style="width:100%;font-size:12px;"><thead><tr style="color:var(--text-secondary);font-size:11px;"><th style="text-align:left;padding:4px 8px;">Ticker</th><th>Score</th><th>Quarters</th><th>Latest</th></tr></thead><tbody>';
+    sorted.forEach(function(c) {
+        var scoreColor = c.score >= 80 ? 'var(--positive)' : (c.score < 60 ? 'var(--negative)' : 'var(--text-secondary)');
+        var latestIcon = c.latest_delivered ? '<span style="color:var(--positive);">\u2713</span>' : '<span style="color:var(--negative);">\u2717</span>';
+        html += '<tr><td style="font-weight:600;padding:5px 8px;">' + c._tk + '</td><td style="text-align:center;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:60px;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;"><div style="width:' + Math.max(c.score, 5) + '%;height:100%;background:' + scoreColor + ';border-radius:3px;"></div></div><span style="color:' + scoreColor + ';font-weight:600;">' + c.score + '%</span></div></td><td style="text-align:center;color:var(--text-secondary);">' + c.quarters_evaluated + '</td><td style="text-align:center;">' + latestIcon + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    container.innerHTML = html;
+}
+function renderAnalystThemes() {
+    var themes = INTEL.analyst_themes || [];
+    if (!themes.length) return;
+    var canvas = document.getElementById('analystThemesChart');
+    if (!canvas) return;
+    new Chart(canvas, { type: 'bar', data: { labels: themes.map(function(t) { return t.theme_label; }), datasets: [{ label: 'Questions', data: themes.map(function(t) { return t.count; }), backgroundColor: 'rgba(255,215,0,0.7)', borderRadius: 4 }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { afterLabel: function(ctx) { var t = themes[ctx.dataIndex]; return t.num_companies + ' companies: ' + t.companies.slice(0, 8).join(', ') + (t.companies.length > 8 ? '...' : ''); } } } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } }, y: { grid: { display: false }, ticks: { color: '#e8eaed', font: { size: 11 } } } } } });
+}
+function renderEarningsTimeline() {
+    var tl = INTEL.timeline || [];
+    if (tl.length < 3) { var c = document.getElementById('earningsTimelineChart'); if (c) c.parentElement.innerHTML += '<div style="text-align:center;padding:20px;color:var(--text-secondary);">Timeline requires 3+ reports.</div>'; return; }
+    var pointColors = tl.map(function(e) { return e.guidance === 'Raised' ? '#4caf50' : (e.guidance === 'Lowered' ? '#f44336' : '#9aa0a6'); });
+    new Chart(document.getElementById('earningsTimelineChart'), { type: 'bar', data: { labels: tl.map(function(e) { return e.ticker + ' (' + (e.date || '').slice(5) + ')'; }), datasets: [{ type: 'line', label: 'Running Avg', data: tl.map(function(e) { return e.running_avg_sentiment; }), borderColor: '#ffd700', borderWidth: 2, pointRadius: 0, tension: 0.3, fill: false, order: 0 }, { label: 'Sentiment', data: tl.map(function(e) { return e.sentiment; }), backgroundColor: pointColors, borderRadius: 3, order: 1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: '#9aa0a6', font: { size: 10 } } }, tooltip: { callbacks: { afterLabel: function(ctx) { if (ctx.datasetIndex === 1) { var e = tl[ctx.dataIndex]; return 'Guidance: ' + e.guidance; } } } } }, scales: { x: { grid: { display: false }, ticks: { color: '#9aa0a6', font: { size: 9 }, maxRotation: 45 } }, y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } } } } });
+}
+function renderTranscriptIntel() { renderScorecard(); renderToneShifts(); renderCredibility(); renderAnalystThemes(); renderEarningsTimeline(); }
 
 /* ================================================================
    INIT
