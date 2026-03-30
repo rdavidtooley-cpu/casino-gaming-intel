@@ -1353,7 +1353,7 @@
         "value": 187.3
       }
     ],
-    "timestamp": "2026-03-28T22:30:02.738925",
+    "timestamp": "2026-03-29T21:30:48.157337",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 50.0,
     "rank_pe_trailing": 4,
@@ -1438,8 +1438,8 @@
     "day_low": 25.72,
     "open_price": 26.75,
     "previous_close": 26.89,
-    "daily_change": -1.04,
-    "daily_change_pct": -3.86761,
+    "daily_change": -1.039999,
+    "daily_change_pct": -3.8676052,
     "employees": 50000,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -2722,7 +2722,7 @@
         "value": 127.6
       }
     ],
-    "timestamp": "2026-03-28T22:30:03.437592",
+    "timestamp": "2026-03-29T21:30:49.234905",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 25.0,
     "rank_pe_trailing": null,
@@ -2806,9 +2806,9 @@
     "day_high": 99.44,
     "day_low": 96.15,
     "open_price": 98.96,
-    "previous_close": 99.47,
-    "daily_change": -2.88,
-    "daily_change_pct": -2.89535,
+    "previous_close": 99.46999,
+    "daily_change": -2.8799973,
+    "daily_change_pct": -2.8953428,
     "employees": 28500,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -4091,7 +4091,7 @@
         "value": 131.4
       }
     ],
-    "timestamp": "2026-03-28T22:30:04.267133",
+    "timestamp": "2026-03-29T21:30:50.249478",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 75.0,
     "rank_pe_trailing": 3,
@@ -5460,7 +5460,7 @@
         "value": 289.8
       }
     ],
-    "timestamp": "2026-03-28T22:30:05.033337",
+    "timestamp": "2026-03-29T21:30:51.237960",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 2,
@@ -5544,9 +5544,9 @@
     "day_high": 5.64,
     "day_low": 5.49,
     "open_price": 5.51,
-    "previous_close": 5.53,
-    "daily_change": 0.0899997,
-    "daily_change_pct": 1.62748,
+    "previous_close": 5.5299997,
+    "daily_change": 0.09000015,
+    "daily_change_pct": 1.6274893,
     "employees": 22961,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -6647,7 +6647,7 @@
         "value": 21.3
       }
     ],
-    "timestamp": "2026-03-28T22:30:05.833966",
+    "timestamp": "2026-03-29T21:30:52.106653",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": 1,
@@ -6731,9 +6731,9 @@
     "day_high": 14.54,
     "day_low": 13.645,
     "open_price": 14.43,
-    "previous_close": 14.57,
-    "daily_change": -0.799999,
-    "daily_change_pct": -5.49073,
+    "previous_close": 14.570001,
+    "daily_change": -0.8000002,
+    "daily_change_pct": -5.4907355,
     "employees": 23441,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -8016,7 +8016,7 @@
         "value": 42.6
       }
     ],
-    "timestamp": "2026-03-28T22:30:06.517692",
+    "timestamp": "2026-03-29T21:30:52.892788",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 57.1,
     "rank_pe_trailing": null,
@@ -9385,7 +9385,7 @@
         "value": 108.8
       }
     ],
-    "timestamp": "2026-03-28T22:30:07.338226",
+    "timestamp": "2026-03-29T21:30:53.751210",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": 1,
@@ -9469,9 +9469,9 @@
     "day_high": 55.795,
     "day_low": 52.9,
     "open_price": 55.33,
-    "previous_close": 55.74,
-    "daily_change": -1.85,
-    "daily_change_pct": -3.31898,
+    "previous_close": 55.739998,
+    "daily_change": -1.8499985,
+    "daily_change_pct": -3.3189785,
     "employees": 9500,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -10502,15 +10502,6 @@
     "earnings_date": "2026-04-30",
     "insider_transactions": [
       {
-        "insider": "CASHELL ROBERT A JR",
-        "relation": "Director",
-        "date": "2026-02-12",
-        "type": "Other",
-        "shares": 3221,
-        "value": 0,
-        "text": "Stock Award(Grant) at price 0.00 per share."
-      },
-      {
         "insider": "NAVE JAMES E",
         "relation": "Director",
         "date": "2026-02-12",
@@ -10521,6 +10512,15 @@
       },
       {
         "insider": "LEWIS ROBERT E",
+        "relation": "Director",
+        "date": "2026-02-12",
+        "type": "Other",
+        "shares": 3221,
+        "value": 0,
+        "text": "Stock Award(Grant) at price 0.00 per share."
+      },
+      {
+        "insider": "CASHELL ROBERT A JR",
         "relation": "Director",
         "date": "2026-02-12",
         "type": "Other",
@@ -10610,6 +10610,33 @@
         "text": "Conversion of Exercise of derivative security at price 29.61 per share."
       },
       {
+        "insider": "FERTITTA LORENZO J",
+        "relation": "Officer, Director and Beneficial Owner",
+        "date": "2025-02-13",
+        "type": "Other",
+        "shares": 93221,
+        "value": 0,
+        "text": "Stock Award(Grant) at price 0.00 per share."
+      },
+      {
+        "insider": "NAVE JAMES E",
+        "relation": "Director",
+        "date": "2025-02-13",
+        "type": "Other",
+        "shares": 3838,
+        "value": 0,
+        "text": "Stock Award(Grant) at price 0.00 per share."
+      },
+      {
+        "insider": "LEWIS ROBERT E",
+        "relation": "Director",
+        "date": "2025-02-13",
+        "type": "Other",
+        "shares": 3838,
+        "value": 0,
+        "text": "Stock Award(Grant) at price 0.00 per share."
+      },
+      {
         "insider": "COOTEY STEPHEN LAWRENCE",
         "relation": "Chief Financial Officer",
         "date": "2025-02-13",
@@ -10651,33 +10678,6 @@
         "date": "2025-02-13",
         "type": "Other",
         "shares": 53983,
-        "value": 0,
-        "text": "Stock Award(Grant) at price 0.00 per share."
-      },
-      {
-        "insider": "NICHOLS KORD",
-        "relation": "Chief Operating Officer",
-        "date": "2025-02-13",
-        "type": "Other",
-        "shares": 21593,
-        "value": 0,
-        "text": "Stock Award(Grant) at price 0.00 per share."
-      },
-      {
-        "insider": "FERTITTA LORENZO J",
-        "relation": "Officer, Director and Beneficial Owner",
-        "date": "2025-02-13",
-        "type": "Other",
-        "shares": 93221,
-        "value": 0,
-        "text": "Stock Award(Grant) at price 0.00 per share."
-      },
-      {
-        "insider": "NAVE JAMES E",
-        "relation": "Director",
-        "date": "2025-02-13",
-        "type": "Other",
-        "shares": 3838,
         "value": 0,
         "text": "Stock Award(Grant) at price 0.00 per share."
       }
@@ -10754,7 +10754,7 @@
         "value": 64.1
       }
     ],
-    "timestamp": "2026-03-28T22:30:08.171528",
+    "timestamp": "2026-03-29T21:30:54.717339",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 71.4,
     "rank_pe_trailing": 3,
@@ -10839,8 +10839,8 @@
     "day_low": 84.52,
     "open_price": 87.18,
     "previous_close": 87.57,
-    "daily_change": -3.05,
-    "daily_change_pct": -3.48293,
+    "daily_change": -3.050003,
+    "daily_change_pct": -3.4829314,
     "employees": 6600,
     "industry_yf": "Gambling",
     "sector_yf": "Consumer Cyclical",
@@ -12123,7 +12123,7 @@
         "value": 104.4
       }
     ],
-    "timestamp": "2026-03-28T22:30:09.927300",
+    "timestamp": "2026-03-29T21:30:56.411293",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 85.7,
     "rank_pe_trailing": 2,
@@ -12208,8 +12208,8 @@
     "day_low": 93.485,
     "open_price": 95.55,
     "previous_close": 97.22,
-    "daily_change": -3.24,
-    "daily_change_pct": -3.33265,
+    "daily_change": -3.2399979,
+    "daily_change_pct": -3.3326454,
     "employees": 2740,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -13411,7 +13411,7 @@
         "value": 19.6
       }
     ],
-    "timestamp": "2026-03-28T22:30:10.650568",
+    "timestamp": "2026-03-29T21:30:57.263598",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 42.9,
     "rank_pe_trailing": 4,
@@ -13496,8 +13496,8 @@
     "day_low": 25.895,
     "open_price": 26.42,
     "previous_close": 26.42,
-    "daily_change": -0.51,
-    "daily_change_pct": -1.93036,
+    "daily_change": -0.5100002,
+    "daily_change_pct": -1.9303566,
     "employees": 4900,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -14780,7 +14780,7 @@
         "value": 12.1
       }
     ],
-    "timestamp": "2026-03-28T22:30:11.454779",
+    "timestamp": "2026-03-29T21:30:58.201461",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 28.6,
     "rank_pe_trailing": null,
@@ -14864,9 +14864,9 @@
     "day_high": 2.24,
     "day_low": 2.14,
     "open_price": 2.24,
-    "previous_close": 2.28,
-    "daily_change": -0.13,
-    "daily_change_pct": -5.70175,
+    "previous_close": 2.2800002,
+    "daily_change": -0.13000011,
+    "daily_change_pct": -5.701759,
     "employees": 1573,
     "industry_yf": "Resorts & Casinos",
     "sector_yf": "Consumer Cyclical",
@@ -16149,7 +16149,7 @@
         "value": 1.1
       }
     ],
-    "timestamp": "2026-03-28T22:30:12.213820",
+    "timestamp": "2026-03-29T21:30:59.042536",
     "rank_market_cap_b": 8,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -17518,7 +17518,7 @@
         "value": 0.7
       }
     ],
-    "timestamp": "2026-03-28T22:30:13.075749",
+    "timestamp": "2026-03-29T21:30:59.856842",
     "rank_market_cap_b": 7,
     "pctile_market_cap_b": 14.3,
     "rank_pe_trailing": null,
@@ -17602,9 +17602,9 @@
     "day_high": 21.25,
     "day_low": 20.535,
     "open_price": 21.08,
-    "previous_close": 21.27,
-    "daily_change": -0.550001,
-    "daily_change_pct": -2.58581,
+    "previous_close": 21.269999,
+    "daily_change": -0.54999924,
+    "daily_change_pct": -2.585798,
     "employees": 5500,
     "industry_yf": "Gambling",
     "sector_yf": "Consumer Cyclical",
@@ -18887,7 +18887,7 @@
         "value": 207.8
       }
     ],
-    "timestamp": "2026-03-28T22:30:13.804108",
+    "timestamp": "2026-03-29T21:31:00.662318",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 80.0,
     "rank_pe_trailing": null,
@@ -20256,7 +20256,7 @@
         "value": 402.4
       }
     ],
-    "timestamp": "2026-03-28T22:30:14.515022",
+    "timestamp": "2026-03-29T21:31:01.492271",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -21443,7 +21443,7 @@
         "value": 46.9
       }
     ],
-    "timestamp": "2026-03-28T22:30:15.213556",
+    "timestamp": "2026-03-29T21:31:02.331664",
     "rank_market_cap_b": 5,
     "pctile_market_cap_b": 20.0,
     "rank_pe_trailing": 3,
@@ -21473,15 +21473,15 @@
     "enterprise_value_b": 4.848,
     "mcap_tier": "Mid-Cap ($2B-$10B)",
     "pe_trailing": 47.638885,
-    "pe_forward": 20.939608,
+    "pe_forward": 20.941422,
     "ev_ebitda": 12.004,
     "ev_ebitdar": 10.1,
     "ev_revenue": 3.758,
-    "price_to_book": 4.56031,
+    "price_to_book": 4.5607047,
     "price_to_sales": 3.9346576,
     "eps_trailing": 0.36,
-    "eps_forward": 0.819022,
-    "book_value": 3.7607093,
+    "eps_forward": 0.8189511,
+    "book_value": 3.7603836,
     "revenue_per_share": 1.244,
     "revenue_growth": 0.201,
     "earnings_growth": null,
@@ -21528,8 +21528,8 @@
     "day_low": 16.94,
     "open_price": 18.0,
     "previous_close": 18.0,
-    "daily_change": -0.85,
-    "daily_change_pct": -4.72222,
+    "daily_change": -0.8500004,
+    "daily_change_pct": -4.722224,
     "employees": 4882,
     "industry_yf": "Software - Application",
     "sector_yf": "Technology",
@@ -22630,7 +22630,7 @@
         "value": 54.2
       }
     ],
-    "timestamp": "2026-03-28T22:30:16.566850",
+    "timestamp": "2026-03-29T21:31:03.902747",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 40.0,
     "rank_pe_trailing": 2,
@@ -23817,7 +23817,7 @@
         "value": 20.8
       }
     ],
-    "timestamp": "2026-03-28T22:30:17.359912",
+    "timestamp": "2026-03-29T21:31:04.713922",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 60.0,
     "rank_pe_trailing": 1,
@@ -25004,7 +25004,7 @@
         "value": 23.5
       }
     ],
-    "timestamp": "2026-03-28T22:30:18.124942",
+    "timestamp": "2026-03-29T21:31:05.495457",
     "rank_market_cap_b": 6,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -26191,7 +26191,7 @@
         "value": 20.3
       }
     ],
-    "timestamp": "2026-03-28T22:30:18.959759",
+    "timestamp": "2026-03-29T21:31:06.374164",
     "rank_market_cap_b": 1,
     "pctile_market_cap_b": 100.0,
     "rank_pe_trailing": null,
@@ -26473,7 +26473,7 @@
     "year_change": -23.9,
     "earnings_date": "2026-05-06",
     "institutional_holders": [],
-    "timestamp": "2026-03-28T22:30:19.726127",
+    "timestamp": "2026-03-29T21:31:07.101436",
     "rank_market_cap_b": 4,
     "pctile_market_cap_b": 0.0,
     "rank_pe_trailing": null,
@@ -27617,15 +27617,6 @@
         "text": "Stock Gift at price 0.00 per share."
       },
       {
-        "insider": "HARMER DEREK",
-        "relation": "Officer",
-        "date": "2026-03-13",
-        "type": "Sale",
-        "shares": 20000,
-        "value": 227800.0,
-        "text": "Sale at price 11.39 per share."
-      },
-      {
         "insider": "PHELAN MARK T",
         "relation": "Officer",
         "date": "2026-03-13",
@@ -27662,6 +27653,15 @@
         "text": ""
       },
       {
+        "insider": "HARMER DEREK",
+        "relation": "Officer",
+        "date": "2026-03-13",
+        "type": "Sale",
+        "shares": 20000,
+        "value": 227800.0,
+        "text": "Sale at price 11.39 per share."
+      },
+      {
         "insider": "RUBENSTEIN GORDON",
         "relation": "Director",
         "date": "2026-03-12",
@@ -27678,33 +27678,6 @@
         "shares": 160561,
         "value": 1827213.0,
         "text": "Sale at price 11.38 - 11.46 per share."
-      },
-      {
-        "insider": "RUTTENBERG DAVID W",
-        "relation": "Director",
-        "date": "2026-03-10",
-        "type": "Sale",
-        "shares": 10000,
-        "value": 115260.0,
-        "text": "Sale at price 11.53 per share."
-      },
-      {
-        "insider": "HARMER DEREK",
-        "relation": "Officer",
-        "date": "2026-03-10",
-        "type": "Sale",
-        "shares": 2092,
-        "value": 23953.0,
-        "text": "Sale at price 11.45 per share."
-      },
-      {
-        "insider": "RUBENSTEIN GORDON",
-        "relation": "Director",
-        "date": "2026-03-10",
-        "type": "Sale",
-        "shares": 469885,
-        "value": 5386490.0,
-        "text": "Sale at price 11.37 - 11.75 per share."
       },
       {
         "insider": "PHELAN MARK T",
@@ -27741,6 +27714,33 @@
         "shares": 4798,
         "value": NaN,
         "text": ""
+      },
+      {
+        "insider": "RUTTENBERG DAVID W",
+        "relation": "Director",
+        "date": "2026-03-10",
+        "type": "Sale",
+        "shares": 10000,
+        "value": 115260.0,
+        "text": "Sale at price 11.53 per share."
+      },
+      {
+        "insider": "HARMER DEREK",
+        "relation": "Officer",
+        "date": "2026-03-10",
+        "type": "Sale",
+        "shares": 2092,
+        "value": 23953.0,
+        "text": "Sale at price 11.45 per share."
+      },
+      {
+        "insider": "RUBENSTEIN GORDON",
+        "relation": "Director",
+        "date": "2026-03-10",
+        "type": "Sale",
+        "shares": 469885,
+        "value": 5386490.0,
+        "text": "Sale at price 11.37 - 11.75 per share."
       },
       {
         "insider": "RUBENSTEIN GORDON",
@@ -27842,7 +27842,7 @@
         "value": 9.8
       }
     ],
-    "timestamp": "2026-03-28T22:30:20.421774",
+    "timestamp": "2026-03-29T21:31:07.935380",
     "rank_market_cap_b": 2,
     "pctile_market_cap_b": 66.7,
     "rank_pe_trailing": 1,
@@ -27927,8 +27927,8 @@
     "day_low": 6.59,
     "open_price": 6.79,
     "previous_close": 6.87,
-    "daily_change": -0.19,
-    "daily_change_pct": -2.76565,
+    "daily_change": -0.19000006,
+    "daily_change_pct": -2.7656486,
     "employees": 920,
     "industry_yf": "Gambling",
     "sector_yf": "Consumer Cyclical",
@@ -29211,7 +29211,7 @@
         "value": 4.3
       }
     ],
-    "timestamp": "2026-03-28T22:30:21.223737",
+    "timestamp": "2026-03-29T21:31:08.844509",
     "rank_market_cap_b": 3,
     "pctile_market_cap_b": 33.3,
     "rank_pe_trailing": null,
