@@ -1053,10 +1053,14 @@ function renderSecFilings() {
         var f = filings[i];
         var typeLabel = (f.type || '').replace('_Earnings', '');
         var color = typeColors[f.type] || 'var(--accent)';
-        html += '<div style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;">' +
-            '<span style="background:' + color + '22;color:' + color + ';font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;min-width:32px;text-align:center;">' + esc(typeLabel) + '</span>' +
+        var inner = '<span style="background:' + color + '22;color:' + color + ';font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;min-width:32px;text-align:center;">' + esc(typeLabel) + '</span>' +
             '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
-            '<span style="min-width:65px;text-align:right;color:var(--text-secondary);">' + esc(f.date || '') + '</span></div>';
+            '<span style="min-width:65px;text-align:right;color:var(--text-secondary);">' + esc(f.date || '') + '</span>';
+        if (f.url) {
+            html += '<a href="' + esc(f.url) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;text-decoration:none;color:inherit;cursor:pointer;" onmouseover="this.style.background=\'rgba(255,255,255,0.04)\'" onmouseout="this.style.background=\'\'">' + inner + '</a>';
+        } else {
+            html += '<div style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;">' + inner + '</div>';
+        }
     }
     el.innerHTML = html;
 }

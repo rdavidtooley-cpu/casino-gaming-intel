@@ -1061,17 +1061,13 @@
   },
   "VIXCLS": {
     "label": "VIX Volatility Index",
-    "latest_value": 30.61,
-    "latest_date": "2026-03-30",
-    "change_30d": 10.75,
-    "change_30d_pct": 54.13,
-    "change_90d": 17.01,
-    "change_90d_pct": 125.07,
+    "latest_value": 25.25,
+    "latest_date": "2026-03-31",
+    "change_30d": 3.81,
+    "change_30d_pct": 17.77,
+    "change_90d": 11.05,
+    "change_90d_pct": 77.82,
     "history": [
-      {
-        "date": "2025-11-21",
-        "value": 23.43
-      },
       {
         "date": "2025-11-24",
         "value": 20.52
@@ -1427,6 +1423,10 @@
       {
         "date": "2026-03-30",
         "value": 30.61
+      },
+      {
+        "date": "2026-03-31",
+        "value": 25.25
       }
     ]
   },
@@ -1534,12 +1534,12 @@
   },
   "RSXFS": {
     "label": "Retail Sales ex Food Services ($M)",
-    "latest_value": 633709.0,
-    "latest_date": "2026-01-01",
-    "change_30d": 10188.0,
-    "change_30d_pct": 1.63,
-    "change_90d": 10188.0,
-    "change_90d_pct": 1.63,
+    "latest_value": 638224.0,
+    "latest_date": "2026-02-01",
+    "change_30d": 14703.0,
+    "change_30d_pct": 2.36,
+    "change_90d": 14703.0,
+    "change_90d_pct": 2.36,
     "history": [
       {
         "date": "2025-04-01",
@@ -1575,11 +1575,15 @@
       },
       {
         "date": "2025-12-01",
-        "value": 634673.0
+        "value": 634830.0
       },
       {
         "date": "2026-01-01",
-        "value": 633709.0
+        "value": 634233.0
+      },
+      {
+        "date": "2026-02-01",
+        "value": 638224.0
       }
     ]
   },
