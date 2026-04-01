@@ -4,3 +4,7 @@ compatibility_date = "2024-01-01"
 [[kv_namespaces]]
 binding = "SUBSCRIBERS"
 id = "33708810abe949ccb900eb4d8ee60ab3"
+
+[[kv_namespaces]]
+binding = "USERS"
+id = "48669ed6762945e0b7ef53aec801b61e"
