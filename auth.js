@@ -112,6 +112,11 @@
         setTimeout(() => input.focus(), 100);
     }
 
+    window.cgiLogout = function() {
+        localStorage.removeItem(SESSION_KEY);
+        location.reload();
+    };
+
     if (!isAuthenticated()) {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', showLoginScreen);
