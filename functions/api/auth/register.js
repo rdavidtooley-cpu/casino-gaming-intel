@@ -73,7 +73,7 @@ export async function onRequestPost(context) {
                             <p><strong>Name:</strong> ${name.trim()}</p>
                             <p><strong>Email:</strong> ${norm}</p>
                             <p><strong>Requested:</strong> ${new Date().toLocaleString('en-US', {timeZone: 'America/Chicago'})}</p>
-                            <p><a href="${siteUrl}/admin.html" style="display:inline-block;padding:10px 20px;background:#f5c518;color:#000;text-decoration:none;border-radius:6px;font-weight:bold;">Review in Admin Panel</a></p>`
+                            <p><a href="${siteUrl}/admin.html" style="display:inline-block;padding:10px 20px;background:#ffd700;color:#000;text-decoration:none;border-radius:6px;font-weight:bold;">Review in Admin Panel</a></p>`
                     })
                 });
             } catch (e) { /* email failure is non-fatal */ }

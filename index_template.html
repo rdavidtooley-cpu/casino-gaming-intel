@@ -7,7 +7,7 @@
     <meta name="description" content="Real-time casino and iGaming sector intelligence: market data, custom indexes, equity analysis, industry metrics, and news for 25 gaming companies.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23ffd700'/><text x='16' y='23' font-size='20' font-weight='bold' text-anchor='middle' fill='%23000'>C</text></svg>">
-    <script src="auth.js"></script>
+    <script src="auth.js?v=2"></script>
     <script src="export-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
     <style>
@@ -158,6 +158,27 @@
             body { background:#fff!important; color:#000!important; }
             .card,.kpi-card { border:1px solid #ddd!important; background:#fff!important; break-inside:avoid; }
         }
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .page-header { padding: 16px 20px; }
+            .page-header h1 { font-size: 1.3rem; }
+            .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .kpi-card { padding: 12px 14px; }
+            .kpi-value { font-size: 18px; }
+            .grid-2col, .grid-3col, .grid-2even { grid-template-columns: 1fr; }
+            .nav-bar { padding: 6px 12px; gap: 2px; }
+            .nav-bar a { padding: 6px 10px; font-size: 11px; }
+            table { font-size: 11px; }
+            th, td { padding: 6px 8px; }
+            .card { padding: 14px 16px; }
+            .section-title { font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+            .kpi-row { grid-template-columns: 1fr; }
+            .ticker-bar { display: none !important; }
+            .page-header h1 { font-size: 1.1rem; }
+            .nav-bar a { padding: 4px 8px; font-size: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -175,7 +196,7 @@
     <a href="CG_Industry_Dashboard.html">Industry</a>
     <a href="CG_News_Dashboard.html">News</a>
     <a href="CG_Company_Summary.html">Company</a>
-    <a href="#" onclick="cgiLogout();return false" style="margin-left:auto;color:#9aa0a6;font-size:12px">Logout</a>
+    <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px">Logout</a>
 </div>
 
 <div class="container">

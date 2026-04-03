@@ -361,6 +361,27 @@
             .insider-grid { grid-template-columns: 1fr; }
             .consensus-grid { grid-template-columns: 1fr; }
         }
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .page-header { padding: 16px 20px; }
+            .page-header h1 { font-size: 1.3rem; }
+            .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .kpi-card { padding: 12px 14px; }
+            .kpi-value { font-size: 18px; }
+            .grid-2col, .grid-3col, .grid-2even { grid-template-columns: 1fr; }
+            .nav-bar { padding: 6px 12px; gap: 2px; }
+            .nav-bar a { padding: 6px 10px; font-size: 11px; }
+            table { font-size: 11px; }
+            th, td { padding: 6px 8px; }
+            .card { padding: 14px 16px; }
+            .section-title { font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+            .kpi-row { grid-template-columns: 1fr; }
+            .ticker-bar { display: none !important; }
+            .page-header h1 { font-size: 1.1rem; }
+            .nav-bar a { padding: 4px 8px; font-size: 10px; }
+        }
     </style>
 </head>
 <body>

@@ -320,16 +320,12 @@
   "DFF": {
     "label": "Federal Funds Rate (%)",
     "latest_value": 3.64,
-    "latest_date": "2026-03-31",
+    "latest_date": "2026-04-01",
     "change_30d": 0.0,
     "change_30d_pct": 0.0,
     "change_90d": 0.0,
     "change_90d_pct": 0.0,
     "history": [
-      {
-        "date": "2026-01-01",
-        "value": 3.64
-      },
       {
         "date": "2026-01-02",
         "value": 3.64
@@ -685,22 +681,22 @@
       {
         "date": "2026-03-31",
         "value": 3.64
+      },
+      {
+        "date": "2026-04-01",
+        "value": 3.64
       }
     ]
   },
   "T10Y2Y": {
     "label": "10Y-2Y Treasury Spread",
     "latest_value": 0.52,
-    "latest_date": "2026-04-01",
+    "latest_date": "2026-04-02",
     "change_30d": -0.03,
     "change_30d_pct": -5.45,
-    "change_90d": -0.16,
-    "change_90d_pct": -23.53,
+    "change_90d": -0.15,
+    "change_90d_pct": -22.39,
     "history": [
-      {
-        "date": "2025-11-20",
-        "value": 0.55
-      },
       {
         "date": "2025-11-21",
         "value": 0.55
@@ -1056,22 +1052,22 @@
       {
         "date": "2026-04-01",
         "value": 0.52
+      },
+      {
+        "date": "2026-04-02",
+        "value": 0.52
       }
     ]
   },
   "VIXCLS": {
     "label": "VIX Volatility Index",
-    "latest_value": 25.25,
-    "latest_date": "2026-03-31",
-    "change_30d": 3.81,
-    "change_30d_pct": 17.77,
-    "change_90d": 11.05,
-    "change_90d_pct": 77.82,
+    "latest_value": 24.54,
+    "latest_date": "2026-04-01",
+    "change_30d": 0.97,
+    "change_30d_pct": 4.12,
+    "change_90d": 10.21,
+    "change_90d_pct": 71.25,
     "history": [
-      {
-        "date": "2025-11-24",
-        "value": 20.52
-      },
       {
         "date": "2025-11-25",
         "value": 18.56
@@ -1427,6 +1423,10 @@
       {
         "date": "2026-03-31",
         "value": 25.25
+      },
+      {
+        "date": "2026-04-01",
+        "value": 24.54
       }
     ]
   },

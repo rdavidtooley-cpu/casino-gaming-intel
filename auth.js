@@ -4,8 +4,9 @@
     var TOKEN_KEY = 'cgi_token';
     var USER_KEY = 'cgi_user';
 
-    // Skip auth check on login page itself
+    // Skip auth check on login page and admin page
     if (window.location.pathname === '/login.html') return;
+    if (window.location.pathname === '/admin.html') return;
 
     var token = localStorage.getItem(TOKEN_KEY);
     if (!token) {
@@ -30,7 +31,7 @@
                         var link = document.createElement('a');
                         link.href = '/admin.html';
                         link.textContent = 'Admin';
-                        link.style.cssText = 'color:#f5c518;font-weight:700;font-size:13px;margin-left:12px;text-decoration:none;';
+                        link.style.cssText = 'color:#ffd700;font-weight:700;font-size:13px;margin-left:12px;text-decoration:none;';
                         nav.appendChild(link);
                     }
                 }
