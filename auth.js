@@ -21,21 +21,17 @@
         document.documentElement.style.visibility = '';
         window.SITE_USER = user;
 
-        // Add admin link to nav if admin
+        // Show admin link (pre-embedded in nav HTML, hidden by default)
         if (user && user.role === 'admin') {
-            document.addEventListener('DOMContentLoaded', function() {
-                var nav = document.querySelector('.nav, nav, .navbar, [class*="nav"]');
-                if (nav) {
-                    var existing = nav.querySelector('a[href*="admin"]');
-                    if (!existing) {
-                        var link = document.createElement('a');
-                        link.href = '/admin.html';
-                        link.textContent = 'Admin';
-                        link.style.cssText = 'color:#ffd700;font-weight:700;font-size:13px;margin-left:12px;text-decoration:none;';
-                        nav.appendChild(link);
-                    }
-                }
-            });
+            function showAdminLink() {
+                var el = document.getElementById('admin-nav-link');
+                if (el) el.style.display = '';
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', showAdminLink);
+            } else {
+                showAdminLink();
+            }
         }
     }
 
