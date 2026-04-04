@@ -1,0 +1,149 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/admin/users",
+      "mountPath": "/api/admin",
+      "method": "GET",
+      "module": [
+        "api/admin/users.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/admin/users",
+      "mountPath": "/api/admin",
+      "method": "OPTIONS",
+      "module": [
+        "api/admin/users.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/admin/users",
+      "mountPath": "/api/admin",
+      "method": "PATCH",
+      "module": [
+        "api/admin/users.js:onRequestPatch"
+      ]
+    },
+    {
+      "routePath": "/api/auth/login",
+      "mountPath": "/api/auth",
+      "method": "OPTIONS",
+      "module": [
+        "api/auth/login.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/auth/login",
+      "mountPath": "/api/auth",
+      "method": "POST",
+      "module": [
+        "api/auth/login.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/auth/logout",
+      "mountPath": "/api/auth",
+      "method": "OPTIONS",
+      "module": [
+        "api/auth/logout.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/auth/logout",
+      "mountPath": "/api/auth",
+      "method": "POST",
+      "module": [
+        "api/auth/logout.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/auth/me",
+      "mountPath": "/api/auth",
+      "method": "GET",
+      "module": [
+        "api/auth/me.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/auth/me",
+      "mountPath": "/api/auth",
+      "method": "OPTIONS",
+      "module": [
+        "api/auth/me.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/auth/register",
+      "mountPath": "/api/auth",
+      "method": "OPTIONS",
+      "module": [
+        "api/auth/register.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/auth/register",
+      "mountPath": "/api/auth",
+      "method": "POST",
+      "module": [
+        "api/auth/register.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/subscribe",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/subscribe.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/subscribe",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/subscribe.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/subscribers",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/subscribers.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/unsubscribe",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/unsubscribe.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/watchlist",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/watchlist.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/watchlist",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/watchlist.js:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/watchlist",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/watchlist.js:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
