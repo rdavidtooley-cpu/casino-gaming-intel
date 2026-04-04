@@ -99,6 +99,33 @@ export async function onRequestPatch(context) {
         }
 
         await env.USERS.put(key, JSON.stringify(user));
+
+        // Send welcome email on approval
+        if (action === 'approve' && env.RESEND_API_KEY) {
+            const siteUrl = env.SITE_URL || 'https://casino.sector-intel.com';
+            const siteName = 'Casino Gaming Intel';
+            const fromEmail = env.FROM_EMAIL || 'Casino Gaming Intel <casino@sector-intel.com>';
+            try {
+                await fetch('https://api.resend.com/emails', {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        from: fromEmail,
+                        to: user.email,
+                        subject: `You're approved — ${siteName}`,
+                        html: `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;background:#0f1117;color:#e8eaed;border-radius:8px;">
+                            <h2 style="color:#ffd700;margin-top:0;">You're in, ${user.name}.</h2>
+                            <p style="color:#9aa0a6;line-height:1.6;">Your access request for <strong style="color:#e8eaed;">${siteName}</strong> has been approved. You can sign in now.</p>
+                            <p style="margin:28px 0;">
+                                <a href="${siteUrl}/login.html" style="display:inline-block;padding:12px 24px;background:#ffd700;color:#000;text-decoration:none;border-radius:6px;font-weight:700;font-size:14px;">Sign In Now</a>
+                            </p>
+                            <p style="color:#6b7280;font-size:12px;margin-top:32px;border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;">If you didn't request access to ${siteName}, you can ignore this email.</p>
+                        </div>`
+                    })
+                });
+            } catch (e) { /* email failure is non-fatal */ }
+        }
+
         return new Response(JSON.stringify({ message: `User ${action}d successfully.`, user: { email: user.email, name: user.name, role: user.role } }), { status: 200, headers: CORS });
     } catch (err) {
         return new Response(JSON.stringify({ error: 'Action failed.' }), { status: 500, headers: CORS });
