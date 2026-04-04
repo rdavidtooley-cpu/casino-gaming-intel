@@ -496,11 +496,11 @@ input.filter-input::placeholder{color:var(--text-secondary);}
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);">
             <div class="table-section">
                 <h3>What Analysts Are Asking <span class="info-icon" data-tip="Clusters analyst questions by theme across all companies.">&#9432;</span></h3>
-                <canvas id="analystThemesChart" height="300"></canvas>
+                <div style="position:relative;height:300px;max-height:300px;"><canvas id="analystThemesChart"></canvas></div>
             </div>
             <div class="table-section">
                 <h3>Earnings Season Timeline <span class="info-icon" data-tip="When each company reported, sentiment, and guidance direction.">&#9432;</span></h3>
-                <canvas id="earningsTimelineChart" height="300"></canvas>
+                <div style="position:relative;height:300px;max-height:300px;"><canvas id="earningsTimelineChart"></canvas></div>
             </div>
         </div>
     </div>
