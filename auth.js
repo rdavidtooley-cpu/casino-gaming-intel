@@ -4,7 +4,7 @@
     var TOKEN_KEY = 'cgi_token';
     var USER_KEY = 'cgi_user';
     var SITE_ID = 'casino';
-    var GATEWAY = 'https://sector-intel.com';
+    var GATEWAY = 'https://sector-intel-hub.pages.dev';
 
     // Skip auth on login page
     if (window.location.pathname === '/login.html') return;

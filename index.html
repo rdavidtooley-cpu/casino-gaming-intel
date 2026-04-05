@@ -66,9 +66,10 @@
         .kpi-label { font-size:10px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:4px; }
         .kpi-label[data-tip] { position:relative; cursor:help; border-bottom:1px dotted rgba(255,255,255,0.2); }
         .kpi-label[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:0; top:100%; margin-top:4px; background:#2d3748; color:#e8eaed; font-size:11px; padding:6px 10px; border-radius:6px; white-space:normal; width:220px; z-index:100; text-transform:none; letter-spacing:normal; line-height:1.4; box-shadow:0 4px 12px rgba(0,0,0,0.4); pointer-events:none; }
-        .info-icon { position:relative; cursor:help; font-size:13px; color:var(--text-secondary); opacity:0.6; }
-        .info-icon:hover { opacity:1; }
-        .info-icon:hover::after { content:attr(data-tip); position:absolute; left:50%; top:100%; transform:translateX(-50%); margin-top:6px; background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; z-index:100; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
+        .info-icon { position:relative; cursor:help; font-size:14px; color:#ffd700; opacity:1; display:inline-block; }
+        .info-icon:hover { color:#ffe55c; }
+        .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
+        .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
         .kpi-value { font-size:24px; font-weight:700; margin-bottom:2px; }
         .kpi-sub { font-size:11px; color:var(--text-secondary); }
         .positive { color:var(--positive); } .negative { color:var(--negative); }
@@ -195,6 +196,7 @@
     <a href="CG_Peer_Analysis.html">Peer Analysis</a>
     <a href="CG_Industry_Dashboard.html">Industry</a>
     <a href="CG_News_Dashboard.html">News</a>
+    <a href="CG_Earnings_Dashboard.html">Earnings</a>
     <a href="CG_Company_Summary.html">Company</a>
     <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px">Logout</a>
 </div>
@@ -1159,9 +1161,9 @@ var INJECTED_COMMAND_CENTER = {
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-04-03T22:31:11.402708",
+  "generated_at": "2026-04-03T23:39:58.660326",
   "transcript_analysis": {
-    "generated_at": "2026-04-03T22:31:11.295574",
+    "generated_at": "2026-04-03T23:39:58.604672",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
@@ -10442,6 +10444,28 @@ var INJECTED_COMMAND_CENTER = {
   },
   "news_items": [
     {
+      "title": "Rio in Las Vegas Has New Owner & Leaders \u2014 Report - Casino.org",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBodHJwd1NhNXVwalBxQ0U1TWdvamM3c2pQSWlsLTlPa2gyblZRc0diQ2pvTTBVbGlxTjNsYVFjeXFlNmx3TXU2OHV1RncwVG1NaGp5VmNSNUVGc293NzhGMWx2YnYwZFZDTHNWd3BIY0pNTy1aSjlBdlEtU0U4SjQ?oc=5",
+      "source": "Casino.org",
+      "published": "Sat, 04 Apr 2026 03:34:48 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-03.json"
+    },
+    {
+      "title": "Rio in Las Vegas Has New Owner & Leaders \u2014 Report",
+      "url": "https://www.casino.org/news/rio-in-las-vegas-has-new-owner-leaders-report/",
+      "source": "Casino.org News",
+      "published": "Sat, 04 Apr 2026 03:34:34 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-03.json"
+    },
+    {
       "title": "Cactus Gaming Named Finalist for Platform of the Year at BiS Awards 2026",
       "url": "https://www.igamingtoday.com/cactus-gaming-named-finalist-for-platform-of-the-year-at-bis-awards-2026/",
       "source": "iGamingToday",
@@ -10610,6 +10634,17 @@ var INJECTED_COMMAND_CENTER = {
       "source_file": "news_2026-04-03.json"
     },
     {
+      "title": "Vegas Unstripped 2026 Brings Culinary Stars to Palms Casino - National Today",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNLU1XQ0xuU3dFUmpmMHRxTVFsTkp4Z2tlb3phenRDd19yRUxpVmRtcVB5YlZhSFl3ZHgwUm1SblI1UDV4MUJ4OFZxZjVZNFNYdXV4V25fdUFoREhkWnJuRmtXYVNNekZkS1U1NnBKanpqc2xWUzNheGdhY3BWaWY2UnFid2JoTjhaZ3hBZ3pQYlhRN25GdU9aSU5tSk95b1FsZFJCZmlUVHZqdFJpWjFMUzJZak9rMFMzdUZTdWM4UF80QQ?oc=5",
+      "source": "National Today",
+      "published": "Fri, 03 Apr 2026 17:14:07 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-04-03.json"
+    },
+    {
       "title": "Super Cash Drop Jackpots Slot Review",
       "url": "https://www.igamingtoday.com/super-cash-drop-jackpots-slot-review/",
       "source": "iGamingToday",
@@ -10640,41 +10675,6 @@ var INJECTED_COMMAND_CENTER = {
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 4,
-      "source_file": "news_2026-04-03.json"
-    },
-    {
-      "title": "Will Las Vegas Sands (LVS) Beat Estimates Again in Its Next Earnings Report?",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/las-vegas-sands-lvs-beat-161003579.html",
-      "source": "Zacks",
-      "published": "2026-04-03T16:10:03Z",
-      "matched_tickers": [
-        "LVS"
-      ],
-      "sector": "Integrated Resorts",
-      "category": "Company-Specific",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-03.json"
-    },
-    {
-      "title": "Vegas Unstripped 2026: Culinary Stars Gather at Palms Casino Resort - Food & Beverage Magazine",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPVllCVU40SWtrMEpqLWVPYXpZMFhpUjhmOFRBM3lidENtY3JJeFptTDRIRU85ejVIZmpCcVo2aGJLWE54NWQwaEhrVi0xMVhyWm90ajFTWVphMVFPUFpjUlFTRjMwbVBMMkZhc0YyWV80ekNfYWVxX1oyRmRMM2x0eE5sUXRRdmtoMVpQZGdnLWVCXzg?oc=5",
-      "source": "Food & Beverage Magazine",
-      "published": "Fri, 03 Apr 2026 16:06:29 GMT",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-03.json"
-    },
-    {
-      "title": "X Clover Fire Slot Review",
-      "url": "https://www.igamingtoday.com/x-clover-fire-slot-review/",
-      "source": "iGamingToday",
-      "published": "Fri, 03 Apr 2026 15:30:27 +0000",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 3,
       "source_file": "news_2026-04-03.json"
     }
   ],

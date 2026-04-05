@@ -31,6 +31,36 @@
             min-height: 100vh;
         }
 
+        /* Ticker Bar */
+        .ticker-bar {
+            background: #0a0c12;
+            border-bottom: 1px solid rgba(255,215,0,0.08);
+            padding: 0 16px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+        .ticker-bar-inner {
+            display: flex;
+            gap: 24px;
+            animation: tickerScroll 60s linear infinite;
+            white-space: nowrap;
+        }
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-item { display: flex; gap: 6px; align-items: center; font-size: 11px; }
+        .ticker-item .t-sym { color: var(--accent); font-weight: 600; }
+        .ticker-item .t-price { color: var(--text-primary); }
+        .ticker-item .t-chg { font-weight: 500; }
+        .ticker-item .t-chg.up { color: var(--positive); }
+        .ticker-item .t-chg.dn { color: var(--negative); }
+
         /* Nav Bar */
         .nav-bar {
             display: flex;
@@ -39,8 +69,8 @@
             padding: 8px 24px;
             border-bottom: 1px solid rgba(255,215,0,0.15);
             position: sticky;
-            top: 0;
-            z-index: 100;
+            top: 32px;
+            z-index: 1000;
         }
         .nav-bar a {
             color: var(--text-secondary);
@@ -59,6 +89,8 @@
             background: linear-gradient(135deg, #1a1d29 0%, #16213e 100%);
             border-bottom: 2px solid var(--accent);
             padding: 28px 32px;
+            border-radius: var(--radius);
+            margin-bottom: var(--gap);
         }
         .page-header h1 {
             font-size: 1.8rem;
@@ -314,9 +346,14 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
+        .info-icon { position:relative; cursor:help; font-size:14px; color:#ffd700; opacity:1; display:inline-block; }
+        .info-icon:hover { color:#ffe55c; }
+        .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
+        .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
     </style>
 </head>
 <body>
+<div class="ticker-bar" id="ticker-bar"><div class="ticker-bar-inner" id="ticker-inner"></div></div>
 
 <div class="nav-bar">
     <a href="index.html">Home</a>
@@ -324,16 +361,19 @@
     <a href="CG_Peer_Analysis.html" class="active">Peer Analysis</a>
     <a href="CG_Industry_Dashboard.html">Industry</a>
     <a href="CG_News_Dashboard.html">News</a>
+    <a href="CG_Earnings_Dashboard.html">Earnings</a>
     <a href="CG_Company_Summary.html">Company</a>
-    <a href="#" onclick="cgiLogout();return false" <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a>style="color:#9aa0a6;font-size:12px">Logout</a>
+    <div style="flex:1"></div>
+    <a id="admin-nav-link" href="admin.html" style="display:none;color:#ffd700;font-size:12px;margin-right:8px;">Admin</a>
+    <a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px;">Logout</a>
 </div>
+
+<div class="container">
 
 <div class="page-header">
     <h1>Peer Analysis</h1>
     <p>Comparative rankings, valuations, and performance across the casino gaming sector</p>
 </div>
-
-<div class="container">
 
     <!-- Tab Strip -->
     <div class="tab-strip">
@@ -767,9 +807,25 @@ function switchTabDirect(name) {
     if (name === 'performance') buildPerfChart();
 }
 
-document.addEventListener('DOMContentLoaded', init);
+function renderTicker() {
+    var strip = document.getElementById('ticker-inner');
+    if (!strip) return;
+    var data = (typeof MD !== 'undefined' && MD) ? MD : (typeof MARKET_DATA !== 'undefined' ? MARKET_DATA : {});
+    if (!data || !Object.keys(data).length) return;
+    var html = '';
+    Object.keys(data).forEach(function(t) {
+        var d = data[t];
+        var chg = d.change_pct || 0;
+        var dir = chg > 0 ? 'up' : chg < 0 ? 'dn' : '';
+        var arrow = chg > 0 ? '▲' : chg < 0 ? '▼' : '';
+        html += '<div class="ticker-item"><span class="t-sym">' + (d.display_ticker || t) + '</span><span class="t-price"> ' + Number(d.price || 0).toFixed(2) + '</span><span class="t-chg ' + dir + '">' + arrow + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span></div>';
+    });
+    strip.innerHTML = html + html;
+}
+
+document.addEventListener('DOMContentLoaded', function() { renderTicker(); init(); });
 </script>
-<script src="auth.js"></script>
+<script src="auth.js?v=2"></script>
 <script src="export-utils.js"></script>
 </body>
 </html>
