@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Gaming Intel — Earnings Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0f1117;
             --bg-card: #1a1d29;
             --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
-            --accent: #ffd700;
+            --text-secondary: #9ca3af;
+            --accent: #f59e0b;
             --accent2: #4fc3f7;
             --accent3: #81c784;
             --accent4: #ba68c8;
-            --positive: #4caf50;
-            --negative: #f44336;
-            --radius: 10px;
+            --positive: #22c55e;
+            --negative: #ef4444;
+            --info-blue: #3b82f6;
+            --radius: 8px;
             --border: 1px solid rgba(255,255,255,0.06);
             --gap: 16px;
         }
@@ -24,11 +28,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.5;
+            font-variant-numeric: tabular-nums;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 1500px; margin: 0 auto; padding: 24px; }
@@ -47,32 +53,32 @@
         .nav-bar {
             display: flex;
             gap: 4px;
-            padding: 8px 24px;
+            padding: 0 24px;
             background: #111318;
-            border-bottom: 1px solid rgba(255,215,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             position: sticky;
-            top: 0;
+            top: 32px;
             z-index: 1000;
             flex-wrap: wrap;
             align-items: center;
         }
         .nav-bar a {
-            padding: 8px 16px;
+            padding: 10px 18px;
             border: none;
             background: transparent;
             color: var(--text-secondary);
             font-size: 13px;
             font-weight: 500;
-            border-radius: 6px;
+            border-bottom: 2px solid transparent;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
         }
-        .nav-bar a:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
-        .nav-bar a.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+        .nav-bar a:hover { color: var(--accent); }
+        .nav-bar a.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-        .page-header { background:linear-gradient(135deg, #1a1d29 0%, #16213e 100%); border-bottom:2px solid var(--accent); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-        .page-header h1 { font-size:1.8rem; color:var(--accent); text-shadow:0 0 10px rgba(255,215,0,0.2); margin-bottom:4px; }
+        .page-header { background:var(--bg-card); border:var(--border); box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+        .page-header h1 { font-size:1.5rem; color:var(--text-primary); margin-bottom:4px; }
         .page-header p { color:var(--text-secondary); font-size:0.9rem; }
 
         .card {
@@ -81,6 +87,7 @@
             border: var(--border);
             padding: 20px 24px;
             margin-bottom: var(--gap);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
 
         .section-title {
@@ -141,7 +148,7 @@
             font-size: 13px;
         }
         th {
-            background: rgba(255,215,0,0.08);
+            background: rgba(245,158,11,0.08);
             color: var(--accent);
             text-align: left;
             padding: 10px 12px;
@@ -149,14 +156,14 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.3px;
-            border-bottom: 1px solid rgba(255,215,0,0.15);
+            border-bottom: 1px solid rgba(245,158,11,0.15);
         }
         td {
             padding: 10px 12px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
             color: var(--text-primary);
         }
-        tr:hover td { background: rgba(255,215,0,0.03); }
+        tr:hover td { background: rgba(245,158,11,0.03); }
         .beat { color: var(--positive); font-weight: 600; }
         .miss { color: var(--negative); font-weight: 600; }
         .inline { color: var(--text-secondary); }
@@ -189,17 +196,17 @@
         }
         .transcript-links a {
             padding: 6px 14px;
-            background: rgba(255,215,0,0.08);
+            background: rgba(245,158,11,0.08);
             color: var(--accent);
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
             text-decoration: none;
-            border: 1px solid rgba(255,215,0,0.15);
+            border: 1px solid rgba(245,158,11,0.15);
             transition: all 0.2s;
         }
-        .transcript-links a:hover { background: rgba(255,215,0,0.15); }
-        .transcript-links a.active-q { background: rgba(255,215,0,0.2); border-color: var(--accent); }
+        .transcript-links a:hover { background: rgba(245,158,11,0.15); }
+        .transcript-links a.active-q { background: rgba(245,158,11,0.2); border-color: var(--accent); }
 
         /* ── Comparative Section ── */
         .quarter-selector {
@@ -219,7 +226,7 @@
             transition: all 0.2s;
         }
         .quarter-selector button:hover { border-color: var(--accent); color: var(--accent); }
-        .quarter-selector button.active { background: rgba(255,215,0,0.1); color: var(--accent); border-color: var(--accent); font-weight: 600; }
+        .quarter-selector button.active { background: rgba(245,158,11,0.1); color: var(--accent); border-color: var(--accent); font-weight: 600; }
 
         .compare-grid {
             display: grid;
@@ -241,8 +248,8 @@
         .compare-card .cc-ticker { font-size: 16px; font-weight: 700; color: var(--accent); }
         .compare-card .cc-company { font-size: 11px; color: var(--text-secondary); }
         .compare-card .cc-result { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
-        .compare-card .cc-result.beat { background: rgba(76,175,80,0.15); }
-        .compare-card .cc-result.miss { background: rgba(244,67,54,0.15); }
+        .compare-card .cc-result.beat { background: rgba(34,197,94,0.15); }
+        .compare-card .cc-result.miss { background: rgba(239,68,68,0.15); }
         .compare-card .cc-highlights { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
         .compare-card .cc-highlights strong { color: var(--text-primary); }
         .compare-card .cc-guidance {
@@ -253,14 +260,14 @@
             border-radius: 4px;
             display: inline-block;
         }
-        .guidance-raised { background: rgba(76,175,80,0.15); color: var(--positive); }
-        .guidance-maintained { background: rgba(255,215,0,0.1); color: var(--accent); }
-        .guidance-lowered { background: rgba(244,67,54,0.15); color: var(--negative); }
+        .guidance-raised { background: rgba(34,197,94,0.15); color: var(--positive); }
+        .guidance-maintained { background: rgba(245,158,11,0.1); color: var(--accent); }
+        .guidance-lowered { background: rgba(239,68,68,0.15); color: var(--negative); }
 
         .no-data { color: var(--text-secondary); font-style: italic; padding: 20px; text-align: center; }
 
-        .info-icon { position:relative; cursor:help; font-size:14px; color:#ffd700; opacity:1; display:inline-block; }
-        .info-icon:hover { color:#ffe55c; }
+        .info-icon { position:relative; cursor:help; font-size:14px; color:var(--accent); opacity:1; display:inline-block; }
+        .info-icon:hover { color:#fbbf24; }
 
         @media (max-width: 768px) {
             .container { padding: 12px; }
@@ -289,7 +296,7 @@
         <a href="CG_News_Dashboard.html">News</a>
         <a href="CG_Earnings_Dashboard.html" class="active">Earnings</a>
         <a href="CG_Company_Summary.html">Company</a>
-        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px">Logout</a>
+        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
     </div>
 
 <div class="container">
@@ -364,6 +371,10 @@
 
 </div>
 
+<footer style="text-align:center;padding:32px 24px 24px;color:var(--text-secondary);font-size:12px;border-top:1px solid rgba(255,255,255,0.06);margin-top:32px;">
+    Sector Intelligence &middot; sector-intel.com &middot; Data refreshed daily at 5:00 AM ET
+</footer>
+
 <script>
 // INJECTED_DATA
 var EARNINGS_DATA = {};
@@ -407,7 +418,7 @@ var EARNINGS_DATA = {};
             const isPast = c.report_date < today;
             const dt = new Date(c.report_date + 'T12:00:00');
             const dateStr = dt.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-            const color = catColors[c.category] || '#ffd700';
+            const color = catColors[c.category] || '#f59e0b';
             html += `<div class="cal-item${isPast?' past':''}" style="border-left-color:${color}">
                 <span class="cal-date">${dateStr}</span>
                 <span class="cal-ticker">${c.ticker}</span>
@@ -663,7 +674,7 @@ var EARNINGS_DATA = {};
 
         let html = '';
         cards.forEach(c => {
-            const color = catColors[c.category] || '#ffd700';
+            const color = catColors[c.category] || '#f59e0b';
             let resultHtml = '';
             if (c.result) {
                 const isBeat = c.result.eps_actual > c.result.eps_estimate;

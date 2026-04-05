@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Gaming Intel — Industry Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="auth.js?v=2"></script>
     <script src="export-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
@@ -12,14 +15,15 @@
             --bg-primary: #0f1117;
             --bg-card: #1a1d29;
             --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
-            --accent: #ffd700;
+            --text-secondary: #9ca3af;
+            --accent: #f59e0b;
             --accent2: #4fc3f7;
             --accent3: #81c784;
             --accent4: #ba68c8;
-            --positive: #4caf50;
-            --negative: #f44336;
-            --radius: 10px;
+            --positive: #22c55e;
+            --negative: #ef4444;
+            --info-blue: #3b82f6;
+            --radius: 8px;
             --border: 1px solid rgba(255,255,255,0.06);
             --gap: 16px;
         }
@@ -27,11 +31,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.5;
+            font-variant-numeric: tabular-nums;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 1500px; margin: 0 auto; padding: 24px; }
@@ -50,32 +56,32 @@
         .nav-bar {
             display: flex;
             gap: 4px;
-            padding: 8px 24px;
+            padding: 0 24px;
             background: #111318;
-            border-bottom: 1px solid rgba(255,215,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             position: sticky;
-            top: 0;
+            top: 32px;
             z-index: 1000;
             flex-wrap: wrap;
             align-items: center;
         }
         .nav-bar a {
-            padding: 8px 16px;
+            padding: 10px 18px;
             border: none;
+            border-bottom: 2px solid transparent;
             background: transparent;
             color: var(--text-secondary);
             font-size: 13px;
             font-weight: 500;
-            border-radius: 6px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
         }
-        .nav-bar a:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
-        .nav-bar a.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+        .nav-bar a:hover { color: var(--accent); background: transparent; }
+        .nav-bar a.active { color: var(--accent); background: transparent; border-bottom-color: var(--accent); }
 
-        .page-header { background:linear-gradient(135deg, #1a1d29 0%, #16213e 100%); border-bottom:2px solid var(--accent); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-        .page-header h1 { font-size:1.8rem; color:var(--accent); text-shadow:0 0 10px rgba(255,215,0,0.2); margin-bottom:4px; }
+        .page-header { background:var(--bg-card); border:var(--border); box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+        .page-header h1 { font-size:1.5rem; color:var(--text-primary); margin-bottom:4px; }
         .page-header p { color:var(--text-secondary); font-size:0.9rem; }
 
         /* Tab Bar */
@@ -100,8 +106,8 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .tab-btn:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
-        .tab-btn.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+        .tab-btn:hover { color: var(--accent); background: rgba(245,158,11,0.08); }
+        .tab-btn.active { color: var(--accent); background: rgba(245,158,11,0.12); }
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
 
@@ -118,11 +124,12 @@
             border-left: 3px solid var(--accent);
             border-radius: var(--radius);
             padding: 20px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .kpi-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 6px 20px rgba(245,158,11,0.08);
         }
         .kpi-label {
             font-size: 0.75em;
@@ -151,7 +158,7 @@
             color: var(--accent);
             margin-bottom: 12px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,215,0,0.15);
+            border-bottom: 1px solid rgba(245,158,11,0.15);
         }
         .data-section {
             background: var(--bg-card);
@@ -159,6 +166,7 @@
             border-radius: var(--radius);
             padding: 22px;
             margin-bottom: var(--gap);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
 
         /* Chart container */
@@ -169,6 +177,7 @@
             padding: 22px;
             margin-bottom: var(--gap);
             position: relative;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
         .chart-wrap canvas { max-height: 360px; }
 
@@ -281,7 +290,8 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
-        .info-icon { position:relative; cursor:help; font-size:14px; color:#ffd700; opacity:1; display:inline-block; }
+        .footer{text-align:center;padding:20px;color:var(--text-secondary);font-size:12px;}
+        .info-icon { position:relative; cursor:help; font-size:14px; color:var(--accent); opacity:1; display:inline-block; }
         .info-icon:hover { color:#ffe55c; }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
         .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
@@ -297,7 +307,7 @@
         <a href="CG_News_Dashboard.html">News</a>
         <a href="CG_Earnings_Dashboard.html">Earnings</a>
         <a href="CG_Company_Summary.html">Company</a>
-        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px">Logout</a>
+        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#f59e0b;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9ca3af;font-size:12px">Logout</a>
     </div>
 
 <div class="container">
@@ -575,6 +585,19 @@
         </div>
     </div>
 
+    <div class="footer">
+        <div style="margin-bottom:10px;">
+            <a href="index.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Home</a> &middot;
+            <a href="CG_Equities_Dashboard.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Equities</a> &middot;
+            <a href="CG_Peer_Analysis.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Peer Analysis</a> &middot;
+            <a href="CG_Industry_Dashboard.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Industry</a> &middot;
+            <a href="CG_News_Dashboard.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">News</a>
+        </div>
+        Casino Gaming Intel &mdash; Proprietary &amp; Confidential
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;color:var(--text-secondary);max-width:800px;margin-left:auto;margin-right:auto;line-height:1.6;">
+            <strong>Disclaimer:</strong> The information provided on Casino Gaming Intel is for informational and educational purposes only and does not constitute investment advice, financial advice, legal advice, tax advice, or any other form of professional advice. Nothing on this site should be construed as a recommendation to buy, sell, or hold any security or investment. All data is sourced from third-party providers and may be delayed, inaccurate, or incomplete. Past performance is not indicative of future results. You should consult a qualified financial advisor, attorney, or other professional before making any investment decisions. Casino Gaming Intel and its operators assume no liability for any losses or damages arising from the use of this information.
+        </div>
+    </div>
 </div>
 
 <script>
@@ -591,9 +614,9 @@ var TRIBAL_DATA = {};
 // ============================================================
 // Chart.js global config
 // ============================================================
-Chart.defaults.color = '#9aa0a6';
+Chart.defaults.color = '#9ca3af';
 Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
-Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+Chart.defaults.font.family = "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 Chart.defaults.font.size = 11;
 
 // Chart instances for cleanup
@@ -686,8 +709,8 @@ function renderEconomicCharts() {
             datasets: [{
                 label: 'Consumer Sentiment',
                 data: trend.values || [],
-                borderColor: '#ffd700',
-                backgroundColor: 'rgba(255,215,0,0.08)',
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,0.08)',
                 fill: true,
                 tension: 0.3,
                 pointRadius: 2,
@@ -746,8 +769,8 @@ function renderStateCharts() {
             datasets: [{
                 label: 'Latest Revenue',
                 data: values,
-                backgroundColor: 'rgba(255,215,0,0.6)',
-                borderColor: '#ffd700',
+                backgroundColor: 'rgba(245,158,11,0.6)',
+                borderColor: '#f59e0b',
                 borderWidth: 1,
                 borderRadius: 4
             }]

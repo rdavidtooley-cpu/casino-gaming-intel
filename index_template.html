@@ -6,7 +6,10 @@
     <title>Casino Gaming Intel &mdash; Gaming Sector Intelligence Hub</title>
     <meta name="description" content="Real-time casino and iGaming sector intelligence: market data, custom indexes, equity analysis, industry metrics, and news for 25 gaming companies.">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23ffd700'/><text x='16' y='23' font-size='20' font-weight='bold' text-anchor='middle' fill='%23000'>C</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23f59e0b'/><text x='16' y='23' font-size='20' font-weight='bold' text-anchor='middle' fill='%23000'>C</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="auth.js?v=2"></script>
     <script src="export-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
@@ -16,61 +19,66 @@
             --bg-card: #1a1d29;
             --bg-hover: #252836;
             --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
+            --text-secondary: #9ca3af;
             --text-on-dark: #ffffff;
-            --accent: #ffd700;
+            --accent: #f59e0b;
             --accent2: #4fc3f7;
             --accent3: #81c784;
             --accent4: #ba68c8;
-            --positive: #4caf50;
-            --negative: #f44336;
-            --radius: 10px;
+            --positive: #22c55e;
+            --negative: #ef4444;
+            --info-blue: #3b82f6;
+            --radius: 8px;
             --border: 1px solid rgba(255,255,255,0.06);
             --gap: 16px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; }
 
         /* Ticker Bar */
         .ticker-bar { display:flex; align-items:center; background:#0a0c10; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; white-space:nowrap; height:32px; position:sticky; top:0; z-index:1001; }
-        .ticker-track { display:inline-flex; animation:ticker-scroll 80s linear infinite; gap:0; }
+        .ticker-track { display:inline-flex; animation:ticker-scroll 80s linear infinite; gap:0; flex:1; }
         .ticker-track:hover { animation-play-state:paused; }
         .ticker-item { display:inline-flex; align-items:center; gap:6px; padding:0 18px; font-size:11px; font-weight:600; border-right:1px solid rgba(255,255,255,0.04); height:32px; cursor:default; }
         .ticker-item .tk-sym { color:var(--accent); font-weight:700; letter-spacing:0.5px; }
         .ticker-item .tk-price { color:var(--text-primary); }
         .ticker-item .tk-chg { font-size:10px; font-weight:600; }
         .tk-up { color:var(--positive); } .tk-down { color:var(--negative); } .tk-flat { color:#9e9e9e; }
+        .ticker-meta { display:flex; align-items:center; gap:12px; padding:0 16px; font-size:10px; color:var(--text-secondary); white-space:nowrap; flex-shrink:0; border-left:1px solid rgba(255,255,255,0.06); height:32px; }
+        .market-status-dot { width:6px; height:6px; border-radius:50%; display:inline-block; }
+        .market-status-dot.open { background:var(--positive); box-shadow:0 0 4px rgba(34,197,94,0.5); }
+        .market-status-dot.closed { background:#6b7280; }
         @keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
         /* Nav Bar */
-        .nav-bar { display:flex; gap:4px; padding:8px 24px; background:#111318; border-bottom:1px solid rgba(255,215,0,0.15); position:sticky; top:32px; z-index:1000; flex-wrap:wrap; align-items:center; }
-        .nav-bar a { color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; padding:8px 18px; border-radius:6px; transition:all 0.2s; }
-        .nav-bar a:hover { color:var(--text-primary); background:rgba(255,255,255,0.06); }
-        .nav-bar a.active { color:var(--accent); background:rgba(255,215,0,0.12); }
+        .nav-bar { display:flex; gap:2px; padding:0 24px; background:#111318; border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:32px; z-index:1000; flex-wrap:wrap; align-items:center; }
+        .nav-bar a { color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; padding:10px 18px; border-bottom:2px solid transparent; transition:all 0.2s; }
+        .nav-bar a:hover { color:var(--text-primary); }
+        .nav-bar a.active { color:var(--accent); border-bottom-color:var(--accent); }
 
         .container { max-width:1500px; margin:0 auto; padding:24px; }
 
         /* Page Header */
-        .page-header { background:linear-gradient(135deg, #1a1d29 0%, #16213e 100%); border-bottom:2px solid var(--accent); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-        .page-header h1 { font-size:1.8rem; color:var(--accent); text-shadow:0 0 10px rgba(255,215,0,0.2); margin-bottom:4px; }
-        .page-header p { color:var(--text-secondary); font-size:0.9rem; }
+        .page-header { background:var(--bg-card); border:var(--border); padding:24px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
+        .page-header h1 { font-size:1.5rem; font-weight:700; color:var(--text-primary); margin-bottom:2px; }
+        .page-header p { color:var(--text-secondary); font-size:0.85rem; }
         .header-right { text-align:right; }
-        .header-right .idx-val { font-size:28px; font-weight:700; color:var(--text-primary); }
-        .header-right .idx-chg { font-size:13px; }
+        .header-right .idx-val { font-size:32px; font-weight:700; color:var(--text-primary); }
+        .header-right .idx-chg { font-size:13px; font-weight:600; }
         .header-right .idx-label { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--text-secondary); }
 
         /* KPI Row */
         .kpi-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:var(--gap); margin-bottom:var(--gap); }
-        .kpi-card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:18px 22px; transition:transform 0.2s; }
+        .kpi-card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:20px; transition:transform 0.2s; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
         .kpi-card:hover { transform:translateY(-2px); }
-        .kpi-label { font-size:10px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:4px; }
+        .kpi-label { font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; font-weight:500; }
         .kpi-label[data-tip] { position:relative; cursor:help; border-bottom:1px dotted rgba(255,255,255,0.2); }
         .kpi-label[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:0; top:100%; margin-top:4px; background:#2d3748; color:#e8eaed; font-size:11px; padding:6px 10px; border-radius:6px; white-space:normal; width:220px; z-index:100; text-transform:none; letter-spacing:normal; line-height:1.4; box-shadow:0 4px 12px rgba(0,0,0,0.4); pointer-events:none; }
-        .info-icon { position:relative; cursor:help; font-size:14px; color:#ffd700; opacity:1; display:inline-block; }
-        .info-icon:hover { color:#ffe55c; }
-        .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
-        .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
-        .kpi-value { font-size:24px; font-weight:700; margin-bottom:2px; }
+        .info-icon { position:relative; cursor:help; font-size:14px; color:var(--text-secondary); opacity:0.7; display:inline-block; transition:opacity 0.2s; }
+        .info-icon:hover { opacity:1; color:var(--text-primary); }
+        .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#1e2130; color:#d0d0d0; font-size:11px; padding:10px 14px; border-radius:var(--radius); white-space:normal; width:300px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 8px 24px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.08); pointer-events:none; }
+        .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#1e2130; z-index:99999; }
+        .kpi-value { font-size:28px; font-weight:700; margin-bottom:2px; letter-spacing:-0.5px; }
         .kpi-sub { font-size:11px; color:var(--text-secondary); }
         .positive { color:var(--positive); } .negative { color:var(--negative); }
 
@@ -80,9 +88,9 @@
         .grid-2even { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-bottom:var(--gap); }
 
         /* Cards */
-        .card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:20px 24px; }
-        .card h3 { font-size:14px; font-weight:600; margin-bottom:12px; color:var(--text-primary); }
-        .section-title { font-size:1.1em; font-weight:700; color:var(--accent); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(255,215,0,0.15); }
+        .card { background:var(--bg-card); border:var(--border); border-radius:var(--radius); padding:20px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
+        .card h3 { font-size:13px; font-weight:600; margin-bottom:12px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.3px; }
+        .section-title { font-size:13px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); }
 
         /* Universe Table */
         .universe-table { width:100%; border-collapse:collapse; font-size:12px; }
@@ -117,7 +125,7 @@
         .dl-text p { font-size:11px; color:var(--text-secondary); }
 
         /* Transcript Intelligence */
-        .ti-section-title { font-size:16px; font-weight:600; color:var(--accent); margin:24px 0 12px; text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:8px; }
+        .ti-section-title { font-size:14px; font-weight:600; color:var(--text-primary); margin:24px 0 12px; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:8px; }
         .ti-rank-table { width:100%; border-collapse:collapse; font-size:11px; }
         .ti-rank-table th { text-align:left; padding:5px 6px; border-bottom:1px solid rgba(255,255,255,0.1); color:var(--text-secondary); font-size:9px; text-transform:uppercase; letter-spacing:0.5px; }
         .ti-rank-table td { padding:5px 6px; border-bottom:1px solid rgba(255,255,255,0.04); }
@@ -137,7 +145,7 @@
 
         /* Info Tooltip */
         .info-trigger { position:relative; display:inline-flex; align-items:center; }
-        .info-tooltip { display:none; position:fixed; z-index:9999; width:360px; max-width:90vw; background:#1e2130; border:1px solid rgba(255,215,0,0.25); border-radius:10px; padding:16px 18px; font-size:11.5px; line-height:1.55; color:#d0d0d0; box-shadow:0 8px 32px rgba(0,0,0,0.5); pointer-events:none; }
+        .info-tooltip { display:none; position:fixed; z-index:9999; width:360px; max-width:90vw; background:#1e2130; border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius); padding:16px 18px; font-size:11.5px; line-height:1.55; color:#d0d0d0; box-shadow:0 8px 32px rgba(0,0,0,0.5); pointer-events:none; }
 
         /* Footer */
         .footer { text-align:center; padding:16px; font-size:11px; color:var(--text-secondary); }
@@ -148,8 +156,9 @@
         @media(max-width:900px) { .grid-2col { grid-template-columns:1fr; } .grid-2even { grid-template-columns:1fr; } }
         @media(max-width:700px) { .grid-3col { grid-template-columns:1fr; } }
         @media(max-width:768px) {
-            .nav-bar { padding:6px 8px; } .nav-bar a { font-size:11px; padding:6px 10px; }
+            .nav-bar { padding:0 8px; } .nav-bar a { font-size:11px; padding:8px 10px; }
             .ticker-bar { height:26px; } .ticker-item { padding:0 10px; font-size:10px; height:26px; }
+            .ticker-meta { display:none; }
             .container { padding:12px; } .page-header { padding:16px 20px; } .page-header h1 { font-size:20px; }
             .kpi-row { grid-template-columns:repeat(2,1fr); }
             .dash-links { grid-template-columns:1fr; }
@@ -187,6 +196,10 @@
 <!-- Scrolling Ticker Bar -->
 <div class="ticker-bar" id="ticker-bar">
     <div class="ticker-track" id="ticker-track"></div>
+    <div class="ticker-meta">
+        <span id="market-status"><span class="market-status-dot closed"></span> Closed</span>
+        <span id="ticker-timestamp" style="opacity:0.6;"></span>
+    </div>
 </div>
 
 <!-- Navigation -->
@@ -198,7 +211,7 @@
     <a href="CG_News_Dashboard.html">News</a>
     <a href="CG_Earnings_Dashboard.html">Earnings</a>
     <a href="CG_Company_Summary.html">Company</a>
-    <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px">Logout</a>
+    <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
 </div>
 
 <div class="container">
@@ -212,11 +225,22 @@
         <div class="header-right" id="header-gaming25"></div>
     </div>
 
-    <!-- 6 KPI Cards -->
+    <!-- Today's Briefing Strip -->
+    <div class="card" id="briefing-strip" style="margin-bottom:var(--gap);padding:16px 24px;border-left:3px solid var(--info-blue);display:none;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="font-size:16px;flex-shrink:0;margin-top:1px;">📊</div>
+            <div>
+                <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--info-blue);margin-bottom:4px;">Today's Briefing</div>
+                <div id="briefing-text" style="font-size:13px;line-height:1.6;color:var(--text-primary);"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 KPI Cards -->
     <div class="kpi-row" id="kpi-row"></div>
 
     <!-- Market Breadth Bar -->
-    <div class="card" style="margin-bottom:var(--gap);padding:16px 24px;">
+    <div class="card" style="margin-bottom:var(--gap);padding:16px 20px;">
         <h3 style="margin-bottom:10px;">Market Breadth <span class="info-icon" data-tip="Shows the ratio of advancing vs. declining stocks in the gaming universe today. A mostly green bar signals broad-based buying; mostly red suggests widespread selling pressure.">&#9432;</span></h3>
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
             <div class="breadth-bar" id="breadth-bar" style="flex:1;min-width:200px;"></div>
@@ -258,47 +282,37 @@
     <!-- Top Movers -->
     <div class="grid-2even">
         <div class="card">
-            <div class="section-title" title="The 5 companies with the largest percentage gains today.">Top Gainers</div>
+            <div class="section-title" title="The 3 companies with the largest percentage gains today.">Top Gainers</div>
             <div id="top-gainers"></div>
         </div>
         <div class="card">
-            <div class="section-title" title="The 5 companies with the largest percentage declines today.">Top Decliners</div>
+            <div class="section-title" title="The 3 companies with the largest percentage declines today.">Top Decliners</div>
             <div id="top-losers"></div>
         </div>
     </div>
 
-    <!-- 52-Week Proximity -->
-    <div class="grid-2even">
+    <!-- Upcoming Catalysts -->
+    <div class="grid-3col">
         <div class="card">
-            <div class="section-title" title="Shows how close each stock is trading to its 52-week high or low. Stocks near highs may have momentum; stocks near lows may offer value.">Near 52-Week Highs</div>
-            <div id="near52High" style="font-size:13px;"></div>
-        </div>
-        <div class="card">
-            <div class="section-title" title="Shows how close each stock is trading to its 52-week high or low. Stocks near highs may have momentum; stocks near lows may offer value.">Near 52-Week Lows</div>
-            <div id="near52Low" style="font-size:13px;"></div>
-        </div>
-    </div>
-
-    <!-- News Headlines + Transcript Intelligence -->
-    <div class="grid-2even">
-        <div class="card">
-            <div class="section-title" title="Recent news articles about gaming companies, sourced from major financial news outlets.">Latest News Headlines</div>
-            <div id="news-feed"></div>
-            <a href="CG_News_Dashboard.html" class="view-all">View all news &rarr;</a>
-        </div>
-        <div class="card">
-            <div class="section-title" title="Companies reporting earnings soon, sorted by date. Helps you prepare for potential stock moves around earnings announcements.">Upcoming Earnings</div>
+            <div class="section-title" title="Companies reporting earnings soon. Earnings announcements are the biggest catalyst for stock price moves.">Earnings This Week <span class="info-icon" data-tip="Companies with earnings announcements in the next 7 days. These events often drive significant stock price movement.">&#9432;</span></div>
             <div id="upcoming-earnings"></div>
-            <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
-                <div class="section-title" style="display:flex;align-items:center;gap:6px;">Analyst Consensus <span class="info-icon" data-tip="Aggregated Wall Street analyst ratings (Buy/Hold/Sell) and 12-month price targets across all 25 tracked companies. 'Upside to Target' shows how much the consensus price target exceeds the current stock price — higher % means analysts see more room to grow. Based on the latest available analyst coverage from major brokerages.">&#9432;</span></div>
-                <div id="analyst-snapshot"></div>
-            </div>
+            <a href="CG_Earnings_Dashboard.html" class="view-all">View all earnings &rarr;</a>
+        </div>
+        <div class="card">
+            <div class="section-title" title="Recent analyst upgrades, downgrades, and target changes from Wall Street.">Analyst Actions <span class="info-icon" data-tip="Aggregated Wall Street analyst ratings (Buy/Hold/Sell) and consensus view across all tracked companies.">&#9432;</span></div>
+            <div id="analyst-snapshot"></div>
+        </div>
+        <div class="card">
+            <div class="section-title" title="Latest news articles and SEC filings (10-K, 10-Q, 8-K) from gaming companies.">Headlines &amp; Filings <span class="info-icon" data-tip="Recent news and SEC filings. 8-K filings often signal material events (M&A, executive changes, guidance updates).">&#9432;</span></div>
+            <div id="news-feed"></div>
+            <div id="sec-filings-compact" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);"></div>
+            <a href="CG_News_Dashboard.html" class="view-all">View all news &rarr;</a>
         </div>
     </div>
 
     <!-- Transcript Detail: Guidance + Sentiment + Topics -->
     <div class="ti-section-title" id="ti-title-row">
-        <svg width="20" height="20" fill="none" stroke="#ffd700" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
         Earnings Call Insights <span class="info-icon" data-tip="Analysis of the most recent earnings call transcripts across all tracked companies. Covers management guidance direction, sentiment tone, and key topics discussed.">&#9432;</span>
     </div>
     <div class="grid-3col" id="ti-section">
@@ -326,142 +340,26 @@
         </div>
     </div>
 
-    <!-- Top Dividend Yields -->
-    <div class="grid-2even">
-        <div class="card">
-            <div class="section-title" title="Companies with the highest dividend yields in the gaming universe. Useful for income-focused investors.">Top Dividend Yields</div>
-            <div id="dividend-table"></div>
-        </div>
-        <div class="card">
-            <div class="section-title" title="Most recent regulatory filings (10-K annual reports, 10-Q quarterly reports, 8-K material events) submitted to the SEC.">Recent SEC Filings</div>
-            <div id="sec-filings-list"></div>
-        </div>
+    <!-- Quick Links (simplified) -->
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin:20px 0;padding:16px 0;border-top:1px solid rgba(255,255,255,0.06);">
+        <span style="font-size:12px;color:var(--text-secondary);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Explore:</span>
+        <a href="CG_Equities_Dashboard.html" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Equities</a>
+        <a href="CG_Peer_Analysis.html" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Peer Analysis</a>
+        <a href="CG_Industry_Dashboard.html" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Industry</a>
+        <a href="CG_News_Dashboard.html" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">News &amp; Filings</a>
+        <a href="CG_Earnings_Dashboard.html" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Earnings</a>
+        <a href="CG_Company_Summary.html" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;">Company Summary</a>
     </div>
 
-    <!-- Dashboard Navigation Cards -->
-    <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin:24px 0 12px;display:flex;align-items:center;gap:8px;">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;"></span> Explore Dashboards
-    </div>
-    <div class="dash-links">
-        <a class="dash-link-card" href="CG_Equities_Dashboard.html">
-            <div class="dl-icon" style="background:rgba(255,215,0,0.15)"><svg width="20" height="20" fill="none" stroke="#ffd700" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <div class="dl-text"><h4>Equities</h4><p>Prices, valuations, performance, analyst ratings</p></div>
-        </a>
-        <a class="dash-link-card" href="CG_Peer_Analysis.html">
-            <div class="dl-icon" style="background:rgba(79,195,247,0.15)"><svg width="20" height="20" fill="none" stroke="#4fc3f7" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-            <div class="dl-text"><h4>Peer Analysis</h4><p>Rankings, scatter plots, comparative benchmarking</p></div>
-        </a>
-        <a class="dash-link-card" href="CG_Industry_Dashboard.html">
-            <div class="dl-icon" style="background:rgba(129,199,132,0.15)"><svg width="20" height="20" fill="none" stroke="#81c784" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-            <div class="dl-text"><h4>Industry Intel</h4><p>GGR trends, sports betting, regulatory data</p></div>
-        </a>
-        <a class="dash-link-card" href="CG_News_Dashboard.html">
-            <div class="dl-icon" style="background:rgba(233,30,99,0.15)"><svg width="20" height="20" fill="none" stroke="#e91e63" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div>
-            <div class="dl-text"><h4>News &amp; Filings</h4><p>Press releases, SEC filings, earnings calendar</p></div>
-        </a>
-        <a class="dash-link-card" href="CG_Company_Summary.html">
-            <div class="dl-icon" style="background:rgba(77,182,172,0.15)"><svg width="20" height="20" fill="none" stroke="#4db6ac" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div class="dl-text"><h4>Company Summary</h4><p>Deep-dive company profiles and AI analysis</p></div>
-        </a>
-    </div>
-
-    <!-- Newsletter Subscription -->
-    <div style="background:var(--bg-card);border:var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;">
-        <div style="text-align:center;margin-bottom:16px;">
-            <div style="font-size:20px;font-weight:700;color:var(--accent);margin-bottom:4px;">Stay Informed</div>
-            <div style="font-size:13px;color:var(--text-secondary);">Get gaming sector intelligence delivered to your inbox</div>
-        </div>
-        <div id="subscribe-form" style="max-width:440px;margin:0 auto;">
-            <div style="margin-bottom:12px;">
-                <input type="email" id="sub-email" placeholder="Enter your email address"
-                    style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,215,0,0.25);background:rgba(255,255,255,0.04);color:#e8eaed;font-size:14px;outline:none;box-sizing:border-box;"
-                    onfocus="this.style.borderColor='#ffd700'" onblur="this.style.borderColor='rgba(255,215,0,0.25)'">
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-                <div style="display:flex;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);">
-                    <button type="button" id="freq-daily" onclick="setFrequency('daily')"
-                        style="padding:8px 18px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.2s;background:linear-gradient(135deg,#5c4a00,#8b7000);color:#ffd700;">Daily</button>
-                    <button type="button" id="freq-weekly" onclick="setFrequency('weekly')"
-                        style="padding:8px 18px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.2s;background:transparent;color:#9aa0a6;">Weekly</button>
-                </div>
-                <span style="font-size:11px;color:var(--text-secondary);" id="freq-desc">Mon\u2013Fri market digest</span>
-            </div>
-            <button onclick="handleSubscribe()" id="sub-btn"
-                style="width:100%;padding:11px;border:none;border-radius:8px;background:linear-gradient(135deg,#5c4a00,#8b7000,#ffd700);color:#000;font-size:14px;font-weight:700;cursor:pointer;transition:opacity 0.2s;"
-                onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Subscribe</button>
-            <div id="sub-msg" style="text-align:center;margin-top:10px;font-size:13px;display:none;"></div>
-        </div>
-    </div>
-
-    <script>
-    var _subFreq = 'daily';
-    function setFrequency(f) {
-        _subFreq = f;
-        var daily = document.getElementById('freq-daily');
-        var weekly = document.getElementById('freq-weekly');
-        var desc = document.getElementById('freq-desc');
-        if (f === 'daily') {
-            daily.style.background = 'linear-gradient(135deg,#5c4a00,#8b7000)';
-            daily.style.color = '#ffd700';
-            weekly.style.background = 'transparent';
-            weekly.style.color = '#9aa0a6';
-            desc.textContent = 'Mon\u2013Fri market digest';
-        } else {
-            weekly.style.background = 'linear-gradient(135deg,#5c4a00,#8b7000)';
-            weekly.style.color = '#ffd700';
-            daily.style.background = 'transparent';
-            daily.style.color = '#9aa0a6';
-            desc.textContent = 'Monday weekly roundup';
-        }
-    }
-    function handleSubscribe() {
-        var email = document.getElementById('sub-email').value.trim();
-        var btn = document.getElementById('sub-btn');
-        var msg = document.getElementById('sub-msg');
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            msg.style.display = 'block';
-            msg.style.color = '#f44336';
-            msg.textContent = 'Please enter a valid email address.';
-            return;
-        }
-        btn.disabled = true;
-        btn.textContent = 'Subscribing...';
-        fetch('/api/subscribe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, frequency: _subFreq })
-        })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-            msg.style.display = 'block';
-            if (data.error) {
-                msg.style.color = '#f44336';
-                msg.textContent = data.error;
-            } else {
-                msg.style.color = '#4caf50';
-                msg.textContent = data.message || 'Subscribed successfully!';
-                document.getElementById('sub-email').value = '';
-            }
-            btn.disabled = false;
-            btn.textContent = 'Subscribe';
-        })
-        .catch(function() {
-            msg.style.display = 'block';
-            msg.style.color = '#f44336';
-            msg.textContent = 'Something went wrong. Please try again.';
-            btn.disabled = false;
-            btn.textContent = 'Subscribe';
-        });
-    }
-    </script>
+    <!-- Newsletter subscription moved to future tier/settings page -->
 
     <!-- Disclaimer -->
     <div class="disclaimer">
-        <strong style="color:#9aa0a6;">Disclaimer:</strong> The information provided on this platform is for informational and educational purposes only and does not constitute investment advice, financial advice, legal advice, or any other form of professional advice. No representation or warranty, express or implied, is made regarding the accuracy, completeness, or reliability of any information presented. You should not make any investment decisions based solely on the information provided here. Always consult a qualified financial advisor before making any investment or financial decisions. Past performance is not indicative of future results. All data is sourced from third-party providers and may be delayed, inaccurate, or incomplete. Casino Gaming Intel and its operators assume no liability for any losses, damages, or other consequences arising from the use of or reliance on the information contained herein.
+        Not investment advice. Data from third-party sources; may be delayed or incomplete. Past performance is not indicative of future results.
     </div>
 </div>
 
-<div class="footer" id="main-footer">Casino Gaming Intel &mdash; Proprietary &amp; Confidential</div>
+<div class="footer" id="main-footer">Sector Intelligence &middot; sector-intel.com &middot; Data refreshed daily at 5:00 AM ET</div>
 
 <script>
 // INJECTED_DATA_START
@@ -521,6 +419,23 @@ function renderTicker() {
         html += '<div class="ticker-item"><span class="tk-sym">' + (d.display_ticker || t) + '</span><span class="tk-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</span><span class="tk-chg ' + dir + '">' + arrow + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span></div>';
     });
     strip.innerHTML = html + html; // duplicate for seamless scroll
+
+    // Market status indicator
+    var now = new Date();
+    var et = new Date(now.toLocaleString('en-US', {timeZone:'America/New_York'}));
+    var day = et.getDay(), hr = et.getHours(), mn = et.getMinutes();
+    var isOpen = day >= 1 && day <= 5 && (hr > 9 || (hr === 9 && mn >= 30)) && hr < 16;
+    var statusEl = document.getElementById('market-status');
+    if (statusEl) {
+        statusEl.innerHTML = '<span class="market-status-dot ' + (isOpen ? 'open' : 'closed') + '"></span> ' + (isOpen ? 'Markets Open' : 'Markets Closed');
+    }
+    // Last updated timestamp
+    var tsEl = document.getElementById('ticker-timestamp');
+    if (tsEl && COMMAND_CENTER && COMMAND_CENTER.last_updated) {
+        tsEl.textContent = 'Updated: ' + COMMAND_CENTER.last_updated;
+    } else if (tsEl) {
+        tsEl.textContent = 'Updated: ' + now.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    }
 }
 
 // ===== PAGE HEADER: Gaming-25 =====
@@ -564,38 +479,99 @@ function renderKPIs() {
     var tickers = Object.keys(md);
 
     var totalMcap = 0;
-    var peSum = 0, peCount = 0;
-    var divSum = 0, divCount = 0;
+    var up = 0, down = 0, flat = 0;
     var topGainer = null, topLoser = null;
+    var nextEarnings = null;
 
     tickers.forEach(function(t) {
         var d = md[t];
         totalMcap += (d.market_cap_b || 0);
-        if (d.pe_ratio && d.pe_ratio > 0 && d.pe_ratio < 200) { peSum += d.pe_ratio; peCount++; }
-        if (d.dividend_yield && d.dividend_yield > 0) { divSum += d.dividend_yield; divCount++; }
         var chg = d.change_pct || 0;
+        if (chg > 0.05) up++; else if (chg < -0.05) down++; else flat++;
         if (!topGainer || chg > (topGainer.change_pct || 0)) topGainer = d;
         if (!topLoser || chg < (topLoser.change_pct || 0)) topLoser = d;
+        // Find next earnings
+        if (d.next_earnings_date) {
+            var dt = new Date(d.next_earnings_date);
+            if (!isNaN(dt.getTime()) && dt >= new Date()) {
+                if (!nextEarnings || dt < nextEarnings.date) {
+                    nextEarnings = { date: dt, label: d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t), dateStr: dt.toLocaleDateString('en-US', {month:'short', day:'numeric'}) };
+                }
+            }
+        }
     });
 
-    var avgPE = peCount > 0 ? (peSum / peCount) : null;
-    var avgDiv = divCount > 0 ? (divSum / divCount) : null;
     var idxVal = INDEX_OBJ.current || null;
+    var idxDailyPct = INDEX_OBJ.daily_pct || 0;
     if (!idxVal && INDEX_HISTORY && INDEX_HISTORY.length > 0) {
         var last = INDEX_HISTORY[INDEX_HISTORY.length - 1];
         idxVal = last.value || last.close;
     }
 
-    var gainerChg = topGainer ? (topGainer.change_pct || 0) : 0;
-    var loserChg = topLoser ? (topLoser.change_pct || 0) : 0;
+    // Sector vs S&P 500 - compute avg daily change
+    var totalChg = 0;
+    tickers.forEach(function(t) { totalChg += (md[t].change_pct || 0); });
+    var avgDailyChg = tickers.length > 0 ? totalChg / tickers.length : 0;
+
+    var idxColor = idxDailyPct >= 0 ? 'var(--positive)' : 'var(--negative)';
+    var idxArrow = idxDailyPct >= 0 ? '\u25B2' : '\u25BC';
 
     document.getElementById('kpi-row').innerHTML =
-        '<div class="kpi-card"><div class="kpi-label" data-tip="Current value of the equal-weighted Gaming-25 composite index.">Gaming-25 Index</div><div class="kpi-value" style="color:var(--accent)">' + (idxVal != null ? Number(idxVal).toLocaleString('en-US', {maximumFractionDigits:0}) : DASH) + '</div><div class="kpi-sub">Composite index</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Current value of the equal-weighted Gaming-25 composite index.">Gaming-25 Index</div><div class="kpi-value">' + (idxVal != null ? Number(idxVal).toLocaleString('en-US', {maximumFractionDigits:0}) : DASH) + '</div><div class="kpi-sub" style="color:' + idxColor + '">' + idxArrow + ' ' + (idxDailyPct >= 0 ? '+' : '') + idxDailyPct.toFixed(2) + '% today</div></div>' +
         '<div class="kpi-card"><div class="kpi-label" data-tip="Sum of market capitalizations for all 25 gaming companies.">Total Market Cap</div><div class="kpi-value">$' + totalMcap.toFixed(1) + 'B</div><div class="kpi-sub">' + tickers.length + ' companies</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label" data-tip="Average trailing P/E ratio across companies with positive earnings.">Avg P/E Ratio</div><div class="kpi-value">' + (avgPE ? avgPE.toFixed(1) + 'x' : DASH) + '</div><div class="kpi-sub">Trailing 12 months</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label" data-tip="Average dividend yield across companies that pay dividends.">Avg Dividend Yield</div><div class="kpi-value">' + (avgDiv ? avgDiv.toFixed(2) + '%' : DASH) + '</div><div class="kpi-sub">' + divCount + ' payers</div></div>' +
-        '<div class="kpi-card" style="flex:0 0 auto;min-width:140px;padding:12px 16px"><div class="kpi-label">Top Gainer</div><div style="font-size:13px;font-weight:600;margin-top:4px">' + (topGainer ? '<span class="positive">' + (topGainer.name ? esc(topGainer.name) + ' (' + (topGainer.display_ticker || '') + ')' : (topGainer.display_ticker || '')) + ' +' + gainerChg.toFixed(1) + '%</span>' : DASH) + '</div></div>' +
-        '<div class="kpi-card" style="flex:0 0 auto;min-width:140px;padding:12px 16px"><div class="kpi-label">Top Decliner</div><div style="font-size:13px;font-weight:600;margin-top:4px">' + (topLoser ? '<span class="negative">' + (topLoser.name ? esc(topLoser.name) + ' (' + (topLoser.display_ticker || '') + ')' : (topLoser.display_ticker || '')) + ' ' + loserChg.toFixed(1) + '%</span>' : DASH) + '</div></div>';
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Ratio of advancing to declining stocks today. More advancers = broad buying pressure.">Market Breadth</div><div class="kpi-value">' + up + '/' + down + '</div><div class="kpi-sub" style="color:var(--text-secondary)">' + up + ' up &middot; ' + flat + ' flat &middot; ' + down + ' down</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="The next company in the gaming universe scheduled to report earnings.">Next Earnings</div><div class="kpi-value" style="font-size:16px;line-height:1.3">' + (nextEarnings ? nextEarnings.label : DASH) + '</div><div class="kpi-sub">' + (nextEarnings ? nextEarnings.dateStr : 'No dates available') + '</div></div>' +
+        '<div class="kpi-card"><div class="kpi-label" data-tip="Average daily change across all 25 gaming stocks. Compare to S&P 500 to see if the sector is outperforming or underperforming the broad market.">Sector Daily Avg</div><div class="kpi-value" style="color:' + (avgDailyChg >= 0 ? 'var(--positive)' : 'var(--negative)') + '">' + (avgDailyChg >= 0 ? '+' : '') + avgDailyChg.toFixed(2) + '%</div><div class="kpi-sub">Avg change across universe</div></div>';
+}
+
+// ===== TODAY'S BRIEFING =====
+function renderBriefing() {
+    var md = MARKET_DATA;
+    if (!md || !Object.keys(md).length) return;
+    var tickers = Object.keys(md);
+    var up = 0, down = 0;
+    var bigMovers = [];
+    var totalChg = 0;
+
+    tickers.forEach(function(t) {
+        var d = md[t];
+        var chg = d.change_pct || 0;
+        totalChg += chg;
+        if (chg > 0.05) up++; else if (chg < -0.05) down++;
+        if (Math.abs(chg) >= 3) bigMovers.push({ name: d.name || d.display_ticker || t, ticker: d.display_ticker || t, chg: chg });
+    });
+    bigMovers.sort(function(a, b) { return Math.abs(b.chg) - Math.abs(a.chg); });
+
+    var avgChg = tickers.length > 0 ? totalChg / tickers.length : 0;
+    var sectorDir = avgChg >= 0.5 ? 'up strongly' : avgChg >= 0.1 ? 'modestly higher' : avgChg <= -0.5 ? 'down sharply' : avgChg <= -0.1 ? 'modestly lower' : 'roughly flat';
+
+    // Count upcoming earnings this week
+    var now = new Date();
+    var earningsThisWeek = 0;
+    tickers.forEach(function(t) {
+        var ed = md[t].next_earnings_date;
+        if (!ed) return;
+        var dt = new Date(ed);
+        var diff = Math.ceil((dt - now) / 86400000);
+        if (diff >= 0 && diff <= 7) earningsThisWeek++;
+    });
+
+    var parts = [];
+    parts.push('The gaming sector is ' + sectorDir + ' today (' + (avgChg >= 0 ? '+' : '') + avgChg.toFixed(1) + '% avg) with ' + up + ' advancers and ' + down + ' decliners.');
+    if (bigMovers.length > 0) {
+        var top = bigMovers[0];
+        parts.push(top.name + ' (' + top.ticker + ') ' + (top.chg > 0 ? 'leads gainers at +' : 'leads decliners at ') + top.chg.toFixed(1) + '%.');
+    }
+    if (earningsThisWeek > 0) {
+        parts.push(earningsThisWeek + ' compan' + (earningsThisWeek > 1 ? 'ies report' : 'y reports') + ' earnings this week.');
+    }
+
+    var el = document.getElementById('briefing-strip');
+    var textEl = document.getElementById('briefing-text');
+    if (el && textEl && parts.length > 0) {
+        textEl.textContent = parts.join(' ');
+        el.style.display = 'block';
+    }
 }
 
 // ===== MARKET BREADTH =====
@@ -735,8 +711,8 @@ function renderMovers() {
     var md = MARKET_DATA;
     if (!md || !Object.keys(md).length) return;
     var sorted = Object.keys(md).slice().sort(function(a, b) { return (md[b].change_pct || 0) - (md[a].change_pct || 0); });
-    var gainers = sorted.slice(0, 5);
-    var losers = sorted.slice(-5).reverse();
+    var gainers = sorted.slice(0, 3);
+    var losers = sorted.slice(-3).reverse();
 
     function renderList(arr, containerId) {
         var html = '';
@@ -1088,6 +1064,27 @@ function renderSecFilings() {
     el.innerHTML = html;
 }
 
+// ===== SEC FILINGS COMPACT (for Catalysts section) =====
+function renderSecFilingsCompact() {
+    var filings = (typeof RECENT_FILINGS !== 'undefined') ? RECENT_FILINGS : [];
+    var el = document.getElementById('sec-filings-compact');
+    if (!el) return;
+    if (!filings.length) { el.innerHTML = '<div style="color:var(--text-secondary);font-size:11px;">No recent filings.</div>'; return; }
+    var typeColors = { '10-K': '#22c55e', '10-Q': '#3b82f6', '8-K': '#f59e0b', '8-K_Earnings': '#f59e0b', '20-F': '#ba68c8', '6-K': '#ba68c8' };
+    var html = '<div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;font-weight:600;">Recent SEC Filings</div>';
+    var show = Math.min(5, filings.length);
+    for (var i = 0; i < show; i++) {
+        var f = filings[i];
+        var typeLabel = (f.type || '').replace('_Earnings', '');
+        var color = typeColors[f.type] || 'var(--accent)';
+        html += '<div style="display:flex;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;">' +
+            '<span style="background:' + color + '22;color:' + color + ';font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-right:6px;">' + esc(typeLabel) + '</span>' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="color:var(--text-secondary);font-size:10px;margin-left:6px;">' + esc(f.date || '') + '</span></div>';
+    }
+    el.innerHTML = html;
+}
+
 // ===== INFO TOOLTIP POSITIONING =====
 function initInfoTooltips() {
     document.querySelectorAll('.info-trigger').forEach(function(trigger) {
@@ -1114,19 +1111,18 @@ function initInfoTooltips() {
 document.addEventListener('DOMContentLoaded', function() {
     renderTicker();
     renderHeader();
+    renderBriefing();
     renderKPIs();
     renderBreadth();
     renderUniverseTable();
     renderIndexChart();
     renderSectorChart();
     renderMovers();
-    render52Week();
     renderNews();
     renderUpcomingEarnings();
     renderAnalystSnapshot();
+    renderSecFilingsCompact();
     renderTranscriptDetail();
-    renderDividendTable();
-    renderSecFilings();
     initInfoTooltips();
 
     // Footer timestamp

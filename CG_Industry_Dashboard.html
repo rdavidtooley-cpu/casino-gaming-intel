@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Gaming Intel — Industry Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="auth.js?v=2"></script>
     <script src="export-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
@@ -12,14 +15,15 @@
             --bg-primary: #0f1117;
             --bg-card: #1a1d29;
             --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
-            --accent: #ffd700;
+            --text-secondary: #9ca3af;
+            --accent: #f59e0b;
             --accent2: #4fc3f7;
             --accent3: #81c784;
             --accent4: #ba68c8;
-            --positive: #4caf50;
-            --negative: #f44336;
-            --radius: 10px;
+            --positive: #22c55e;
+            --negative: #ef4444;
+            --info-blue: #3b82f6;
+            --radius: 8px;
             --border: 1px solid rgba(255,255,255,0.06);
             --gap: 16px;
         }
@@ -27,11 +31,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.5;
+            font-variant-numeric: tabular-nums;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 1500px; margin: 0 auto; padding: 24px; }
@@ -50,32 +56,32 @@
         .nav-bar {
             display: flex;
             gap: 4px;
-            padding: 8px 24px;
+            padding: 0 24px;
             background: #111318;
-            border-bottom: 1px solid rgba(255,215,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             position: sticky;
-            top: 0;
+            top: 32px;
             z-index: 1000;
             flex-wrap: wrap;
             align-items: center;
         }
         .nav-bar a {
-            padding: 8px 16px;
+            padding: 10px 18px;
             border: none;
+            border-bottom: 2px solid transparent;
             background: transparent;
             color: var(--text-secondary);
             font-size: 13px;
             font-weight: 500;
-            border-radius: 6px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
         }
-        .nav-bar a:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
-        .nav-bar a.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+        .nav-bar a:hover { color: var(--accent); background: transparent; }
+        .nav-bar a.active { color: var(--accent); background: transparent; border-bottom-color: var(--accent); }
 
-        .page-header { background:linear-gradient(135deg, #1a1d29 0%, #16213e 100%); border-bottom:2px solid var(--accent); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-        .page-header h1 { font-size:1.8rem; color:var(--accent); text-shadow:0 0 10px rgba(255,215,0,0.2); margin-bottom:4px; }
+        .page-header { background:var(--bg-card); border:var(--border); box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); padding:28px 32px; margin-bottom:var(--gap); border-radius:var(--radius); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+        .page-header h1 { font-size:1.5rem; color:var(--text-primary); margin-bottom:4px; }
         .page-header p { color:var(--text-secondary); font-size:0.9rem; }
 
         /* Tab Bar */
@@ -100,8 +106,8 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .tab-btn:hover { color: var(--accent); background: rgba(255,215,0,0.05); }
-        .tab-btn.active { color: var(--accent); background: rgba(255,215,0,0.1); }
+        .tab-btn:hover { color: var(--accent); background: rgba(245,158,11,0.08); }
+        .tab-btn.active { color: var(--accent); background: rgba(245,158,11,0.12); }
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
 
@@ -118,11 +124,12 @@
             border-left: 3px solid var(--accent);
             border-radius: var(--radius);
             padding: 20px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .kpi-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 6px 20px rgba(245,158,11,0.08);
         }
         .kpi-label {
             font-size: 0.75em;
@@ -151,7 +158,7 @@
             color: var(--accent);
             margin-bottom: 12px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,215,0,0.15);
+            border-bottom: 1px solid rgba(245,158,11,0.15);
         }
         .data-section {
             background: var(--bg-card);
@@ -159,6 +166,7 @@
             border-radius: var(--radius);
             padding: 22px;
             margin-bottom: var(--gap);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
 
         /* Chart container */
@@ -169,6 +177,7 @@
             padding: 22px;
             margin-bottom: var(--gap);
             position: relative;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
         .chart-wrap canvas { max-height: 360px; }
 
@@ -281,7 +290,8 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
-        .info-icon { position:relative; cursor:help; font-size:14px; color:#ffd700; opacity:1; display:inline-block; }
+        .footer{text-align:center;padding:20px;color:var(--text-secondary);font-size:12px;}
+        .info-icon { position:relative; cursor:help; font-size:14px; color:var(--accent); opacity:1; display:inline-block; }
         .info-icon:hover { color:#ffe55c; }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
         .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
@@ -297,7 +307,7 @@
         <a href="CG_News_Dashboard.html">News</a>
         <a href="CG_Earnings_Dashboard.html">Earnings</a>
         <a href="CG_Company_Summary.html">Company</a>
-        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#ffd700;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9aa0a6;font-size:12px">Logout</a>
+        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:#f59e0b;font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:#9ca3af;font-size:12px">Logout</a>
     </div>
 
 <div class="container">
@@ -575,6 +585,19 @@
         </div>
     </div>
 
+    <div class="footer">
+        <div style="margin-bottom:10px;">
+            <a href="index.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Home</a> &middot;
+            <a href="CG_Equities_Dashboard.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Equities</a> &middot;
+            <a href="CG_Peer_Analysis.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Peer Analysis</a> &middot;
+            <a href="CG_Industry_Dashboard.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">Industry</a> &middot;
+            <a href="CG_News_Dashboard.html" style="color:var(--accent);text-decoration:none;margin:0 8px;">News</a>
+        </div>
+        Casino Gaming Intel &mdash; Proprietary &amp; Confidential
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;color:var(--text-secondary);max-width:800px;margin-left:auto;margin-right:auto;line-height:1.6;">
+            <strong>Disclaimer:</strong> The information provided on Casino Gaming Intel is for informational and educational purposes only and does not constitute investment advice, financial advice, legal advice, tax advice, or any other form of professional advice. Nothing on this site should be construed as a recommendation to buy, sell, or hold any security or investment. All data is sourced from third-party providers and may be delayed, inaccurate, or incomplete. Past performance is not indicative of future results. You should consult a qualified financial advisor, attorney, or other professional before making any investment decisions. Casino Gaming Intel and its operators assume no liability for any losses or damages arising from the use of this information.
+        </div>
+    </div>
 </div>
 
 <script>
@@ -646,7 +669,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 35.8458,
       "two_hundred_day_avg": 35.3564,
       "avg_volume_10d": 4967730,
-      "avg_volume_3mo": 5047167,
+      "avg_volume_3mo": 5024888,
       "day_high": 36.915,
       "day_low": 35.32,
       "open_price": 36.2,
@@ -674,15 +697,15 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-10-29",
-          "eps_actual": -1.05,
-          "eps_estimate": 0.49,
-          "surprise_pct": -313.06
+          "eps_actual": 0.24,
+          "eps_estimate": 0.3,
+          "surprise_pct": -19.85
         },
         {
           "date": "2025-07-30",
-          "eps_actual": 0.18,
-          "eps_estimate": 0.64,
-          "surprise_pct": -72.01
+          "eps_actual": 0.79,
+          "eps_estimate": 0.55,
+          "surprise_pct": 44.03
         },
         {
           "date": "2025-04-30",
@@ -2009,7 +2032,7 @@ var INDUSTRY_DATA = {
           "value": 189.2
         }
       ],
-      "timestamp": "2026-04-03T23:38:45.157943",
+      "timestamp": "2026-04-04T21:30:45.285502",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 50.0,
       "rank_pe_trailing": 4,
@@ -2089,12 +2112,12 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 23.801,
       "two_hundred_day_avg": 24.655,
       "avg_volume_10d": 4883010,
-      "avg_volume_3mo": 6333508,
+      "avg_volume_3mo": 6376593,
       "day_high": 26.775,
       "day_low": 25.91,
       "open_price": 26.485,
       "previous_close": 26.55,
-      "daily_change": -0.0199986,
+      "daily_change": -0.01999855,
       "daily_change_pct": -0.0753241,
       "employees": 50000,
       "industry_yf": "Resorts & Casinos",
@@ -2123,9 +2146,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-07-29",
-          "eps_actual": -0.39,
-          "eps_estimate": 0.05,
-          "surprise_pct": -886.77
+          "eps_actual": -0.2,
+          "eps_estimate": 0.09,
+          "surprise_pct": -325.22
         },
         {
           "date": "2025-04-29",
@@ -2135,9 +2158,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-02-25",
-          "eps_actual": 0.05,
+          "eps_actual": -0.24,
           "eps_estimate": -0.12,
-          "surprise_pct": 141.91
+          "surprise_pct": -110.01
         },
         {
           "date": "2024-10-29",
@@ -3452,7 +3475,7 @@ var INDUSTRY_DATA = {
           "value": 131.0
         }
       ],
-      "timestamp": "2026-04-03T23:38:46.616530",
+      "timestamp": "2026-04-04T21:30:46.918938",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 25.0,
       "rank_pe_trailing": null,
@@ -3532,7 +3555,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 107.1314,
       "two_hundred_day_avg": 114.99435,
       "avg_volume_10d": 1569690,
-      "avg_volume_3mo": 1699333,
+      "avg_volume_3mo": 1708986,
       "day_high": 102.28,
       "day_low": 99.51,
       "open_price": 101.16,
@@ -3572,9 +3595,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-05-06",
-          "eps_actual": 0.69,
-          "eps_estimate": 1.25,
-          "surprise_pct": -44.91
+          "eps_actual": 1.07,
+          "eps_estimate": 1.24,
+          "surprise_pct": -13.98
         },
         {
           "date": "2025-02-13",
@@ -4895,7 +4918,7 @@ var INDUSTRY_DATA = {
           "value": 138.8
         }
       ],
-      "timestamp": "2026-04-03T23:38:48.130489",
+      "timestamp": "2026-04-04T21:30:48.790755",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 75.0,
       "rank_pe_trailing": 3,
@@ -4975,7 +4998,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 55.7362,
       "two_hundred_day_avg": 56.25435,
       "avg_volume_10d": 3726550,
-      "avg_volume_3mo": 5356670,
+      "avg_volume_3mo": 5381726,
       "day_high": 54.41,
       "day_low": 52.8,
       "open_price": 53.61,
@@ -6338,7 +6361,7 @@ var INDUSTRY_DATA = {
           "value": 304.6
         }
       ],
-      "timestamp": "2026-04-03T23:38:49.647337",
+      "timestamp": "2026-04-04T21:30:50.355278",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": 2,
@@ -6418,7 +6441,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 5.8522,
       "two_hundred_day_avg": 7.8249,
       "avg_volume_10d": 1570980,
-      "avg_volume_3mo": 2356812,
+      "avg_volume_3mo": 2379978,
       "day_high": 5.72,
       "day_low": 5.54,
       "open_price": 5.68,
@@ -6446,9 +6469,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-11-07",
-          "eps_actual": 0.19,
-          "eps_estimate": 0.12,
-          "surprise_pct": 56.77
+          "eps_actual": 0.21,
+          "eps_estimate": 0.09,
+          "surprise_pct": 135.56
         },
         {
           "date": "2025-07-31",
@@ -6461,6 +6484,12 @@ var INDUSTRY_DATA = {
           "eps_actual": 0.08,
           "eps_estimate": 0.04,
           "surprise_pct": 76.87
+        },
+        {
+          "date": "2025-02-27",
+          "eps_actual": -0.05,
+          "eps_estimate": 0.06,
+          "surprise_pct": -175.51
         },
         {
           "date": "2024-11-05",
@@ -6503,12 +6532,6 @@ var INDUSTRY_DATA = {
           "eps_actual": -0.14,
           "eps_estimate": null,
           "surprise_pct": null
-        },
-        {
-          "date": "2023-03-01",
-          "eps_actual": -0.51,
-          "eps_estimate": -0.57,
-          "surprise_pct": 9.47
         }
       ],
       "change_1y": 6.8,
@@ -7599,7 +7622,7 @@ var INDUSTRY_DATA = {
           "value": 21.6
         }
       ],
-      "timestamp": "2026-04-03T23:38:51.150830",
+      "timestamp": "2026-04-04T21:30:51.888159",
       "rank_market_cap_b": 5,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": 1,
@@ -7679,7 +7702,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 13.8466,
       "two_hundred_day_avg": 16.1719,
       "avg_volume_10d": 3739710,
-      "avg_volume_3mo": 4503824,
+      "avg_volume_3mo": 4526418,
       "day_high": 14.79,
       "day_low": 14.16,
       "open_price": 14.675,
@@ -7701,15 +7724,15 @@ var INDUSTRY_DATA = {
       "earnings_history": [
         {
           "date": "2026-02-26",
-          "eps_actual": 0.07,
-          "eps_estimate": -0.16,
-          "surprise_pct": 143.77
+          "eps_actual": -0.55,
+          "eps_estimate": -0.13,
+          "surprise_pct": -312.54
         },
         {
           "date": "2025-11-06",
-          "eps_actual": -0.22,
-          "eps_estimate": -0.03,
-          "surprise_pct": -633.33
+          "eps_actual": -6.03,
+          "eps_estimate": -0.05,
+          "surprise_pct": -12444.21
         },
         {
           "date": "2025-08-07",
@@ -7719,9 +7742,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-05-08",
-          "eps_actual": -0.25,
-          "eps_estimate": -0.13,
-          "surprise_pct": -92.31
+          "eps_actual": 0.68,
+          "eps_estimate": -0.21,
+          "surprise_pct": 427.49
         },
         {
           "date": "2025-02-27",
@@ -9042,7 +9065,7 @@ var INDUSTRY_DATA = {
           "value": 45.7
         }
       ],
-      "timestamp": "2026-04-03T23:38:52.820869",
+      "timestamp": "2026-04-04T21:30:53.430453",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 57.1,
       "rank_pe_trailing": null,
@@ -9122,7 +9145,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 83.0396,
       "two_hundred_day_avg": 83.17065,
       "avg_volume_10d": 935690,
-      "avg_volume_3mo": 929950,
+      "avg_volume_3mo": 929970,
       "day_high": 84.58,
       "day_low": 81.98,
       "open_price": 83.55,
@@ -10485,7 +10508,7 @@ var INDUSTRY_DATA = {
           "value": 113.7
         }
       ],
-      "timestamp": "2026-04-03T23:38:54.228607",
+      "timestamp": "2026-04-04T21:30:54.926736",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": 1,
@@ -10565,7 +10588,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 60.3903,
       "two_hundred_day_avg": 58.999325,
       "avg_volume_10d": 1180650,
-      "avg_volume_3mo": 804316,
+      "avg_volume_3mo": 808616,
       "day_high": 55.04,
       "day_low": 53.04,
       "open_price": 54.29,
@@ -10587,9 +10610,9 @@ var INDUSTRY_DATA = {
       "earnings_history": [
         {
           "date": "2026-02-10",
-          "eps_actual": 0.5,
-          "eps_estimate": 0.65,
-          "surprise_pct": -22.54
+          "eps_actual": 0.75,
+          "eps_estimate": 0.45,
+          "surprise_pct": 67.73
         },
         {
           "date": "2025-10-28",
@@ -10623,39 +10646,39 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2024-07-23",
-          "eps_actual": 0.59,
-          "eps_estimate": 0.43,
-          "surprise_pct": 35.81
+          "eps_actual": 0.65,
+          "eps_estimate": 0.45,
+          "surprise_pct": 44.18
         },
         {
           "date": "2024-05-07",
-          "eps_actual": 0.68,
-          "eps_estimate": 0.65,
-          "surprise_pct": 3.96
+          "eps_actual": 0.56,
+          "eps_estimate": 0.52,
+          "surprise_pct": 8.33
         },
         {
           "date": "2024-02-07",
-          "eps_actual": 0.44,
-          "eps_estimate": 0.43,
-          "surprise_pct": 1.16
+          "eps_actual": 0.95,
+          "eps_estimate": 0.46,
+          "surprise_pct": 106.52
         },
         {
           "date": "2023-11-07",
-          "eps_actual": 0.6,
-          "eps_estimate": 0.39,
-          "surprise_pct": 53.43
+          "eps_actual": 0.47,
+          "eps_estimate": 0.4,
+          "surprise_pct": 18.82
         },
         {
           "date": "2023-08-03",
           "eps_actual": 0.65,
-          "eps_estimate": 0.46,
-          "surprise_pct": 40.29
+          "eps_estimate": 0.51,
+          "surprise_pct": 26.99
         },
         {
           "date": "2023-05-04",
           "eps_actual": 0.43,
-          "eps_estimate": 0.49,
-          "surprise_pct": -11.64
+          "eps_estimate": 0.5,
+          "surprise_pct": -12.56
         }
       ],
       "change_1y": 49.0,
@@ -11928,7 +11951,7 @@ var INDUSTRY_DATA = {
           "value": 65.4
         }
       ],
-      "timestamp": "2026-04-03T23:38:55.591805",
+      "timestamp": "2026-04-04T21:30:56.454679",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 71.4,
       "rank_pe_trailing": 3,
@@ -12008,7 +12031,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 91.2782,
       "two_hundred_day_avg": 100.45535,
       "avg_volume_10d": 962470,
-      "avg_volume_3mo": 950714,
+      "avg_volume_3mo": 953724,
       "day_high": 89.54,
       "day_low": 87.07,
       "open_price": 89.08,
@@ -13371,7 +13394,7 @@ var INDUSTRY_DATA = {
           "value": 110.1
         }
       ],
-      "timestamp": "2026-04-03T23:38:58.743787",
+      "timestamp": "2026-04-04T21:30:59.837807",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 85.7,
       "rank_pe_trailing": 2,
@@ -13451,7 +13474,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 95.78,
       "two_hundred_day_avg": 96.6968,
       "avg_volume_10d": 138380,
-      "avg_volume_3mo": 115822,
+      "avg_volume_3mo": 116495,
       "day_high": 96.71,
       "day_low": 91.55,
       "open_price": 95.61,
@@ -14733,7 +14756,7 @@ var INDUSTRY_DATA = {
           "value": 20.2
         }
       ],
-      "timestamp": "2026-04-03T23:39:00.190909",
+      "timestamp": "2026-04-04T21:31:01.297837",
       "rank_market_cap_b": 5,
       "pctile_market_cap_b": 42.9,
       "rank_pe_trailing": 4,
@@ -14813,7 +14836,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 27.7432,
       "two_hundred_day_avg": 26.8392,
       "avg_volume_10d": 159460,
-      "avg_volume_3mo": 225279,
+      "avg_volume_3mo": 225642,
       "day_high": 27.08,
       "day_low": 26.6,
       "open_price": 26.63,
@@ -14841,9 +14864,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-11-06",
-          "eps_actual": -0.12,
-          "eps_estimate": null,
-          "surprise_pct": -2290.0
+          "eps_actual": -0.18,
+          "eps_estimate": -0.04,
+          "surprise_pct": -397.51
         },
         {
           "date": "2025-08-07",
@@ -14853,9 +14876,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-05-08",
-          "eps_actual": 0.17,
-          "eps_estimate": 0.18,
-          "surprise_pct": -3.03
+          "eps_actual": 0.09,
+          "eps_estimate": 0.12,
+          "surprise_pct": -27.5
         },
         {
           "date": "2025-02-27",
@@ -16176,7 +16199,7 @@ var INDUSTRY_DATA = {
           "value": 12.7
         }
       ],
-      "timestamp": "2026-04-03T23:39:01.577866",
+      "timestamp": "2026-04-04T21:31:02.742059",
       "rank_market_cap_b": 6,
       "pctile_market_cap_b": 28.6,
       "rank_pe_trailing": null,
@@ -16256,7 +16279,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 2.374,
       "two_hundred_day_avg": 3.0433,
       "avg_volume_10d": 114740,
-      "avg_volume_3mo": 135130,
+      "avg_volume_3mo": 135213,
       "day_high": 2.57,
       "day_low": 2.375,
       "open_price": 2.4,
@@ -16296,9 +16319,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-05-08",
-          "eps_actual": -0.26,
-          "eps_estimate": -0.12,
-          "surprise_pct": -118.75
+          "eps_actual": -0.27,
+          "eps_estimate": -0.29,
+          "surprise_pct": 7.35
         },
         {
           "date": "2025-03-06",
@@ -17619,7 +17642,7 @@ var INDUSTRY_DATA = {
           "value": 1.3
         }
       ],
-      "timestamp": "2026-04-03T23:39:03.452692",
+      "timestamp": "2026-04-04T21:31:04.068837",
       "rank_market_cap_b": 8,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": null,
@@ -17699,7 +17722,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 13.4892,
       "two_hundred_day_avg": 13.34325,
       "avg_volume_10d": 88650,
-      "avg_volume_3mo": 92138,
+      "avg_volume_3mo": 92649,
       "day_high": 9.74,
       "day_low": 9.0789,
       "open_price": 9.3,
@@ -17739,9 +17762,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-05-12",
-          "eps_actual": 1.47,
-          "eps_estimate": -1.01,
-          "surprise_pct": 245.27
+          "eps_actual": -0.48,
+          "eps_estimate": -0.68,
+          "surprise_pct": 29.2
         },
         {
           "date": "2025-03-17",
@@ -19062,7 +19085,7 @@ var INDUSTRY_DATA = {
           "value": 0.6
         }
       ],
-      "timestamp": "2026-04-03T23:39:05.188043",
+      "timestamp": "2026-04-04T21:31:05.564088",
       "rank_market_cap_b": 7,
       "pctile_market_cap_b": 14.3,
       "rank_pe_trailing": null,
@@ -19142,7 +19165,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 25.0031,
       "two_hundred_day_avg": 35.07005,
       "avg_volume_10d": 15184690,
-      "avg_volume_3mo": 15809787,
+      "avg_volume_3mo": 15942998,
       "day_high": 23.225,
       "day_low": 21.83,
       "open_price": 21.83,
@@ -19176,9 +19199,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-08-06",
-          "eps_actual": 0.3,
-          "eps_estimate": 0.16,
-          "surprise_pct": 85.51
+          "eps_actual": 0.38,
+          "eps_estimate": 0.41,
+          "surprise_pct": -6.3
         },
         {
           "date": "2025-05-08",
@@ -19200,9 +19223,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2024-08-01",
-          "eps_actual": 0.12,
-          "eps_estimate": -0.02,
-          "surprise_pct": 746.9
+          "eps_actual": 0.22,
+          "eps_estimate": 0.23,
+          "surprise_pct": -3.64
         },
         {
           "date": "2024-05-02",
@@ -20505,7 +20528,7 @@ var INDUSTRY_DATA = {
           "value": 232.2
         }
       ],
-      "timestamp": "2026-04-03T23:39:06.647802",
+      "timestamp": "2026-04-04T21:31:07.008316",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 80.0,
       "rank_pe_trailing": null,
@@ -20585,7 +20608,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 126.6438,
       "two_hundred_day_avg": 222.9197,
       "avg_volume_10d": 2985900,
-      "avg_volume_3mo": 4040482,
+      "avg_volume_3mo": 4090945,
       "day_high": 106.54,
       "day_low": 99.29,
       "open_price": 100.29,
@@ -20631,9 +20654,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-03-04",
-          "eps_actual": 0.45,
-          "eps_estimate": 0.87,
-          "surprise_pct": -48.09
+          "eps_actual": 2.94,
+          "eps_estimate": 1.83,
+          "surprise_pct": 60.36
         },
         {
           "date": "2024-11-12",
@@ -21924,7 +21947,7 @@ var INDUSTRY_DATA = {
           "value": 425.9
         }
       ],
-      "timestamp": "2026-04-03T23:39:08.272473",
+      "timestamp": "2026-04-04T21:31:08.477839",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": null,
@@ -22004,7 +22027,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 19.2908,
       "two_hundred_day_avg": 18.65755,
       "avg_volume_10d": 1855440,
-      "avg_volume_3mo": 2097764,
+      "avg_volume_3mo": 2111601,
       "day_high": 22.798,
       "day_low": 21.41,
       "open_price": 21.6,
@@ -22026,9 +22049,9 @@ var INDUSTRY_DATA = {
       "earnings_history": [
         {
           "date": "2026-02-17",
-          "eps_actual": 0.05,
-          "eps_estimate": 0.06,
-          "surprise_pct": -16.87
+          "eps_actual": 0.08,
+          "eps_estimate": 0.11,
+          "surprise_pct": -24.79
         },
         {
           "date": "2025-10-29",
@@ -22050,9 +22073,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-02-26",
-          "eps_actual": 0.02,
-          "eps_estimate": 0.04,
-          "surprise_pct": -42.86
+          "eps_actual": 0.07,
+          "eps_estimate": 0.06,
+          "surprise_pct": 8.04
         },
         {
           "date": "2024-10-30",
@@ -23185,7 +23208,7 @@ var INDUSTRY_DATA = {
           "value": 50.7
         }
       ],
-      "timestamp": "2026-04-03T23:39:09.669601",
+      "timestamp": "2026-04-04T21:31:09.975580",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 40.0,
       "rank_pe_trailing": 3,
@@ -23265,7 +23288,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 18.0098,
       "two_hundred_day_avg": 24.216425,
       "avg_volume_10d": 2216830,
-      "avg_volume_3mo": 2711017,
+      "avg_volume_3mo": 2719377,
       "day_high": 17.175,
       "day_low": 16.26,
       "open_price": 16.42,
@@ -23293,9 +23316,9 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-11-05",
-          "eps_actual": 0.07,
-          "eps_estimate": 0.08,
-          "surprise_pct": -15.71
+          "eps_actual": 0.12,
+          "eps_estimate": 0.07,
+          "surprise_pct": 59.95
         },
         {
           "date": "2025-08-05",
@@ -24446,7 +24469,7 @@ var INDUSTRY_DATA = {
           "value": 53.6
         }
       ],
-      "timestamp": "2026-04-03T23:39:12.652826",
+      "timestamp": "2026-04-04T21:31:13.067691",
       "rank_market_cap_b": 5,
       "pctile_market_cap_b": 20.0,
       "rank_pe_trailing": 2,
@@ -24526,7 +24549,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 10.1548,
       "two_hundred_day_avg": 11.2924,
       "avg_volume_10d": 2279150,
-      "avg_volume_3mo": 2650601,
+      "avg_volume_3mo": 2653390,
       "day_high": 11.02,
       "day_low": 10.4607,
       "open_price": 10.61,
@@ -24549,8 +24572,8 @@ var INDUSTRY_DATA = {
         {
           "date": "2025-11-03",
           "eps_actual": 0.19,
-          "eps_estimate": 0.13,
-          "surprise_pct": 48.03
+          "eps_estimate": 0.15,
+          "surprise_pct": 27.28
         },
         {
           "date": "2025-09-04",
@@ -25707,7 +25730,7 @@ var INDUSTRY_DATA = {
           "value": 21.2
         }
       ],
-      "timestamp": "2026-04-03T23:39:14.143473",
+      "timestamp": "2026-04-04T21:31:14.626602",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 60.0,
       "rank_pe_trailing": 1,
@@ -25787,7 +25810,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 6.184,
       "two_hundred_day_avg": 9.9847,
       "avg_volume_10d": 5629540,
-      "avg_volume_3mo": 6732856,
+      "avg_volume_3mo": 6784213,
       "day_high": 4.59,
       "day_low": 4.35,
       "open_price": 4.43,
@@ -25809,9 +25832,9 @@ var INDUSTRY_DATA = {
       "earnings_history": [
         {
           "date": "2026-03-04",
-          "eps_actual": -0.02,
-          "eps_estimate": 0.13,
-          "surprise_pct": -114.0
+          "eps_actual": -0.08,
+          "eps_estimate": 0.02,
+          "surprise_pct": -434.45
         },
         {
           "date": "2025-11-04",
@@ -26968,7 +26991,7 @@ var INDUSTRY_DATA = {
           "value": 24.8
         }
       ],
-      "timestamp": "2026-04-03T23:39:15.434252",
+      "timestamp": "2026-04-04T21:31:16.201699",
       "rank_market_cap_b": 6,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": null,
@@ -27048,7 +27071,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 13.4616,
       "two_hundred_day_avg": 15.3591,
       "avg_volume_10d": 1046980,
-      "avg_volume_3mo": 1523269,
+      "avg_volume_3mo": 1514260,
       "day_high": 12.75,
       "day_low": 12.42,
       "open_price": 12.65,
@@ -28229,7 +28252,7 @@ var INDUSTRY_DATA = {
           "value": 20.5
         }
       ],
-      "timestamp": "2026-04-03T23:39:16.757906",
+      "timestamp": "2026-04-04T21:31:17.761198",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": null,
@@ -28601,7 +28624,7 @@ var INDUSTRY_DATA = {
       "year_change": -23.9,
       "earnings_date": "2026-05-06",
       "institutional_holders": [],
-      "timestamp": "2026-04-03T23:39:18.236039",
+      "timestamp": "2026-04-04T21:31:19.225364",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": null,
@@ -28681,7 +28704,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 11.2168,
       "two_hundred_day_avg": 11.18255,
       "avg_volume_10d": 337420,
-      "avg_volume_3mo": 405229,
+      "avg_volume_3mo": 405509,
       "day_high": 11.07,
       "day_low": 10.82,
       "open_price": 10.76,
@@ -30044,7 +30067,7 @@ var INDUSTRY_DATA = {
           "value": 10.1
         }
       ],
-      "timestamp": "2026-04-03T23:39:19.750783",
+      "timestamp": "2026-04-04T21:31:20.715605",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 66.7,
       "rank_pe_trailing": 1,
@@ -30124,7 +30147,7 @@ var INDUSTRY_DATA = {
       "fifty_day_avg": 7.911,
       "two_hundred_day_avg": 8.51455,
       "avg_volume_10d": 175090,
-      "avg_volume_3mo": 108877,
+      "avg_volume_3mo": 109113,
       "day_high": 6.99,
       "day_low": 6.7,
       "open_price": 6.83,
@@ -31487,7 +31510,7 @@ var INDUSTRY_DATA = {
           "value": 4.5
         }
       ],
-      "timestamp": "2026-04-03T23:39:21.326932",
+      "timestamp": "2026-04-04T21:31:22.415330",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 33.3,
       "rank_pe_trailing": null,
@@ -31502,7 +31525,7 @@ var INDUSTRY_DATA = {
       "pctile_change_ytd": 33.3,
       "composite_score": 29.1
     },
-    "_generated_at": "2026-04-03T23:39:58.660270"
+    "_generated_at": "2026-04-04T21:32:06.654842"
   },
   "big_movers": [
     {
@@ -34737,7 +34760,7 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2025-08-07",
-          "value": 1181.52
+          "value": 1181.51
         },
         {
           "date": "2025-08-08",
@@ -35249,7 +35272,7 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2026-02-10",
-          "value": 1300.82
+          "value": 1300.81
         },
         {
           "date": "2026-02-11",
@@ -35261,7 +35284,7 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2026-02-13",
-          "value": 1281.33
+          "value": 1281.32
         },
         {
           "date": "2026-02-17",
@@ -35293,7 +35316,7 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2026-02-26",
-          "value": 1295.52
+          "value": 1295.51
         },
         {
           "date": "2026-02-27",
@@ -35373,7 +35396,7 @@ var INDUSTRY_DATA = {
         },
         {
           "date": "2026-03-26",
-          "value": 1215.74
+          "value": 1215.73
         },
         {
           "date": "2026-03-27",
@@ -36436,7 +36459,7 @@ var INDUSTRY_DATA = {
     "base_date": "2025-04-03",
     "num_constituents": 22,
     "total_mcap_b": 138.6,
-    "generated_at": "2026-04-03T23:39:24.067489"
+    "generated_at": "2026-04-04T21:31:25.972262"
   },
   "category_colors": {
     "Integrated Resorts": "#ffd700",
@@ -36444,7 +36467,7 @@ var INDUSTRY_DATA = {
     "Online & iGaming": "#81c784",
     "Gaming Equipment": "#ba68c8"
   },
-  "generated_at": "2026-04-03T23:39:58.718277",
+  "generated_at": "2026-04-04T21:32:06.673692",
   "state_revenue": {
     "states": [
       {
@@ -36865,9 +36888,9 @@ var TRIBAL_DATA = {};
 // ============================================================
 // Chart.js global config
 // ============================================================
-Chart.defaults.color = '#9aa0a6';
+Chart.defaults.color = '#9ca3af';
 Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
-Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+Chart.defaults.font.family = "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 Chart.defaults.font.size = 11;
 
 // Chart instances for cleanup
@@ -36960,8 +36983,8 @@ function renderEconomicCharts() {
             datasets: [{
                 label: 'Consumer Sentiment',
                 data: trend.values || [],
-                borderColor: '#ffd700',
-                backgroundColor: 'rgba(255,215,0,0.08)',
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,0.08)',
                 fill: true,
                 tension: 0.3,
                 pointRadius: 2,
@@ -37020,8 +37043,8 @@ function renderStateCharts() {
             datasets: [{
                 label: 'Latest Revenue',
                 data: values,
-                backgroundColor: 'rgba(255,215,0,0.6)',
-                borderColor: '#ffd700',
+                backgroundColor: 'rgba(245,158,11,0.6)',
+                borderColor: '#f59e0b',
                 borderWidth: 1,
                 borderRadius: 4
             }]
