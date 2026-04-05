@@ -113,6 +113,10 @@ input.filter-input::placeholder{color:var(--text-secondary);}
 /* Rating badge */
 .rating-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;}
 
+/* Heat map coloring */
+.heat-positive { background: rgba(34, 197, 94, 0.08); }
+.heat-negative { background: rgba(239, 68, 68, 0.08); }
+
 /* Footer */
 .footer{text-align:center;padding:20px;color:var(--text-secondary);font-size:12px;border-top:var(--border);}
 
@@ -186,10 +190,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
         <button class="tab-btn" onclick="switchTab('valuation',this)">Valuation</button>
         <button class="tab-btn" onclick="switchTab('financials',this)">Financials</button>
         <button class="tab-btn" onclick="switchTab('analysts',this)">Analyst</button>
-        <button class="tab-btn" onclick="switchTab('calendar',this)">Calendar</button>
-        <button class="tab-btn" onclick="switchTab('insider',this)">Insider</button>
-        <button class="tab-btn" onclick="switchTab('gaming25',this)">Gaming-25</button>
-        <button class="tab-btn" onclick="switchTab('intel',this)">Transcript Intel</button>
+        <button class="tab-btn" onclick="switchTab('dividends',this)">Dividends &amp; Insiders</button>
     </div>
 
     <!-- ============================================================ -->
@@ -238,6 +239,9 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- TAB 2: PERFORMANCE -->
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-performance">
+        <div class="chart-row" style="margin-bottom:var(--gap);">
+            <div class="chart-container full"><h3>YTD Return by Sub-Sector <span class="info-icon" data-tip="Average year-to-date return for each gaming sub-sector. Compares relative performance across business models.">&#9432;</span></h3><canvas id="sectorYTDChart"></canvas></div>
+        </div>
         <div class="table-section">
             <h3>Price Performance &amp; Returns <span class="info-icon" data-tip="Historical price returns across multiple timeframes (1D, 1W, 1M, 3M, YTD, 1Y) for all tracked companies. Green cells indicate positive returns, red indicate negative.">&#9432;</span> <span id="perfCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
                 <button class="dl-btn" onclick="downloadCSV('performance')">&#11123; Download CSV</button>
@@ -281,8 +285,9 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     <!-- TAB 3: VALUATION -->
     <!-- ============================================================ -->
     <div class="tab-content" id="tab-valuation">
-        <div class="chart-row">
-            <div class="chart-container full"><h3>Sector Comparison: Median Valuation Multiples <span class="info-icon" data-tip="Compares median P/E and EV/EBITDA multiples across gaming sub-sectors. Helps identify which segments trade at a premium or discount relative to peers.">&#9432;</span></h3><canvas id="sectorValChart"></canvas></div>
+        <div class="chart-row" style="margin-bottom:var(--gap);">
+            <div class="chart-container"><h3>Median P/E by Sub-Sector <span class="info-icon" data-tip="Median trailing P/E ratio for each gaming sub-sector. Lower values may indicate relative value; higher values suggest growth expectations.">&#9432;</span></h3><canvas id="sectorPEChart"></canvas></div>
+            <div class="chart-container"><h3>Median EV/EBITDA by Sub-Sector <span class="info-icon" data-tip="Median EV/EBITDA multiple for each gaming sub-sector. A key valuation metric for capital-intensive gaming businesses.">&#9432;</span></h3><canvas id="sectorEVChart"></canvas></div>
         </div>
         <div class="table-section">
             <h3>Valuation Multiples <span class="info-icon" data-tip="Key valuation ratios (P/E, EV/EBITDA, P/S, P/B) for all tracked companies. Lower multiples may indicate relative value; higher multiples suggest growth expectations.">&#9432;</span> <span id="valCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span>
@@ -399,31 +404,49 @@ input.filter-input::placeholder{color:var(--text-secondary);}
     </div>
 
     <!-- ============================================================ -->
-    <!-- TAB 6: CALENDAR -->
+    <!-- TAB 6: DIVIDENDS & INSIDERS -->
     <!-- ============================================================ -->
-    <div class="tab-content" id="tab-calendar">
+    <div class="tab-content" id="tab-dividends">
         <div class="chart-row" style="grid-template-columns:1fr 1fr;">
             <div class="table-section">
-                <h3>Upcoming Earnings Dates <span class="info-icon" data-tip="Calendar of upcoming quarterly earnings reports for tracked gaming companies. Sorted by date to help plan around potential catalysts.">&#9432;</span></h3>
-                <table class="data-table"><thead><tr>
-                    <th>Ticker</th><th>Company</th><th>Report Date</th><th>Time</th><th>Est. EPS</th>
-                </tr></thead><tbody id="earningsBody"></tbody></table>
-                <div id="earningsEmpty" style="display:none;text-align:center;padding:24px;color:var(--text-secondary);">No upcoming earnings dates available.</div>
+                <h3>Dividend Data <span class="info-icon" data-tip="Dividend yield, ex-dividend dates, and payout ratios for gaming companies that pay dividends. Must own shares before the ex-date to receive the dividend.">&#9432;</span>
+                    <button class="dl-btn" onclick="downloadCSV('dividends')">&#11123; Download CSV</button>
+                </h3>
+                <div class="table-wrapper">
+                    <table class="data-table"><thead><tr>
+                        <th onclick="sortTable('dividends','ticker')">Ticker</th>
+                        <th onclick="sortTable('dividends','company')">Company</th>
+                        <th onclick="sortTable('dividends','dividend_yield')">Div Yield</th>
+                        <th onclick="sortTable('dividends','ex_div_date')">Last Ex-Date</th>
+                        <th onclick="sortTable('dividends','payout_ratio')">Payout Ratio</th>
+                    </tr></thead><tbody id="divBody"></tbody></table>
+                </div>
+                <div id="divEmpty" style="display:none;text-align:center;padding:24px;color:var(--text-secondary);">No dividend data available.</div>
             </div>
             <div class="table-section">
-                <h3>Ex-Dividend Dates <span class="info-icon" data-tip="Upcoming ex-dividend dates and yields for gaming companies that pay dividends. Must own shares before this date to receive the dividend.">&#9432;</span></h3>
-                <table class="data-table"><thead><tr>
-                    <th>Ticker</th><th>Company</th><th>Ex-Div Date</th><th>Div Amount</th><th>Yield</th>
-                </tr></thead><tbody id="divBody"></tbody></table>
-                <div id="divEmpty" style="display:none;text-align:center;padding:24px;color:var(--text-secondary);">No upcoming ex-dividend dates available.</div>
+                <h3>Insider &amp; Short Interest <span class="info-icon" data-tip="Insider ownership percentage and short interest data. High insider ownership signals alignment with shareholders. Elevated short interest may indicate bearish bets.">&#9432;</span>
+                    <button class="dl-btn" onclick="downloadCSV('insiderShort')">&#11123; Download CSV</button>
+                </h3>
+                <div class="table-wrapper">
+                    <table class="data-table"><thead><tr>
+                        <th onclick="sortTable('insiderShort','ticker')">Ticker</th>
+                        <th onclick="sortTable('insiderShort','company')">Company</th>
+                        <th onclick="sortTable('insiderShort','insider_pct')">Insider Own %</th>
+                        <th onclick="sortTable('insiderShort','short_pct')">Short Interest %</th>
+                        <th onclick="sortTable('insiderShort','short_ratio')">Days to Cover</th>
+                    </tr></thead><tbody id="insiderShortBody"></tbody></table>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- TAB 7: INSIDER -->
-    <!-- ============================================================ -->
-    <div class="tab-content" id="tab-insider">
+        <!-- Earnings Calendar -->
+        <div class="table-section">
+            <h3>Earnings Calendar <span class="info-icon" data-tip="Calendar of upcoming quarterly earnings reports for tracked gaming companies. Sorted by date to help plan around potential catalysts.">&#9432;</span></h3>
+            <table class="data-table"><thead><tr>
+                <th>Ticker</th><th>Company</th><th>Report Date</th><th>Time</th><th>Est. EPS</th>
+            </tr></thead><tbody id="earningsBody"></tbody></table>
+            <div id="earningsEmpty" style="display:none;text-align:center;padding:24px;color:var(--text-secondary);">No upcoming earnings dates available.</div>
+        </div>
+        <!-- Insider Transactions -->
         <div class="table-section">
             <h3>Recent Insider Transactions <span class="info-icon" data-tip="Latest stock purchases and sales by company executives and directors reported to the SEC. Insider buying can signal management confidence.">&#9432;</span> <span id="insiderCount" style="color:var(--text-secondary);font-weight:400;font-size:12px;"></span></h3>
             <div class="filter-row">
@@ -445,79 +468,7 @@ input.filter-input::placeholder{color:var(--text-secondary);}
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- TAB 8: GAMING-25 INDEX -->
-    <!-- ============================================================ -->
-    <div class="tab-content" id="tab-gaming25">
-        <div class="kpi-row" id="kpi-g25"></div>
-        <div class="chart-row">
-            <div class="chart-container full">
-                <h3>Gaming-25 Index Performance <span class="info-icon" data-tip="Performance of the equal-weighted Gaming-25 index versus market benchmarks (S&P 500, XLY). Shows how the gaming sector is performing relative to the broader market.">&#9432;</span>
-                    <div class="range-btns" id="g25RangeBtns">
-                        <button class="range-btn" onclick="setG25Range(30,this)">1M</button>
-                        <button class="range-btn" onclick="setG25Range(90,this)">3M</button>
-                        <button class="range-btn" onclick="setG25Range(180,this)">6M</button>
-                        <button class="range-btn active" onclick="setG25Range(365,this)">1Y</button>
-                        <button class="range-btn" onclick="setG25Range('all',this)">All</button>
-                    </div>
-                </h3>
-                <canvas id="g25Chart"></canvas>
-            </div>
-        </div>
-        <div class="chart-row" style="grid-template-columns:1fr 1fr;">
-            <div class="chart-container"><h3>Sector Weights <span class="info-icon" data-tip="Pie chart showing each sub-sector's weight in the Gaming-25 index based on market capitalization.">&#9432;</span></h3><canvas id="g25SectorChart"></canvas></div>
-            <div class="table-section" style="margin-bottom:0;">
-                <h3>Index Composition &amp; Weights <span class="info-icon" data-tip="Full list of all 25 companies in the Gaming-25 index with their individual weights. Equal-weighted at rebalance, weights drift with price performance.">&#9432;</span></h3>
-                <table class="data-table"><thead><tr>
-                    <th>Ticker</th><th>Company</th><th>Sector</th><th>Weight</th><th>MCap ($B)</th>
-                </tr></thead><tbody id="g25Body"></tbody></table>
-            </div>
-        </div>
-    </div>
 
-    <!-- ============================================================ -->
-    <!-- TAB 9: TRANSCRIPT INTEL -->
-    <!-- ============================================================ -->
-    <div class="tab-content" id="tab-intel">
-        <!-- F1: Scorecard -->
-        <div class="table-section">
-            <h3>Earnings Season Scorecard <span class="info-icon" data-tip="Cross-company comparison for the latest full earnings season.">&#9432;</span> <span id="scorecardQuarter" style="font-weight:400;font-size:12px;color:var(--text-secondary);"></span></h3>
-            <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
-                <input class="filter-input" type="text" id="scorecardSearch" placeholder="Search..." oninput="renderScorecard()" style="width:260px;">
-                <select id="scorecardSort" onchange="renderScorecard()" style="background:var(--bg-primary);color:var(--text-primary);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:6px 10px;font-size:12px;">
-                    <option value="sentiment">Sort: Sentiment</option>
-                    <option value="delta">Sort: Sentiment Change</option>
-                    <option value="credibility">Sort: Credibility</option>
-                    <option value="company">Sort: Company</option>
-                </select>
-            </div>
-            <div class="table-wrapper"><table class="data-table" id="scorecardTable"><thead><tr>
-                <th>Ticker</th><th>Company</th><th>Sub-Sector</th><th>Sentiment</th><th>&Delta; QoQ</th><th>Guidance</th><th>Credibility</th><th>Tone Shift</th><th>Revenue</th><th>EPS</th><th>EBITDA</th>
-            </tr></thead><tbody id="scorecardBody"></tbody></table></div>
-        </div>
-        <!-- F2+F4: Tone Shifts + Credibility -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);">
-            <div class="table-section">
-                <h3>Tone Shift Alerts <span class="info-icon" data-tip="Flags companies where management language changed meaningfully between quarters.">&#9432;</span></h3>
-                <div id="toneShiftsContainer" style="max-height:400px;overflow-y:auto;"></div>
-            </div>
-            <div class="table-section">
-                <h3>Management Credibility <span class="info-icon" data-tip="Tracks whether companies deliver on prior quarter guidance.">&#9432;</span></h3>
-                <div id="credibilityContainer" style="max-height:400px;overflow-y:auto;"></div>
-            </div>
-        </div>
-        <!-- F3+F7: Analyst Themes + Timeline -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);">
-            <div class="table-section">
-                <h3>What Analysts Are Asking <span class="info-icon" data-tip="Clusters analyst questions by theme across all companies.">&#9432;</span></h3>
-                <div style="position:relative;height:300px;max-height:300px;"><canvas id="analystThemesChart"></canvas></div>
-            </div>
-            <div class="table-section">
-                <h3>Earnings Season Timeline <span class="info-icon" data-tip="When each company reported, sentiment, and guidance direction.">&#9432;</span></h3>
-                <div style="position:relative;height:300px;max-height:300px;"><canvas id="earningsTimelineChart"></canvas></div>
-            </div>
-        </div>
-    </div>
 
 </div>
 
@@ -581,10 +532,26 @@ function subBadge(cat) {
     return '<span class="sub-badge" style="background:' + c + '22;color:' + c + '"><span class="cat-dot" style="background:' + c + '"></span>' + esc(cat || 'Other') + '</span>';
 }
 
-function chgSpan(v) {
+function chgSpan(v, heatMap) {
     if (v == null || isNaN(v)) return DASH;
     var cls = v >= 0 ? 'positive' : 'negative';
-    return '<span class="' + cls + '">' + (v >= 0 ? '+' : '') + Number(v).toFixed(2) + '%</span>';
+    var text = '<span class="' + cls + '">' + (v >= 0 ? '+' : '') + Number(v).toFixed(2) + '%</span>';
+    return text;
+}
+
+function chgTd(v, heatMap) {
+    if (v == null || isNaN(v)) return '<td>' + DASH + '</td>';
+    var cls = v >= 0 ? 'positive' : 'negative';
+    var bgStyle = '';
+    if (heatMap) {
+        var intensity = Math.min(Math.abs(v) / 30, 0.25);
+        if (v > 0) bgStyle = 'background:rgba(34,197,94,' + intensity + ');';
+        else if (v < 0) bgStyle = 'background:rgba(239,68,68,' + intensity + ');';
+    } else {
+        if (v > 0) bgStyle = 'background:rgba(34,197,94,0.08);';
+        else if (v < 0) bgStyle = 'background:rgba(239,68,68,0.08);';
+    }
+    return '<td style="' + bgStyle + '"><span class="' + cls + '">' + (v >= 0 ? '+' : '') + Number(v).toFixed(2) + '%</span></td>';
 }
 
 function medianOf(arr) {
@@ -672,11 +639,10 @@ function switchTab(id, btn) {
     document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
     document.getElementById('tab-'+id).classList.add('active');
     btn.classList.add('active');
-    if (id === 'valuation') renderSectorValChart();
+    if (id === 'valuation') renderSectorValCharts();
     if (id === 'analysts') renderAnalystCharts();
-    if (id === 'gaming25') renderG25Tab();
-    if (id === 'performance') renderHeatMap();
-    if (id === 'intel') renderTranscriptIntel();
+    if (id === 'performance') { renderHeatMap(); renderSectorYTDChart(); }
+    if (id === 'dividends') { renderDividendsTab(); }
 }
 
 /* -- Generic Sort -- */
@@ -689,6 +655,8 @@ function sortTable(tab, col) {
     else if (tab === 'valuation') renderValuation();
     else if (tab === 'financials') renderFinancials();
     else if (tab === 'analysts') renderAnalysts();
+    else if (tab === 'dividends') renderDividendTable();
+    else if (tab === 'insiderShort') renderInsiderShortTable();
 }
 
 function sortData(data, tab) {
@@ -736,6 +704,12 @@ function downloadCSV(type) {
     } else if (type === 'analysts') {
         rows.push(['Ticker','Company','Sector','Price','Avg Target','Upside %','Low Target','High Target','Rating','Analysts']);
         data.forEach(function(r) { var up = r.target_mean && r.price ? ((r.target_mean-r.price)/r.price*100) : ''; rows.push([r.ticker, r.company, r.category, r.price||'', r.target_mean||'', up, r.target_low||'', r.target_high||'', r.recommendation||'', r.num_analysts||'']); });
+    } else if (type === 'dividends') {
+        rows.push(['Ticker','Company','Div Yield','Last Ex-Date','Payout Ratio']);
+        data.filter(function(r){return r.dividend_yield && r.dividend_yield > 0;}).forEach(function(r) { rows.push([r.ticker, r.company, r.dividend_yield||'', r.ex_div_date||'', r.payout_ratio||'']); });
+    } else if (type === 'insiderShort') {
+        rows.push(['Ticker','Company','Insider Own %','Short Interest %','Days to Cover']);
+        data.forEach(function(r) { rows.push([r.ticker, r.company, r.insider_pct||r.insider_ownership||'', r.short_pct||r.short_percent_of_float||'', r.short_ratio||'']); });
     }
     var csv = rows.map(function(r) { return r.map(function(c){return '"'+(c+'').replace(/"/g,'""')+'"';}).join(','); }).join('\n');
     var blob = new Blob([csv], {type:'text/csv'});
@@ -776,7 +750,7 @@ function renderOverview() {
             '<td>' + esc(d.company) + '</td>' +
             '<td>' + subBadge(d.category) + '</td>' +
             '<td>' + fmt(d.price, '$') + '</td>' +
-            '<td>' + chgSpan(d.change_pct) + '</td>' +
+            chgTd(d.change_pct) +
             '<td>$' + (typeof mcap === 'number' ? mcap.toFixed(1) : mcap) + '</td>' +
             '<td>' + fmt(d.pe_ratio, 'x') + '</td>' +
             '<td>' + fmt(d.ev_ebitda, 'x') + '</td>' +
@@ -823,13 +797,13 @@ function renderPerformance() {
             '<td>' + esc(d.company) + '</td>' +
             '<td>' + fmt(d.price, '$') + '</td>' +
             '<td>' + sparklineSVG(d.ticker) + '</td>' +
-            '<td>' + chgSpan(d.change_pct) + '</td>' +
-            '<td>' + chgSpan(d.week_change) + '</td>' +
-            '<td>' + chgSpan(d.month_change) + '</td>' +
-            '<td>' + chgSpan(d.three_month_change) + '</td>' +
-            '<td>' + chgSpan(d.six_month_change) + '</td>' +
-            '<td>' + chgSpan(d.ytd_change) + '</td>' +
-            '<td>' + chgSpan(d.year_change) + '</td>' +
+            chgTd(d.change_pct, true) +
+            chgTd(d.week_change, true) +
+            chgTd(d.month_change, true) +
+            chgTd(d.three_month_change, true) +
+            chgTd(d.six_month_change, true) +
+            chgTd(d.ytd_change, true) +
+            chgTd(d.year_change, true) +
             '<td>' + fmt(d.fifty_two_week_high, '$') + '</td>' +
             '<td>' + fmt(d.fifty_two_week_low, '$') + '</td></tr>';
     });
@@ -882,29 +856,29 @@ function renderValuation() {
     document.getElementById('valBody').innerHTML = html;
 }
 
-function renderSectorValChart() {
-    destroyChart('sectorVal');
+function renderSectorValCharts() {
+    destroyChart('sectorPE');
+    destroyChart('sectorEV');
     var data = getDataArray();
     var sm = {};
     data.forEach(function(d) {
         var cat = d.category || 'Other';
-        if (!sm[cat]) sm[cat] = {pe:[], evEbitda:[], pb:[]};
+        if (!sm[cat]) sm[cat] = {pe:[], evEbitda:[]};
         if (d.pe_ratio && d.pe_ratio > 0 && d.pe_ratio < 200) sm[cat].pe.push(d.pe_ratio);
         if (d.ev_ebitda && d.ev_ebitda > 0) sm[cat].evEbitda.push(d.ev_ebitda);
-        if (d.pb_ratio && d.pb_ratio > 0) sm[cat].pb.push(d.pb_ratio);
     });
     var labels = Object.keys(sm);
-    charts.sectorVal = new Chart(document.getElementById('sectorValChart'), {
+    var colors = labels.map(function(s){return CAT_COLORS[s]||'#9aa0a6';});
+    var barOpts = { responsive:true, plugins:{legend:{display:false}}, scales:{ x:{ticks:{color:'#9aa0a6',font:{size:11}},grid:{color:'rgba(255,255,255,0.04)'}}, y:{ticks:{color:'#9aa0a6',callback:function(v){return v+'x';}},grid:{color:'rgba(255,255,255,0.04)'}} } };
+    charts.sectorPE = new Chart(document.getElementById('sectorPEChart'), {
         type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [
-                { label: 'Median P/E', data: labels.map(function(l){return medianOf(sm[l].pe)||0;}), backgroundColor: 'rgba(255,215,0,0.6)', borderRadius: 4 },
-                { label: 'Median EV/EBITDA', data: labels.map(function(l){return medianOf(sm[l].evEbitda)||0;}), backgroundColor: 'rgba(79,195,247,0.6)', borderRadius: 4 },
-                { label: 'Median P/B', data: labels.map(function(l){return medianOf(sm[l].pb)||0;}), backgroundColor: 'rgba(129,199,132,0.6)', borderRadius: 4 }
-            ]
-        },
-        options: { responsive:true, plugins:{legend:{labels:{color:'#e8eaed'}}}, scales:{ x:{ticks:{color:'#9aa0a6',font:{size:11}},grid:{color:'rgba(255,255,255,0.04)'}}, y:{ticks:{color:'#9aa0a6'},grid:{color:'rgba(255,255,255,0.04)'}} } }
+        data: { labels: labels, datasets: [{ label: 'Median P/E', data: labels.map(function(l){return medianOf(sm[l].pe)||0;}), backgroundColor: colors.map(function(c){return c+'99';}), borderRadius: 4 }] },
+        options: barOpts
+    });
+    charts.sectorEV = new Chart(document.getElementById('sectorEVChart'), {
+        type: 'bar',
+        data: { labels: labels, datasets: [{ label: 'Median EV/EBITDA', data: labels.map(function(l){return medianOf(sm[l].evEbitda)||0;}), backgroundColor: colors.map(function(c){return c+'99';}), borderRadius: 4 }] },
+        options: barOpts
     });
 }
 
@@ -970,7 +944,7 @@ function renderAnalysts() {
             '<td>' + subBadge(d.category) + '</td>' +
             '<td>' + fmt(d.price, '$') + '</td>' +
             '<td>' + fmt(d.target_mean, '$') + '</td>' +
-            '<td>' + (upside != null ? chgSpan(upside) : DASH) + '</td>' +
+            (upside != null ? chgTd(upside) : '<td>' + DASH + '</td>') +
             '<td>' + fmt(d.target_low, '$') + '</td>' +
             '<td>' + fmt(d.target_high, '$') + '</td>' +
             '<td><span class="rating-badge" style="background:' + recColor + '22;color:' + recColor + ';">' + recLabel + '</span></td>' +
@@ -1011,13 +985,72 @@ function renderAnalystCharts() {
 }
 
 /* ================================================================
-   TAB 6: CALENDAR
+   PERFORMANCE: SECTOR YTD CHART
    ================================================================ */
-function renderCalendar() {
+function renderSectorYTDChart() {
+    destroyChart('sectorYTD');
+    var data = getDataArray();
+    var sm = {};
+    data.forEach(function(d) {
+        var cat = d.category || 'Other';
+        if (!sm[cat]) sm[cat] = [];
+        if (d.ytd_change != null && !isNaN(d.ytd_change)) sm[cat].push(d.ytd_change);
+    });
+    var labels = Object.keys(sm);
+    var colors = labels.map(function(s){return CAT_COLORS[s]||'#9aa0a6';});
+    var medians = labels.map(function(l){return medianOf(sm[l])||0;});
+    var barColors = medians.map(function(v, i){return v >= 0 ? colors[i] + '99' : 'rgba(239,68,68,0.6)';});
+    charts.sectorYTD = new Chart(document.getElementById('sectorYTDChart'), {
+        type: 'bar',
+        data: { labels: labels, datasets: [{ label: 'Median YTD %', data: medians.map(function(v){return v.toFixed(1);}), backgroundColor: barColors, borderRadius: 4 }] },
+        options: { responsive:true, plugins:{legend:{display:false}}, scales:{ x:{ticks:{color:'#9aa0a6',font:{size:11}},grid:{color:'rgba(255,255,255,0.04)'}}, y:{ticks:{color:'#9aa0a6',callback:function(v){return v+'%';}},grid:{color:'rgba(255,255,255,0.04)'}} } }
+    });
+}
+
+/* ================================================================
+   TAB 6: DIVIDENDS & INSIDERS
+   ================================================================ */
+function renderDividendsTab() { renderDividendTable(); renderInsiderShortTable(); renderEarningsCalendar(); renderInsider(); }
+
+function renderDividendTable() {
+    var data = getDataArray();
+    var divData = data.filter(function(d) { return d.dividend_yield && d.dividend_yield > 0; });
+    divData = sortData(divData, 'dividends');
+    if (divData.length === 0) { document.getElementById('divEmpty').style.display = 'block'; document.getElementById('divBody').innerHTML = ''; return; }
+    document.getElementById('divEmpty').style.display = 'none';
+    var html = '';
+    divData.forEach(function(d) {
+        html += '<tr>' +
+            '<td><a class="yf-link" href="CG_Company_Summary.html#company=' + esc(d.ticker) + '">' + esc(d.ticker) + '</a></td>' +
+            '<td>' + esc(d.company) + '</td>' +
+            '<td>' + (d.dividend_yield ? d.dividend_yield.toFixed(2) + '%' : DASH) + '</td>' +
+            '<td>' + esc(d.ex_div_date || DASH) + '</td>' +
+            '<td>' + (d.payout_ratio != null ? (d.payout_ratio * (Math.abs(d.payout_ratio) < 1 ? 100 : 1)).toFixed(1) + '%' : DASH) + '</td></tr>';
+    });
+    document.getElementById('divBody').innerHTML = html;
+}
+
+function renderInsiderShortTable() {
+    var data = getDataArray();
+    data = sortData(data, 'insiderShort');
+    var html = '';
+    data.forEach(function(d) {
+        html += '<tr>' +
+            '<td><a class="yf-link" href="CG_Company_Summary.html#company=' + esc(d.ticker) + '">' + esc(d.ticker) + '</a></td>' +
+            '<td>' + esc(d.company) + '</td>' +
+            '<td>' + (d.insider_pct != null ? d.insider_pct.toFixed(2) + '%' : (d.insider_ownership != null ? (d.insider_ownership * 100).toFixed(2) + '%' : DASH)) + '</td>' +
+            '<td>' + (d.short_pct != null ? d.short_pct.toFixed(2) + '%' : (d.short_percent_of_float != null ? (d.short_percent_of_float * 100).toFixed(2) + '%' : DASH)) + '</td>' +
+            '<td>' + (d.short_ratio != null ? d.short_ratio.toFixed(1) : DASH) + '</td></tr>';
+    });
+    document.getElementById('insiderShortBody').innerHTML = html;
+}
+
+function renderEarningsCalendar() {
     var data = getDataArray();
     var earnings = data.filter(function(d) { return d.earnings_date; }).sort(function(a,b) { return (a.earnings_date||'').localeCompare(b.earnings_date||''); });
     if (earnings.length === 0) { document.getElementById('earningsEmpty').style.display = 'block'; }
     else {
+        document.getElementById('earningsEmpty').style.display = 'none';
         var html = '';
         earnings.forEach(function(d) {
             html += '<tr><td><a class="yf-link" href="CG_Company_Summary.html#company=' + esc(d.ticker) + '">' + esc(d.ticker) + '</a></td>' +
@@ -1026,23 +1059,8 @@ function renderCalendar() {
         });
         document.getElementById('earningsBody').innerHTML = html;
     }
-    var divs = data.filter(function(d) { return d.ex_div_date; }).sort(function(a,b) { return (a.ex_div_date||'').localeCompare(b.ex_div_date||''); });
-    if (divs.length === 0) { document.getElementById('divEmpty').style.display = 'block'; }
-    else {
-        var html2 = '';
-        divs.forEach(function(d) {
-            html2 += '<tr><td><a class="yf-link" href="CG_Company_Summary.html#company=' + esc(d.ticker) + '">' + esc(d.ticker) + '</a></td>' +
-                '<td>' + esc(d.company) + '</td><td>' + esc(d.ex_div_date) + '</td>' +
-                '<td>' + (d.div_amount != null ? '$' + Number(d.div_amount).toFixed(4) : DASH) + '</td>' +
-                '<td>' + (d.dividend_yield ? d.dividend_yield.toFixed(2) + '%' : DASH) + '</td></tr>';
-        });
-        document.getElementById('divBody').innerHTML = html2;
-    }
 }
 
-/* ================================================================
-   TAB 7: INSIDER
-   ================================================================ */
 function renderInsider() {
     var data = getDataArray();
     var allInsider = [];
@@ -1050,8 +1068,10 @@ function renderInsider() {
         var txns = d.insider_transactions || d.insider || [];
         txns.forEach(function(tx) { tx.ticker = d.ticker; allInsider.push(tx); });
     });
-    var query = (document.getElementById('insiderSearch').value || '').toLowerCase();
-    var typeFilter = document.getElementById('insiderTypeFilter').value;
+    var searchEl = document.getElementById('insiderSearch');
+    var typeEl = document.getElementById('insiderTypeFilter');
+    var query = searchEl ? (searchEl.value || '').toLowerCase() : '';
+    var typeFilter = typeEl ? typeEl.value : '';
     var filtered = allInsider.filter(function(tx) {
         if (query) { var hay = ((tx.ticker||'') + ' ' + (tx.insider||tx.name||'')).toLowerCase(); if (hay.indexOf(query) === -1) return false; }
         if (typeFilter) {
@@ -1062,7 +1082,8 @@ function renderInsider() {
         return true;
     });
     filtered.sort(function(a,b) { return (b.date||'').localeCompare(a.date||''); });
-    document.getElementById('insiderCount').textContent = '(' + filtered.length + ' transactions)';
+    var countEl = document.getElementById('insiderCount');
+    if (countEl) countEl.textContent = '(' + filtered.length + ' transactions)';
     if (filtered.length === 0) { document.getElementById('insiderEmpty').style.display = 'block'; document.getElementById('insiderBody').innerHTML = ''; return; }
     document.getElementById('insiderEmpty').style.display = 'none';
     var html = '';
@@ -1080,165 +1101,6 @@ function renderInsider() {
 }
 
 /* ================================================================
-   TAB 8: GAMING-25 INDEX
-   ================================================================ */
-var g25Days = 365;
-
-function setG25Range(days, btn) {
-    g25Days = days;
-    document.querySelectorAll('#g25RangeBtns .range-btn').forEach(function(b){b.classList.remove('active');});
-    if (btn) btn.classList.add('active');
-    renderG25Chart();
-}
-
-function renderG25Tab() { renderG25KPIs(); renderG25Chart(); renderG25SectorChart(); renderG25Composition(); }
-
-function renderG25KPIs() {
-    if (!INDEX_HISTORY || !INDEX_HISTORY.length) return;
-    var last = INDEX_HISTORY[INDEX_HISTORY.length - 1];
-    var val = last.value || last.close;
-    var prev = INDEX_HISTORY.length > 1 ? (INDEX_HISTORY[INDEX_HISTORY.length - 2].value || INDEX_HISTORY[INDEX_HISTORY.length - 2].close) : val;
-    var dailyChg = prev ? ((val - prev) / prev * 100) : 0;
-    var first = INDEX_HISTORY[0];
-    var firstVal = first.value || first.close;
-    var totalChg = firstVal ? ((val - firstVal) / firstVal * 100) : 0;
-    var hi = Math.max.apply(null, INDEX_HISTORY.map(function(d){return d.value||d.close||0;}));
-    var lo = Math.min.apply(null, INDEX_HISTORY.map(function(d){return d.value||d.close||0;}));
-
-    document.getElementById('kpi-g25').innerHTML =
-        '<div class="kpi-card"><div class="kpi-label">Index Value</div><div class="kpi-value" style="color:var(--accent)">' + Number(val).toFixed(2) + '</div><div class="kpi-sub">Gaming-25 composite</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label">Daily Change</div><div class="kpi-value ' + (dailyChg >= 0 ? 'positive' : 'negative') + '">' + (dailyChg >= 0 ? '+' : '') + dailyChg.toFixed(2) + '%</div><div class="kpi-sub">vs prior close</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label">Period Change</div><div class="kpi-value ' + (totalChg >= 0 ? 'positive' : 'negative') + '">' + (totalChg >= 0 ? '+' : '') + totalChg.toFixed(1) + '%</div><div class="kpi-sub">Since inception</div></div>' +
-        '<div class="kpi-card"><div class="kpi-label">52W Range</div><div class="kpi-value" style="font-size:16px">' + Number(lo).toFixed(0) + ' \u2013 ' + Number(hi).toFixed(0) + '</div><div class="kpi-sub">High / Low</div></div>';
-}
-
-function renderG25Chart() {
-    destroyChart('g25');
-    if (!INDEX_HISTORY || !INDEX_HISTORY.length) return;
-    var data = INDEX_HISTORY;
-    if (g25Days !== 'all') {
-        var cutoff = new Date(); cutoff.setDate(cutoff.getDate() - parseInt(g25Days));
-        var cutStr = cutoff.toISOString().slice(0,10);
-        var filtered = data.filter(function(d) { return d.date >= cutStr; });
-        if (filtered.length) data = filtered;
-    }
-    charts.g25 = new Chart(document.getElementById('g25Chart'), {
-        type: 'line',
-        data: { labels: data.map(function(d){return d.date;}), datasets: [{
-            label: 'Gaming-25', data: data.map(function(d){return d.value||d.close;}),
-            borderColor: '#ffd700', backgroundColor: 'rgba(255,215,0,0.08)', fill: true,
-            tension: 0.3, pointRadius: data.length > 60 ? 0 : 3, borderWidth: 2, pointHoverRadius: 5
-        }] },
-        options: { responsive:true, interaction:{mode:'nearest',intersect:false}, plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return 'Gaming-25: '+ctx.parsed.y.toFixed(2);}}}}, scales:{ x:{ticks:{color:'#9aa0a6',maxTicksLimit:10,font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}}, y:{ticks:{color:'#9aa0a6',font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}} } }
-    });
-}
-
-function renderG25SectorChart() {
-    destroyChart('g25Sector');
-    var data = getDataArray();
-    var sectors = {};
-    data.forEach(function(d) { var cat = d.category || 'Other'; sectors[cat] = (sectors[cat] || 0) + (d.market_cap_b || d.market_cap || 0); });
-    var labels = Object.keys(sectors);
-    var colors = labels.map(function(s){return CAT_COLORS[s]||'#9aa0a6';});
-    var total = labels.reduce(function(s, l){return s + sectors[l];}, 0) || 1;
-    charts.g25Sector = new Chart(document.getElementById('g25SectorChart'), {
-        type: 'doughnut',
-        data: { labels: labels.map(function(l){return l + ' (' + (sectors[l]/total*100).toFixed(1) + '%)';}), datasets: [{ data: labels.map(function(l){return sectors[l].toFixed(2);}), backgroundColor: colors, borderWidth:0 }] },
-        options: { responsive:true, cutout:'55%', plugins:{legend:{position:'bottom',labels:{color:'#e8eaed',font:{size:11}}}} }
-    });
-}
-
-function renderG25Composition() {
-    var data = getDataArray().slice().sort(function(a,b) { return (b.market_cap_b||b.market_cap||0) - (a.market_cap_b||a.market_cap||0); });
-    var totalMcap = data.reduce(function(s, d) { return s + (d.market_cap_b || d.market_cap || 0); }, 0) || 1;
-    var html = '';
-    data.forEach(function(d) {
-        var mcap = d.market_cap_b || d.market_cap || 0;
-        var weight = (mcap / totalMcap * 100).toFixed(2);
-        html += '<tr>' +
-            '<td><a class="yf-link" href="CG_Company_Summary.html#company=' + esc(d.ticker) + '">' + esc(d.ticker) + '</a></td>' +
-            '<td>' + esc(d.company) + '</td><td>' + subBadge(d.category) + '</td>' +
-            '<td>' + weight + '%</td><td>$' + (typeof mcap === 'number' ? mcap.toFixed(2) : mcap) + '</td></tr>';
-    });
-    document.getElementById('g25Body').innerHTML = html;
-}
-
-/* ================================================================
-   TAB 9: TRANSCRIPT INTELLIGENCE
-   ================================================================ */
-function renderScorecard() {
-    var sc = INTEL.scorecard || {};
-    var keys = Object.keys(sc);
-    if (!keys.length) { document.getElementById('scorecardBody').innerHTML = '<tr><td colspan="11" style="text-align:center;color:var(--text-secondary);padding:20px;">No scorecard data available.</td></tr>'; return; }
-    var q = (INTEL.latest_quarter || '').replace('_', ' ');
-    var qEl = document.getElementById('scorecardQuarter');
-    if (qEl) qEl.textContent = q ? '(' + q + ' season)' : '';
-    var search = (document.getElementById('scorecardSearch').value || '').toLowerCase();
-    var sortBy = document.getElementById('scorecardSort').value;
-    var rows = keys.map(function(tk) { var s = sc[tk]; s._tk = tk; return s; });
-    if (search) rows = rows.filter(function(r) { return r._tk.toLowerCase().indexOf(search) >= 0 || (r.company || '').toLowerCase().indexOf(search) >= 0; });
-    rows.sort(function(a, b) {
-        if (sortBy === 'sentiment') return (b.sentiment || 0) - (a.sentiment || 0);
-        if (sortBy === 'delta') return (b.sentiment_delta || 0) - (a.sentiment_delta || 0);
-        if (sortBy === 'credibility') return (b.credibility_score || 0) - (a.credibility_score || 0);
-        return (a.company || '').localeCompare(b.company || '');
-    });
-    var html = '';
-    rows.forEach(function(r) {
-        var sentCls = r.sentiment > 10 ? 'color:var(--positive)' : (r.sentiment < -2 ? 'color:var(--negative)' : 'color:var(--text-secondary)');
-        var deltaCls = r.sentiment_delta > 0 ? 'color:var(--positive)' : (r.sentiment_delta < 0 ? 'color:var(--negative)' : '');
-        var gBadge = r.guidance === 'Raised' ? '<span style="color:var(--positive);">&#9650; Raised</span>' : r.guidance === 'Lowered' ? '<span style="color:var(--negative);">&#9660; Lowered</span>' : r.guidance === 'Maintained' ? '<span style="color:var(--text-secondary);">&#9679; Maintained</span>' : '<span style="color:var(--text-secondary);">\u2014</span>';
-        var credStr = r.credibility_score != null ? r.credibility_score + '%' : '\u2014';
-        var credCls = r.credibility_score >= 80 ? 'color:var(--positive)' : (r.credibility_score != null && r.credibility_score < 60 ? 'color:var(--negative)' : '');
-        var toneBadge = r.tone_shift_severity === 'high' ? '<span style="background:rgba(244,67,54,0.2);color:#f44336;padding:2px 8px;border-radius:4px;font-size:11px;">High</span>' : r.tone_shift_severity === 'medium' ? '<span style="background:rgba(255,152,0,0.2);color:#ff9800;padding:2px 8px;border-radius:4px;font-size:11px;">Med</span>' : '<span style="color:var(--text-secondary);">\u2014</span>';
-        html += '<tr><td style="font-weight:600;">' + r._tk + '</td><td>' + (r.company || '') + '</td><td style="font-size:11px;color:var(--text-secondary);">' + (r.subsector || '') + '</td><td style="' + sentCls + ';font-weight:600;">' + (r.sentiment != null ? r.sentiment.toFixed(1) : '\u2014') + '</td><td style="' + deltaCls + ';">' + (r.sentiment_delta != null ? (r.sentiment_delta > 0 ? '+' : '') + r.sentiment_delta.toFixed(1) : '\u2014') + '</td><td>' + gBadge + '</td><td style="' + credCls + ';">' + credStr + '</td><td>' + toneBadge + '</td><td>' + (r.revenue || '\u2014') + '</td><td>' + (r.eps || '\u2014') + '</td><td>' + (r.ebitda || '\u2014') + '</td></tr>';
-    });
-    document.getElementById('scorecardBody').innerHTML = html;
-}
-function renderToneShifts() {
-    var ts = INTEL.tone_shifts || {};
-    var keys = Object.keys(ts);
-    var container = document.getElementById('toneShiftsContainer');
-    if (!keys.length) { container.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-secondary);">No tone shift alerts.</div>'; return; }
-    var sorted = keys.map(function(tk) { var v = ts[tk]; v._tk = tk; return v; }).sort(function(a, b) { var ord = {high:0,medium:1,low:2}; return (ord[a.severity]||3) - (ord[b.severity]||3); });
-    var html = '';
-    sorted.slice(0, 20).forEach(function(s) {
-        var sevColor = s.severity === 'high' ? '#f44336' : (s.severity === 'medium' ? '#ff9800' : '#4caf50');
-        html += '<div style="padding:10px 12px;margin-bottom:8px;border-radius:8px;background:var(--bg-primary);border-left:3px solid ' + sevColor + ';"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:600;color:var(--text-primary);">' + s._tk + '</span><span style="font-size:10px;text-transform:uppercase;color:' + sevColor + ';font-weight:600;">' + s.severity + '</span></div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">' + (s.description || '') + '</div><div style="font-size:10px;color:var(--text-secondary);margin-top:2px;">' + (s.latest_quarter || '').replace('_',' ') + ' vs ' + (s.prior_quarter || '').replace('_',' ') + '</div></div>';
-    });
-    container.innerHTML = html;
-}
-function renderCredibility() {
-    var cr = INTEL.credibility || {};
-    var keys = Object.keys(cr);
-    var container = document.getElementById('credibilityContainer');
-    if (!keys.length) { container.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-secondary);">No credibility data.</div>'; return; }
-    var sorted = keys.map(function(tk) { var v = cr[tk]; v._tk = tk; return v; }).sort(function(a, b) { return b.score - a.score; });
-    var html = '<table style="width:100%;font-size:12px;"><thead><tr style="color:var(--text-secondary);font-size:11px;"><th style="text-align:left;padding:4px 8px;">Ticker</th><th>Score</th><th>Quarters</th><th>Latest</th></tr></thead><tbody>';
-    sorted.forEach(function(c) {
-        var scoreColor = c.score >= 80 ? 'var(--positive)' : (c.score < 60 ? 'var(--negative)' : 'var(--text-secondary)');
-        var latestIcon = c.latest_delivered ? '<span style="color:var(--positive);">\u2713</span>' : '<span style="color:var(--negative);">\u2717</span>';
-        html += '<tr><td style="font-weight:600;padding:5px 8px;">' + c._tk + '</td><td style="text-align:center;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:60px;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;"><div style="width:' + Math.max(c.score, 5) + '%;height:100%;background:' + scoreColor + ';border-radius:3px;"></div></div><span style="color:' + scoreColor + ';font-weight:600;">' + c.score + '%</span></div></td><td style="text-align:center;color:var(--text-secondary);">' + c.quarters_evaluated + '</td><td style="text-align:center;">' + latestIcon + '</td></tr>';
-    });
-    html += '</tbody></table>';
-    container.innerHTML = html;
-}
-function renderAnalystThemes() {
-    var themes = INTEL.analyst_themes || [];
-    if (!themes.length) return;
-    var canvas = document.getElementById('analystThemesChart');
-    if (!canvas) return;
-    new Chart(canvas, { type: 'bar', data: { labels: themes.map(function(t) { return t.theme_label; }), datasets: [{ label: 'Questions', data: themes.map(function(t) { return t.count; }), backgroundColor: 'rgba(255,215,0,0.7)', borderRadius: 4 }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { afterLabel: function(ctx) { var t = themes[ctx.dataIndex]; return t.num_companies + ' companies: ' + t.companies.slice(0, 8).join(', ') + (t.companies.length > 8 ? '...' : ''); } } } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } }, y: { grid: { display: false }, ticks: { color: '#e8eaed', font: { size: 11 } } } } } });
-}
-function renderEarningsTimeline() {
-    var tl = INTEL.timeline || [];
-    if (tl.length < 3) { var c = document.getElementById('earningsTimelineChart'); if (c) c.parentElement.innerHTML += '<div style="text-align:center;padding:20px;color:var(--text-secondary);">Timeline requires 3+ reports.</div>'; return; }
-    var pointColors = tl.map(function(e) { return e.guidance === 'Raised' ? '#4caf50' : (e.guidance === 'Lowered' ? '#f44336' : '#9aa0a6'); });
-    new Chart(document.getElementById('earningsTimelineChart'), { type: 'bar', data: { labels: tl.map(function(e) { return e.ticker + ' (' + (e.date || '').slice(5) + ')'; }), datasets: [{ type: 'line', label: 'Running Avg', data: tl.map(function(e) { return e.running_avg_sentiment; }), borderColor: '#ffd700', borderWidth: 2, pointRadius: 0, tension: 0.3, fill: false, order: 0 }, { label: 'Sentiment', data: tl.map(function(e) { return e.sentiment; }), backgroundColor: pointColors, borderRadius: 3, order: 1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: '#9aa0a6', font: { size: 10 } } }, tooltip: { callbacks: { afterLabel: function(ctx) { if (ctx.datasetIndex === 1) { var e = tl[ctx.dataIndex]; return 'Guidance: ' + e.guidance; } } } } }, scales: { x: { grid: { display: false }, ticks: { color: '#9aa0a6', font: { size: 9 }, maxRotation: 45 } }, y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9aa0a6' } } } } });
-}
-function renderTranscriptIntel() { renderScorecard(); renderToneShifts(); renderCredibility(); renderAnalystThemes(); renderEarningsTimeline(); }
-
-/* ================================================================
    INIT
    ================================================================ */
 document.addEventListener('DOMContentLoaded', function() {
@@ -1250,8 +1112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderValuation();
     renderFinancials();
     renderAnalysts();
-    renderCalendar();
-    renderInsider();
+    renderDividendsTab();
     var count = getDataArray().length;
     if (count) document.getElementById('headerMeta').textContent = count + ' companies tracked | Equity data powered by yfinance';
 });

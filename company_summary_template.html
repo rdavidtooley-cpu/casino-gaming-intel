@@ -428,6 +428,29 @@
         .info-icon:hover { color:#fbbf24; }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
         .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
+
+        /* Sub-tab navigation */
+        .company-tabs { display:flex; gap:4px; margin-bottom:16px; background:#111318; border-radius:8px; padding:4px; border:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; }
+        .company-tab { padding:8px 18px; border:none; background:transparent; color:#9ca3af; font-size:13px; font-weight:500; cursor:pointer; border-radius:6px; transition:all 0.2s; }
+        .company-tab.active { background:rgba(245,158,11,0.15); color:#f59e0b; }
+        .company-tab:hover:not(.active) { color:#e8eaed; }
+        .co-tab-content { display:none; }
+        .co-tab-content.active { display:block; }
+
+        /* 52-week range bar */
+        .week52-bar { height:4px; background:rgba(255,255,255,0.1); border-radius:2px; position:relative; margin:8px 0 4px; }
+        .week52-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#ef4444,#f59e0b,#22c55e); }
+        .week52-dot { width:10px; height:10px; border-radius:50%; background:#fff; position:absolute; top:-3px; transform:translateX(-50%); border:2px solid #1a1d29; }
+        .week52-labels { display:flex; justify-content:space-between; font-size:10px; color:#9ca3af; }
+
+        /* Expandable financial rows */
+        .expand-row { cursor:pointer; user-select:none; }
+        .expand-row:hover { background:rgba(245,158,11,0.05); }
+        .expand-row td:first-child::before { content:'▶ '; font-size:9px; color:#9ca3af; }
+        .expand-row.open td:first-child::before { content:'▼ '; }
+        .detail-row { display:none; background:rgba(255,255,255,0.02); }
+        .detail-row.visible { display:table-row; }
+        .detail-row td { font-size:11px; color:#9ca3af; padding:4px 12px 8px 24px !important; }
     </style>
 </head>
 <body>
@@ -469,10 +492,21 @@
         <div class="price-block">
             <div class="price-current" id="hdr-price">—</div>
             <div class="price-change" id="hdr-change">—</div>
+            <div id="week52-container" style="margin-top:8px;display:none">
+                <div class="week52-bar">
+                    <div class="week52-fill" id="w52fill" style="width:100%"></div>
+                    <div class="week52-dot" id="w52dot" style="left:50%"></div>
+                </div>
+                <div class="week52-labels">
+                    <span id="w52low">—</span>
+                    <span style="color:#9ca3af;font-size:9px">52-Week Range</span>
+                    <span id="w52high">—</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- KPI Row -->
+    <!-- KPI Row (always visible) -->
     <div class="kpi-row">
         <div class="kpi-card">
             <div class="kpi-label">Market Cap</div>
@@ -501,27 +535,50 @@
         </div>
     </div>
 
-    <!-- Two-column layout -->
-    <div class="two-col">
-        <!-- Left Column -->
-        <div>
-            <!-- Financial Snapshot -->
-            <div class="card">
-                <div class="card-title">Financial Snapshot <span class="info-icon" data-tip="Key financial metrics at a glance: revenue, EBITDA, margins, EPS, and debt ratios from the most recent quarter.">&#9432;</span></div>
-                <table id="fin-table">
-                    <tbody></tbody>
-                </table>
+    <!-- Sub-tab navigation -->
+    <div class="company-tabs">
+        <button class="company-tab active" onclick="coTab('overview',this)">Overview</button>
+        <button class="company-tab" onclick="coTab('analyst',this)">Analyst &amp; Ownership</button>
+        <button class="company-tab" onclick="coTab('earnings',this)">Earnings</button>
+        <button class="company-tab" onclick="coTab('news',this)">News &amp; Filings</button>
+        <button class="company-tab" onclick="coTab('peers',this)">Peers</button>
+    </div>
+
+    <!-- Tab: Overview -->
+    <div id="co-tab-overview" class="co-tab-content active">
+        <!-- Two-column layout: Financial Snapshot + Revenue Trend -->
+        <div class="two-col">
+            <!-- Left Column -->
+            <div>
+                <!-- Financial Snapshot -->
+                <div class="card">
+                    <div class="card-title">Financial Snapshot <span class="info-icon" data-tip="Key financial metrics at a glance: revenue, EBITDA, margins, EPS, and debt ratios from the most recent quarter.">&#9432;</span></div>
+                    <table id="fin-table">
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <!-- Revenue & EBITDA Trend -->
+                <div class="card">
+                    <div class="card-title">Revenue &amp; EBITDA Trend <span class="info-icon" data-tip="Quarterly revenue and EBITDA over the past 8 quarters, showing growth trajectory and profitability trends.">&#9432;</span></div>
+                    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+                </div>
             </div>
 
-            <!-- Revenue & EBITDA Trend -->
-            <div class="card">
-                <div class="card-title">Revenue & EBITDA Trend <span class="info-icon" data-tip="Quarterly revenue and EBITDA over the past 8 quarters, showing growth trajectory and profitability trends.">&#9432;</span></div>
-                <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+            <!-- Right Column: Price Performance -->
+            <div>
+                <!-- Price Performance -->
+                <div class="card">
+                    <div class="card-title">Price Performance <span class="info-icon" data-tip="Stock price returns across multiple timeframes including day, week, month, quarter, YTD, and 1-year.">&#9432;</span></div>
+                    <div class="perf-grid" id="perf-grid"></div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Right Column -->
-        <div>
+    <!-- Tab: Analyst & Ownership -->
+    <div id="co-tab-analyst" class="co-tab-content">
+        <div class="two-col">
             <!-- Analyst Consensus -->
             <div class="card">
                 <div class="card-title">Analyst Consensus <span class="info-icon" data-tip="Wall Street analyst ratings breakdown (Buy/Hold/Sell) and 12-month price target range. Shows consensus view on the stock.">&#9432;</span></div>
@@ -545,15 +602,9 @@
                 </div>
             </div>
 
-            <!-- Price Performance -->
+            <!-- Ownership & Short Interest -->
             <div class="card">
-                <div class="card-title">Price Performance <span class="info-icon" data-tip="Stock price chart with selectable timeframes and key technical levels including 50-day and 200-day moving averages.">&#9432;</span></div>
-                <div class="perf-grid" id="perf-grid"></div>
-            </div>
-
-            <!-- Insider Activity -->
-            <div class="card">
-                <div class="card-title">Ownership & Short Interest <span class="info-icon" data-tip="Institutional vs. insider ownership breakdown and current short interest as a percentage of float. High short interest can indicate bearish sentiment or squeeze potential.">&#9432;</span></div>
+                <div class="card-title">Ownership &amp; Short Interest <span class="info-icon" data-tip="Institutional vs. insider ownership breakdown and current short interest as a percentage of float. High short interest can indicate bearish sentiment or squeeze potential.">&#9432;</span></div>
                 <div class="insider-grid" id="insider-grid">
                     <div class="insider-item">
                         <div class="insider-val" id="own-insider">—</div>
@@ -572,63 +623,72 @@
         </div>
     </div>
 
-    <!-- Transcript Summary Section -->
-    <div class="card transcript-section" id="transcript-section">
-        <div class="card-title">Latest Earnings Call Summary <span class="info-icon" data-tip="AI-generated summary of the most recent earnings call transcript covering key highlights, guidance, sentiment, and risk factors.">&#9432;</span></div>
-        <div id="transcript-content">
-            <div class="no-data">No transcript data available for this company.</div>
+    <!-- Tab: Earnings -->
+    <div id="co-tab-earnings" class="co-tab-content">
+        <!-- Transcript Summary Section -->
+        <div class="card transcript-section" id="transcript-section">
+            <div class="card-title">Latest Earnings Call Summary <span class="info-icon" data-tip="AI-generated summary of the most recent earnings call transcript covering key highlights, guidance, sentiment, and risk factors.">&#9432;</span></div>
+            <div id="transcript-content">
+                <div class="no-data">No transcript data available for this company.</div>
+            </div>
         </div>
     </div>
 
-    <!-- SEC Filings Table -->
-    <div class="card">
-        <div class="card-title">Recent SEC Filings <span class="info-icon" data-tip="Latest regulatory filings (10-K, 10-Q, 8-K) submitted to the SEC. Click to view the full filing on EDGAR.">&#9432;</span></div>
-        <div style="overflow-x:auto;">
-            <table id="filings-table">
-                <thead>
-                    <tr>
-                        <th>Filing Type</th>
-                        <th>Description</th>
-                        <th>Date Filed</th>
-                        <th>Link</th>
-                    </tr>
-                </thead>
-                <tbody id="filings-body">
-                    <tr><td colspan="4" class="no-data">No filings data available.</td></tr>
-                </tbody>
-            </table>
+    <!-- Tab: News & Filings -->
+    <div id="co-tab-news" class="co-tab-content">
+        <!-- Company News Feed -->
+        <div class="card">
+            <div class="card-title">Company News <span class="info-icon" data-tip="Recent news articles and press releases related to this company from financial news sources.">&#9432;</span></div>
+            <div id="company-news-feed">
+                <div class="no-data">No news available for this company.</div>
+            </div>
+        </div>
+
+        <!-- SEC Filings Table -->
+        <div class="card">
+            <div class="card-title">Recent SEC Filings <span class="info-icon" data-tip="Latest regulatory filings (10-K, 10-Q, 8-K) submitted to the SEC. Click to view the full filing on EDGAR.">&#9432;</span></div>
+            <div style="overflow-x:auto;">
+                <table id="filings-table">
+                    <thead>
+                        <tr>
+                            <th>Filing Type</th>
+                            <th>Description</th>
+                            <th>Date Filed</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody id="filings-body">
+                        <tr><td colspan="4" class="no-data">No filings data available.</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- Peer Comparison Mini Table -->
-    <div class="card">
-        <div class="card-title">Peer Comparison <span class="info-icon" data-tip="Side-by-side comparison of key metrics against companies in the same gaming sub-sector. Highlights relative strengths and weaknesses.">&#9432;</span></div>
-        <div style="overflow-x:auto;">
-            <table id="peer-table">
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Company</th>
-                        <th>Price</th>
-                        <th>Market Cap</th>
-                        <th>P/E</th>
-                        <th>EV/EBITDA</th>
-                        <th>EBITDA Margin</th>
-                        <th>YTD %</th>
-                    </tr>
-                </thead>
-                <tbody id="peer-body">
-                    <tr><td colspan="8" class="no-data">Select a company to view peers.</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Company News Feed -->
-    <div class="card">
-        <div class="card-title">Company News <span class="info-icon" data-tip="Recent news articles and press releases related to this company from financial news sources.">&#9432;</span></div>
-        <div id="company-news-feed">
-            <div class="no-data">No news available for this company.</div>
+    <!-- Tab: Peers -->
+    <div id="co-tab-peers" class="co-tab-content">
+        <!-- Peer Comparison Mini Table -->
+        <div class="card">
+            <div class="card-title">Peer Comparison <span class="info-icon" data-tip="Side-by-side comparison of key metrics against companies in the same gaming sub-sector. Highlights relative strengths and weaknesses.">&#9432;</span></div>
+            <div style="overflow-x:auto;">
+                <table id="peer-table">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Company</th>
+                            <th>Price</th>
+                            <th>Market Cap</th>
+                            <th>P/E</th>
+                            <th>EV/EBITDA</th>
+                            <th>EBITDA Margin</th>
+                            <th>YTD %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="peer-body">
+                        <tr><td colspan="8" class="no-data">Select a company to view peers.</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -817,6 +877,13 @@ function selectCompany(ticker) {
     document.getElementById('company-select').value = ticker;
 }
 
+function coTab(id, btn) {
+    document.querySelectorAll('.co-tab-content').forEach(function(el){ el.classList.remove('active'); });
+    document.querySelectorAll('.company-tab').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById('co-tab-'+id).classList.add('active');
+    btn.classList.add('active');
+}
+
 function updateHeader(ticker, data) {
     var catColor = CATEGORY_COLORS[data.category] || '#888';
     document.getElementById('hdr-name').textContent = data.company || ticker;
@@ -840,6 +907,20 @@ function updateHeader(ticker, data) {
         changeEl.textContent = '—';
         changeEl.className = 'price-change';
     }
+
+    // 52-week range bar
+    var lo = data.fifty_two_week_low, hi = data.fifty_two_week_high, pr = data.price;
+    var w52 = document.getElementById('week52-container');
+    if (lo && hi && pr) {
+        var pct = Math.min(100, Math.max(0, ((pr - lo) / (hi - lo)) * 100));
+        document.getElementById('w52fill').style.width = pct+'%';
+        document.getElementById('w52dot').style.left = pct+'%';
+        document.getElementById('w52low').textContent = '$'+Number(lo).toFixed(2);
+        document.getElementById('w52high').textContent = '$'+Number(hi).toFixed(2);
+        w52.style.display = 'block';
+    } else {
+        w52.style.display = 'none';
+    }
 }
 
 function updateKPIs(data) {
@@ -861,11 +942,31 @@ function updateKPIs(data) {
     }
 }
 
+function toggleFinRow(rowId) {
+    var detail = document.getElementById(rowId);
+    var trigger = detail ? detail.previousElementSibling : null;
+    if (!detail) return;
+    if (detail.classList.contains('visible')) {
+        detail.classList.remove('visible');
+        if (trigger) trigger.classList.remove('open');
+    } else {
+        detail.classList.add('visible');
+        if (trigger) trigger.classList.add('open');
+    }
+}
+
 function updateFinancials(data) {
     var html = '';
-    FIN_METRICS.forEach(function(m) {
+    FIN_METRICS.forEach(function(m, i) {
         var val = data[m.key];
-        html += '<tr><td class="td-label">' + m.label + '</td><td class="td-val">' + fmtVal(val, m.fmt) + '</td></tr>';
+        var detailId = 'fin-detail-' + i;
+        html += '<tr class="expand-row" onclick="toggleFinRow(\'' + detailId + '\')">' +
+            '<td class="td-label">' + m.label + '</td>' +
+            '<td class="td-val">' + fmtVal(val, m.fmt) + '</td>' +
+            '</tr>' +
+            '<tr class="detail-row" id="' + detailId + '">' +
+            '<td colspan="2">TTM / most recent reported period</td>' +
+            '</tr>';
     });
     document.querySelector('#fin-table tbody').innerHTML = html;
 }
