@@ -348,6 +348,88 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
+        /* Tab Bar */
+        .tab-bar{display:flex;gap:4px;margin-bottom:var(--gap);background:var(--bg-card);border-radius:var(--radius);padding:4px;border:var(--border);flex-wrap:wrap;}
+        .tab-btn{padding:10px 20px;border:none;background:transparent;color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer;border-radius:6px;transition:all 0.2s;}
+        .tab-btn.active{background:rgba(245,158,11,0.15);color:var(--accent);}
+        .tab-btn:hover{color:var(--text-primary);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+
+        /* Search Bar */
+        .search-bar{margin-bottom:var(--gap);position:relative;}
+        .search-bar input{width:100%;padding:12px 16px 12px 42px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-size:14px;transition:border-color 0.2s;}
+        .search-bar input::placeholder{color:var(--text-secondary);}
+        .search-bar input:focus{outline:none;border-color:var(--accent);}
+        .search-bar .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:16px;pointer-events:none;}
+
+        /* Story Count */
+        .story-count{font-size:13px;color:var(--text-secondary);margin-bottom:var(--gap);padding:0 4px;}
+        .story-count span{color:var(--accent);font-weight:600;}
+
+        /* News Cards */
+        .news-card{background:var(--bg-card);border:var(--border);border-radius:var(--radius);padding:14px 18px;transition:transform 0.15s, border-color 0.2s;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);}
+        .news-card:hover{transform:translateY(-1px);border-color:rgba(245,158,11,0.2);}
+        .news-card .headline{font-size:14px;font-weight:700;line-height:1.4;margin-bottom:5px;}
+        .news-card .headline a{color:#ffffff;text-decoration:none;transition:color 0.2s;}
+        .news-card .headline a:hover{color:var(--accent);}
+        .news-card .meta-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;}
+        .news-card .provider{font-size:11px;color:var(--accent);font-weight:600;}
+        .news-card .date{font-size:11px;color:var(--text-secondary);}
+        .news-card .meta-sep{color:rgba(255,255,255,0.15);font-size:9px;}
+        .news-card .summary{font-size:12px;color:#b0b8c1;line-height:1.5;margin-bottom:8px;}
+        .news-card .tags-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center;}
+
+        /* Category label */
+        .cat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:10px;}
+        .cat-label.industry{background:rgba(79,195,247,0.15);color:var(--accent2);}
+        .cat-label.multi{background:rgba(186,104,200,0.15);color:var(--accent4);}
+        .cat-label.company{background:rgba(129,199,132,0.15);color:var(--accent3);}
+
+        /* Analyst Actions */
+        .analyst-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px;}
+        .ak-card{background:var(--bg-card);border:var(--border);border-radius:var(--radius);padding:14px 16px;text-align:center;}
+        .ak-card .ak-val{font-size:26px;font-weight:700;line-height:1.2;}
+        .ak-card .ak-label{font-size:11px;color:var(--text-secondary);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;}
+        .ak-card.up .ak-val{color:var(--positive);}
+        .ak-card.down .ak-val{color:var(--negative);}
+        .ak-card.init .ak-val{color:var(--accent2);}
+        .ak-card.maint .ak-val{color:var(--text-secondary);}
+
+        .analyst-controls{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center;}
+        .analyst-controls input{padding:8px 12px 8px 32px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:var(--bg-card);color:var(--text-primary);font-size:13px;flex:1;min-width:180px;}
+        .analyst-controls input:focus{outline:none;border-color:var(--accent);}
+        .analyst-controls select{padding:8px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:var(--bg-card);color:var(--text-primary);font-size:13px;cursor:pointer;}
+        .analyst-controls select:focus{outline:none;border-color:var(--accent);}
+
+        .analyst-table-wrap{overflow-x:auto;border-radius:var(--radius);border:var(--border);}
+        .analyst-table{width:100%;border-collapse:collapse;font-size:13px;}
+        .analyst-table th{background:rgba(245,158,11,0.08);color:var(--accent);padding:10px 12px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;white-space:nowrap;user-select:none;border-bottom:1px solid rgba(255,255,255,0.08);}
+        .analyst-table th:hover{background:rgba(245,158,11,0.15);}
+        .analyst-table th .sort-arrow{margin-left:4px;opacity:0.5;font-size:10px;}
+        .analyst-table th.sorted .sort-arrow{opacity:1;color:var(--accent);}
+        .analyst-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04);white-space:nowrap;}
+        .analyst-table tr:hover td{background:rgba(255,255,255,0.03);}
+        .analyst-table .action-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;text-transform:capitalize;}
+        .analyst-table .action-badge.upgrade{background:rgba(76,175,80,0.15);color:var(--positive);}
+        .analyst-table .action-badge.downgrade{background:rgba(244,67,54,0.15);color:var(--negative);}
+        .analyst-table .action-badge.init{background:rgba(79,195,247,0.15);color:var(--accent2);}
+        .analyst-table .action-badge.maintained{background:rgba(158,158,158,0.15);color:var(--text-secondary);}
+        .analyst-table .grade-arrow{color:var(--text-secondary);margin:0 4px;}
+
+        /* Nav Chips & Trending */
+        .news-nav-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+        .nav-chip{padding:5px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;font-size:12px;font-weight:500;color:#9ca3af;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+        .nav-chip:hover{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3);color:#f59e0b;}
+        .nav-chip .chip-count{font-size:10px;opacity:0.7;margin-left:3px;}
+        .trending-section{background:#1a1d29;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px 18px;margin-top:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);}
+        .trending-section h3{font-size:13px;font-weight:600;color:#e8eaed;margin-bottom:10px;}
+        .trending-tags{display:flex;flex-wrap:wrap;gap:6px;}
+        .trend-tag{padding:4px 10px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:12px;font-size:11px;font-weight:600;color:#f59e0b;cursor:pointer;}
+        .trend-tag:hover{background:rgba(245,158,11,0.2);}
+
+        /* No Results */
+        .no-results{text-align:center;padding:60px 20px;color:var(--text-secondary);font-size:15px;}
+
         .info-icon { position:relative; cursor:help; font-size:14px; color:var(--accent); opacity:1; display:inline-block; }
         .info-icon:hover { color:#fbbf24; }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
@@ -372,89 +454,100 @@
     <!-- Header -->
     <div class="page-header">
         <h1>Casino Gaming News</h1>
-        <p>Aggregated news, SEC filings, and earnings calendar for casino and gaming companies</p>
+        <p>Aggregated news, analyst actions, and earnings calendar for casino and gaming companies</p>
     </div>
 
-    <!-- Search / Filter Bar -->
-    <div class="filter-bar">
-        <input type="text" id="searchInput" placeholder="Search headlines, tickers, sources…" />
-        <select id="categoryFilter">
-            <option value="All">All Categories</option>
-            <option value="Industry-Wide">Industry-Wide</option>
-            <option value="Multi-Company">Multi-Company</option>
-            <option value="Company-Specific">Company-Specific</option>
-        </select>
-        <select id="sectorFilter">
-            <option value="All">All Sectors</option>
-            <option value="Integrated Resorts">Integrated Resorts</option>
-            <option value="Regional Operators">Regional Operators</option>
-            <option value="Online & iGaming">Online &amp; iGaming</option>
-            <option value="Gaming Equipment">Gaming Equipment</option>
-        </select>
+    <!-- Nav Chips (populated by JS) -->
+    <div class="news-nav-chips" id="news-nav-chips"><!-- populated by JS --></div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('industry',this)">Industry-Wide</button>
+        <button class="tab-btn" onclick="switchTab('sector',this)">Sector News</button>
+        <button class="tab-btn" onclick="switchTab('company',this)">Company Headlines</button>
+        <button class="tab-btn" onclick="switchTab('analyst',this)">Analyst Actions</button>
+        <button class="tab-btn" onclick="switchTab('earnings',this)">Earnings Calendar</button>
     </div>
 
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="stat-chip">
-            <div class="stat-value" id="statArticles">0</div>
-            <div class="stat-label">Total Articles</div>
+    <!-- Industry-Wide Tab -->
+    <div class="tab-content active" id="tab-industry">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div class="story-count" id="count-industry"></div>
         </div>
-        <div class="stat-chip">
-            <div class="stat-value" id="statSources">0</div>
-            <div class="stat-label">Sources</div>
-        </div>
-        <div class="stat-chip">
-            <div class="stat-value" id="statFilings">0</div>
-            <div class="stat-label">SEC Filings</div>
-        </div>
-        <div class="stat-chip">
-            <div class="stat-value" id="statUpdate">—</div>
-            <div class="stat-label">Latest Update</div>
-        </div>
+        <div class="news-feed" id="feed-industry"></div>
     </div>
 
-    <!-- News Feed -->
-    <div id="newsFeed" class="news-feed"></div>
-    <div class="load-more-wrap">
-        <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More</button>
+    <!-- Sector News Tab -->
+    <div class="tab-content" id="tab-sector">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div class="story-count" id="count-sector"></div>
+        </div>
+        <div class="news-feed" id="feed-sector"></div>
     </div>
 
-    <!-- SEC Filings & Earnings Calendar -->
-    <div class="bottom-grid">
-        <!-- SEC Filings -->
-        <div class="data-section">
-            <div class="section-title">Recent SEC Filings <span class="info-icon" data-tip="Latest 10-K (annual), 10-Q (quarterly), and 8-K (material event) filings submitted to the SEC by tracked gaming companies.">&#9432;</span></div>
-            <table>
+    <!-- Company Headlines Tab -->
+    <div class="tab-content" id="tab-company">
+        <div class="search-bar">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" id="companySearch" placeholder="Search by ticker or company name..." oninput="renderCompanyTab()">
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div class="story-count" id="count-company"></div>
+        </div>
+        <div class="news-feed" id="feed-company"></div>
+    </div>
+
+    <!-- Analyst Actions Tab -->
+    <div class="tab-content" id="tab-analyst">
+        <div class="analyst-kpis" id="analystKPIs"></div>
+        <div class="analyst-controls">
+            <div style="position:relative;flex:1;min-width:180px;">
+                <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-secondary);font-size:14px;pointer-events:none;">&#128269;</span>
+                <input type="text" id="analystSearch" placeholder="Search by ticker, company, or firm..." oninput="renderAnalystActions()">
+            </div>
+            <select id="analystFilter" onchange="renderAnalystActions()">
+                <option value="all">All Actions</option>
+                <option value="upgrade">Upgrades Only</option>
+                <option value="downgrade">Downgrades Only</option>
+                <option value="init">Initiations Only</option>
+                <option value="maintained">Maintained / Reiterated</option>
+            </select>
+        </div>
+        <div class="story-count" id="count-analyst" style="margin-bottom:10px;"></div>
+        <div class="analyst-table-wrap">
+            <table class="analyst-table" id="analystTable">
                 <thead>
                     <tr>
-                        <th>Company</th>
-                        <th>Form</th>
-                        <th>Filed</th>
-                        <th>Link</th>
+                        <th onclick="sortAnalystCol('d')">Date <span class="sort-arrow">&#9650;</span></th>
+                        <th onclick="sortAnalystCol('tk')">Ticker <span class="sort-arrow">&#9650;</span></th>
+                        <th onclick="sortAnalystCol('co')">Company <span class="sort-arrow">&#9650;</span></th>
+                        <th onclick="sortAnalystCol('f')">Analyst Firm <span class="sort-arrow">&#9650;</span></th>
+                        <th onclick="sortAnalystCol('a')">Action <span class="sort-arrow">&#9650;</span></th>
+                        <th>Rating Change</th>
                     </tr>
                 </thead>
-                <tbody id="filingsBody"></tbody>
+                <tbody id="analystBody"></tbody>
             </table>
-            <div class="empty-state" id="filingsEmpty" style="display:none;">No recent filings available.</div>
         </div>
+    </div>
 
-        <!-- Earnings Calendar -->
-        <div class="data-section">
-            <div class="section-title">Upcoming Earnings <span class="info-icon" data-tip="Gaming companies scheduled to report earnings in the coming weeks. Dates sourced from company investor relations and financial data providers.">&#9432;</span></div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Ticker</th>
-                        <th>Report Date</th>
-                        <th>Time</th>
-                        <th>Est. EPS</th>
-                    </tr>
-                </thead>
-                <tbody id="earningsBody"></tbody>
-            </table>
-            <div class="empty-state" id="earningsEmpty" style="display:none;">No upcoming earnings dates.</div>
+    <!-- Earnings Calendar Tab -->
+    <div class="tab-content" id="tab-earnings">
+        <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
+            <select id="earningsFilter" onchange="renderEarningsCalendar()" style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.1);color:var(--text-primary);padding:6px 12px;border-radius:6px;font-size:12px;">
+                <option value="all">All Events</option>
+                <option value="upcoming">Upcoming Only</option>
+                <option value="reported">Reported Only</option>
+            </select>
+            <div class="story-count" id="count-earnings"></div>
         </div>
+        <div id="earnings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;"></div>
+    </div>
+
+    <!-- Trending Tickers -->
+    <div class="trending-section">
+        <h3>Trending Tickers <span class="info-icon" data-tip="Most-mentioned company tickers across all news categories.">&#9432;</span></h3>
+        <div class="trending-tags" id="trendingTags"></div>
     </div>
 
     <footer style="text-align:center;padding:24px 16px;color:var(--text-secondary);font-size:0.75rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:32px;">
@@ -469,278 +562,8 @@ var NEWS_DATA = { articles: [], filings: [], earnings_calendar: [] };
 var MD = {};
 // INJECTED_DATA_END
 
-// ============================================================
-// Constants
-// ============================================================
-var PAGE_SIZE = 20;
-var currentPage = 0;
-var filteredArticles = [];
-
-var SECTOR_TICKER_CLASS = {
-    'Integrated Resorts': 'ticker-integrated',
-    'Regional Operators': 'ticker-regional',
-    'Online & iGaming': 'ticker-online',
-    'Gaming Equipment': 'ticker-equipment'
-};
-
-var CATEGORY_BADGE_CLASS = {
-    'Industry-Wide': 'badge-category-industry',
-    'Multi-Company': 'badge-category-multi',
-    'Company-Specific': 'badge-category-company'
-};
-
-// ============================================================
-// Initialization
-// ============================================================
-function renderTicker() {
-    var strip = document.getElementById('ticker-track');
-    if (!strip) return;
-    var data = (typeof MD !== 'undefined' && MD) ? MD : {};
-    if (!Object.keys(data).length) return;
-    var html = '';
-    Object.keys(data).forEach(function(t) {
-        var d = data[t];
-        var chg = d.change_pct || 0;
-        var dir = chg > 0 ? 'tk-up' : chg < 0 ? 'tk-down' : 'tk-flat';
-        var arrow = chg > 0 ? '▲' : chg < 0 ? '▼' : '';
-        html += '<div class="ticker-item"><span class="tk-sym">' + (d.display_ticker || t) + '</span><span class="tk-price"> ' + Number(d.price || 0).toFixed(2) + '</span><span class="' + dir + '">' + arrow + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span></div>';
-    });
-    strip.innerHTML = html + html;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    renderTicker();
-    populateStats();
-    applyFilters();
-    renderFilings();
-    renderEarnings();
-
-    document.getElementById('searchInput').addEventListener('input', debounce(applyFilters, 250));
-    document.getElementById('categoryFilter').addEventListener('change', applyFilters);
-    document.getElementById('sectorFilter').addEventListener('change', applyFilters);
-});
-
-// ============================================================
-// Stats
-// ============================================================
-function populateStats() {
-    var articles = NEWS_DATA.articles || [];
-    var filings = NEWS_DATA.filings || [];
-    document.getElementById('statArticles').textContent = articles.length;
-
-    var sources = {};
-    articles.forEach(function(a) { if (a.source) sources[a.source] = true; });
-    document.getElementById('statSources').textContent = Object.keys(sources).length;
-    document.getElementById('statFilings').textContent = filings.length;
-
-    if (articles.length > 0 && articles[0].published) {
-        document.getElementById('statUpdate').textContent = formatTime(articles[0].published);
-    }
-}
-
-// ============================================================
-// Filtering
-// ============================================================
-function applyFilters() {
-    var query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-    var cat = document.getElementById('categoryFilter').value;
-    var sector = document.getElementById('sectorFilter').value;
-    var articles = NEWS_DATA.articles || [];
-
-    filteredArticles = articles.filter(function(a) {
-        // Text search
-        if (query) {
-            var haystack = ((a.headline || '') + ' ' + (a.source || '') + ' ' + (a.tickers || []).join(' ')).toLowerCase();
-            if (haystack.indexOf(query) === -1) return false;
-        }
-        // Category filter
-        if (cat !== 'All' && a.category !== cat) return false;
-        // Sector filter
-        if (sector !== 'All') {
-            var tickers = a.tickers || [];
-            var sectors = a.ticker_sectors || {};
-            var match = tickers.some(function(t) { return sectors[t] === sector; });
-            if (!match && a.sector !== sector) return false;
-        }
-        return true;
-    });
-
-    currentPage = 0;
-    document.getElementById('newsFeed').innerHTML = '';
-    renderPage();
-    updateLoadMoreBtn();
-}
-
-// ============================================================
-// Rendering articles
-// ============================================================
-function renderPage() {
-    var feed = document.getElementById('newsFeed');
-    var start = currentPage * PAGE_SIZE;
-    var end = Math.min(start + PAGE_SIZE, filteredArticles.length);
-
-    if (filteredArticles.length === 0) {
-        feed.innerHTML = '<div class="empty-state">No articles match your filters.</div>';
-        return;
-    }
-
-    for (var i = start; i < end; i++) {
-        feed.appendChild(createArticleCard(filteredArticles[i]));
-    }
-}
-
-function createArticleCard(article) {
-    var card = document.createElement('div');
-    card.className = 'article-card';
-
-    // Headline
-    var headlineDiv = document.createElement('div');
-    headlineDiv.className = 'article-headline';
-    var link = document.createElement('a');
-    link.href = article.url || '#';
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = article.headline || article.title || 'Untitled';
-    headlineDiv.appendChild(link);
-    card.appendChild(headlineDiv);
-
-    // Meta row: source + time + category
-    var meta = document.createElement('div');
-    meta.className = 'article-meta';
-
-    if (article.source) {
-        var srcBadge = document.createElement('span');
-        srcBadge.className = 'badge badge-source';
-        srcBadge.textContent = article.source;
-        meta.appendChild(srcBadge);
-    }
-
-    if (article.published) {
-        var timeBadge = document.createElement('span');
-        timeBadge.className = 'badge badge-time';
-        timeBadge.textContent = formatTime(article.published);
-        meta.appendChild(timeBadge);
-    }
-
-    if (article.category) {
-        var catBadge = document.createElement('span');
-        catBadge.className = 'badge ' + (CATEGORY_BADGE_CLASS[article.category] || 'badge-time');
-        catBadge.textContent = article.category;
-        meta.appendChild(catBadge);
-    }
-
-    card.appendChild(meta);
-
-    // Ticker badges
-    var tickers = article.tickers || [];
-    if (tickers.length > 0) {
-        var tickerDiv = document.createElement('div');
-        tickerDiv.className = 'ticker-badges';
-        var sectors = article.ticker_sectors || {};
-        tickers.forEach(function(t) {
-            var tb = document.createElement('span');
-            var cls = SECTOR_TICKER_CLASS[sectors[t]] || 'ticker-integrated';
-            tb.className = 'ticker-badge ' + cls;
-            tb.textContent = t;
-            tickerDiv.appendChild(tb);
-        });
-        card.appendChild(tickerDiv);
-    }
-
-    // Relevance bar
-    var score = article.relevance_score;
-    if (typeof score === 'number') {
-        var wrap = document.createElement('div');
-        wrap.className = 'relevance-bar-wrap';
-        var lbl = document.createElement('span');
-        lbl.className = 'relevance-label';
-        lbl.textContent = 'Relevance';
-        var bar = document.createElement('div');
-        bar.className = 'relevance-bar';
-        var fill = document.createElement('div');
-        fill.className = 'relevance-fill';
-        fill.style.width = Math.min(score, 100) + '%';
-        bar.appendChild(fill);
-        var val = document.createElement('span');
-        val.className = 'relevance-val';
-        val.textContent = score + '%';
-        wrap.appendChild(lbl);
-        wrap.appendChild(bar);
-        wrap.appendChild(val);
-        card.appendChild(wrap);
-    }
-
-    return card;
-}
-
-// ============================================================
-// Load More
-// ============================================================
-function loadMore() {
-    currentPage++;
-    renderPage();
-    updateLoadMoreBtn();
-}
-
-function updateLoadMoreBtn() {
-    var btn = document.getElementById('loadMoreBtn');
-    var shown = Math.min((currentPage + 1) * PAGE_SIZE, filteredArticles.length);
-    if (shown >= filteredArticles.length) {
-        btn.disabled = true;
-        btn.textContent = 'All articles loaded';
-    } else {
-        btn.disabled = false;
-        btn.textContent = 'Load More (' + (filteredArticles.length - shown) + ' remaining)';
-    }
-}
-
-// ============================================================
-// SEC Filings
-// ============================================================
-function renderFilings() {
-    var tbody = document.getElementById('filingsBody');
-    var filings = NEWS_DATA.filings || [];
-    if (filings.length === 0) {
-        document.getElementById('filingsEmpty').style.display = 'block';
-        return;
-    }
-    filings.forEach(function(f) {
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-            '<td>' + esc(f.company || f.ticker || '') + '</td>' +
-            '<td><span class="form-badge">' + esc(f.form_type || f.type || '') + '</span></td>' +
-            '<td>' + esc(f.filed_date || f.date || f.modified || '') + '</td>' +
-            '<td>' + (f.url ? '<a href="' + esc(f.url) + '" target="_blank" rel="noopener">View</a>' : '—') + '</td>';
-        tbody.appendChild(tr);
-    });
-}
-
-// ============================================================
-// Earnings Calendar
-// ============================================================
-function renderEarnings() {
-    var tbody = document.getElementById('earningsBody');
-    var earnings = NEWS_DATA.earnings_calendar || [];
-    if (earnings.length === 0) {
-        document.getElementById('earningsEmpty').style.display = 'block';
-        return;
-    }
-    earnings.forEach(function(e) {
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-            '<td>' + esc(e.company || '') + '</td>' +
-            '<td><span class="ticker-badge ticker-integrated">' + esc(e.ticker || '') + '</span></td>' +
-            '<td>' + esc(e.report_date || '') + '</td>' +
-            '<td>' + esc(e.time || '') + '</td>' +
-            '<td>' + esc(e.est_eps != null ? e.est_eps : '—') + '</td>';
-        tbody.appendChild(tr);
-    });
-}
-
-// ============================================================
-// Utilities
-// ============================================================
-function formatTime(str) {
+/* ─── Helpers ─── */
+function formatDate(str) {
     if (!str) return '—';
     try {
         var d = new Date(str);
@@ -751,7 +574,7 @@ function formatTime(str) {
         if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
         if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    } catch (e) { return str; }
+    } catch(e) { return str; }
 }
 
 function esc(s) {
@@ -760,13 +583,313 @@ function esc(s) {
     return div.innerHTML;
 }
 
-function debounce(fn, ms) {
-    var timer;
-    return function() {
-        clearTimeout(timer);
-        timer = setTimeout(fn, ms);
-    };
+/* ─── Ticker Bar ─── */
+function renderTicker() {
+    var strip = document.getElementById('ticker-track');
+    if (!strip) return;
+    var data = (typeof MD !== 'undefined' && MD) ? MD : {};
+    if (!Object.keys(data).length) return;
+    var html = '';
+    Object.keys(data).forEach(function(t) {
+        var d = data[t];
+        var chg = d.change_pct || 0;
+        var dir = chg > 0 ? 'tk-up' : chg < 0 ? 'tk-down' : 'tk-flat';
+        var arrow = chg > 0 ? '\u25B2' : chg < 0 ? '\u25BC' : '';
+        html += '<div class="ticker-item"><span class="tk-sym">' + (d.display_ticker || t) + '</span><span class="tk-price"> ' + Number(d.price || 0).toFixed(2) + '</span><span class="' + dir + '">' + arrow + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span></div>';
+    });
+    strip.innerHTML = html + html;
 }
+
+/* ─── Build Article Card ─── */
+var SECTOR_TICKER_CLASS = {
+    'Integrated Resorts': 'ticker-integrated',
+    'Regional Operators': 'ticker-regional',
+    'Online & iGaming': 'ticker-online',
+    'Gaming Equipment': 'ticker-equipment'
+};
+
+function getArticleCategory(article) {
+    // Support both 'category' (old live data) and 'type' (new pipeline format)
+    var cat = article.category || '';
+    var type = article.type || '';
+    if (cat === 'Industry-Wide' || type === 'industry') return 'industry';
+    if (cat === 'Multi-Company' || type === 'sector') return 'sector';
+    if (cat === 'Company-Specific' || type === 'company') return 'company';
+    return 'industry';
+}
+
+function buildCard(article) {
+    var card = document.createElement('div');
+    card.className = 'news-card';
+
+    // Category label
+    var catKey = getArticleCategory(article);
+    var catClass = catKey === 'industry' ? 'industry' : catKey === 'sector' ? 'multi' : 'company';
+    var catText = catKey === 'industry' ? 'Industry-Wide' : catKey === 'sector' ? 'Multi-Company' : 'Company-Specific';
+
+    // Ticker badges — support both 'tickers' and 'matched_tickers' field names
+    var tickers = article.tickers || article.matched_tickers || [];
+    var sectors = article.ticker_sectors || {};
+    var tickerHTML = tickers.map(function(t) {
+        var cls = SECTOR_TICKER_CLASS[sectors[t]] || 'ticker-integrated';
+        return '<span class="ticker-badge ' + cls + '">' + t + '</span>';
+    }).join('');
+
+    card.innerHTML =
+        '<div class="cat-label ' + catClass + '">' + catText + '</div>' +
+        '<div class="headline"><a href="' + esc(article.url || '#') + '" target="_blank" rel="noopener">' + esc(article.headline || article.title || 'Untitled') + '</a></div>' +
+        '<div class="meta-row">' +
+            '<span class="provider">' + esc(article.source || '') + '</span>' +
+            (article.date || article.published ? '<span class="meta-sep">&bull;</span><span class="date">' + formatDate(article.date || article.published) + '</span>' : '') +
+        '</div>' +
+        (article.summary ? '<div class="summary">' + esc(article.summary) + '</div>' : '') +
+        (tickerHTML ? '<div class="tags-row">' + tickerHTML + '</div>' : '');
+
+    return card;
+}
+
+/* ─── Render Feed ─── */
+function renderFeed(containerId, countId, items) {
+    var feed = document.getElementById(containerId);
+    var countEl = document.getElementById(countId);
+    feed.innerHTML = '';
+    if (!items.length) {
+        feed.innerHTML = '<div class="no-results">No stories found</div>';
+        if (countEl) countEl.innerHTML = '<span>0</span> stories';
+        return;
+    }
+    if (countEl) countEl.innerHTML = '<span>' + items.length + '</span> stor' + (items.length === 1 ? 'y' : 'ies');
+    items.forEach(function(item) { feed.appendChild(buildCard(item)); });
+}
+
+function sortByDate(arr) {
+    return arr.slice().sort(function(a, b) {
+        return new Date(b.date || b.published || 0) - new Date(a.date || a.published || 0);
+    });
+}
+
+/* ─── Tab Renders ─── */
+function renderIndustryTab() {
+    var items = (NEWS_DATA.articles || []).filter(function(n) { return getArticleCategory(n) === 'industry'; });
+    renderFeed('feed-industry', 'count-industry', sortByDate(items));
+}
+
+function renderSectorTab() {
+    var items = (NEWS_DATA.articles || []).filter(function(n) { return getArticleCategory(n) === 'sector'; });
+    renderFeed('feed-sector', 'count-sector', sortByDate(items));
+}
+
+function renderCompanyTab() {
+    var q = (document.getElementById('companySearch').value || '').trim().toLowerCase();
+    var items = (NEWS_DATA.articles || []).filter(function(n) { return getArticleCategory(n) === 'company'; });
+    if (q) {
+        items = items.filter(function(n) {
+            var tickers = n.tickers || n.matched_tickers || [];
+            var tickerMatch = tickers.some(function(t) { return t.toLowerCase().indexOf(q) !== -1; });
+            var headlineMatch = (n.headline || n.title || '').toLowerCase().indexOf(q) !== -1;
+            return tickerMatch || headlineMatch;
+        });
+    }
+    renderFeed('feed-company', 'count-company', sortByDate(items));
+}
+
+/* ─── Tab Switching ─── */
+function switchTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+}
+
+/* ─── Analyst Actions ─── */
+var ANALYST_ACTIONS = (NEWS_DATA && NEWS_DATA.analyst_actions) ? NEWS_DATA.analyst_actions : [];
+var analystSortKey = 'd';
+var analystSortAsc = false;
+
+function classifyAction(a) {
+    var act = (a || '').toLowerCase();
+    if (act.indexOf('up') !== -1) return 'upgrade';
+    if (act.indexOf('down') !== -1) return 'downgrade';
+    if (act.indexOf('init') !== -1) return 'init';
+    return 'maintained';
+}
+
+function actionLabel(cls) {
+    if (cls === 'upgrade') return 'Upgrade';
+    if (cls === 'downgrade') return 'Downgrade';
+    if (cls === 'init') return 'Initiation';
+    return 'Maintained';
+}
+
+function buildAnalystKPIs() {
+    var actions = ANALYST_ACTIONS;
+    var ups = 0, downs = 0, inits = 0, maints = 0;
+    actions.forEach(function(a) {
+        var cls = classifyAction(a.a);
+        if (cls === 'upgrade') ups++;
+        else if (cls === 'downgrade') downs++;
+        else if (cls === 'init') inits++;
+        else maints++;
+    });
+    document.getElementById('analystKPIs').innerHTML =
+        '<div class="ak-card"><div class="ak-val" style="color:var(--accent);">' + actions.length + '</div><div class="ak-label">Total Actions (30d)</div></div>' +
+        '<div class="ak-card up"><div class="ak-val">' + ups + '</div><div class="ak-label">Upgrades</div></div>' +
+        '<div class="ak-card down"><div class="ak-val">' + downs + '</div><div class="ak-label">Downgrades</div></div>' +
+        '<div class="ak-card init"><div class="ak-val">' + inits + '</div><div class="ak-label">Initiations</div></div>' +
+        '<div class="ak-card maint"><div class="ak-val">' + maints + '</div><div class="ak-label">Maintained</div></div>';
+}
+
+function getFilteredAnalystActions() {
+    var q = (document.getElementById('analystSearch').value || '').trim().toLowerCase();
+    var filter = document.getElementById('analystFilter').value;
+    var items = ANALYST_ACTIONS.slice();
+    if (filter !== 'all') items = items.filter(function(a) { return classifyAction(a.a) === filter; });
+    if (q) {
+        items = items.filter(function(a) {
+            return (a.tk || '').toLowerCase().indexOf(q) !== -1 ||
+                   (a.co || '').toLowerCase().indexOf(q) !== -1 ||
+                   (a.f || '').toLowerCase().indexOf(q) !== -1;
+        });
+    }
+    items.sort(function(x, y) {
+        var va = x[analystSortKey] || '', vb = y[analystSortKey] || '';
+        if (typeof va === 'string') va = va.toLowerCase();
+        if (typeof vb === 'string') vb = vb.toLowerCase();
+        var cmp = va < vb ? -1 : va > vb ? 1 : 0;
+        return analystSortAsc ? cmp : -cmp;
+    });
+    return items;
+}
+
+function renderAnalystActions() {
+    var items = getFilteredAnalystActions();
+    var body = document.getElementById('analystBody');
+    var countEl = document.getElementById('count-analyst');
+    if (countEl) countEl.innerHTML = '<span>' + items.length + '</span> action' + (items.length !== 1 ? 's' : '');
+    if (!items.length) {
+        body.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-secondary);">No analyst actions found</td></tr>';
+        return;
+    }
+    var html = '';
+    items.forEach(function(a) {
+        var cls = classifyAction(a.a);
+        var lbl = actionLabel(cls);
+        var dateStr = a.d ? a.d.substring(0, 10) : '';
+        var fromGrade = a.fg || '—';
+        var toGrade = a.tg || '—';
+        html += '<tr>' +
+            '<td>' + dateStr + '</td>' +
+            '<td><a class="ticker-badge ticker-integrated" href="https://finance.yahoo.com/quote/' + encodeURIComponent(a.tk || '') + '" target="_blank" rel="noopener" style="font-size:11px;">' + esc(a.tk || '') + '</a></td>' +
+            '<td style="color:var(--text-primary);max-width:200px;overflow:hidden;text-overflow:ellipsis;" title="' + esc(a.co || '') + '">' + esc(a.co || '') + '</td>' +
+            '<td style="color:var(--text-secondary);">' + esc(a.f || '') + '</td>' +
+            '<td><span class="action-badge ' + cls + '">' + lbl + '</span></td>' +
+            '<td>' + esc(fromGrade) + ' <span class="grade-arrow">\u2192</span> ' + esc(toGrade) + '</td>' +
+            '</tr>';
+    });
+    body.innerHTML = html;
+}
+
+function sortAnalystCol(key) {
+    if (analystSortKey === key) { analystSortAsc = !analystSortAsc; }
+    else { analystSortKey = key; analystSortAsc = (key !== 'd'); }
+    document.querySelectorAll('#analystTable th').forEach(function(th) { th.classList.remove('sorted'); });
+    var cols = ['d', 'tk', 'co', 'f', 'a'];
+    var idx = cols.indexOf(key);
+    var ths = document.querySelectorAll('#analystTable th');
+    if (idx >= 0 && ths[idx]) {
+        ths[idx].classList.add('sorted');
+        ths[idx].querySelector('.sort-arrow').innerHTML = analystSortAsc ? '&#9650;' : '&#9660;';
+    }
+    renderAnalystActions();
+}
+
+/* ─── Earnings Calendar ─── */
+function renderEarningsCalendar() {
+    var filter = document.getElementById('earningsFilter').value;
+    var today = new Date().toISOString().slice(0, 10);
+    var items = (NEWS_DATA.earnings_calendar || []).slice();
+    if (filter === 'upcoming') items = items.filter(function(e) { return (e.date || e.report_date || '') >= today; });
+    else if (filter === 'reported') items = items.filter(function(e) { return (e.date || e.report_date || '') < today; });
+    items.sort(function(a, b) { return (a.date || a.report_date || '').localeCompare(b.date || b.report_date || ''); });
+    var countEl = document.getElementById('count-earnings');
+    if (countEl) countEl.innerHTML = '<span>' + items.length + '</span> earnings events';
+    var grid = document.getElementById('earnings-grid');
+    if (!items.length) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-secondary);">No earnings events found</div>';
+        return;
+    }
+    var html = '';
+    items.forEach(function(e) {
+        var dateVal = e.date || e.report_date || '';
+        var isUpcoming = dateVal >= today;
+        var badge = isUpcoming
+            ? '<span style="background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Upcoming</span>'
+            : '<span style="background:rgba(74,222,128,0.15);color:#4ade80;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Reported</span>';
+        html += '<div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
+            '<div><strong style="color:var(--accent);font-size:15px;">' + esc(e.ticker || '') + '</strong> <span style="color:var(--text-secondary);font-size:12px;">' + esc(e.company || '') + '</span></div>' +
+            badge + '</div>' +
+            '<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);">' +
+            '<div>&#128197; ' + esc(dateVal) + '</div>' +
+            '<div>' + esc(e.time || '') + '</div>' +
+            '</div>' +
+            (e.est_eps != null ? '<div style="margin-top:6px;font-size:12px;">EPS Est: <strong>' + esc(String(e.est_eps)) + '</strong></div>' : '') +
+            '</div>';
+    });
+    grid.innerHTML = html;
+}
+
+/* ─── Trending Tickers ─── */
+function renderTrendingTickers() {
+    var articles = NEWS_DATA.articles || [];
+    var counts = {};
+    articles.forEach(function(a) {
+        (a.tickers || a.matched_tickers || []).forEach(function(t) { counts[t] = (counts[t] || 0) + 1; });
+    });
+    var sorted = Object.keys(counts).sort(function(a, b) { return counts[b] - counts[a]; }).slice(0, 12);
+    var el = document.getElementById('trendingTags');
+    if (!el) return;
+    if (!sorted.length) { el.innerHTML = '<span style="color:#9ca3af;font-size:12px">No ticker data</span>'; return; }
+    el.innerHTML = sorted.map(function(t) {
+        return '<span class="trend-tag">' + t + ' <small style="opacity:0.7">' + counts[t] + '</small></span>';
+    }).join('');
+}
+
+/* ─── Nav Chips ─── */
+function renderNavChips() {
+    var el = document.getElementById('news-nav-chips');
+    if (!el) return;
+    var articles = NEWS_DATA.articles || [];
+    var industryCount = articles.filter(function(n) { return getArticleCategory(n) === 'industry'; }).length;
+    var sectorCount = articles.filter(function(n) { return getArticleCategory(n) === 'sector'; }).length;
+    var companyCount = articles.filter(function(n) { return getArticleCategory(n) === 'company'; }).length;
+    var analystCount = ANALYST_ACTIONS.length;
+    var earningsCount = (NEWS_DATA.earnings_calendar || []).length;
+    var tabs = [
+        { label: 'Industry-Wide', count: industryCount, id: 'industry' },
+        { label: 'Sector News', count: sectorCount, id: 'sector' },
+        { label: 'Company Headlines', count: companyCount, id: 'company' },
+        { label: 'Analyst Actions', count: analystCount, id: 'analyst' },
+        { label: 'Earnings Calendar', count: earningsCount, id: 'earnings' }
+    ];
+    el.innerHTML = tabs.map(function(tab) {
+        return '<span class="nav-chip" onclick="switchTab(\'' + tab.id + '\', document.querySelector(\'.tab-btn[onclick*=\\\''+tab.id+'\\\']\'))">' +
+            tab.label + '<span class="chip-count">(' + tab.count + ')</span></span>';
+    }).join('');
+}
+
+/* ─── Init ─── */
+// Re-read analyst actions after injected data loads
+ANALYST_ACTIONS = (NEWS_DATA && NEWS_DATA.analyst_actions) ? NEWS_DATA.analyst_actions : [];
+renderTicker();
+renderIndustryTab();
+renderSectorTab();
+renderCompanyTab();
+buildAnalystKPIs();
+renderAnalystActions();
+renderEarningsCalendar();
+renderTrendingTickers();
+renderNavChips();
 </script>
 <script src="auth.js?v=2"></script>
 <script src="export-utils.js"></script>

@@ -120,6 +120,8 @@
         .cal-item .cal-company { font-size: 11px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .cal-item .cal-est { font-size: 11px; color: var(--text-secondary); }
         .cal-item.past { opacity: 0.5; border-left-color: var(--text-secondary); }
+        .cal-card-soon { background: rgba(245,158,11,0.08) !important; border-left: 3px solid #f59e0b !important; }
+        .cal-card-past { opacity: 0.45; }
 
         /* ── Company Selector ── */
         .company-select-bar {
@@ -41466,6 +41468,16 @@ var EARNINGS_DATA = {
     }
 
     // ── Calendar ──
+    function calProximityClass(dateStr) {
+        if (!dateStr) return '';
+        var d = new Date(dateStr);
+        var now = new Date();
+        var diffDays = (d - now) / (1000 * 60 * 60 * 24);
+        if (diffDays < -1) return 'cal-card-past';
+        if (diffDays <= 7) return 'cal-card-soon';
+        return '';
+    }
+
     function buildCalendar() {
         const grid = document.getElementById('cal-grid');
         if (!calendar.length) { grid.innerHTML = '<div class="no-data">No upcoming earnings dates available</div>'; return; }
@@ -41476,7 +41488,8 @@ var EARNINGS_DATA = {
             const dt = new Date(c.report_date + 'T12:00:00');
             const dateStr = dt.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
             const color = catColors[c.category] || '#f59e0b';
-            html += `<div class="cal-item${isPast?' past':''}" style="border-left-color:${color}">
+            const proxClass = calProximityClass(c.report_date);
+            html += `<div class="cal-item${isPast?' past':''}${proxClass?' '+proxClass:''}" style="border-left-color:${color}">
                 <span class="cal-date">${dateStr}</span>
                 <span class="cal-ticker">${c.ticker}</span>
                 <span class="cal-company">${c.company}</span>

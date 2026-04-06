@@ -42,6 +42,7 @@ export async function onRequestGet(context) {
                     email: u.email,
                     name: u.name,
                     role: u.role,
+                    tier: u.tier || 'premium',
                     created_at: u.created_at,
                     last_login: u.last_login
                 });
@@ -67,7 +68,7 @@ export async function onRequestPatch(context) {
         return new Response(JSON.stringify({ error: 'Admin access required.' }), { status: 403, headers: CORS });
 
     try {
-        const { email, action } = await request.json();
+        const { email, action, tier } = await request.json();
         if (!email || !action)
             return new Response(JSON.stringify({ error: 'Email and action are required.' }), { status: 400, headers: CORS });
 
@@ -93,6 +94,12 @@ export async function onRequestPatch(context) {
                 break;
             case 'remove':
                 user.role = 'rejected';
+                break;
+            case 'set-tier':
+                if (!['free', 'basic', 'premium', 'allaccess'].includes(tier)) {
+                    return new Response(JSON.stringify({ error: 'Invalid tier. Must be free, basic, premium, or allaccess.' }), { status: 400, headers: CORS });
+                }
+                user.tier = tier;
                 break;
             default:
                 return new Response(JSON.stringify({ error: 'Invalid action.' }), { status: 400, headers: CORS });

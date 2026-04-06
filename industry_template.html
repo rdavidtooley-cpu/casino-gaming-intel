@@ -295,6 +295,10 @@
         .info-icon:hover { color:#ffe55c; }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
         .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#2d3748; z-index:99999; }
+        .source-credit { font-size:10px; color:#6b7280; margin-top:8px; padding-top:6px; border-top:1px solid rgba(255,255,255,0.06); letter-spacing:0.3px; font-style:italic; }
+        .source-credit a { color:#6b7280; text-decoration:none; }
+        .source-credit a:hover { color:#e8eaed; }
+        .data-freshness { font-size:10px; color:#9ca3af; background:rgba(255,255,255,0.04); padding:2px 8px; border-radius:10px; margin-left:8px; }
     </style>
 </head>
 <body>
@@ -375,6 +379,7 @@
         <div class="chart-wrap">
             <div class="section-title">Consumer Sentiment Trend <span class="info-icon" data-tip="University of Michigan Consumer Sentiment Index over time. Rising sentiment generally correlates with increased consumer spending on discretionary categories like gaming.">&#9432;</span></div>
             <canvas id="sentimentChart"></canvas>
+            <div class="source-credit">Source: University of Michigan / FRED</div>
         </div>
     </div>
 
@@ -422,6 +427,7 @@
         <div class="chart-wrap">
             <div class="section-title">State Revenue Comparison <span class="info-icon" data-tip="Year-over-year revenue comparison by state to identify markets gaining or losing momentum.">&#9432;</span></div>
             <canvas id="stateBarChart"></canvas>
+            <div class="source-credit">Source: American Gaming Association (AGA)</div>
         </div>
     </div>
 
@@ -435,6 +441,7 @@
         <div class="chart-wrap">
             <div class="section-title">Nevada Gaming Revenue Trend <span class="info-icon" data-tip="Monthly gross gaming revenue for the state of Nevada, the largest US gaming market. Includes both Las Vegas Strip and statewide figures.">&#9432;</span></div>
             <canvas id="nevadaRevenueChart"></canvas>
+            <div class="source-credit">Source: Nevada Gaming Control Board</div>
         </div>
 
         <div class="grid-2">
@@ -467,6 +474,7 @@
         <div class="chart-wrap">
             <div class="section-title">Macau Monthly GGR Trend <span class="info-icon" data-tip="Monthly gross gaming revenue for Macau, the world's largest gaming market by revenue. Shows recovery trajectory and seasonal patterns.">&#9432;</span></div>
             <canvas id="macauGgrChart"></canvas>
+            <div class="source-credit">Source: Gaming Inspection and Coordination Bureau (DICJ), Macau</div>
         </div>
 
         <div class="grid-2">
@@ -487,6 +495,7 @@
                     </thead>
                     <tbody id="pagcorBody"></tbody>
                 </table>
+                <div class="source-credit">Source: Philippine Amusement and Gaming Corporation (PAGCOR)</div>
             </div>
         </div>
 
@@ -530,6 +539,7 @@
         <div class="chart-wrap">
             <div class="section-title">Monthly Sports Betting Trend <span class="info-icon" data-tip="National monthly sports betting handle and revenue trends. Shows seasonality (NFL drives peaks) and structural growth.">&#9432;</span></div>
             <canvas id="sportsTrendChart"></canvas>
+            <div class="source-credit">Source: Legal Sports Report / State Gaming Boards</div>
         </div>
     </div>
 
@@ -572,6 +582,7 @@
                 </thead>
                 <tbody id="nigcTableBody"></tbody>
             </table>
+            <div class="source-credit">Source: National Indian Gaming Commission (NIGC)</div>
         </div>
 
         <div class="data-section">

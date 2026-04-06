@@ -442,6 +442,7 @@
         .week52-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#ef4444,#f59e0b,#22c55e); }
         .week52-dot { width:10px; height:10px; border-radius:50%; background:#fff; position:absolute; top:-3px; transform:translateX(-50%); border:2px solid #1a1d29; }
         .week52-labels { display:flex; justify-content:space-between; font-size:10px; color:#9ca3af; }
+        #week52-container, #co-week52-wrap { transition: opacity 0.2s; }
 
         /* Expandable financial rows */
         .expand-row { cursor:pointer; user-select:none; }
@@ -492,7 +493,7 @@
         <div class="price-block">
             <div class="price-current" id="hdr-price">—</div>
             <div class="price-change" id="hdr-change">—</div>
-            <div id="week52-container" style="margin-top:8px;display:none">
+            <div id="week52-container" style="margin-top:8px;display:block;opacity:0.3;pointer-events:none">
                 <div class="week52-bar">
                     <div class="week52-fill" id="w52fill" style="width:100%"></div>
                     <div class="week52-dot" id="w52dot" style="left:50%"></div>
@@ -538,6 +539,7 @@
     <!-- Sub-tab navigation -->
     <div class="company-tabs">
         <button class="company-tab active" onclick="coTab('overview',this)">Overview</button>
+        <button class="company-tab" onclick="coTab('price-perf',this)">Price &amp; Performance</button>
         <button class="company-tab" onclick="coTab('analyst',this)">Analyst &amp; Ownership</button>
         <button class="company-tab" onclick="coTab('earnings',this)">Earnings</button>
         <button class="company-tab" onclick="coTab('news',this)">News &amp; Filings</button>
@@ -546,33 +548,27 @@
 
     <!-- Tab: Overview -->
     <div id="co-tab-overview" class="co-tab-content active">
-        <!-- Two-column layout: Financial Snapshot + Revenue Trend -->
-        <div class="two-col">
-            <!-- Left Column -->
-            <div>
-                <!-- Financial Snapshot -->
-                <div class="card">
-                    <div class="card-title">Financial Snapshot <span class="info-icon" data-tip="Key financial metrics at a glance: revenue, EBITDA, margins, EPS, and debt ratios from the most recent quarter.">&#9432;</span></div>
-                    <table id="fin-table">
-                        <tbody></tbody>
-                    </table>
-                </div>
+        <!-- Financial Snapshot -->
+        <div class="card">
+            <div class="card-title">Financial Snapshot <span class="info-icon" data-tip="Key financial metrics at a glance: revenue, EBITDA, margins, EPS, and debt ratios from the most recent quarter.">&#9432;</span></div>
+            <table id="fin-table">
+                <tbody></tbody>
+            </table>
+        </div>
 
-                <!-- Revenue & EBITDA Trend -->
-                <div class="card">
-                    <div class="card-title">Revenue &amp; EBITDA Trend <span class="info-icon" data-tip="Quarterly revenue and EBITDA over the past 8 quarters, showing growth trajectory and profitability trends.">&#9432;</span></div>
-                    <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
-                </div>
-            </div>
+        <!-- Revenue & EBITDA Trend -->
+        <div class="card">
+            <div class="card-title">Revenue &amp; EBITDA Trend <span class="info-icon" data-tip="Quarterly revenue and EBITDA over the past 8 quarters, showing growth trajectory and profitability trends.">&#9432;</span></div>
+            <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+        </div>
+    </div>
 
-            <!-- Right Column: Price Performance -->
-            <div>
-                <!-- Price Performance -->
-                <div class="card">
-                    <div class="card-title">Price Performance <span class="info-icon" data-tip="Stock price returns across multiple timeframes including day, week, month, quarter, YTD, and 1-year.">&#9432;</span></div>
-                    <div class="perf-grid" id="perf-grid"></div>
-                </div>
-            </div>
+    <!-- Tab: Price & Performance -->
+    <div id="co-tab-price-perf" class="co-tab-content">
+        <!-- Price Performance -->
+        <div class="card">
+            <div class="card-title">Price Performance <span class="info-icon" data-tip="Stock price returns across multiple timeframes including day, week, month, quarter, YTD, and 1-year.">&#9432;</span></div>
+            <div class="perf-grid" id="perf-grid"></div>
         </div>
     </div>
 
@@ -917,9 +913,11 @@ function updateHeader(ticker, data) {
         document.getElementById('w52dot').style.left = pct+'%';
         document.getElementById('w52low').textContent = '$'+Number(lo).toFixed(2);
         document.getElementById('w52high').textContent = '$'+Number(hi).toFixed(2);
-        w52.style.display = 'block';
+        w52.style.opacity = '1';
+        w52.style.pointerEvents = 'auto';
     } else {
-        w52.style.display = 'none';
+        w52.style.opacity = '0.3';
+        w52.style.pointerEvents = 'none';
     }
 }
 
