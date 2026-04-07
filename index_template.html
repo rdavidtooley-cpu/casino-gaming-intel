@@ -37,7 +37,7 @@
 
         /* Ticker Bar */
         .ticker-bar { display:flex; align-items:center; background:#0a0c10; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; white-space:nowrap; height:32px; position:sticky; top:0; z-index:1001; }
-        .ticker-track { display:inline-flex; animation:ticker-scroll 80s linear infinite; gap:0; flex:1; }
+        .ticker-track { display:inline-flex; animation:ticker-scroll 60s linear infinite; gap:0; flex:1; }
         .ticker-track:hover { animation-play-state:paused; }
         .ticker-item { display:inline-flex; align-items:center; gap:6px; padding:0 18px; font-size:11px; font-weight:600; border-right:1px solid rgba(255,255,255,0.04); height:32px; cursor:default; }
         .ticker-item .tk-sym { color:var(--accent); font-weight:700; letter-spacing:0.5px; }
@@ -78,7 +78,7 @@
         .info-icon:hover { opacity:1; color:var(--text-primary); }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#1e2130; color:#d0d0d0; font-size:11px; padding:10px 14px; border-radius:var(--radius); white-space:normal; width:300px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 8px 24px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.08); pointer-events:none; }
         .info-icon[data-tip]:hover::before { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-bottom-color:#1e2130; z-index:99999; }
-        .kpi-value { font-size:28px; font-weight:700; margin-bottom:2px; letter-spacing:-0.5px; }
+        .kpi-value { font-size:24px; font-weight:700; margin-bottom:2px; letter-spacing:-0.5px; }
         .kpi-sub { font-size:11px; color:var(--text-secondary); }
         .positive { color:var(--positive); } .negative { color:var(--negative); }
 
