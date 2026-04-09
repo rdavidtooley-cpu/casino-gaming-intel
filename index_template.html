@@ -189,6 +189,12 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
+        /* Range controls */
+        .range-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+        .range-btn{padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:20px;background:transparent;color:var(--text-secondary);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:inherit;}
+        .range-btn.active,.range-btn:hover{background:rgba(245,158,11,0.12);color:var(--accent);border-color:var(--accent);}
+        .range-date-input{padding:4px 8px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:var(--bg-card);color:var(--text-primary);font-size:11px;cursor:pointer;font-family:inherit;}
+        .range-status{font-size:11px;color:var(--text-secondary);margin-top:4px;}
     </style>
 </head>
 <body>
@@ -258,7 +264,20 @@
         <!-- Right Column: Chart + Doughnut -->
         <div>
             <div class="card" style="margin-bottom:var(--gap);">
-                <h3>Gaming-25 Index (1-Year) <span class="info-icon" data-tip="Tracks the equal-weighted performance of all 25 gaming stocks over the past year, normalized to a base of 100. Shows whether the sector as a whole is trending up or down.">&#9432;</span></h3>
+                <h3>Gaming-25 Index <span class="info-icon" data-tip="Tracks the equal-weighted performance of all 25 gaming stocks over the past year, normalized to a base of 100. Shows whether the sector as a whole is trending up or down.">&#9432;</span></h3>
+                <div class="range-controls" id="index-range-controls">
+                    <button class="range-btn" onclick="setRange('MTD',this)">MTD</button>
+                    <button class="range-btn" onclick="setRange('QTD',this)">QTD</button>
+                    <button class="range-btn active" onclick="setRange('YTD',this)">YTD</button>
+                    <button class="range-btn" onclick="setRange('LTM',this)">LTM</button>
+                    <button class="range-btn" onclick="setRange('5Y',this)">5Y</button>
+                    <button class="range-btn" onclick="setRange('10Y',this)">10Y</button>
+                    <span style="color:var(--text-secondary);margin:0 4px;font-size:12px;">|</span>
+                    <input type="date" id="range-start" class="range-date-input" onchange="renderFromInputs()">
+                    <span style="color:var(--text-secondary);font-size:12px;">—</span>
+                    <input type="date" id="range-end" class="range-date-input" onchange="renderFromInputs()">
+                </div>
+                <div class="range-status" id="range-status"></div>
                 <canvas id="gaming25-chart" style="max-height:240px;"></canvas>
             </div>
             <div class="card">
@@ -656,31 +675,67 @@ window.sortUniverse = function(col) {
 };
 
 // ===== GAMING-25 INDEX CHART =====
-function renderIndexChart() {
+var _indexChart = null;
+function calcDateRange(preset) {
+    var today = new Date();
+    var end = today.toISOString().slice(0,10);
+    var start, d;
+    if (preset === 'MTD')      { start = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().slice(0,10); }
+    else if (preset === 'QTD') { var q=Math.floor(today.getMonth()/3); start=new Date(today.getFullYear(),q*3,1).toISOString().slice(0,10); }
+    else if (preset === 'YTD') { start = today.getFullYear() + '-01-01'; }
+    else if (preset === 'LTM') { d=new Date(today); d.setFullYear(d.getFullYear()-1); start=d.toISOString().slice(0,10); }
+    else if (preset === '5Y')  { d=new Date(today); d.setFullYear(d.getFullYear()-5); start=d.toISOString().slice(0,10); }
+    else if (preset === '10Y') { d=new Date(today); d.setFullYear(d.getFullYear()-10); start=d.toISOString().slice(0,10); }
+    return {start:start, end:end};
+}
+function renderIndexChart(startDate, endDate) {
     if (!INDEX_HISTORY || !INDEX_HISTORY.length) return;
-    new Chart(document.getElementById('gaming25-chart'), {
+    var filtered = startDate ? INDEX_HISTORY.filter(function(d){ return d.date >= startDate && d.date <= endDate; }) : INDEX_HISTORY;
+    if (_indexChart) { _indexChart.destroy(); _indexChart = null; }
+    var statusEl = document.getElementById('range-status');
+    if (!filtered.length) {
+        if (statusEl) statusEl.textContent = 'No data available for this range.';
+        return;
+    }
+    if (statusEl) statusEl.textContent = filtered.length + ' trading days';
+    _indexChart = new Chart(document.getElementById('gaming25-chart'), {
         type: 'line',
         data: {
-            labels: INDEX_HISTORY.map(function(d) { return d.date; }),
+            labels: filtered.map(function(d) { return d.date; }),
             datasets: [{
-                data: INDEX_HISTORY.map(function(d) { return d.value || d.close; }),
-                borderColor: '#ffd700',
-                backgroundColor: 'rgba(255,215,0,0.08)',
-                fill: true,
-                tension: 0.3,
-                pointRadius: 0,
-                borderWidth: 2
+                data: filtered.map(function(d) { return d.value || d.close; }),
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,0.08)',
+                fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2
             }]
         },
         options: {
             responsive: true,
             plugins: { legend: { display: false } },
             scales: {
-                x: { ticks: { color:'#9aa0a6', maxTicksLimit:8, font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } },
-                y: { ticks: { color:'#9aa0a6', font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } }
+                x: { ticks: { color:'#9ca3af', maxTicksLimit:8, font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } },
+                y: { ticks: { color:'#9ca3af', font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } }
             }
         }
     });
+}
+function setRange(preset, btn) {
+    document.querySelectorAll('#index-range-controls .range-btn').forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    var r = calcDateRange(preset);
+    var startEl = document.getElementById('range-start');
+    var endEl = document.getElementById('range-end');
+    if (startEl) startEl.value = r.start;
+    if (endEl) endEl.value = r.end;
+    renderIndexChart(r.start, r.end);
+}
+function renderFromInputs() {
+    var s = document.getElementById('range-start').value;
+    var e = document.getElementById('range-end').value;
+    if (s && e) {
+        document.querySelectorAll('#index-range-controls .range-btn').forEach(function(b){ b.classList.remove('active'); });
+        renderIndexChart(s, e);
+    }
 }
 
 // ===== SECTOR DOUGHNUT =====
@@ -1115,7 +1170,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderKPIs();
     renderBreadth();
     renderUniverseTable();
-    renderIndexChart();
+    setRange('YTD', document.querySelector('#index-range-controls .range-btn[onclick*="YTD"]'));
     renderSectorChart();
     renderMovers();
     renderNews();

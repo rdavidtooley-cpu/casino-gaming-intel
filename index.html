@@ -189,6 +189,12 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
+        /* Range controls */
+        .range-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+        .range-btn{padding:4px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:20px;background:transparent;color:var(--text-secondary);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:inherit;}
+        .range-btn.active,.range-btn:hover{background:rgba(245,158,11,0.12);color:var(--accent);border-color:var(--accent);}
+        .range-date-input{padding:4px 8px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:var(--bg-card);color:var(--text-primary);font-size:11px;cursor:pointer;font-family:inherit;}
+        .range-status{font-size:11px;color:var(--text-secondary);margin-top:4px;}
     </style>
 </head>
 <body>
@@ -258,7 +264,20 @@
         <!-- Right Column: Chart + Doughnut -->
         <div>
             <div class="card" style="margin-bottom:var(--gap);">
-                <h3>Gaming-25 Index (1-Year) <span class="info-icon" data-tip="Tracks the equal-weighted performance of all 25 gaming stocks over the past year, normalized to a base of 100. Shows whether the sector as a whole is trending up or down.">&#9432;</span></h3>
+                <h3>Gaming-25 Index <span class="info-icon" data-tip="Tracks the equal-weighted performance of all 25 gaming stocks over the past year, normalized to a base of 100. Shows whether the sector as a whole is trending up or down.">&#9432;</span></h3>
+                <div class="range-controls" id="index-range-controls">
+                    <button class="range-btn" onclick="setRange('MTD',this)">MTD</button>
+                    <button class="range-btn" onclick="setRange('QTD',this)">QTD</button>
+                    <button class="range-btn active" onclick="setRange('YTD',this)">YTD</button>
+                    <button class="range-btn" onclick="setRange('LTM',this)">LTM</button>
+                    <button class="range-btn" onclick="setRange('5Y',this)">5Y</button>
+                    <button class="range-btn" onclick="setRange('10Y',this)">10Y</button>
+                    <span style="color:var(--text-secondary);margin:0 4px;font-size:12px;">|</span>
+                    <input type="date" id="range-start" class="range-date-input" onchange="renderFromInputs()">
+                    <span style="color:var(--text-secondary);font-size:12px;">—</span>
+                    <input type="date" id="range-end" class="range-date-input" onchange="renderFromInputs()">
+                </div>
+                <div class="range-status" id="range-status"></div>
                 <canvas id="gaming25-chart" style="max-height:240px;"></canvas>
             </div>
             <div class="card">
@@ -366,29 +385,29 @@
 var INJECTED_COMMAND_CENTER = {
   "market_data": {
     "MGM": {
-      "price": 37.03,
-      "change_pct": -0.18867843,
-      "market_cap_b": 10.128,
+      "price": 37.09,
+      "change_pct": -0.040429622,
+      "market_cap_b": 10.143,
       "name": "MGM Resorts International",
       "display_ticker": "MGM",
       "category": "Integrated Resorts",
-      "pe_ratio": 48.723682,
+      "pe_ratio": 48.79605,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-29",
       "recommendation_key": "buy",
       "target_mean": 42.61111,
-      "upside_pct": 15.1,
+      "upside_pct": 14.9,
       "num_analysts": 18,
-      "market_cap": 10127942656,
+      "market_cap": 10142986240,
       "fifty_two_week_high": 40.16,
       "fifty_two_week_low": 25.3,
       "beta": 1.351
     },
     "CZR": {
-      "price": 26.57,
-      "change_pct": -1.0428331,
-      "market_cap_b": 5.423,
+      "price": 26.59,
+      "change_pct": -0.9869694,
+      "market_cap_b": 5.426,
       "name": "Caesars Entertainment",
       "display_ticker": "CZR",
       "category": "Integrated Resorts",
@@ -398,41 +417,41 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-04-28",
       "recommendation_key": "buy",
       "target_mean": 32.18,
-      "upside_pct": 21.1,
+      "upside_pct": 21.0,
       "num_analysts": 18,
-      "market_cap": 5423148032,
+      "market_cap": 5426209280,
       "fifty_two_week_high": 31.58,
       "fifty_two_week_low": 17.86,
       "beta": 1.878
     },
     "WYNN": {
-      "price": 104.8,
-      "change_pct": -0.41808707,
-      "market_cap_b": 10.929,
+      "price": 104.86,
+      "change_pct": -0.36107683,
+      "market_cap_b": 10.935,
       "name": "Wynn Resorts",
       "display_ticker": "WYNN",
       "category": "Integrated Resorts",
-      "pe_ratio": 33.375797,
+      "pe_ratio": 33.394905,
       "dividend_yield": 0.95,
       "dividend_rate": 1.0,
       "next_earnings_date": "2026-05-06",
       "recommendation_key": "strong_buy",
       "target_mean": 141.22221,
-      "upside_pct": 34.8,
+      "upside_pct": 34.7,
       "num_analysts": 18,
-      "market_cap": 10928889856,
+      "market_cap": 10935146496,
       "fifty_two_week_high": 134.72,
       "fifty_two_week_low": 65.25,
       "beta": 1.034
     },
     "LVS": {
       "price": 54.6,
-      "change_pct": 0.009159465,
-      "market_cap_b": 36.69,
+      "change_pct": 0,
+      "market_cap_b": 36.686,
       "name": "Las Vegas Sands",
       "display_ticker": "LVS",
       "category": "Integrated Resorts",
-      "pe_ratio": 23.236172,
+      "pe_ratio": 23.234043,
       "dividend_yield": 1.92,
       "dividend_rate": 1.05,
       "next_earnings_date": "2026-04-22",
@@ -440,35 +459,35 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 69.36579,
       "upside_pct": 27.0,
       "num_analysts": 19,
-      "market_cap": 36689686528,
+      "market_cap": 36686323712,
       "fifty_two_week_high": 70.45,
       "fifty_two_week_low": 30.18,
       "beta": 0.887
     },
     "MLCO": {
-      "price": 5.69,
-      "change_pct": -2.0654025,
-      "market_cap_b": 2.315,
+      "price": 5.7,
+      "change_pct": -1.979342,
+      "market_cap_b": 2.317,
       "name": "Melco Resorts",
       "display_ticker": "MLCO",
       "category": "Integrated Resorts",
-      "pe_ratio": 12.369565,
+      "pe_ratio": 12.380435,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-30",
       "recommendation_key": "buy",
       "target_mean": 8.88846,
-      "upside_pct": 56.2,
+      "upside_pct": 55.9,
       "num_analysts": 13,
-      "market_cap": 2314646528,
+      "market_cap": 2316680448,
       "fifty_two_week_high": 10.15,
       "fifty_two_week_low": 4.55,
       "beta": 0.603
     },
     "PENN": {
-      "price": 15.66,
-      "change_pct": 2.185258,
-      "market_cap_b": 2.092,
+      "price": 15.69,
+      "change_pct": 2.3157241,
+      "market_cap_b": 2.095,
       "name": "Penn Entertainment",
       "display_ticker": "PENN",
       "category": "Regional Operators",
@@ -478,69 +497,69 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-04-23",
       "recommendation_key": "buy",
       "target_mean": 19.11111,
-      "upside_pct": 22.0,
+      "upside_pct": 21.8,
       "num_analysts": 18,
-      "market_cap": 2092002304,
+      "market_cap": 2094673280,
       "fifty_two_week_high": 20.61,
       "fifty_two_week_low": 11.65,
       "beta": 1.327
     },
     "BYD": {
-      "price": 86.72,
-      "change_pct": 0.58577573,
-      "market_cap_b": 6.546,
+      "price": 86.81,
+      "change_pct": 0.6901766,
+      "market_cap_b": 6.553,
       "name": "Boyd Gaming",
       "display_ticker": "BYD",
       "category": "Regional Operators",
-      "pe_ratio": 3.84375,
+      "pe_ratio": 3.8477395,
       "dividend_yield": 0.86,
       "dividend_rate": 0.74,
       "next_earnings_date": "2026-04-23",
       "recommendation_key": "buy",
       "target_mean": 94.53333,
-      "upside_pct": 9.0,
+      "upside_pct": 8.9,
       "num_analysts": 15,
-      "market_cap": 6546306560,
+      "market_cap": 6553101312,
       "fifty_two_week_high": 89.96,
       "fifty_two_week_low": 60.11,
       "beta": 1.192
     },
     "RRR": {
-      "price": 56.9,
-      "change_pct": -0.30663964,
-      "market_cap_b": 5.85,
+      "price": 56.98,
+      "change_pct": -0.15770134,
+      "market_cap_b": 5.859,
       "name": "Red Rock Resorts",
       "display_ticker": "RRR",
       "category": "Regional Operators",
-      "pe_ratio": 18.235579,
+      "pe_ratio": 18.262821,
       "dividend_yield": 1.82,
       "dividend_rate": 1.04,
       "next_earnings_date": "2026-04-29",
       "recommendation_key": "buy",
       "target_mean": 72.6875,
-      "upside_pct": 27.7,
+      "upside_pct": 27.6,
       "num_analysts": 16,
-      "market_cap": 5850336256,
+      "market_cap": 5859076608,
       "fifty_two_week_high": 68.99,
       "fifty_two_week_low": 36.855,
       "beta": 1.476
     },
     "CHDN": {
-      "price": 88.35,
-      "change_pct": -0.14693137,
-      "market_cap_b": 6.158,
+      "price": 88.31,
+      "change_pct": -0.18648385,
+      "market_cap_b": 6.155,
       "name": "Churchill Downs",
       "display_ticker": "CHDN",
       "category": "Regional Operators",
-      "pe_ratio": 16.701323,
+      "pe_ratio": 16.694708,
       "dividend_yield": 0.5,
       "dividend_rate": 0.44,
       "next_earnings_date": "2026-04-22",
       "recommendation_key": "strong_buy",
       "target_mean": 134.75,
-      "upside_pct": 52.5,
+      "upside_pct": 52.6,
       "num_analysts": 12,
-      "market_cap": 6157674496,
+      "market_cap": 6155235840,
       "fifty_two_week_high": 118.46,
       "fifty_two_week_low": 80.24,
       "beta": 0.65
@@ -566,8 +585,8 @@ var INJECTED_COMMAND_CENTER = {
       "beta": 1.341
     },
     "GDEN": {
-      "price": 27.99,
-      "change_pct": 1.3029338,
+      "price": 28.0,
+      "change_pct": 1.3391272,
       "market_cap_b": 0.739,
       "name": "Golden Entertainment",
       "display_ticker": "GDEN",
@@ -578,16 +597,16 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "hold",
       "target_mean": 30.0,
-      "upside_pct": 7.2,
+      "upside_pct": 7.1,
       "num_analysts": 3,
-      "market_cap": 738902720,
+      "market_cap": 739166720,
       "fifty_two_week_high": 32.74,
       "fifty_two_week_low": 19.57,
       "beta": 1.411
     },
     "FLL": {
-      "price": 2.69,
-      "change_pct": -0.18518943,
+      "price": 2.7,
+      "change_pct": 0,
       "market_cap_b": 0.098,
       "name": "Full House Resorts",
       "display_ticker": "FLL",
@@ -598,9 +617,9 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "none",
       "target_mean": 3.25,
-      "upside_pct": 20.8,
+      "upside_pct": 20.4,
       "num_analysts": 4,
-      "market_cap": 97513376,
+      "market_cap": 97694296,
       "fifty_two_week_high": 4.95,
       "fifty_two_week_low": 2.02,
       "beta": 1.276
@@ -626,9 +645,9 @@ var INJECTED_COMMAND_CENTER = {
       "beta": null
     },
     "DKNG": {
-      "price": 22.55,
-      "change_pct": -5.8270693,
-      "market_cap_b": 11.177,
+      "price": 22.5,
+      "change_pct": -6.0359216,
+      "market_cap_b": 11.152,
       "name": "DraftKings",
       "display_ticker": "DKNG",
       "category": "Online & iGaming",
@@ -638,9 +657,9 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "buy",
       "target_mean": 35.83235,
-      "upside_pct": 58.9,
+      "upside_pct": 59.3,
       "num_analysts": 34,
-      "market_cap": 11176521728,
+      "market_cap": 11151734784,
       "fifty_two_week_high": 48.78,
       "fifty_two_week_low": 20.46,
       "beta": 1.674
@@ -666,69 +685,69 @@ var INJECTED_COMMAND_CENTER = {
       "beta": 1.157
     },
     "RSI": {
-      "price": 21.62,
-      "change_pct": -2.6339447,
-      "market_cap_b": 5.034,
+      "price": 21.67,
+      "change_pct": -2.4313328,
+      "market_cap_b": 5.044,
       "name": "Rush Street Interactive",
       "display_ticker": "RSI",
       "category": "Online & iGaming",
-      "pe_ratio": 69.758064,
+      "pe_ratio": 69.90323,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-28",
       "recommendation_key": "strong_buy",
       "target_mean": 25.0,
-      "upside_pct": 15.6,
+      "upside_pct": 15.4,
       "num_analysts": 11,
-      "market_cap": 5033966080,
+      "market_cap": 5044441600,
       "fifty_two_week_high": 22.798,
       "fifty_two_week_low": 10.22,
       "beta": 1.457
     },
     "SRAD": {
-      "price": 15.38,
-      "change_pct": -7.4842143,
-      "market_cap_b": 4.553,
+      "price": 15.45,
+      "change_pct": -7.095607,
+      "market_cap_b": 4.572,
       "name": "Sportradar Group",
       "display_ticker": "SRAD",
       "category": "Online & iGaming",
-      "pe_ratio": 42.73611,
+      "pe_ratio": 42.916664,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-05-11",
       "recommendation_key": "strong_buy",
-      "target_mean": 29.075472,
-      "upside_pct": 89.0,
+      "target_mean": 29.085682,
+      "upside_pct": 88.3,
       "num_analysts": 21,
-      "market_cap": 4553216000,
+      "market_cap": 4572452864,
       "fifty_two_week_high": 32.22,
       "fifty_two_week_low": 15.13,
       "beta": 1.985
     },
     "SGHC": {
-      "price": 10.56,
-      "change_pct": -3.3851774,
-      "market_cap_b": 5.34,
+      "price": 10.6,
+      "change_pct": -3.066362,
+      "market_cap_b": 5.357,
       "name": "Super Group",
       "display_ticker": "SGHC",
       "category": "Online & iGaming",
-      "pe_ratio": 25.142859,
+      "pe_ratio": 25.226192,
       "dividend_yield": 1.56,
       "dividend_rate": 0.17,
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "strong_buy",
       "target_mean": 17.375,
-      "upside_pct": 64.5,
+      "upside_pct": 63.9,
       "num_analysts": 8,
-      "market_cap": 5339533312,
+      "market_cap": 5357230592,
       "fifty_two_week_high": 14.38,
       "fifty_two_week_low": 6.34,
       "beta": 1.066
     },
     "GENI": {
-      "price": 4.07,
-      "change_pct": -7.191782,
-      "market_cap_b": 1.046,
+      "price": 4.04,
+      "change_pct": -7.6484027,
+      "market_cap_b": 1.041,
       "name": "Genius Sports",
       "display_ticker": "GENI",
       "category": "Online & iGaming",
@@ -738,17 +757,17 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-05",
       "recommendation_key": "strong_buy",
       "target_mean": 11.64706,
-      "upside_pct": 186.2,
+      "upside_pct": 188.3,
       "num_analysts": 17,
-      "market_cap": 1045721984,
+      "market_cap": 1040576960,
       "fifty_two_week_high": 13.73,
       "fifty_two_week_low": 4.04,
       "beta": 2.084
     },
     "BRSL": {
-      "price": 12.38,
-      "change_pct": -0.9599991,
-      "market_cap_b": 2.284,
+      "price": 12.37,
+      "change_pct": -1.0800018,
+      "market_cap_b": 2.282,
       "name": "Brightstar Lottery",
       "display_ticker": "BRSL",
       "category": "Gaming Equipment",
@@ -758,9 +777,9 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-12",
       "recommendation_key": "buy",
       "target_mean": 17.88,
-      "upside_pct": 44.4,
+      "upside_pct": 44.5,
       "num_analysts": 5,
-      "market_cap": 2284464128,
+      "market_cap": 2281696256,
       "fifty_two_week_high": 18.57,
       "fifty_two_week_low": 12.17,
       "beta": 1.08
@@ -787,12 +806,12 @@ var INJECTED_COMMAND_CENTER = {
     },
     "ACEL": {
       "price": 11.69,
-      "change_pct": 0.30043608,
-      "market_cap_b": 0.953,
+      "change_pct": 0.3433473,
+      "market_cap_b": 0.954,
       "name": "Accel Entertainment",
       "display_ticker": "ACEL",
       "category": "Gaming Equipment",
-      "pe_ratio": 19.475,
+      "pe_ratio": 19.483332,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-05-05",
@@ -800,15 +819,15 @@ var INJECTED_COMMAND_CENTER = {
       "target_mean": 15.5,
       "upside_pct": 32.6,
       "num_analysts": 6,
-      "market_cap": 953183424,
+      "market_cap": 953591232,
       "fifty_two_week_high": 13.31,
       "fifty_two_week_low": 9.55,
       "beta": 1.058
     },
     "INSE": {
-      "price": 6.68,
-      "change_pct": -5.5162706,
-      "market_cap_b": 0.181,
+      "price": 6.72,
+      "change_pct": -4.9575124,
+      "market_cap_b": 0.182,
       "name": "Inspired Entertainment",
       "display_ticker": "INSE",
       "category": "Gaming Equipment",
@@ -818,9 +837,9 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "buy",
       "target_mean": 13.33333,
-      "upside_pct": 99.6,
+      "upside_pct": 98.4,
       "num_analysts": 6,
-      "market_cap": 180757936,
+      "market_cap": 181840320,
       "fifty_two_week_high": 9.95,
       "fifty_two_week_low": 6.1,
       "beta": 1.254
@@ -828,11 +847,137 @@ var INJECTED_COMMAND_CENTER = {
   },
   "total_mcap": 138.3,
   "top_mover": {
-    "ticker": "SRAD",
-    "name": "Sportradar Group",
-    "change_pct": -7.4842143
+    "ticker": "GENI",
+    "name": "Genius Sports",
+    "change_pct": -7.6484027
   },
-  "gaming25": null,
+  "gaming25": {
+    "current": 1827.02,
+    "daily_pct": -1.11,
+    "ytd_pct": -16.7,
+    "index": [
+      {
+        "date": "2026-02-26",
+        "value": 1884.21
+      },
+      {
+        "date": "2026-02-27",
+        "value": 1856.92
+      },
+      {
+        "date": "2026-03-02",
+        "value": 1850.33
+      },
+      {
+        "date": "2026-03-03",
+        "value": 1851.33
+      },
+      {
+        "date": "2026-03-04",
+        "value": 1871.79
+      },
+      {
+        "date": "2026-03-05",
+        "value": 1871.61
+      },
+      {
+        "date": "2026-03-06",
+        "value": 1818.08
+      },
+      {
+        "date": "2026-03-09",
+        "value": 1819.87
+      },
+      {
+        "date": "2026-03-10",
+        "value": 1815.25
+      },
+      {
+        "date": "2026-03-11",
+        "value": 1851.02
+      },
+      {
+        "date": "2026-03-12",
+        "value": 1825.21
+      },
+      {
+        "date": "2026-03-13",
+        "value": 1834.9
+      },
+      {
+        "date": "2026-03-16",
+        "value": 1815.92
+      },
+      {
+        "date": "2026-03-17",
+        "value": 1836.54
+      },
+      {
+        "date": "2026-03-18",
+        "value": 1824.66
+      },
+      {
+        "date": "2026-03-19",
+        "value": 1845.75
+      },
+      {
+        "date": "2026-03-20",
+        "value": 1789.44
+      },
+      {
+        "date": "2026-03-23",
+        "value": 1822.57
+      },
+      {
+        "date": "2026-03-24",
+        "value": 1837.46
+      },
+      {
+        "date": "2026-03-25",
+        "value": 1814.54
+      },
+      {
+        "date": "2026-03-26",
+        "value": 1781.81
+      },
+      {
+        "date": "2026-03-27",
+        "value": 1733.11
+      },
+      {
+        "date": "2026-03-30",
+        "value": 1725.79
+      },
+      {
+        "date": "2026-03-31",
+        "value": 1786.61
+      },
+      {
+        "date": "2026-04-01",
+        "value": 1806.05
+      },
+      {
+        "date": "2026-04-02",
+        "value": 1817.9
+      },
+      {
+        "date": "2026-04-06",
+        "value": 1822.38
+      },
+      {
+        "date": "2026-04-07",
+        "value": 1811.39
+      },
+      {
+        "date": "2026-04-08",
+        "value": 1847.47
+      },
+      {
+        "date": "2026-04-09",
+        "value": 1827.02
+      }
+    ]
+  },
   "fred_highlights": {
     "UMCSENT": {
       "label": "Consumer Sentiment Index",
@@ -857,14 +1002,14 @@ var INJECTED_COMMAND_CENTER = {
   },
   "big_movers": [
     {
-      "ticker": "BRSL",
-      "display_ticker": "BRSL",
-      "company": "Brightstar Lottery",
-      "category": "Gaming Equipment",
-      "prev_price": 12.5,
-      "curr_price": 12.38,
-      "pct_change": -96.0,
-      "market_cap_b": 2.284
+      "ticker": "CZR",
+      "display_ticker": "CZR",
+      "company": "Caesars Entertainment",
+      "category": "Integrated Resorts",
+      "prev_price": 26.85,
+      "curr_price": 26.59,
+      "pct_change": -98.7,
+      "market_cap_b": 5.426
     },
     {
       "ticker": "BYD",
@@ -872,9 +1017,9 @@ var INJECTED_COMMAND_CENTER = {
       "company": "Boyd Gaming",
       "category": "Regional Operators",
       "prev_price": 86.21,
-      "curr_price": 86.72,
-      "pct_change": 58.58,
-      "market_cap_b": 6.546
+      "curr_price": 86.81,
+      "pct_change": 69.02,
+      "market_cap_b": 6.553
     },
     {
       "ticker": "WYNN",
@@ -882,19 +1027,9 @@ var INJECTED_COMMAND_CENTER = {
       "company": "Wynn Resorts",
       "category": "Integrated Resorts",
       "prev_price": 105.24,
-      "curr_price": 104.8,
-      "pct_change": -41.81,
-      "market_cap_b": 10.929
-    },
-    {
-      "ticker": "RRR",
-      "display_ticker": "RRR",
-      "company": "Red Rock Resorts",
-      "category": "Regional Operators",
-      "prev_price": 57.07,
-      "curr_price": 56.9,
-      "pct_change": -30.66,
-      "market_cap_b": 5.85
+      "curr_price": 104.86,
+      "pct_change": -36.11,
+      "market_cap_b": 10.935
     },
     {
       "ticker": "ACEL",
@@ -903,8 +1038,18 @@ var INJECTED_COMMAND_CENTER = {
       "category": "Gaming Equipment",
       "prev_price": 11.65,
       "curr_price": 11.69,
-      "pct_change": 30.04,
-      "market_cap_b": 0.953
+      "pct_change": 34.33,
+      "market_cap_b": 0.954
+    },
+    {
+      "ticker": "MCRI",
+      "display_ticker": "MCRI",
+      "company": "Monarch Casino & Resort",
+      "category": "Regional Operators",
+      "prev_price": 98.47,
+      "curr_price": 98.72,
+      "pct_change": 25.39,
+      "market_cap_b": 1.766
     }
   ],
   "category_summary": {
@@ -923,19 +1068,19 @@ var INJECTED_COMMAND_CENTER = {
     "Online & iGaming": {
       "count": 6,
       "total_mcap": 45.6,
-      "avg_change_ytd": -30.3,
+      "avg_change_ytd": -30.2,
       "color": "#81c784"
     },
     "Gaming Equipment": {
       "count": 4,
       "total_mcap": 3.4,
-      "avg_change_ytd": -16.1,
+      "avg_change_ytd": -16.0,
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-04-09T14:02:53.397721",
+  "generated_at": "2026-04-09T14:07:33.245496",
   "transcript_analysis": {
-    "generated_at": "2026-04-09T14:02:53.353169",
+    "generated_at": "2026-04-09T14:07:33.185988",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
@@ -10817,31 +10962,67 @@ window.sortUniverse = function(col) {
 };
 
 // ===== GAMING-25 INDEX CHART =====
-function renderIndexChart() {
+var _indexChart = null;
+function calcDateRange(preset) {
+    var today = new Date();
+    var end = today.toISOString().slice(0,10);
+    var start, d;
+    if (preset === 'MTD')      { start = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().slice(0,10); }
+    else if (preset === 'QTD') { var q=Math.floor(today.getMonth()/3); start=new Date(today.getFullYear(),q*3,1).toISOString().slice(0,10); }
+    else if (preset === 'YTD') { start = today.getFullYear() + '-01-01'; }
+    else if (preset === 'LTM') { d=new Date(today); d.setFullYear(d.getFullYear()-1); start=d.toISOString().slice(0,10); }
+    else if (preset === '5Y')  { d=new Date(today); d.setFullYear(d.getFullYear()-5); start=d.toISOString().slice(0,10); }
+    else if (preset === '10Y') { d=new Date(today); d.setFullYear(d.getFullYear()-10); start=d.toISOString().slice(0,10); }
+    return {start:start, end:end};
+}
+function renderIndexChart(startDate, endDate) {
     if (!INDEX_HISTORY || !INDEX_HISTORY.length) return;
-    new Chart(document.getElementById('gaming25-chart'), {
+    var filtered = startDate ? INDEX_HISTORY.filter(function(d){ return d.date >= startDate && d.date <= endDate; }) : INDEX_HISTORY;
+    if (_indexChart) { _indexChart.destroy(); _indexChart = null; }
+    var statusEl = document.getElementById('range-status');
+    if (!filtered.length) {
+        if (statusEl) statusEl.textContent = 'No data available for this range.';
+        return;
+    }
+    if (statusEl) statusEl.textContent = filtered.length + ' trading days';
+    _indexChart = new Chart(document.getElementById('gaming25-chart'), {
         type: 'line',
         data: {
-            labels: INDEX_HISTORY.map(function(d) { return d.date; }),
+            labels: filtered.map(function(d) { return d.date; }),
             datasets: [{
-                data: INDEX_HISTORY.map(function(d) { return d.value || d.close; }),
-                borderColor: '#ffd700',
-                backgroundColor: 'rgba(255,215,0,0.08)',
-                fill: true,
-                tension: 0.3,
-                pointRadius: 0,
-                borderWidth: 2
+                data: filtered.map(function(d) { return d.value || d.close; }),
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,0.08)',
+                fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2
             }]
         },
         options: {
             responsive: true,
             plugins: { legend: { display: false } },
             scales: {
-                x: { ticks: { color:'#9aa0a6', maxTicksLimit:8, font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } },
-                y: { ticks: { color:'#9aa0a6', font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } }
+                x: { ticks: { color:'#9ca3af', maxTicksLimit:8, font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } },
+                y: { ticks: { color:'#9ca3af', font:{size:10} }, grid: { color:'rgba(255,255,255,0.04)' } }
             }
         }
     });
+}
+function setRange(preset, btn) {
+    document.querySelectorAll('#index-range-controls .range-btn').forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    var r = calcDateRange(preset);
+    var startEl = document.getElementById('range-start');
+    var endEl = document.getElementById('range-end');
+    if (startEl) startEl.value = r.start;
+    if (endEl) endEl.value = r.end;
+    renderIndexChart(r.start, r.end);
+}
+function renderFromInputs() {
+    var s = document.getElementById('range-start').value;
+    var e = document.getElementById('range-end').value;
+    if (s && e) {
+        document.querySelectorAll('#index-range-controls .range-btn').forEach(function(b){ b.classList.remove('active'); });
+        renderIndexChart(s, e);
+    }
 }
 
 // ===== SECTOR DOUGHNUT =====
@@ -11276,7 +11457,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderKPIs();
     renderBreadth();
     renderUniverseTable();
-    renderIndexChart();
+    setRange('YTD', document.querySelector('#index-range-controls .range-btn[onclick*="YTD"]'));
     renderSectorChart();
     renderMovers();
     renderNews();
