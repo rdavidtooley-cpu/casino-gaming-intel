@@ -6,19 +6,37 @@ const CORS = {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
 };
 
+const GATEWAY = 'https://sector-intel-hub.pages.dev';
+const SITE_ID = 'casino';
+
 async function requireAdmin(request, env) {
     const authHeader = request.headers.get('Authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) return null;
     const token = authHeader.slice(7);
+
+    // Try local session first
     const sessionData = await env.USERS.get(`session:${token}`);
-    if (!sessionData) return null;
-    const session = JSON.parse(sessionData);
-    if (new Date(session.expires_at) < new Date()) return null;
-    const userData = await env.USERS.get(`user:${session.user_email}`);
-    if (!userData) return null;
-    const user = JSON.parse(userData);
-    if (user.role !== 'admin') return null;
-    return user;
+    if (sessionData) {
+        const session = JSON.parse(sessionData);
+        if (new Date(session.expires_at) >= new Date()) {
+            const userData = await env.USERS.get(`user:${session.user_email}`);
+            if (userData) {
+                const user = JSON.parse(userData);
+                if (user.role === 'admin') return user;
+            }
+        }
+    }
+
+    // Fallback: validate gateway token
+    try {
+        const resp = await fetch(`${GATEWAY}/api/auth/validate?token=${encodeURIComponent(token)}&site=${SITE_ID}`);
+        const data = await resp.json();
+        if (data.valid && data.user && data.user.role === 'admin') {
+            return { email: data.user.email, name: data.user.name, role: 'admin' };
+        }
+    } catch (e) { /* gateway unreachable */ }
+
+    return null;
 }
 
 export async function onRequestGet(context) {

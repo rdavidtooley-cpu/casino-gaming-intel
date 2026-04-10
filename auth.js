@@ -8,7 +8,6 @@
 
     // Skip auth on login page
     if (window.location.pathname === '/login.html') return;
-    if (window.location.pathname === '/admin.html') return;
 
     // Check for gateway_token in URL (arriving from hub)
     var params = new URLSearchParams(window.location.search);
@@ -24,7 +23,7 @@
     var token = localStorage.getItem(TOKEN_KEY);
     if (!token) {
         // Redirect to gateway login with return URL
-        window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.origin);
+        window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.href);
         return;
     }
 
@@ -51,7 +50,7 @@
     function clearAndRedirect() {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(USER_KEY);
-        window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.origin);
+        window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.href);
     }
 
     // Try gateway validation first
