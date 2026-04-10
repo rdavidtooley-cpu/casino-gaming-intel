@@ -102,18 +102,21 @@ tr:hover td { background: rgba(245,158,11,0.03); }
     </div>
 </div>
 
+<script src="auth.js"></script>
 <script>
 var TOKEN = localStorage.getItem('cgi_token');
+var GATEWAY = 'https://sector-intel-hub.pages.dev';
+var SITE_ID = 'casino';
 
 async function checkAdmin() {
-    if (!TOKEN) { window.location.href = '/login.html'; return false; }
+    if (!TOKEN) { window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.href); return false; }
     try {
-        var resp = await fetch('/api/auth/me', { headers: { 'Authorization': 'Bearer ' + TOKEN } });
-        if (!resp.ok) { window.location.href = '/login.html'; return false; }
+        var resp = await fetch(GATEWAY + '/api/auth/validate?token=' + encodeURIComponent(TOKEN) + '&site=' + SITE_ID);
         var data = await resp.json();
+        if (!data.valid) { window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.href); return false; }
         if (data.user.role !== 'admin') { window.location.href = '/'; return false; }
         return true;
-    } catch(e) { window.location.href = '/login.html'; return false; }
+    } catch(e) { window.location.href = GATEWAY + '/login.html?redirect=' + encodeURIComponent(window.location.href); return false; }
 }
 
 function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
@@ -206,10 +209,11 @@ async function userAction(email, action) {
 }
 
 function doLogout() {
-    fetch('/api/auth/logout', { method: 'POST', headers: { 'Authorization': 'Bearer ' + TOKEN } });
+    fetch(GATEWAY + '/api/auth/logout', { method: 'POST', headers: { 'Authorization': 'Bearer ' + TOKEN } }).catch(function(){});
+    fetch('/api/auth/logout', { method: 'POST', headers: { 'Authorization': 'Bearer ' + TOKEN } }).catch(function(){});
     localStorage.removeItem('cgi_token');
     localStorage.removeItem('cgi_user');
-    window.location.href = '/login.html';
+    window.location.href = GATEWAY + '/login.html';
 }
 
 async function setTier(email, tier) {

@@ -417,10 +417,6 @@
         .analyst-table .grade-arrow{color:var(--text-secondary);margin:0 4px;}
 
         /* Nav Chips & Trending */
-        .news-nav-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
-        .nav-chip{padding:5px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;font-size:12px;font-weight:500;color:#9ca3af;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
-        .nav-chip:hover{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3);color:#f59e0b;}
-        .nav-chip .chip-count{font-size:10px;opacity:0.7;margin-left:3px;}
         .trending-section{background:#1a1d29;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px 18px;margin-top:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);}
         .trending-section h3{font-size:13px;font-weight:600;color:#e8eaed;margin-bottom:10px;}
         .trending-tags{display:flex;flex-wrap:wrap;gap:6px;}
@@ -446,7 +442,7 @@
         <a href="CG_News_Dashboard.html" class="active">News</a>
         <a href="CG_Earnings_Dashboard.html">Earnings</a>
         <a href="CG_Company_Summary.html">Company</a>
-        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
+        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="https://sector-intel-hub.pages.dev" style="color:#9ca3af;font-size:12px;margin-right:12px;text-decoration:none;">Dashboard</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
     </div>
 
 <div class="container">
@@ -456,9 +452,6 @@
         <h1>Casino Gaming News</h1>
         <p>Aggregated news, analyst actions, and earnings calendar for casino and gaming companies</p>
     </div>
-
-    <!-- Nav Chips (populated by JS) -->
-    <div class="news-nav-chips" id="news-nav-chips"><!-- populated by JS --></div>
 
     <!-- Tab Bar -->
     <div class="tab-bar">
@@ -855,29 +848,6 @@ function renderTrendingTickers() {
     }).join('');
 }
 
-/* ─── Nav Chips ─── */
-function renderNavChips() {
-    var el = document.getElementById('news-nav-chips');
-    if (!el) return;
-    var articles = NEWS_DATA.articles || [];
-    var industryCount = articles.filter(function(n) { return getArticleCategory(n) === 'industry'; }).length;
-    var sectorCount = articles.filter(function(n) { return getArticleCategory(n) === 'sector'; }).length;
-    var companyCount = articles.filter(function(n) { return getArticleCategory(n) === 'company'; }).length;
-    var analystCount = ANALYST_ACTIONS.length;
-    var earningsCount = (NEWS_DATA.earnings_calendar || []).length;
-    var tabs = [
-        { label: 'Industry-Wide', count: industryCount, id: 'industry' },
-        { label: 'Sector News', count: sectorCount, id: 'sector' },
-        { label: 'Company Headlines', count: companyCount, id: 'company' },
-        { label: 'Analyst Actions', count: analystCount, id: 'analyst' },
-        { label: 'Earnings Calendar', count: earningsCount, id: 'earnings' }
-    ];
-    el.innerHTML = tabs.map(function(tab) {
-        return '<span class="nav-chip" onclick="switchTab(\'' + tab.id + '\', document.querySelector(\'.tab-btn[onclick*=\\\''+tab.id+'\\\']\'))">' +
-            tab.label + '<span class="chip-count">(' + tab.count + ')</span></span>';
-    }).join('');
-}
-
 /* ─── Init ─── */
 // Re-read analyst actions after injected data loads
 ANALYST_ACTIONS = (NEWS_DATA && NEWS_DATA.analyst_actions) ? NEWS_DATA.analyst_actions : [];
@@ -889,7 +859,7 @@ buildAnalystKPIs();
 renderAnalystActions();
 renderEarningsCalendar();
 renderTrendingTickers();
-renderNavChips();
+(function(){var t=new URLSearchParams(window.location.search).get('tab');if(t){var b=document.querySelector('.tab-btn[onclick*="\''+t+'\'"]');if(b)switchTab(t,b);}})();
 </script>
 <script src="auth.js?v=2"></script>
 <script src="export-utils.js"></script>

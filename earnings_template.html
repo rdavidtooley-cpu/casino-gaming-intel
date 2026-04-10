@@ -289,6 +289,7 @@
     </style>
 </head>
 <body>
+<script src="auth.js"></script>
 <div class="ticker-bar" id="ticker-bar"><div class="ticker-track" id="ticker-track"></div></div>
 <div class="nav-bar">
         <a href="index.html">Home</a>
@@ -298,7 +299,7 @@
         <a href="CG_News_Dashboard.html">News</a>
         <a href="CG_Earnings_Dashboard.html" class="active">Earnings</a>
         <a href="CG_Company_Summary.html">Company</a>
-        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
+        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="https://sector-intel-hub.pages.dev" style="color:#9ca3af;font-size:12px;margin-right:12px;text-decoration:none;">Dashboard</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
     </div>
 
 <div class="container">
@@ -731,24 +732,9 @@ var EARNINGS_DATA = {};
         }
     }
 
-    // ── Auth ──
-    function checkAuth() {
-        const s = sessionStorage.getItem('cgi_auth');
-        if (!s) { window.location.href = 'login.html'; return false; }
-        try {
-            const auth = JSON.parse(s);
-            if (Date.now() > auth.expires) { sessionStorage.removeItem('cgi_auth'); window.location.href = 'login.html'; return false; }
-            if (auth.tier === 'admin') {
-                const adminLink = document.getElementById('admin-nav-link');
-                if (adminLink) adminLink.style.display = '';
-            }
-        } catch(e) { window.location.href = 'login.html'; return false; }
-        return true;
-    }
-    window.cgiLogout = function() { sessionStorage.removeItem('cgi_auth'); window.location.href = 'login.html'; };
+    // ── Auth handled by auth.js (included in head) ──
 
     // ── Init ──
-    if (!checkAuth()) return;
     buildTickerBar();
     buildCalendar();
     buildCompanySelect();

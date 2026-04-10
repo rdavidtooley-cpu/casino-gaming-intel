@@ -289,6 +289,7 @@
     </style>
 </head>
 <body>
+<script src="auth.js"></script>
 <div class="ticker-bar" id="ticker-bar"><div class="ticker-track" id="ticker-track"></div></div>
 <div class="nav-bar">
         <a href="index.html">Home</a>
@@ -298,7 +299,7 @@
         <a href="CG_News_Dashboard.html">News</a>
         <a href="CG_Earnings_Dashboard.html" class="active">Earnings</a>
         <a href="CG_Company_Summary.html">Company</a>
-        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
+        <div style="flex:1"></div><a id="admin-nav-link" href="/admin.html" style="display:none;color:var(--accent);font-weight:700;font-size:12px;margin-right:12px;text-decoration:none;">Admin</a><a href="https://sector-intel-hub.pages.dev" style="color:#9ca3af;font-size:12px;margin-right:12px;text-decoration:none;">Dashboard</a><a href="#" onclick="cgiLogout();return false" style="color:var(--text-secondary);font-size:12px">Logout</a>
     </div>
 
 <div class="container">
@@ -466,13 +467,6 @@ var EARNINGS_DATA = {
       "category": "Gaming Equipment"
     },
     {
-      "ticker": "WYNN",
-      "company": "Wynn Resorts, Limited",
-      "report_date": "2026-05-06",
-      "est_eps": 5.79963,
-      "category": "Integrated Resorts"
-    },
-    {
       "ticker": "FLUT",
       "company": "Flutter Entertainment plc",
       "report_date": "2026-05-06",
@@ -485,6 +479,13 @@ var EARNINGS_DATA = {
       "report_date": "2026-05-06",
       "est_eps": null,
       "category": "Gaming Equipment"
+    },
+    {
+      "ticker": "WYNN",
+      "company": "Wynn Resorts, Limited",
+      "report_date": "2026-05-07",
+      "est_eps": 5.79963,
+      "category": "Integrated Resorts"
     },
     {
       "ticker": "GDEN",
@@ -532,7 +533,7 @@ var EARNINGS_DATA = {
       "ticker": "SRAD",
       "company": "Sportradar Group AG",
       "report_date": "2026-05-11",
-      "est_eps": 0.8291897,
+      "est_eps": 0.8272243,
       "category": "Online & iGaming"
     },
     {
@@ -551,20 +552,20 @@ var EARNINGS_DATA = {
       "name": "MGM Resorts International",
       "category": "Integrated Resorts",
       "exchange": "NYSE",
-      "price": 37.09,
-      "price_usd": 37.09,
+      "price": 36.93,
+      "price_usd": 36.93,
       "currency": "USD",
-      "market_cap": 10142986240,
-      "market_cap_b": 10.143,
-      "enterprise_value_b": 39.618,
+      "market_cap": 10100592640,
+      "market_cap_b": 10.101,
+      "enterprise_value_b": 39.575,
       "mcap_tier": "Large-Cap ($10B-$200B)",
-      "pe_trailing": 48.79605,
-      "pe_forward": 15.788173,
-      "ev_ebitda": 16.826,
+      "pe_trailing": 48.592106,
+      "pe_forward": 15.722185,
+      "ev_ebitda": 16.808,
       "ev_ebitdar": 11.6,
-      "ev_revenue": 2.259,
-      "price_to_book": 3.9422772,
-      "price_to_sales": 0.5783538,
+      "ev_revenue": 2.257,
+      "price_to_book": 3.9258,
+      "price_to_sales": 0.57593656,
       "eps_trailing": 0.76,
       "eps_forward": 2.34891,
       "book_value": 9.407,
@@ -614,8 +615,8 @@ var EARNINGS_DATA = {
       "day_low": 36.154,
       "open_price": 36.83,
       "previous_close": 37.1,
-      "daily_change": -0.01499939,
-      "daily_change_pct": -0.040429622,
+      "daily_change": -0.169998,
+      "daily_change_pct": -0.458216,
       "employees": 60000,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -624,10 +625,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-29",
       "next_earnings_date": "2026-04-29",
-      "pct_off_high": -7.6,
-      "vs_50dma_pct": 3.3,
-      "vs_200dma_pct": 4.8,
-      "upside_pct": 14.9,
+      "pct_off_high": -8.0,
+      "vs_50dma_pct": 2.8,
+      "vs_200dma_pct": 4.4,
+      "upside_pct": 15.4,
       "earnings_history": [
         {
           "date": "2026-02-05",
@@ -702,17 +703,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 169.54
         }
       ],
-      "change_1y": 23.9,
-      "trend_1y": 9.8,
-      "week_change": 1.1,
-      "month_change": 2.2,
-      "three_month_change": 5.5,
-      "six_month_change": 14.7,
+      "change_1y": 28.5,
+      "trend_1y": 9.6,
+      "week_change": 0.7,
+      "month_change": 1.8,
+      "three_month_change": 5.1,
+      "six_month_change": 14.3,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 29.93
-        },
         {
           "d": "2025-04-10",
           "p": 28.75
@@ -1711,12 +1708,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 37.08
+          "p": 36.93
         }
       ],
-      "change_ytd": 1.6,
-      "ytd_change": 1.6,
-      "year_change": 23.9,
+      "change_ytd": 1.2,
+      "ytd_change": 1.2,
+      "year_change": 28.5,
       "earnings_date": "2026-04-29",
       "insider_transactions": [
         {
@@ -1906,73 +1903,73 @@ var EARNINGS_DATA = {
           "shares": 26820202,
           "date_reported": "2025-12-31",
           "pct_out": 10.48,
-          "value": 994.6
+          "value": 990.5
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 23782004,
           "date_reported": "2025-12-31",
           "pct_out": 9.3,
-          "value": 882.0
+          "value": 878.3
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 13248022,
           "date_reported": "2025-12-31",
           "pct_out": 5.18,
-          "value": 491.3
+          "value": 489.2
         },
         {
           "holder": "State Street Corporation",
           "shares": 7517622,
           "date_reported": "2025-12-31",
           "pct_out": 2.94,
-          "value": 278.8
+          "value": 277.6
         },
         {
           "holder": "AQR Capital Management, LLC",
           "shares": 7360984,
           "date_reported": "2025-12-31",
           "pct_out": 2.88,
-          "value": 273.0
+          "value": 271.8
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 7099491,
           "date_reported": "2025-12-31",
           "pct_out": 2.78,
-          "value": 263.3
+          "value": 262.2
         },
         {
           "holder": "Invesco Ltd.",
           "shares": 5846749,
           "date_reported": "2025-12-31",
           "pct_out": 2.29,
-          "value": 216.8
+          "value": 215.9
         },
         {
           "holder": "Corvex Management LP",
           "shares": 5385478,
           "date_reported": "2025-12-31",
           "pct_out": 2.11,
-          "value": 199.7
+          "value": 198.9
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 5224452,
           "date_reported": "2025-12-31",
           "pct_out": 2.04,
-          "value": 193.7
+          "value": 192.9
         },
         {
           "holder": "Morgan Stanley",
           "shares": 5157306,
           "date_reported": "2025-12-31",
           "pct_out": 2.02,
-          "value": 191.3
+          "value": 190.5
         }
       ],
-      "timestamp": "2026-04-09T14:06:14.076030",
+      "timestamp": "2026-04-09T21:30:41.734917",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 50.0,
       "rank_pe_trailing": 4,
@@ -1994,21 +1991,21 @@ var EARNINGS_DATA = {
       "name": "Caesars Entertainment",
       "category": "Integrated Resorts",
       "exchange": "NASDAQ",
-      "price": 26.59,
-      "price_usd": 26.59,
+      "price": 26.44,
+      "price_usd": 26.44,
       "currency": "USD",
-      "market_cap": 5426209280,
-      "market_cap_b": 5.426,
-      "enterprise_value_b": 30.382,
+      "market_cap": 5396614144,
+      "market_cap_b": 5.397,
+      "enterprise_value_b": 30.3,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
       "pe_trailing": null,
-      "pe_forward": 22.673773,
-      "ev_ebitda": 8.693,
-      "ev_ebitdar": 7.3,
-      "ev_revenue": 2.645,
-      "price_to_book": 1.5373273,
-      "price_to_sales": 0.4724194,
-      "eps_trailing": -2.42,
+      "pe_forward": 22.550106,
+      "ev_ebitda": 8.67,
+      "ev_ebitdar": 7.2,
+      "ev_revenue": 2.638,
+      "price_to_book": 1.5289425,
+      "price_to_sales": 0.46984276,
+      "eps_trailing": -2.38,
       "eps_forward": 1.1725,
       "book_value": 17.293,
       "revenue_per_share": 55.221,
@@ -2057,8 +2054,8 @@ var EARNINGS_DATA = {
       "day_low": 26.24,
       "open_price": 26.65,
       "previous_close": 26.85,
-      "daily_change": -0.2650013,
-      "daily_change_pct": -0.9869694,
+      "daily_change": -0.41,
+      "daily_change_pct": -1.527,
       "employees": 50000,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -2067,10 +2064,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-28",
       "next_earnings_date": "2026-04-28",
-      "pct_off_high": -15.8,
-      "vs_50dma_pct": 11.4,
-      "vs_200dma_pct": 7.8,
-      "upside_pct": 21.0,
+      "pct_off_high": -16.3,
+      "vs_50dma_pct": 10.8,
+      "vs_200dma_pct": 7.2,
+      "upside_pct": 21.7,
       "earnings_history": [
         {
           "date": "2026-02-17",
@@ -2145,17 +2142,13 @@ var EARNINGS_DATA = {
           "surprise_pct": -10052.61
         }
       ],
-      "change_1y": -3.6,
+      "change_1y": 3.9,
       "trend_1y": -21.1,
-      "week_change": 0.2,
-      "month_change": -8.5,
-      "three_month_change": 6.0,
-      "six_month_change": 13.7,
+      "week_change": -0.3,
+      "month_change": -9.0,
+      "three_month_change": 5.5,
+      "six_month_change": 13.1,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 27.57
-        },
         {
           "d": "2025-04-10",
           "p": 25.45
@@ -3154,12 +3147,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 26.58
+          "p": 26.44
         }
       ],
-      "change_ytd": 12.8,
-      "ytd_change": 12.8,
-      "year_change": -3.6,
+      "change_ytd": 12.2,
+      "ytd_change": 12.2,
+      "year_change": 3.9,
       "earnings_date": "2026-04-28",
       "insider_transactions": [
         {
@@ -3349,73 +3342,73 @@ var EARNINGS_DATA = {
           "shares": 25200577,
           "date_reported": "2025-12-31",
           "pct_out": 12.38,
-          "value": 670.0
+          "value": 666.3
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 20389641,
           "date_reported": "2025-12-31",
           "pct_out": 10.02,
-          "value": 542.1
+          "value": 539.1
         },
         {
           "holder": "Capital World Investors",
           "shares": 15548985,
           "date_reported": "2025-12-31",
           "pct_out": 7.64,
-          "value": 413.4
+          "value": 411.1
         },
         {
           "holder": "Cohen & Steers Inc.",
           "shares": 13640237,
           "date_reported": "2025-12-31",
           "pct_out": 6.7,
-          "value": 362.6
+          "value": 360.6
         },
         {
           "holder": "Capital Research Global Investors",
           "shares": 9915236,
           "date_reported": "2025-12-31",
           "pct_out": 4.87,
-          "value": 263.6
+          "value": 262.2
         },
         {
           "holder": "Morgan Stanley",
           "shares": 7141899,
           "date_reported": "2025-12-31",
           "pct_out": 3.51,
-          "value": 189.9
+          "value": 188.8
         },
         {
           "holder": "State Street Corporation",
           "shares": 6599864,
           "date_reported": "2025-12-31",
           "pct_out": 3.24,
-          "value": 175.5
+          "value": 174.5
         },
         {
           "holder": "Janus Henderson Group PLC",
           "shares": 6173940,
           "date_reported": "2025-12-31",
           "pct_out": 3.03,
-          "value": 164.1
+          "value": 163.2
         },
         {
           "holder": "Bank of America Corporation",
           "shares": 5714903,
           "date_reported": "2025-12-31",
           "pct_out": 2.81,
-          "value": 151.9
+          "value": 151.1
         },
         {
           "holder": "Healthcare of Ontario Pension Plan Trust Fund",
           "shares": 4938000,
           "date_reported": "2025-12-31",
           "pct_out": 2.43,
-          "value": 131.3
+          "value": 130.6
         }
       ],
-      "timestamp": "2026-04-09T14:06:15.679342",
+      "timestamp": "2026-04-09T21:30:43.079834",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 25.0,
       "rank_pe_trailing": null,
@@ -3437,20 +3430,20 @@ var EARNINGS_DATA = {
       "name": "Wynn Resorts",
       "category": "Integrated Resorts",
       "exchange": "NASDAQ",
-      "price": 104.86,
-      "price_usd": 104.86,
+      "price": 104.89,
+      "price_usd": 104.89,
       "currency": "USD",
-      "market_cap": 10935146496,
-      "market_cap_b": 10.935,
-      "enterprise_value_b": 20.287,
+      "market_cap": 10938274816,
+      "market_cap_b": 10.938,
+      "enterprise_value_b": 20.251,
       "mcap_tier": "Large-Cap ($10B-$200B)",
-      "pe_trailing": 33.394905,
-      "pe_forward": 18.080463,
-      "ev_ebitda": 11.595,
+      "pe_trailing": 33.404457,
+      "pe_forward": 18.085636,
+      "ev_ebitda": 11.575,
       "ev_ebitdar": 9.3,
-      "ev_revenue": 2.842,
-      "price_to_book": -39.010418,
-      "price_to_sales": 1.5319785,
+      "ev_revenue": 2.837,
+      "price_to_book": -39.021576,
+      "price_to_sales": 1.5324168,
       "eps_trailing": 3.14,
       "eps_forward": 5.79963,
       "book_value": -2.688,
@@ -3500,20 +3493,20 @@ var EARNINGS_DATA = {
       "day_low": 102.63,
       "open_price": 103.78,
       "previous_close": 105.24,
-      "daily_change": -0.37999725,
-      "daily_change_pct": -0.36107683,
+      "daily_change": -0.349998,
+      "daily_change_pct": -0.332572,
       "employees": 28500,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
       "country": "United States",
       "website": "https://www.wynnresorts.com",
       "most_recent_quarter": "2025-12-30",
-      "earnings_timestamp": "2026-02-12",
-      "next_earnings_date": "2026-05-06",
-      "pct_off_high": -22.2,
+      "earnings_timestamp": "2026-05-07",
+      "next_earnings_date": "2026-05-07",
+      "pct_off_high": -22.1,
       "vs_50dma_pct": -1.9,
-      "vs_200dma_pct": -8.9,
-      "upside_pct": 34.7,
+      "vs_200dma_pct": -8.8,
+      "upside_pct": 34.6,
       "earnings_history": [
         {
           "date": "2026-02-12",
@@ -3588,17 +3581,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 970.35
         }
       ],
-      "change_1y": 39.5,
-      "trend_1y": 25.3,
+      "change_1y": 46.4,
+      "trend_1y": 24.8,
       "week_change": 2.8,
       "month_change": 4.8,
       "three_month_change": -11.1,
       "six_month_change": -13.4,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 75.14
-        },
         {
           "d": "2025-04-10",
           "p": 71.65
@@ -4597,13 +4586,13 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 104.86
+          "p": 104.89
         }
       ],
-      "change_ytd": -14.3,
-      "ytd_change": -14.3,
-      "year_change": 39.5,
-      "earnings_date": "2026-05-06",
+      "change_ytd": -14.2,
+      "ytd_change": -14.2,
+      "year_change": 46.4,
+      "earnings_date": "2026-05-07",
       "insider_transactions": [
         {
           "insider": "FULLALOVE CRAIG JEFFREY",
@@ -4792,28 +4781,28 @@ var EARNINGS_DATA = {
           "shares": 9542392,
           "date_reported": "2025-12-31",
           "pct_out": 9.17,
-          "value": 1000.6
+          "value": 1000.9
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 9002788,
           "date_reported": "2025-12-31",
           "pct_out": 8.65,
-          "value": 944.0
+          "value": 944.3
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 5491066,
           "date_reported": "2025-12-31",
           "pct_out": 5.28,
-          "value": 575.8
+          "value": 576.0
         },
         {
           "holder": "Barrow, Hanley Mewhinney & Strauss, LLC",
           "shares": 3680631,
           "date_reported": "2025-12-31",
           "pct_out": 3.54,
-          "value": 386.0
+          "value": 386.1
         },
         {
           "holder": "State Street Corporation",
@@ -4827,28 +4816,28 @@ var EARNINGS_DATA = {
           "shares": 2197108,
           "date_reported": "2025-12-31",
           "pct_out": 2.11,
-          "value": 230.4
+          "value": 230.5
         },
         {
           "holder": "Egerton Capital (UK) LLP",
           "shares": 2069751,
           "date_reported": "2025-12-31",
           "pct_out": 1.99,
-          "value": 217.0
+          "value": 217.1
         },
         {
           "holder": "Invesco Ltd.",
           "shares": 2011462,
           "date_reported": "2025-12-31",
           "pct_out": 1.93,
-          "value": 210.9
+          "value": 211.0
         },
         {
           "holder": "Morgan Stanley",
           "shares": 1525140,
           "date_reported": "2025-12-31",
           "pct_out": 1.47,
-          "value": 159.9
+          "value": 160.0
         },
         {
           "holder": "Neuberger Berman Group, LLC",
@@ -4858,7 +4847,7 @@ var EARNINGS_DATA = {
           "value": 142.7
         }
       ],
-      "timestamp": "2026-04-09T14:06:17.445016",
+      "timestamp": "2026-04-09T21:30:44.519538",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 75.0,
       "rank_pe_trailing": 3,
@@ -4880,21 +4869,21 @@ var EARNINGS_DATA = {
       "name": "Las Vegas Sands",
       "category": "Integrated Resorts",
       "exchange": "NYSE",
-      "price": 54.6,
-      "price_usd": 54.6,
+      "price": 54.48,
+      "price_usd": 54.48,
       "currency": "USD",
-      "market_cap": 36686323712,
-      "market_cap_b": 36.686,
-      "enterprise_value_b": 49.222,
+      "market_cap": 36605693952,
+      "market_cap_b": 36.606,
+      "enterprise_value_b": 49.141,
       "mcap_tier": "Large-Cap ($10B-$200B)",
-      "pe_trailing": 23.234043,
-      "pe_forward": 14.850233,
-      "ev_ebitda": 10.858,
-      "ev_ebitdar": 9.3,
-      "ev_revenue": 3.781,
-      "price_to_book": 23.174873,
-      "price_to_sales": 2.8183393,
-      "eps_trailing": 2.35,
+      "pe_trailing": 23.282051,
+      "pe_forward": 14.8175955,
+      "ev_ebitda": 10.841,
+      "ev_ebitdar": 9.2,
+      "ev_revenue": 3.775,
+      "price_to_book": 23.12394,
+      "price_to_sales": 2.8121452,
+      "eps_trailing": 2.34,
       "eps_forward": 3.67671,
       "book_value": 2.356,
       "revenue_per_share": 18.838,
@@ -4930,7 +4919,7 @@ var EARNINGS_DATA = {
       "short_pct_float": 0.0312,
       "held_pct_insiders": 0.58443,
       "held_pct_institutions": 0.42236,
-      "dividend_yield": 1.92,
+      "dividend_yield": 1.93,
       "dividend_rate": 1.05,
       "payout_ratio": 0.4255,
       "fifty_two_week_high": 70.45,
@@ -4943,8 +4932,8 @@ var EARNINGS_DATA = {
       "day_low": 53.635,
       "open_price": 54.15,
       "previous_close": 54.6,
-      "daily_change": 0.0,
-      "daily_change_pct": 0.0,
+      "daily_change": -0.119999,
+      "daily_change_pct": -0.219778,
       "employees": 41000,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -4953,10 +4942,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-01-28",
       "next_earnings_date": "2026-04-22",
-      "pct_off_high": -22.5,
-      "vs_50dma_pct": -1.8,
-      "vs_200dma_pct": -3.0,
-      "upside_pct": 27.0,
+      "pct_off_high": -22.7,
+      "vs_50dma_pct": -2.1,
+      "vs_200dma_pct": -3.3,
+      "upside_pct": 27.3,
       "earnings_history": [
         {
           "date": "2026-01-28",
@@ -5031,17 +5020,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 37.3
         }
       ],
-      "change_1y": 65.2,
-      "trend_1y": 45.4,
-      "week_change": 0.5,
-      "month_change": -0.3,
-      "three_month_change": -11.3,
-      "six_month_change": 3.5,
+      "change_1y": 75.3,
+      "trend_1y": 45.0,
+      "week_change": 0.3,
+      "month_change": -0.5,
+      "three_month_change": -11.5,
+      "six_month_change": 3.2,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 33.04
-        },
         {
           "d": "2025-04-10",
           "p": 31.07
@@ -6040,12 +6025,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 54.6
+          "p": 54.48
         }
       ],
-      "change_ytd": -15.8,
-      "ytd_change": -15.8,
-      "year_change": 65.2,
+      "change_ytd": -16.0,
+      "ytd_change": -16.0,
+      "year_change": 75.3,
       "earnings_date": "2026-04-22",
       "insider_transactions": [
         {
@@ -6235,73 +6220,73 @@ var EARNINGS_DATA = {
           "shares": 40565535,
           "date_reported": "2025-12-31",
           "pct_out": 6.11,
-          "value": 2214.9
+          "value": 2210.0
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 26206421,
           "date_reported": "2025-12-31",
           "pct_out": 3.95,
-          "value": 1430.9
+          "value": 1427.7
         },
         {
           "holder": "Capital Research Global Investors",
           "shares": 16232863,
           "date_reported": "2025-12-31",
           "pct_out": 2.45,
-          "value": 886.3
+          "value": 884.4
         },
         {
           "holder": "State Street Corporation",
           "shares": 14155199,
           "date_reported": "2025-12-31",
           "pct_out": 2.13,
-          "value": 772.9
+          "value": 771.2
         },
         {
           "holder": "Price (T.Rowe) Associates Inc",
           "shares": 10417691,
           "date_reported": "2025-12-31",
           "pct_out": 1.57,
-          "value": 568.8
+          "value": 567.6
         },
         {
           "holder": "AQR Capital Management, LLC",
           "shares": 9098518,
           "date_reported": "2025-12-31",
           "pct_out": 1.37,
-          "value": 496.8
+          "value": 495.7
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 8301257,
           "date_reported": "2025-12-31",
           "pct_out": 1.25,
-          "value": 453.2
+          "value": 452.3
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 8186257,
           "date_reported": "2025-12-31",
           "pct_out": 1.23,
-          "value": 447.0
+          "value": 446.0
         },
         {
           "holder": "Bank Of New York Mellon Corporation",
           "shares": 7893031,
           "date_reported": "2025-12-31",
           "pct_out": 1.19,
-          "value": 431.0
+          "value": 430.0
         },
         {
           "holder": "NORGES BANK",
           "shares": 5605957,
           "date_reported": "2025-12-31",
           "pct_out": 0.84,
-          "value": 306.1
+          "value": 305.4
         }
       ],
-      "timestamp": "2026-04-09T14:06:18.781700",
+      "timestamp": "2026-04-09T21:30:45.944242",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": 2,
@@ -6323,20 +6308,20 @@ var EARNINGS_DATA = {
       "name": "Melco Resorts",
       "category": "Integrated Resorts",
       "exchange": "NASDAQ",
-      "price": 5.7,
-      "price_usd": 5.7,
+      "price": 5.76,
+      "price_usd": 5.76,
       "currency": "USD",
-      "market_cap": 2316680448,
-      "market_cap_b": 2.317,
-      "enterprise_value_b": 13.161,
+      "market_cap": 2343121920,
+      "market_cap_b": 2.343,
+      "enterprise_value_b": 13.102,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 12.380435,
-      "pe_forward": 7.09136,
-      "ev_ebitda": 10.912,
-      "ev_ebitdar": 8.7,
-      "ev_revenue": 2.549,
-      "price_to_book": -1.7847071,
-      "price_to_sales": 0.44868225,
+      "pe_trailing": 12.521739,
+      "pe_forward": 7.1722975,
+      "ev_ebitda": 10.864,
+      "ev_ebitdar": 8.6,
+      "ev_revenue": 2.538,
+      "price_to_book": -1.8050768,
+      "price_to_sales": 0.45380327,
       "eps_trailing": 0.46,
       "eps_forward": 0.80309,
       "book_value": -3.191,
@@ -6382,12 +6367,12 @@ var EARNINGS_DATA = {
       "two_hundred_day_avg": 7.82185,
       "avg_volume_10d": 1480760,
       "avg_volume_3mo": 2364190,
-      "day_high": 5.71,
+      "day_high": 5.78,
       "day_low": 5.565,
       "open_price": 5.71,
       "previous_close": 5.81,
-      "daily_change": -0.11499977,
-      "daily_change_pct": -1.979342,
+      "daily_change": -0.0499997,
+      "daily_change_pct": -0.86058,
       "employees": 22961,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -6396,10 +6381,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-02-12",
       "next_earnings_date": "2026-04-30",
-      "pct_off_high": -43.8,
-      "vs_50dma_pct": -2.4,
-      "vs_200dma_pct": -27.1,
-      "upside_pct": 55.9,
+      "pct_off_high": -43.3,
+      "vs_50dma_pct": -1.3,
+      "vs_200dma_pct": -26.4,
+      "upside_pct": 54.3,
       "earnings_history": [
         {
           "date": "2026-02-12",
@@ -6474,17 +6459,13 @@ var EARNINGS_DATA = {
           "surprise_pct": null
         }
       ],
-      "change_1y": 11.9,
-      "trend_1y": -6.1,
-      "week_change": 0.3,
-      "month_change": 2.1,
-      "three_month_change": -17.2,
-      "six_month_change": -32.0,
+      "change_1y": 19.3,
+      "trend_1y": -6.9,
+      "week_change": 1.4,
+      "month_change": 3.2,
+      "three_month_change": -16.3,
+      "six_month_change": -31.3,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 5.09
-        },
         {
           "d": "2025-04-10",
           "p": 4.83
@@ -7483,12 +7464,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 5.7
+          "p": 5.76
         }
       ],
-      "change_ytd": -24.2,
-      "ytd_change": -24.2,
-      "year_change": 11.9,
+      "change_ytd": -23.3,
+      "ytd_change": -23.3,
+      "year_change": 19.3,
       "earnings_date": "2026-04-30",
       "institutional_holders": [
         {
@@ -7496,73 +7477,73 @@ var EARNINGS_DATA = {
           "shares": 22852595,
           "date_reported": "2025-12-31",
           "pct_out": 5.62,
-          "value": 130.1
+          "value": 131.6
         },
         {
           "holder": "Citadel Advisors Llc",
           "shares": 10272891,
           "date_reported": "2025-12-31",
           "pct_out": 2.53,
-          "value": 58.5
+          "value": 59.2
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 9193295,
           "date_reported": "2025-12-31",
           "pct_out": 2.26,
-          "value": 52.4
+          "value": 53.0
         },
         {
           "holder": "Coronation Fund Managers Ltd.",
           "shares": 8335219,
           "date_reported": "2025-12-31",
           "pct_out": 2.05,
-          "value": 47.5
+          "value": 48.0
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 6058498,
           "date_reported": "2025-12-31",
           "pct_out": 1.49,
-          "value": 34.5
+          "value": 34.9
         },
         {
           "holder": "FIL LTD",
           "shares": 4649720,
           "date_reported": "2025-12-31",
           "pct_out": 1.14,
-          "value": 26.5
+          "value": 26.8
         },
         {
           "holder": "Renaissance Technologies, LLC",
           "shares": 4135700,
           "date_reported": "2025-12-31",
           "pct_out": 1.02,
-          "value": 23.6
+          "value": 23.8
         },
         {
           "holder": "WCM Investment Management, LLC",
           "shares": 4073099,
           "date_reported": "2025-12-31",
           "pct_out": 1.0,
-          "value": 23.2
+          "value": 23.5
         },
         {
           "holder": "Balyasny Asset Management LP",
           "shares": 3864347,
           "date_reported": "2025-12-31",
           "pct_out": 0.95,
-          "value": 22.0
+          "value": 22.3
         },
         {
           "holder": "Morgan Stanley",
           "shares": 3798657,
           "date_reported": "2025-12-31",
           "pct_out": 0.93,
-          "value": 21.6
+          "value": 21.9
         }
       ],
-      "timestamp": "2026-04-09T14:06:20.202586",
+      "timestamp": "2026-04-09T21:30:47.309263",
       "rank_market_cap_b": 5,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": 1,
@@ -7584,21 +7565,21 @@ var EARNINGS_DATA = {
       "name": "Penn Entertainment",
       "category": "Regional Operators",
       "exchange": "NASDAQ",
-      "price": 15.69,
-      "price_usd": 15.69,
+      "price": 15.66,
+      "price_usd": 15.66,
       "currency": "USD",
-      "market_cap": 2094673280,
-      "market_cap_b": 2.095,
-      "enterprise_value_b": 12.523,
+      "market_cap": 2091334656,
+      "market_cap_b": 2.091,
+      "enterprise_value_b": 12.565,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
       "pe_trailing": null,
-      "pe_forward": 10.558521,
-      "ev_ebitda": 17.341,
+      "pe_forward": 10.541692,
+      "ev_ebitda": 17.399,
       "ev_ebitdar": 11.0,
-      "ev_revenue": 1.799,
-      "price_to_book": 1.0797136,
-      "price_to_sales": 0.30091557,
-      "eps_trailing": -5.83,
+      "ev_revenue": 1.805,
+      "price_to_book": 1.0779927,
+      "price_to_sales": 0.30043596,
+      "eps_trailing": -5.96,
       "eps_forward": 1.48553,
       "book_value": 14.527,
       "revenue_per_share": 48.14,
@@ -7647,8 +7628,8 @@ var EARNINGS_DATA = {
       "day_low": 15.075,
       "open_price": 15.3,
       "previous_close": 15.33,
-      "daily_change": 0.3550005,
-      "daily_change_pct": 2.3157241,
+      "daily_change": 0.33,
+      "daily_change_pct": 2.15264,
       "employees": 23441,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -7657,10 +7638,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-23",
       "next_earnings_date": "2026-04-23",
-      "pct_off_high": -23.9,
-      "vs_50dma_pct": 13.3,
-      "vs_200dma_pct": -2.9,
-      "upside_pct": 21.8,
+      "pct_off_high": -24.0,
+      "vs_50dma_pct": 13.1,
+      "vs_200dma_pct": -3.1,
+      "upside_pct": 22.0,
       "earnings_history": [
         {
           "date": "2026-02-26",
@@ -7735,17 +7716,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 16.47
         }
       ],
-      "change_1y": -3.7,
-      "trend_1y": -21.5,
-      "week_change": 6.2,
-      "month_change": 5.5,
-      "three_month_change": 8.7,
-      "six_month_change": -7.2,
+      "change_1y": 6.6,
+      "trend_1y": -21.7,
+      "week_change": 6.0,
+      "month_change": 5.3,
+      "three_month_change": 8.5,
+      "six_month_change": -7.3,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 16.28
-        },
         {
           "d": "2025-04-10",
           "p": 14.69
@@ -8744,12 +8721,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 15.69
+          "p": 15.66
         }
       ],
-      "change_ytd": 5.6,
-      "ytd_change": 5.6,
-      "year_change": -3.7,
+      "change_ytd": 5.5,
+      "ytd_change": 5.5,
+      "year_change": 6.6,
       "earnings_date": "2026-04-23",
       "insider_transactions": [
         {
@@ -8939,73 +8916,73 @@ var EARNINGS_DATA = {
           "shares": 15408680,
           "date_reported": "2025-12-31",
           "pct_out": 11.55,
-          "value": 241.7
+          "value": 241.3
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 14302633,
           "date_reported": "2025-12-31",
           "pct_out": 10.72,
-          "value": 224.3
+          "value": 224.0
         },
         {
           "holder": "HG Vora Capital Management, LLC",
           "shares": 6250000,
           "date_reported": "2025-12-31",
           "pct_out": 4.68,
-          "value": 98.0
+          "value": 97.9
         },
         {
           "holder": "DME Capital Management, LP",
           "shares": 6044440,
           "date_reported": "2025-12-31",
           "pct_out": 4.53,
-          "value": 94.8
+          "value": 94.7
         },
         {
           "holder": "Invesco Ltd.",
           "shares": 5774078,
           "date_reported": "2025-12-31",
           "pct_out": 4.33,
-          "value": 90.6
+          "value": 90.4
         },
         {
           "holder": "Hill Path Capital, LP",
           "shares": 5759820,
           "date_reported": "2025-12-31",
           "pct_out": 4.32,
-          "value": 90.3
+          "value": 90.2
         },
         {
           "holder": "State Street Corporation",
           "shares": 4488291,
           "date_reported": "2025-12-31",
           "pct_out": 3.36,
-          "value": 70.4
+          "value": 70.3
         },
         {
           "holder": "Shapiro Capital Management LLC",
           "shares": 3878988,
           "date_reported": "2025-12-31",
           "pct_out": 2.91,
-          "value": 60.8
+          "value": 60.7
         },
         {
           "holder": "AQR Capital Management, LLC",
           "shares": 3499700,
           "date_reported": "2025-12-31",
           "pct_out": 2.62,
-          "value": 54.9
+          "value": 54.8
         },
         {
           "holder": "Armistice Capital, LLC",
           "shares": 3096000,
           "date_reported": "2025-12-31",
           "pct_out": 2.32,
-          "value": 48.6
+          "value": 48.5
         }
       ],
-      "timestamp": "2026-04-09T14:06:22.275084",
+      "timestamp": "2026-04-09T21:30:48.793067",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 57.1,
       "rank_pe_trailing": null,
@@ -9027,20 +9004,20 @@ var EARNINGS_DATA = {
       "name": "Boyd Gaming",
       "category": "Regional Operators",
       "exchange": "NYSE",
-      "price": 86.81,
-      "price_usd": 86.81,
+      "price": 86.83,
+      "price_usd": 86.83,
       "currency": "USD",
-      "market_cap": 6553101312,
-      "market_cap_b": 6.553,
-      "enterprise_value_b": 8.865,
+      "market_cap": 6554988544,
+      "market_cap_b": 6.555,
+      "enterprise_value_b": 8.912,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 3.8477395,
-      "pe_forward": 10.711958,
-      "ev_ebitda": 7.382,
-      "ev_ebitdar": 6.1,
-      "ev_revenue": 2.166,
-      "price_to_book": 2.541353,
-      "price_to_sales": 1.6014465,
+      "pe_trailing": 3.8488476,
+      "pe_forward": 10.715043,
+      "ev_ebitda": 7.421,
+      "ev_ebitdar": 6.2,
+      "ev_revenue": 2.178,
+      "price_to_book": 2.542085,
+      "price_to_sales": 1.6019076,
       "eps_trailing": 22.56,
       "eps_forward": 8.10356,
       "book_value": 34.157,
@@ -9077,7 +9054,7 @@ var EARNINGS_DATA = {
       "short_pct_float": 0.0643,
       "held_pct_insiders": 0.30977,
       "held_pct_institutions": 0.73538,
-      "dividend_yield": 0.86,
+      "dividend_yield": 0.85,
       "dividend_rate": 0.74,
       "payout_ratio": 0.0319,
       "fifty_two_week_high": 89.96,
@@ -9086,12 +9063,12 @@ var EARNINGS_DATA = {
       "two_hundred_day_avg": 83.21585,
       "avg_volume_10d": 774700,
       "avg_volume_3mo": 936693,
-      "day_high": 86.92,
+      "day_high": 87.12,
       "day_low": 85.2,
       "open_price": 85.9,
       "previous_close": 86.21,
-      "daily_change": 0.5950012,
-      "daily_change_pct": 0.6901766,
+      "daily_change": 0.620003,
+      "daily_change_pct": 0.719177,
       "employees": 16009,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -9178,17 +9155,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 11.06
         }
       ],
-      "change_1y": 29.7,
-      "trend_1y": 16.3,
+      "change_1y": 36.3,
+      "trend_1y": 16.0,
       "week_change": 3.7,
       "month_change": 5.2,
       "three_month_change": -1.5,
       "six_month_change": 4.3,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 66.93
-        },
         {
           "d": "2025-04-10",
           "p": 63.71
@@ -10187,12 +10160,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 86.81
+          "p": 86.83
         }
       ],
       "change_ytd": 1.0,
       "ytd_change": 1.0,
-      "year_change": 29.7,
+      "year_change": 36.3,
       "earnings_date": "2026-04-23",
       "insider_transactions": [
         {
@@ -10382,28 +10355,28 @@ var EARNINGS_DATA = {
           "shares": 5639209,
           "date_reported": "2025-12-31",
           "pct_out": 7.49,
-          "value": 489.5
+          "value": 489.7
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 5375740,
           "date_reported": "2025-12-31",
           "pct_out": 7.14,
-          "value": 466.6
+          "value": 466.8
         },
         {
           "holder": "Boston Partners",
           "shares": 3227222,
           "date_reported": "2025-12-31",
           "pct_out": 4.29,
-          "value": 280.1
+          "value": 280.2
         },
         {
           "holder": "Ariel Investments, LLC",
           "shares": 2340172,
           "date_reported": "2025-12-31",
           "pct_out": 3.11,
-          "value": 203.1
+          "value": 203.2
         },
         {
           "holder": "State Street Corporation",
@@ -10431,24 +10404,24 @@ var EARNINGS_DATA = {
           "shares": 1427828,
           "date_reported": "2025-12-31",
           "pct_out": 1.9,
-          "value": 123.9
+          "value": 124.0
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 1355209,
           "date_reported": "2025-12-31",
           "pct_out": 1.8,
-          "value": 117.6
+          "value": 117.7
         },
         {
           "holder": "Franklin Resources, Inc.",
           "shares": 1357412,
           "date_reported": "2025-12-31",
           "pct_out": 1.8,
-          "value": 117.8
+          "value": 117.9
         }
       ],
-      "timestamp": "2026-04-09T14:06:23.607008",
+      "timestamp": "2026-04-09T21:30:50.117236",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": 1,
@@ -10470,20 +10443,20 @@ var EARNINGS_DATA = {
       "name": "Red Rock Resorts",
       "category": "Regional Operators",
       "exchange": "NASDAQ",
-      "price": 56.98,
-      "price_usd": 56.98,
+      "price": 56.4,
+      "price_usd": 56.4,
       "currency": "USD",
-      "market_cap": 5859076608,
-      "market_cap_b": 5.859,
-      "enterprise_value_b": 6.788,
+      "market_cap": 5799437312,
+      "market_cap_b": 5.799,
+      "enterprise_value_b": 6.749,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 18.262821,
-      "pe_forward": 17.420122,
-      "ev_ebitda": 8.341,
-      "ev_ebitdar": 7.3,
-      "ev_revenue": 3.375,
-      "price_to_book": 15.951847,
-      "price_to_sales": 2.9128144,
+      "pe_trailing": 18.076923,
+      "pe_forward": 17.242804,
+      "ev_ebitda": 8.293,
+      "ev_ebitdar": 7.2,
+      "ev_revenue": 3.355,
+      "price_to_book": 15.789474,
+      "price_to_sales": 2.883165,
       "eps_trailing": 3.12,
       "eps_forward": 3.27093,
       "book_value": 3.572,
@@ -10529,12 +10502,12 @@ var EARNINGS_DATA = {
       "two_hundred_day_avg": 59.025475,
       "avg_volume_10d": 1021600,
       "avg_volume_3mo": 813440,
-      "day_high": 57.16,
+      "day_high": 57.21,
       "day_low": 55.71,
       "open_price": 56.83,
       "previous_close": 57.07,
-      "daily_change": -0.09000015,
-      "daily_change_pct": -0.15770134,
+      "daily_change": -0.669998,
+      "daily_change_pct": -1.17399,
       "employees": 9500,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -10543,10 +10516,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-29",
       "next_earnings_date": "2026-04-29",
-      "pct_off_high": -17.4,
-      "vs_50dma_pct": -5.5,
-      "vs_200dma_pct": -3.5,
-      "upside_pct": 27.6,
+      "pct_off_high": -18.2,
+      "vs_50dma_pct": -6.4,
+      "vs_200dma_pct": -4.4,
+      "upside_pct": 28.9,
       "earnings_history": [
         {
           "date": "2026-02-10",
@@ -10621,17 +10594,13 @@ var EARNINGS_DATA = {
           "surprise_pct": -11.64
         }
       ],
-      "change_1y": 41.9,
-      "trend_1y": 31.6,
-      "week_change": 3.5,
-      "month_change": -3.0,
-      "three_month_change": -8.7,
-      "six_month_change": 1.8,
+      "change_1y": 47.6,
+      "trend_1y": 31.2,
+      "week_change": 2.5,
+      "month_change": -4.0,
+      "three_month_change": -9.6,
+      "six_month_change": 0.8,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 40.16
-        },
         {
           "d": "2025-04-10",
           "p": 38.2
@@ -11630,12 +11599,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 56.98
+          "p": 56.4
         }
       ],
-      "change_ytd": -7.7,
-      "ytd_change": -7.7,
-      "year_change": 41.9,
+      "change_ytd": -8.6,
+      "ytd_change": -8.6,
+      "year_change": 47.6,
       "earnings_date": "2026-04-29",
       "insider_transactions": [
         {
@@ -11825,77 +11794,77 @@ var EARNINGS_DATA = {
           "shares": 12519892,
           "date_reported": "2025-12-31",
           "pct_out": 21.17,
-          "value": 713.4
+          "value": 706.1
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 7134652,
           "date_reported": "2025-12-31",
           "pct_out": 12.06,
-          "value": 406.5
+          "value": 402.4
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 5476315,
           "date_reported": "2025-12-31",
           "pct_out": 9.26,
-          "value": 312.0
+          "value": 308.9
         },
         {
           "holder": "FMR, LLC",
           "shares": 2161438,
           "date_reported": "2025-12-31",
           "pct_out": 3.65,
-          "value": 123.2
+          "value": 121.9
         },
         {
           "holder": "Diamond Hill Capital Management Inc",
           "shares": 2003236,
           "date_reported": "2025-12-31",
           "pct_out": 3.39,
-          "value": 114.1
+          "value": 113.0
         },
         {
           "holder": "State Street Corporation",
           "shares": 1814812,
           "date_reported": "2025-12-31",
           "pct_out": 3.07,
-          "value": 103.4
+          "value": 102.4
         },
         {
           "holder": "Eminence Capital, LP",
           "shares": 1614183,
           "date_reported": "2025-12-31",
           "pct_out": 2.73,
-          "value": 92.0
+          "value": 91.0
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 1336779,
           "date_reported": "2025-12-31",
           "pct_out": 2.26,
-          "value": 76.2
+          "value": 75.4
         },
         {
           "holder": "Fuller & Thaler Asset Management Inc.",
           "shares": 1207404,
           "date_reported": "2025-12-31",
           "pct_out": 2.04,
-          "value": 68.8
+          "value": 68.1
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 1188664,
           "date_reported": "2025-12-31",
           "pct_out": 2.01,
-          "value": 67.7
+          "value": 67.0
         }
       ],
-      "timestamp": "2026-04-09T14:06:24.868651",
+      "timestamp": "2026-04-09T21:30:51.715510",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 71.4,
-      "rank_pe_trailing": 4,
-      "pctile_pe_trailing": 0.0,
+      "rank_pe_trailing": 3,
+      "pctile_pe_trailing": 33.3,
       "rank_revenue_growth": 6,
       "pctile_revenue_growth": 28.6,
       "rank_ebitda_margins": 1,
@@ -11904,7 +11873,7 @@ var EARNINGS_DATA = {
       "pctile_roe": 100.0,
       "rank_change_ytd": 6,
       "pctile_change_ytd": 28.6,
-      "composite_score": 54.8
+      "composite_score": 60.3
     },
     "CHDN": {
       "ticker": "CHDN",
@@ -11913,20 +11882,20 @@ var EARNINGS_DATA = {
       "name": "Churchill Downs",
       "category": "Regional Operators",
       "exchange": "NASDAQ",
-      "price": 88.31,
-      "price_usd": 88.31,
+      "price": 88.47,
+      "price_usd": 88.47,
       "currency": "USD",
-      "market_cap": 6155235840,
-      "market_cap_b": 6.155,
+      "market_cap": 6166038528,
+      "market_cap_b": 6.166,
       "enterprise_value_b": 11.209,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 16.694708,
-      "pe_forward": 12.095129,
-      "ev_ebitda": 11.717,
+      "pe_trailing": 16.724009,
+      "pe_forward": 12.116357,
+      "ev_ebitda": 11.716,
       "ev_ebitdar": 9.9,
       "ev_revenue": 3.831,
-      "price_to_book": 6.087751,
-      "price_to_sales": 2.1037068,
+      "price_to_book": 6.0984354,
+      "price_to_sales": 2.107399,
       "eps_trailing": 5.29,
       "eps_forward": 7.3017,
       "book_value": 14.507,
@@ -11976,8 +11945,8 @@ var EARNINGS_DATA = {
       "day_low": 87.01,
       "open_price": 88.45,
       "previous_close": 88.48,
-      "daily_change": -0.16500092,
-      "daily_change_pct": -0.18648385,
+      "daily_change": -0.0100021,
+      "daily_change_pct": -0.0113044,
       "employees": 6600,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -11986,10 +11955,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-22",
       "next_earnings_date": "2026-04-22",
-      "pct_off_high": -25.5,
-      "vs_50dma_pct": -3.0,
-      "vs_200dma_pct": -12.1,
-      "upside_pct": 52.6,
+      "pct_off_high": -25.3,
+      "vs_50dma_pct": -2.8,
+      "vs_200dma_pct": -11.9,
+      "upside_pct": 52.3,
       "earnings_history": [
         {
           "date": "2026-02-25",
@@ -12064,17 +12033,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 8.31
         }
       ],
-      "change_1y": -16.3,
-      "trend_1y": -3.8,
-      "week_change": -0.8,
-      "month_change": 2.7,
-      "three_month_change": -20.8,
-      "six_month_change": -4.2,
+      "change_1y": -13.3,
+      "trend_1y": -3.7,
+      "week_change": -0.7,
+      "month_change": 2.9,
+      "three_month_change": -20.7,
+      "six_month_change": -4.0,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 105.49
-        },
         {
           "d": "2025-04-10",
           "p": 102.01
@@ -13073,12 +13038,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 88.32
+          "p": 88.47
         }
       ],
-      "change_ytd": -21.1,
-      "ytd_change": -21.1,
-      "year_change": -16.3,
+      "change_ytd": -21.0,
+      "ytd_change": -21.0,
+      "year_change": -13.3,
       "earnings_date": "2026-04-22",
       "insider_transactions": [
         {
@@ -13268,73 +13233,73 @@ var EARNINGS_DATA = {
           "shares": 6202982,
           "date_reported": "2025-12-31",
           "pct_out": 8.9,
-          "value": 547.8
+          "value": 548.8
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 6036416,
           "date_reported": "2025-12-31",
           "pct_out": 8.66,
-          "value": 533.1
+          "value": 534.0
         },
         {
           "holder": "Capital International Investors",
           "shares": 3099437,
           "date_reported": "2025-12-31",
           "pct_out": 4.45,
-          "value": 273.7
+          "value": 274.2
         },
         {
           "holder": "LONDON CO OF VIRGINIA",
           "shares": 2620723,
           "date_reported": "2025-12-31",
           "pct_out": 3.76,
-          "value": 231.4
+          "value": 231.9
         },
         {
           "holder": "State Street Corporation",
           "shares": 1956295,
           "date_reported": "2025-12-31",
           "pct_out": 2.81,
-          "value": 172.8
+          "value": 173.1
         },
         {
           "holder": "FMR, LLC",
           "shares": 1719097,
           "date_reported": "2025-12-31",
           "pct_out": 2.47,
-          "value": 151.8
+          "value": 152.1
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 1384089,
           "date_reported": "2025-12-31",
           "pct_out": 1.99,
-          "value": 122.2
+          "value": 122.5
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 1327655,
           "date_reported": "2025-12-31",
           "pct_out": 1.9,
-          "value": 117.3
+          "value": 117.5
         },
         {
           "holder": "Jennison Associates LLC",
           "shares": 1233495,
           "date_reported": "2025-12-31",
           "pct_out": 1.77,
-          "value": 108.9
+          "value": 109.1
         },
         {
           "holder": "Boston Partners",
           "shares": 1235653,
           "date_reported": "2025-12-31",
           "pct_out": 1.77,
-          "value": 109.1
+          "value": 109.3
         }
       ],
-      "timestamp": "2026-04-09T14:06:28.188712",
+      "timestamp": "2026-04-09T21:30:55.033714",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 85.7,
       "rank_pe_trailing": 2,
@@ -13356,20 +13321,20 @@ var EARNINGS_DATA = {
       "name": "Monarch Casino & Resort",
       "category": "Regional Operators",
       "exchange": "NASDAQ",
-      "price": 98.72,
-      "price_usd": 98.72,
+      "price": 98.94,
+      "price_usd": 98.94,
       "currency": "USD",
-      "market_cap": 1765717760,
-      "market_cap_b": 1.766,
-      "enterprise_value_b": 1.678,
+      "market_cap": 1769652736,
+      "market_cap_b": 1.77,
+      "enterprise_value_b": 1.686,
       "mcap_tier": "Small-Cap ($300M-$2B)",
-      "pe_trailing": 18.18048,
-      "pe_forward": 16.63353,
-      "ev_ebitda": 8.799,
+      "pe_trailing": 18.220995,
+      "pe_forward": 16.670599,
+      "ev_ebitda": 8.843,
       "ev_ebitdar": 7.5,
-      "ev_revenue": 3.078,
-      "price_to_book": 3.2716908,
-      "price_to_sales": 3.2391062,
+      "ev_revenue": 3.094,
+      "price_to_book": 3.278982,
+      "price_to_sales": 3.2463248,
       "eps_trailing": 5.43,
       "eps_forward": 5.935,
       "book_value": 30.174,
@@ -13406,7 +13371,7 @@ var EARNINGS_DATA = {
       "short_pct_float": 0.024600001,
       "held_pct_insiders": 0.32022998,
       "held_pct_institutions": 0.64443,
-      "dividend_yield": 1.22,
+      "dividend_yield": 1.21,
       "dividend_rate": 1.2,
       "payout_ratio": 0.221,
       "fifty_two_week_high": 113.88,
@@ -13419,8 +13384,8 @@ var EARNINGS_DATA = {
       "day_low": 97.0,
       "open_price": 97.52,
       "previous_close": 98.47,
-      "daily_change": 0.25,
-      "daily_change_pct": 0.25388443,
+      "daily_change": 0.470001,
+      "daily_change_pct": 0.477304,
       "employees": 2740,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -13429,10 +13394,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-21",
       "next_earnings_date": "2026-04-21",
-      "pct_off_high": -13.3,
-      "vs_50dma_pct": 2.9,
-      "vs_200dma_pct": 2.0,
-      "upside_pct": 9.1,
+      "pct_off_high": -13.1,
+      "vs_50dma_pct": 3.2,
+      "vs_200dma_pct": 2.2,
+      "upside_pct": 8.8,
       "earnings_history": [
         {
           "date": "2026-02-04",
@@ -13507,17 +13472,13 @@ var EARNINGS_DATA = {
           "surprise_pct": -5.22
         }
       ],
-      "change_1y": 29.4,
-      "trend_1y": 17.0,
-      "week_change": 2.1,
-      "month_change": -0.2,
-      "three_month_change": 5.2,
-      "six_month_change": 1.3,
+      "change_1y": 35.2,
+      "trend_1y": 16.7,
+      "week_change": 2.3,
+      "month_change": 0.0,
+      "three_month_change": 5.5,
+      "six_month_change": 1.6,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 76.29
-        },
         {
           "d": "2025-04-10",
           "p": 73.17
@@ -14516,12 +14477,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 98.72
+          "p": 98.94
         }
       ],
-      "change_ytd": 3.1,
-      "ytd_change": 3.1,
-      "year_change": 29.4,
+      "change_ytd": 3.3,
+      "ytd_change": 3.3,
+      "year_change": 35.2,
       "earnings_date": "2026-04-21",
       "insider_transactions": [
         {
@@ -14630,49 +14591,49 @@ var EARNINGS_DATA = {
           "shares": 1948966,
           "date_reported": "2025-12-31",
           "pct_out": 10.9,
-          "value": 192.4
+          "value": 192.8
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 1030396,
           "date_reported": "2025-12-31",
           "pct_out": 5.76,
-          "value": 101.7
+          "value": 101.9
         },
         {
           "holder": "Davenport & Co LLC",
           "shares": 938700,
           "date_reported": "2025-12-31",
           "pct_out": 5.25,
-          "value": 92.7
+          "value": 92.9
         },
         {
           "holder": "American Century Companies Inc",
           "shares": 496720,
           "date_reported": "2025-12-31",
           "pct_out": 2.78,
-          "value": 49.0
+          "value": 49.1
         },
         {
           "holder": "JPMORGAN CHASE & CO",
           "shares": 486417,
           "date_reported": "2025-12-31",
           "pct_out": 2.72,
-          "value": 48.0
+          "value": 48.1
         },
         {
           "holder": "State Street Corporation",
           "shares": 475626,
           "date_reported": "2025-12-31",
           "pct_out": 2.66,
-          "value": 47.0
+          "value": 47.1
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 396844,
           "date_reported": "2025-12-31",
           "pct_out": 2.22,
-          "value": 39.2
+          "value": 39.3
         },
         {
           "holder": "Fuller & Thaler Asset Management Inc.",
@@ -14686,30 +14647,30 @@ var EARNINGS_DATA = {
           "shares": 243213,
           "date_reported": "2025-12-31",
           "pct_out": 1.36,
-          "value": 24.0
+          "value": 24.1
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 209046,
           "date_reported": "2025-12-31",
           "pct_out": 1.17,
-          "value": 20.6
+          "value": 20.7
         }
       ],
-      "timestamp": "2026-04-09T14:06:29.906175",
+      "timestamp": "2026-04-09T21:30:56.534438",
       "rank_market_cap_b": 5,
       "pctile_market_cap_b": 42.9,
-      "rank_pe_trailing": 3,
-      "pctile_pe_trailing": 33.3,
+      "rank_pe_trailing": 4,
+      "pctile_pe_trailing": 0.0,
       "rank_revenue_growth": 4,
       "pctile_revenue_growth": 57.1,
       "rank_ebitda_margins": 2,
       "pctile_ebitda_margins": 85.7,
       "rank_roe": 4,
       "pctile_roe": 57.1,
-      "rank_change_ytd": 4,
-      "pctile_change_ytd": 57.1,
-      "composite_score": 55.5
+      "rank_change_ytd": 3,
+      "pctile_change_ytd": 71.4,
+      "composite_score": 52.4
     },
     "GDEN": {
       "ticker": "GDEN",
@@ -14718,20 +14679,20 @@ var EARNINGS_DATA = {
       "name": "Golden Entertainment",
       "category": "Regional Operators",
       "exchange": "NASDAQ",
-      "price": 28.0,
-      "price_usd": 28.0,
+      "price": 27.91,
+      "price_usd": 27.91,
       "currency": "USD",
-      "market_cap": 739166720,
-      "market_cap_b": 0.739,
-      "enterprise_value_b": 1.187,
+      "market_cap": 736790848,
+      "market_cap_b": 0.737,
+      "enterprise_value_b": 1.194,
       "mcap_tier": "Small-Cap ($300M-$2B)",
       "pe_trailing": null,
-      "pe_forward": 23.140495,
-      "ev_ebitda": 9.721,
-      "ev_ebitdar": 7.4,
-      "ev_revenue": 1.869,
-      "price_to_book": 1.7419436,
-      "price_to_sales": 1.1642053,
+      "pe_forward": 23.066114,
+      "ev_ebitda": 9.781,
+      "ev_ebitdar": 7.5,
+      "ev_revenue": 1.88,
+      "price_to_book": 1.7363445,
+      "price_to_sales": 1.1604632,
       "eps_trailing": -0.23,
       "eps_forward": 1.21,
       "book_value": 16.074,
@@ -14768,7 +14729,7 @@ var EARNINGS_DATA = {
       "short_pct_float": 0.04,
       "held_pct_insiders": 0.27324,
       "held_pct_institutions": 0.68437,
-      "dividend_yield": 3.62,
+      "dividend_yield": 3.58,
       "dividend_rate": 1.0,
       "payout_ratio": 4.5455,
       "fifty_two_week_high": 32.74,
@@ -14781,8 +14742,8 @@ var EARNINGS_DATA = {
       "day_low": 27.46,
       "open_price": 27.46,
       "previous_close": 27.63,
-      "daily_change": 0.37000084,
-      "daily_change_pct": 1.3391272,
+      "daily_change": 0.280001,
+      "daily_change_pct": 1.01339,
       "employees": 4900,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -14791,10 +14752,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-02-27",
       "next_earnings_date": "2026-05-07",
-      "pct_off_high": -14.5,
-      "vs_50dma_pct": 0.9,
-      "vs_200dma_pct": 4.3,
-      "upside_pct": 7.1,
+      "pct_off_high": -14.8,
+      "vs_50dma_pct": 0.6,
+      "vs_200dma_pct": 4.0,
+      "upside_pct": 7.5,
       "earnings_history": [
         {
           "date": "2026-02-27",
@@ -14869,17 +14830,13 @@ var EARNINGS_DATA = {
           "surprise_pct": -21.11
         }
       ],
-      "change_1y": 9.2,
+      "change_1y": 13.6,
       "trend_1y": 5.0,
-      "week_change": 3.6,
-      "month_change": 2.9,
-      "three_month_change": 3.7,
-      "six_month_change": 30.6,
+      "week_change": 3.2,
+      "month_change": 2.5,
+      "three_month_change": 3.3,
+      "six_month_change": 30.1,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 25.65
-        },
         {
           "d": "2025-04-10",
           "p": 24.57
@@ -15878,12 +15835,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 28.0
+          "p": 27.91
         }
       ],
-      "change_ytd": 3.5,
-      "ytd_change": 3.5,
-      "year_change": 9.2,
+      "change_ytd": 3.2,
+      "ytd_change": 3.2,
+      "year_change": 13.6,
       "earnings_date": "2026-05-07",
       "insider_transactions": [
         {
@@ -16073,28 +16030,28 @@ var EARNINGS_DATA = {
           "shares": 3034927,
           "date_reported": "2025-12-31",
           "pct_out": 11.5,
-          "value": 85.0
+          "value": 84.7
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 1382234,
           "date_reported": "2025-12-31",
           "pct_out": 5.24,
-          "value": 38.7
+          "value": 38.6
         },
         {
           "holder": "Gamco Investors, Inc ET AL",
           "shares": 1134462,
           "date_reported": "2025-12-31",
           "pct_out": 4.3,
-          "value": 31.8
+          "value": 31.7
         },
         {
           "holder": "Quinn Opportunity Partners, LLC",
           "shares": 875773,
           "date_reported": "2025-12-31",
           "pct_out": 3.32,
-          "value": 24.5
+          "value": 24.4
         },
         {
           "holder": "State Street Corporation",
@@ -16108,7 +16065,7 @@ var EARNINGS_DATA = {
           "shares": 681469,
           "date_reported": "2025-12-31",
           "pct_out": 2.58,
-          "value": 19.1
+          "value": 19.0
         },
         {
           "holder": "Millennium Management Llc",
@@ -16139,7 +16096,7 @@ var EARNINGS_DATA = {
           "value": 13.1
         }
       ],
-      "timestamp": "2026-04-09T14:06:31.311772",
+      "timestamp": "2026-04-09T21:30:58.129882",
       "rank_market_cap_b": 6,
       "pctile_market_cap_b": 28.6,
       "rank_pe_trailing": null,
@@ -16150,9 +16107,9 @@ var EARNINGS_DATA = {
       "pctile_ebitda_margins": 42.9,
       "rank_roe": 5,
       "pctile_roe": 42.9,
-      "rank_change_ytd": 3,
-      "pctile_change_ytd": 71.4,
-      "composite_score": 37.2
+      "rank_change_ytd": 4,
+      "pctile_change_ytd": 57.1,
+      "composite_score": 34.3
     },
     "FLL": {
       "ticker": "FLL",
@@ -16312,17 +16269,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 70.77
         }
       ],
-      "change_1y": -23.1,
-      "trend_1y": -52.8,
+      "change_1y": -16.1,
+      "trend_1y": -53.1,
       "week_change": 5.9,
       "month_change": -4.9,
       "three_month_change": 5.9,
       "six_month_change": -2.2,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 3.51
-        },
         {
           "d": "2025-04-10",
           "p": 3.22
@@ -17326,7 +17279,7 @@ var EARNINGS_DATA = {
       ],
       "change_ytd": 8.0,
       "ytd_change": 8.0,
-      "year_change": -23.1,
+      "year_change": -16.1,
       "earnings_date": "2026-05-07",
       "insider_transactions": [
         {
@@ -17582,7 +17535,7 @@ var EARNINGS_DATA = {
           "value": 1.4
         }
       ],
-      "timestamp": "2026-04-09T14:06:32.580392",
+      "timestamp": "2026-04-09T21:30:59.576960",
       "rank_market_cap_b": 8,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": null,
@@ -17604,21 +17557,21 @@ var EARNINGS_DATA = {
       "name": "Bally's Corporation",
       "category": "Regional Operators",
       "exchange": "NYSE",
-      "price": 11.04,
-      "price_usd": 11.04,
+      "price": 11.06,
+      "price_usd": 11.06,
       "currency": "USD",
-      "market_cap": 536074144,
-      "market_cap_b": 0.536,
-      "enterprise_value_b": 7.766,
+      "market_cap": 536802208,
+      "market_cap_b": 0.537,
+      "enterprise_value_b": 7.753,
       "mcap_tier": "Small-Cap ($300M-$2B)",
       "pe_trailing": null,
-      "pe_forward": -5.031891,
-      "ev_ebitda": 22.559,
+      "pe_forward": -5.038725,
+      "ev_ebitda": 22.522,
       "ev_ebitdar": 15.4,
-      "ev_revenue": 2.923,
-      "price_to_book": 0.5388331,
-      "price_to_sales": 0.20178294,
-      "eps_trailing": -11.82,
+      "ev_revenue": 2.918,
+      "price_to_book": 0.53956485,
+      "price_to_sales": 0.20205699,
+      "eps_trailing": -11.55,
       "eps_forward": -2.195,
       "book_value": 20.498,
       "revenue_per_share": 44.78,
@@ -17667,8 +17620,8 @@ var EARNINGS_DATA = {
       "day_low": 10.57,
       "open_price": 11.26,
       "previous_close": 11.32,
-      "daily_change": -0.27499962,
-      "daily_change_pct": -2.4293253,
+      "daily_change": -0.259999,
+      "daily_change_pct": -2.29681,
       "employees": 11700,
       "industry_yf": "Resorts & Casinos",
       "sector_yf": "Consumer Cyclical",
@@ -17677,10 +17630,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-03-16",
       "next_earnings_date": "2026-05-11",
-      "pct_off_high": -46.8,
-      "vs_50dma_pct": -17.4,
-      "vs_200dma_pct": -17.3,
-      "upside_pct": 17.8,
+      "pct_off_high": -46.7,
+      "vs_50dma_pct": -17.3,
+      "vs_200dma_pct": -17.1,
+      "upside_pct": 17.5,
       "earnings_history": [
         {
           "date": "2026-03-23",
@@ -17755,17 +17708,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 33.38
         }
       ],
-      "change_1y": -30.1,
-      "trend_1y": 33.4,
-      "week_change": 14.5,
-      "month_change": -17.1,
-      "three_month_change": -31.7,
-      "six_month_change": -21.2,
+      "change_1y": -21.4,
+      "trend_1y": 34.4,
+      "week_change": 14.6,
+      "month_change": -17.0,
+      "three_month_change": -31.6,
+      "six_month_change": -21.1,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 15.8
-        },
         {
           "d": "2025-04-10",
           "p": 14.07
@@ -18764,12 +18713,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 11.05
+          "p": 11.06
         }
       ],
-      "change_ytd": -33.6,
-      "ytd_change": -33.6,
-      "year_change": -30.1,
+      "change_ytd": -33.5,
+      "ytd_change": -33.5,
+      "year_change": -21.4,
       "earnings_date": "2026-05-11",
       "insider_transactions": [
         {
@@ -18959,14 +18908,14 @@ var EARNINGS_DATA = {
           "shares": 32480973,
           "date_reported": "2025-12-31",
           "pct_out": 66.92,
-          "value": 358.8
+          "value": 359.2
         },
         {
           "holder": "Whitefort Capital Management, LP",
           "shares": 1921372,
           "date_reported": "2025-12-31",
           "pct_out": 3.96,
-          "value": 21.2
+          "value": 21.3
         },
         {
           "holder": "Vanguard Group Inc",
@@ -18987,7 +18936,7 @@ var EARNINGS_DATA = {
           "shares": 447799,
           "date_reported": "2025-12-31",
           "pct_out": 0.92,
-          "value": 4.9
+          "value": 5.0
         },
         {
           "holder": "Rathbones Group PLC",
@@ -19025,7 +18974,7 @@ var EARNINGS_DATA = {
           "value": 0.7
         }
       ],
-      "timestamp": "2026-04-09T14:06:33.921990",
+      "timestamp": "2026-04-09T21:31:01.074893",
       "rank_market_cap_b": 7,
       "pctile_market_cap_b": 14.3,
       "rank_pe_trailing": null,
@@ -19047,20 +18996,20 @@ var EARNINGS_DATA = {
       "name": "DraftKings",
       "category": "Online & iGaming",
       "exchange": "NASDAQ",
-      "price": 22.5,
-      "price_usd": 22.5,
+      "price": 22.25,
+      "price_usd": 22.25,
       "currency": "USD",
-      "market_cap": 11151734784,
-      "market_cap_b": 11.152,
-      "enterprise_value_b": 12.564,
+      "market_cap": 11030278144,
+      "market_cap_b": 11.03,
+      "enterprise_value_b": 11.731,
       "mcap_tier": "Large-Cap ($10B-$200B)",
       "pe_trailing": null,
-      "pe_forward": 12.105411,
-      "ev_ebitda": 46.043,
-      "ev_ebitdar": 19.8,
-      "ev_revenue": 2.075,
-      "price_to_book": 17.62931,
-      "price_to_sales": 1.8418844,
+      "pe_forward": 11.973566,
+      "ev_ebitda": 42.99,
+      "ev_ebitdar": 18.4,
+      "ev_revenue": 1.938,
+      "price_to_book": 17.437304,
+      "price_to_sales": 1.8218238,
       "eps_trailing": -0.01,
       "eps_forward": 1.85826,
       "book_value": 1.276,
@@ -19107,11 +19056,11 @@ var EARNINGS_DATA = {
       "avg_volume_10d": 14573380,
       "avg_volume_3mo": 15974246,
       "day_high": 23.7299,
-      "day_low": 22.33,
+      "day_low": 22.17,
       "open_price": 23.7,
       "previous_close": 23.94,
-      "daily_change": -1.4449997,
-      "daily_change_pct": -6.0359216,
+      "daily_change": -1.69,
+      "daily_change_pct": -7.05932,
       "employees": 5500,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -19120,10 +19069,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-02-12",
       "next_earnings_date": "2026-05-07",
-      "pct_off_high": -53.9,
-      "vs_50dma_pct": -9.4,
-      "vs_200dma_pct": -35.7,
-      "upside_pct": 59.3,
+      "pct_off_high": -54.4,
+      "vs_50dma_pct": -10.4,
+      "vs_200dma_pct": -36.4,
+      "upside_pct": 61.0,
       "earnings_history": [
         {
           "date": "2026-02-12",
@@ -19198,17 +19147,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 32.6
         }
       ],
-      "change_1y": -37.2,
-      "trend_1y": -47.1,
-      "week_change": -2.9,
-      "month_change": -12.0,
-      "three_month_change": -37.5,
-      "six_month_change": -33.8,
+      "change_1y": -35.9,
+      "trend_1y": -47.6,
+      "week_change": -3.9,
+      "month_change": -13.0,
+      "three_month_change": -38.2,
+      "six_month_change": -34.5,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 35.84
-        },
         {
           "d": "2025-04-10",
           "p": 34.73
@@ -20207,12 +20152,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 22.5
+          "p": 22.25
         }
       ],
-      "change_ytd": -36.9,
-      "ytd_change": -36.9,
-      "year_change": -37.2,
+      "change_ytd": -37.6,
+      "ytd_change": -37.6,
+      "year_change": -35.9,
       "earnings_date": "2026-05-07",
       "insider_transactions": [
         {
@@ -20402,73 +20347,73 @@ var EARNINGS_DATA = {
           "shares": 44758204,
           "date_reported": "2025-12-31",
           "pct_out": 9.03,
-          "value": 1006.8
+          "value": 995.9
         },
         {
           "holder": "FMR, LLC",
           "shares": 26597639,
           "date_reported": "2025-12-31",
           "pct_out": 5.37,
-          "value": 598.3
+          "value": 591.8
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 26355948,
           "date_reported": "2025-12-31",
           "pct_out": 5.32,
-          "value": 592.9
+          "value": 586.4
         },
         {
           "holder": "Janus Henderson Group PLC",
           "shares": 25313909,
           "date_reported": "2025-12-31",
           "pct_out": 5.11,
-          "value": 569.4
+          "value": 563.2
         },
         {
           "holder": "Viking Global Investors, L.P.",
           "shares": 19119912,
           "date_reported": "2025-12-31",
           "pct_out": 3.86,
-          "value": 430.1
+          "value": 425.4
         },
         {
           "holder": "Capital World Investors",
           "shares": 18626429,
           "date_reported": "2025-12-31",
           "pct_out": 3.76,
-          "value": 419.0
+          "value": 414.4
         },
         {
           "holder": "AQR Capital Management, LLC",
           "shares": 16474009,
           "date_reported": "2025-12-31",
           "pct_out": 3.32,
-          "value": 370.6
+          "value": 366.5
         },
         {
           "holder": "T. Rowe Price Investment Management, Inc.",
           "shares": 11337260,
           "date_reported": "2025-12-31",
           "pct_out": 2.29,
-          "value": 255.0
+          "value": 252.3
         },
         {
           "holder": "Citadel Advisors Llc",
           "shares": 10372434,
           "date_reported": "2025-12-31",
           "pct_out": 2.09,
-          "value": 233.3
+          "value": 230.8
         },
         {
           "holder": "State Street Corporation",
           "shares": 10027870,
           "date_reported": "2025-12-31",
           "pct_out": 2.02,
-          "value": 225.6
+          "value": 223.1
         }
       ],
-      "timestamp": "2026-04-09T14:06:35.736516",
+      "timestamp": "2026-04-09T21:31:02.434842",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 80.0,
       "rank_pe_trailing": null,
@@ -20490,21 +20435,21 @@ var EARNINGS_DATA = {
       "name": "Flutter Entertainment",
       "category": "Online & iGaming",
       "exchange": "NYSE",
-      "price": 105.73,
-      "price_usd": 105.73,
+      "price": 105.25,
+      "price_usd": 105.25,
       "currency": "USD",
-      "market_cap": 18438475776,
-      "market_cap_b": 18.438,
-      "enterprise_value_b": 30.878,
+      "market_cap": 18353295360,
+      "market_cap_b": 18.353,
+      "enterprise_value_b": 30.132,
       "mcap_tier": "Large-Cap ($10B-$200B)",
       "pe_trailing": null,
-      "pe_forward": 10.473128,
-      "ev_ebitda": 14.483,
-      "ev_ebitdar": 9.9,
-      "ev_revenue": 1.885,
-      "price_to_book": 2.0498254,
-      "price_to_sales": 1.125464,
-      "eps_trailing": -1.75,
+      "pe_forward": 10.425582,
+      "ev_ebitda": 14.133,
+      "ev_ebitdar": 9.7,
+      "ev_revenue": 1.839,
+      "price_to_book": 2.0405195,
+      "price_to_sales": 1.1202646,
+      "eps_trailing": -1.68,
       "eps_forward": 10.09536,
       "book_value": 51.58,
       "revenue_per_share": 92.559,
@@ -20553,8 +20498,8 @@ var EARNINGS_DATA = {
       "day_low": 102.37,
       "open_price": 107.09,
       "previous_close": 109.51,
-      "daily_change": -3.7799988,
-      "daily_change_pct": -3.4517384,
+      "daily_change": -4.26,
+      "daily_change_pct": -3.89006,
       "employees": 28518,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -20563,10 +20508,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-05-06",
       "next_earnings_date": "2026-05-06",
-      "pct_off_high": -66.3,
-      "vs_50dma_pct": -15.5,
-      "vs_200dma_pct": -52.4,
-      "upside_pct": 87.6,
+      "pct_off_high": -66.4,
+      "vs_50dma_pct": -15.9,
+      "vs_200dma_pct": -52.6,
+      "upside_pct": 88.5,
       "earnings_history": [
         {
           "date": "2026-02-26",
@@ -20617,17 +20562,13 @@ var EARNINGS_DATA = {
           "surprise_pct": -90.74
         }
       ],
-      "change_1y": -55.3,
-      "trend_1y": -73.5,
-      "week_change": -0.6,
-      "month_change": -3.5,
-      "three_month_change": -51.4,
-      "six_month_change": -57.0,
+      "change_1y": -54.2,
+      "trend_1y": -74.3,
+      "week_change": -1.1,
+      "month_change": -4.0,
+      "three_month_change": -51.6,
+      "six_month_change": -57.2,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 236.67
-        },
         {
           "d": "2025-04-10",
           "p": 229.65
@@ -21626,12 +21567,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 105.73
+          "p": 105.25
         }
       ],
-      "change_ytd": -51.6,
-      "ytd_change": -51.6,
-      "year_change": -55.3,
+      "change_ytd": -51.8,
+      "ytd_change": -51.8,
+      "year_change": -54.2,
       "earnings_date": "2026-05-06",
       "insider_transactions": [
         {
@@ -21821,73 +21762,73 @@ var EARNINGS_DATA = {
           "shares": 15985790,
           "date_reported": "2025-12-31",
           "pct_out": 9.17,
-          "value": 1690.2
+          "value": 1682.5
         },
         {
           "holder": "Capital World Investors",
           "shares": 10626143,
           "date_reported": "2025-12-31",
-          "pct_out": 6.09,
-          "value": 1123.5
+          "pct_out": 6.1,
+          "value": 1118.4
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 9366029,
           "date_reported": "2025-12-31",
           "pct_out": 5.37,
-          "value": 990.3
+          "value": 985.8
         },
         {
           "holder": "Parvus Asset Management Jersey Ltd",
           "shares": 8995293,
           "date_reported": "2025-12-31",
           "pct_out": 5.16,
-          "value": 951.1
+          "value": 946.8
         },
         {
           "holder": "Capital International Investors",
           "shares": 8039066,
           "date_reported": "2025-12-31",
           "pct_out": 4.61,
-          "value": 850.0
+          "value": 846.1
         },
         {
           "holder": "CIBC World Markets Corporation",
           "shares": 7807108,
           "date_reported": "2025-12-31",
           "pct_out": 4.48,
-          "value": 825.4
+          "value": 821.7
         },
         {
           "holder": "Caledonia (Private) Investments Pty Ltd",
           "shares": 7191861,
           "date_reported": "2025-12-31",
-          "pct_out": 4.12,
-          "value": 760.4
+          "pct_out": 4.13,
+          "value": 756.9
         },
         {
           "holder": "FMR, LLC",
           "shares": 5657101,
           "date_reported": "2025-12-31",
-          "pct_out": 3.24,
-          "value": 598.1
+          "pct_out": 3.25,
+          "value": 595.4
         },
         {
           "holder": "Capital Research Global Investors",
           "shares": 5399277,
           "date_reported": "2025-12-31",
           "pct_out": 3.1,
-          "value": 570.9
+          "value": 568.3
         },
         {
           "holder": "Tiger Global Management, LLC",
           "shares": 4003542,
           "date_reported": "2025-12-31",
           "pct_out": 2.3,
-          "value": 423.3
+          "value": 421.4
         }
       ],
-      "timestamp": "2026-04-09T14:06:37.034948",
+      "timestamp": "2026-04-09T21:31:03.827984",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": null,
@@ -21909,20 +21850,20 @@ var EARNINGS_DATA = {
       "name": "Rush Street Interactive",
       "category": "Online & iGaming",
       "exchange": "NYSE",
-      "price": 21.67,
-      "price_usd": 21.67,
+      "price": 21.41,
+      "price_usd": 21.41,
       "currency": "USD",
-      "market_cap": 5044441600,
-      "market_cap_b": 5.044,
-      "enterprise_value_b": 2.095,
+      "market_cap": 4983917568,
+      "market_cap_b": 4.984,
+      "enterprise_value_b": 2.013,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 69.90323,
-      "pe_forward": 29.046701,
-      "ev_ebitda": 16.446,
-      "ev_ebitdar": 10.7,
-      "ev_revenue": 1.847,
-      "price_to_book": 14.7114725,
-      "price_to_sales": 4.446683,
+      "pe_trailing": 69.064514,
+      "pe_forward": 28.698193,
+      "ev_ebitda": 15.803,
+      "ev_ebitdar": 10.3,
+      "ev_revenue": 1.775,
+      "price_to_book": 14.534962,
+      "price_to_sales": 4.3933306,
       "eps_trailing": 0.31,
       "eps_forward": 0.74604,
       "book_value": 1.473,
@@ -21969,11 +21910,11 @@ var EARNINGS_DATA = {
       "avg_volume_10d": 1847990,
       "avg_volume_3mo": 2124255,
       "day_high": 22.07,
-      "day_low": 21.39,
+      "day_low": 21.352,
       "open_price": 22.07,
       "previous_close": 22.21,
-      "daily_change": -0.539999,
-      "daily_change_pct": -2.4313328,
+      "daily_change": -0.799999,
+      "daily_change_pct": -3.60198,
       "employees": 912,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -21982,10 +21923,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-04-28",
       "next_earnings_date": "2026-04-28",
-      "pct_off_high": -4.9,
-      "vs_50dma_pct": 11.8,
-      "vs_200dma_pct": 15.9,
-      "upside_pct": 15.4,
+      "pct_off_high": -6.1,
+      "vs_50dma_pct": 10.5,
+      "vs_200dma_pct": 14.5,
+      "upside_pct": 16.8,
       "earnings_history": [
         {
           "date": "2026-02-17",
@@ -22060,17 +22001,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 57.78
         }
       ],
-      "change_1y": 86.5,
-      "trend_1y": 46.7,
-      "week_change": -4.5,
-      "month_change": 2.8,
-      "three_month_change": 13.0,
-      "six_month_change": 18.8,
+      "change_1y": 89.6,
+      "trend_1y": 46.3,
+      "week_change": -5.6,
+      "month_change": 1.6,
+      "three_month_change": 11.7,
+      "six_month_change": 17.4,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 11.62
-        },
         {
           "d": "2025-04-10",
           "p": 11.29
@@ -23069,12 +23006,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 21.67
+          "p": 21.41
         }
       ],
-      "change_ytd": 12.2,
-      "ytd_change": 12.2,
-      "year_change": 86.5,
+      "change_ytd": 10.9,
+      "ytd_change": 10.9,
+      "year_change": 89.6,
       "earnings_date": "2026-04-28",
       "institutional_holders": [
         {
@@ -23082,73 +23019,73 @@ var EARNINGS_DATA = {
           "shares": 9050062,
           "date_reported": "2025-12-31",
           "pct_out": 8.77,
-          "value": 196.1
+          "value": 193.8
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 8894830,
           "date_reported": "2025-12-31",
           "pct_out": 8.62,
-          "value": 192.8
+          "value": 190.4
         },
         {
           "holder": "Alliancebernstein L.P.",
           "shares": 4410996,
           "date_reported": "2025-12-31",
           "pct_out": 4.28,
-          "value": 95.6
+          "value": 94.4
         },
         {
           "holder": "Driehaus Capital Management, LLC",
           "shares": 3889159,
           "date_reported": "2025-12-31",
           "pct_out": 3.77,
-          "value": 84.3
+          "value": 83.3
         },
         {
           "holder": "Ameriprise Financial, Inc.",
           "shares": 3603563,
           "date_reported": "2025-12-31",
           "pct_out": 3.49,
-          "value": 78.1
+          "value": 77.2
         },
         {
           "holder": "Hood River Capital Management LLC",
           "shares": 3531704,
           "date_reported": "2025-12-31",
           "pct_out": 3.42,
-          "value": 76.5
+          "value": 75.6
         },
         {
           "holder": "Divisadero Street Capital Management, LP",
           "shares": 2801204,
           "date_reported": "2025-12-31",
           "pct_out": 2.72,
-          "value": 60.7
+          "value": 60.0
         },
         {
           "holder": "William Blair Investment Management, LLC",
           "shares": 2557778,
           "date_reported": "2025-12-31",
           "pct_out": 2.48,
-          "value": 55.4
+          "value": 54.8
         },
         {
           "holder": "Fuller & Thaler Asset Management Inc.",
           "shares": 2517402,
           "date_reported": "2025-12-31",
           "pct_out": 2.44,
-          "value": 54.6
+          "value": 53.9
         },
         {
           "holder": "Geode Capital Management, LLC",
           "shares": 2235061,
           "date_reported": "2025-12-31",
           "pct_out": 2.17,
-          "value": 48.4
+          "value": 47.9
         }
       ],
-      "timestamp": "2026-04-09T14:06:38.582488",
+      "timestamp": "2026-04-09T21:31:05.146832",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 40.0,
       "rank_pe_trailing": 3,
@@ -23170,22 +23107,22 @@ var EARNINGS_DATA = {
       "name": "Sportradar Group",
       "category": "Online & iGaming",
       "exchange": "NASDAQ",
-      "price": 15.45,
-      "price_usd": 15.45,
+      "price": 15.24,
+      "price_usd": 15.24,
       "currency": "USD",
-      "market_cap": 4572452864,
-      "market_cap_b": 4.572,
-      "enterprise_value_b": 4.882,
+      "market_cap": 4510303232,
+      "market_cap_b": 4.51,
+      "enterprise_value_b": 4.449,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 42.916664,
-      "pe_forward": 18.632648,
-      "ev_ebitda": 12.089,
-      "ev_ebitdar": 10.1,
-      "ev_revenue": 3.785,
-      "price_to_book": 4.2541676,
-      "price_to_sales": 3.5446332,
+      "pe_trailing": 42.333332,
+      "pe_forward": 18.423056,
+      "ev_ebitda": 11.016,
+      "ev_ebitdar": 9.2,
+      "ev_revenue": 3.449,
+      "price_to_book": 4.196344,
+      "price_to_sales": 3.4964538,
       "eps_trailing": 0.36,
-      "eps_forward": 0.8291897,
+      "eps_forward": 0.8272243,
       "book_value": 3.631733,
       "revenue_per_share": 4.293,
       "revenue_growth": 0.201,
@@ -23208,10 +23145,10 @@ var EARNINGS_DATA = {
       "current_ratio": 1.167,
       "quick_ratio": 1.05,
       "beta": 1.985,
-      "target_high": 37.653046,
-      "target_low": 23.24476,
-      "target_mean": 29.085682,
-      "target_median": 28.265244,
+      "target_high": 37.604626,
+      "target_low": 23.214869,
+      "target_mean": 29.04828,
+      "target_median": 28.228897,
       "recommendation_key": "strong_buy",
       "recommendation_mean": 1.33333,
       "num_analysts": 21,
@@ -23224,17 +23161,17 @@ var EARNINGS_DATA = {
       "dividend_rate": null,
       "payout_ratio": 0.0,
       "fifty_two_week_high": 32.22,
-      "fifty_two_week_low": 15.13,
+      "fifty_two_week_low": 15.05,
       "fifty_day_avg": 17.9782,
       "two_hundred_day_avg": 24.177324,
       "avg_volume_10d": 1945340,
       "avg_volume_3mo": 2664700,
       "day_high": 16.52,
-      "day_low": 15.13,
+      "day_low": 15.05,
       "open_price": 16.51,
       "previous_close": 16.63,
-      "daily_change": -1.1799994,
-      "daily_change_pct": -7.095607,
+      "daily_change": -1.39,
+      "daily_change_pct": -8.35839,
       "employees": 4882,
       "industry_yf": "Software - Application",
       "sector_yf": "Technology",
@@ -23243,10 +23180,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-03-03",
       "next_earnings_date": "2026-05-11",
-      "pct_off_high": -52.0,
-      "vs_50dma_pct": -14.1,
-      "vs_200dma_pct": -36.1,
-      "upside_pct": 88.3,
+      "pct_off_high": -52.7,
+      "vs_50dma_pct": -15.2,
+      "vs_200dma_pct": -37.0,
+      "upside_pct": 90.6,
       "earnings_history": [
         {
           "date": "2026-03-03",
@@ -23321,17 +23258,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 41.83
         }
       ],
-      "change_1y": -31.2,
-      "trend_1y": -39.3,
-      "week_change": -8.8,
-      "month_change": -14.4,
-      "three_month_change": -27.2,
-      "six_month_change": -39.4,
+      "change_1y": -30.8,
+      "trend_1y": -39.9,
+      "week_change": -10.1,
+      "month_change": -15.5,
+      "three_month_change": -28.2,
+      "six_month_change": -40.3,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 22.45
-        },
         {
           "d": "2025-04-10",
           "p": 22.02
@@ -24330,12 +24263,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 15.45
+          "p": 15.24
         }
       ],
-      "change_ytd": -33.7,
-      "ytd_change": -33.7,
-      "year_change": -31.2,
+      "change_ytd": -34.6,
+      "ytd_change": -34.6,
+      "year_change": -30.8,
       "earnings_date": "2026-05-11",
       "insider_transactions": [
         {
@@ -24381,73 +24314,73 @@ var EARNINGS_DATA = {
           "shares": 68171745,
           "date_reported": "2025-12-31",
           "pct_out": 31.35,
-          "value": 1053.3
+          "value": 1038.9
         },
         {
           "holder": "Technology Crossover Management IX, Ltd.",
           "shares": 29203147,
           "date_reported": "2025-12-31",
           "pct_out": 13.43,
-          "value": 451.2
+          "value": 445.1
         },
         {
           "holder": "Radcliff Management Llc",
           "shares": 13135000,
           "date_reported": "2025-12-31",
           "pct_out": 6.04,
-          "value": 202.9
+          "value": 200.2
         },
         {
           "holder": "T. Rowe Price Investment Management, Inc.",
           "shares": 12080674,
           "date_reported": "2025-12-31",
           "pct_out": 5.56,
-          "value": 186.6
+          "value": 184.1
         },
         {
           "holder": "Greenhouse Funds, LLLP",
           "shares": 6621554,
           "date_reported": "2025-12-31",
           "pct_out": 3.05,
-          "value": 102.3
+          "value": 100.9
         },
         {
           "holder": "Massachusetts Financial Services Co.",
           "shares": 6067263,
           "date_reported": "2025-12-31",
           "pct_out": 2.79,
-          "value": 93.7
+          "value": 92.5
         },
         {
           "holder": "Durable Capital Partners Lp",
           "shares": 5956331,
           "date_reported": "2025-12-31",
           "pct_out": 2.74,
-          "value": 92.0
+          "value": 90.8
         },
         {
           "holder": "FMR, LLC",
           "shares": 4726128,
           "date_reported": "2025-12-31",
           "pct_out": 2.17,
-          "value": 73.0
+          "value": 72.0
         },
         {
           "holder": "Janus Henderson Group PLC",
           "shares": 4156164,
           "date_reported": "2025-12-31",
           "pct_out": 1.91,
-          "value": 64.2
+          "value": 63.3
         },
         {
           "holder": "Jericho Capital Asset Management, LP",
           "shares": 3160174,
           "date_reported": "2025-12-31",
           "pct_out": 1.45,
-          "value": 48.8
+          "value": 48.2
         }
       ],
-      "timestamp": "2026-04-09T14:06:41.599242",
+      "timestamp": "2026-04-09T21:31:08.235875",
       "rank_market_cap_b": 5,
       "pctile_market_cap_b": 20.0,
       "rank_pe_trailing": 2,
@@ -24469,21 +24402,21 @@ var EARNINGS_DATA = {
       "name": "Super Group",
       "category": "Online & iGaming",
       "exchange": "NYSE",
-      "price": 10.6,
-      "price_usd": 10.6,
+      "price": 10.58,
+      "price_usd": 10.58,
       "currency": "USD",
-      "market_cap": 5357230592,
-      "market_cap_b": 5.357,
-      "enterprise_value_b": 5.12,
+      "market_cap": 5349645824,
+      "market_cap_b": 5.35,
+      "enterprise_value_b": 4.943,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
-      "pe_trailing": 25.226192,
-      "pe_forward": 12.214524,
-      "ev_ebitda": 10.432,
-      "ev_ebitdar": 8.1,
-      "ev_revenue": 2.185,
-      "price_to_book": 7.192804,
-      "price_to_sales": 2.2865694,
-      "eps_trailing": 0.42,
+      "pe_trailing": 25.804878,
+      "pe_forward": 12.19723,
+      "ev_ebitda": 10.072,
+      "ev_ebitdar": 7.8,
+      "ev_revenue": 2.11,
+      "price_to_book": 7.18262,
+      "price_to_sales": 2.2833319,
+      "eps_trailing": 0.41,
       "eps_forward": 0.86741,
       "book_value": 1.473,
       "revenue_per_share": 4.642,
@@ -24519,7 +24452,7 @@ var EARNINGS_DATA = {
       "short_pct_float": 0.095,
       "held_pct_insiders": 0.68889,
       "held_pct_institutions": 0.19118,
-      "dividend_yield": 1.56,
+      "dividend_yield": 1.61,
       "dividend_rate": 0.17,
       "payout_ratio": 0.2831,
       "fifty_two_week_high": 14.38,
@@ -24532,8 +24465,8 @@ var EARNINGS_DATA = {
       "day_low": 10.22,
       "open_price": 10.77,
       "previous_close": 10.93,
-      "daily_change": -0.33500004,
-      "daily_change_pct": -3.066362,
+      "daily_change": -0.35,
+      "daily_change_pct": -3.2022,
       "employees": 3589,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -24542,10 +24475,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-09-29",
       "earnings_timestamp": "2026-02-23",
       "next_earnings_date": "2026-05-07",
-      "pct_off_high": -26.3,
-      "vs_50dma_pct": 4.2,
-      "vs_200dma_pct": -6.2,
-      "upside_pct": 63.9,
+      "pct_off_high": -26.4,
+      "vs_50dma_pct": 4.0,
+      "vs_200dma_pct": -6.3,
+      "upside_pct": 64.2,
       "earnings_history": [
         {
           "date": "2025-11-03",
@@ -24620,17 +24553,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 10.1
         }
       ],
-      "change_1y": 53.1,
-      "trend_1y": 16.6,
-      "week_change": -0.3,
-      "month_change": -2.1,
-      "three_month_change": 0.8,
-      "six_month_change": -20.3,
+      "change_1y": 56.5,
+      "trend_1y": 15.9,
+      "week_change": -0.5,
+      "month_change": -2.2,
+      "three_month_change": 0.7,
+      "six_month_change": -20.4,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 6.92
-        },
         {
           "d": "2025-04-10",
           "p": 6.76
@@ -25629,12 +25558,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 10.6
+          "p": 10.58
         }
       ],
-      "change_ytd": -8.6,
-      "ytd_change": -8.6,
-      "year_change": 53.1,
+      "change_ytd": -8.7,
+      "ytd_change": -8.7,
+      "year_change": 56.5,
       "earnings_date": "2026-05-07",
       "institutional_holders": [
         {
@@ -25642,35 +25571,35 @@ var EARNINGS_DATA = {
           "shares": 11741629,
           "date_reported": "2025-12-31",
           "pct_out": 2.32,
-          "value": 124.4
+          "value": 124.2
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 8818929,
           "date_reported": "2025-12-31",
           "pct_out": 1.74,
-          "value": 93.4
+          "value": 93.3
         },
         {
           "holder": "American Century Companies Inc",
           "shares": 5368017,
           "date_reported": "2025-12-31",
           "pct_out": 1.06,
-          "value": 56.9
+          "value": 56.8
         },
         {
           "holder": "Invesco Ltd.",
           "shares": 4671798,
           "date_reported": "2025-12-31",
           "pct_out": 0.92,
-          "value": 49.5
+          "value": 49.4
         },
         {
           "holder": "Arrowstreet Capital, Limited Partnership",
           "shares": 4639678,
           "date_reported": "2025-12-31",
           "pct_out": 0.92,
-          "value": 49.2
+          "value": 49.1
         },
         {
           "holder": "Acadian Asset Management. LLC",
@@ -25684,7 +25613,7 @@ var EARNINGS_DATA = {
           "shares": 2687357,
           "date_reported": "2025-12-31",
           "pct_out": 0.53,
-          "value": 28.5
+          "value": 28.4
         },
         {
           "holder": "Nuveen, LLC",
@@ -25708,7 +25637,7 @@ var EARNINGS_DATA = {
           "value": 21.1
         }
       ],
-      "timestamp": "2026-04-09T14:06:42.889562",
+      "timestamp": "2026-04-09T21:31:09.687842",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 60.0,
       "rank_pe_trailing": 1,
@@ -25730,21 +25659,21 @@ var EARNINGS_DATA = {
       "name": "Genius Sports",
       "category": "Online & iGaming",
       "exchange": "NYSE",
-      "price": 4.04,
-      "price_usd": 4.04,
+      "price": 4.07,
+      "price_usd": 4.07,
       "currency": "USD",
-      "market_cap": 1040576960,
-      "market_cap_b": 1.041,
-      "enterprise_value_b": 0.829,
+      "market_cap": 1047008256,
+      "market_cap_b": 1.047,
+      "enterprise_value_b": 0.752,
       "mcap_tier": "Small-Cap ($300M-$2B)",
       "pe_trailing": null,
-      "pe_forward": 4.085859,
-      "ev_ebitda": -6.874,
+      "pe_forward": 4.111111,
+      "ev_ebitda": -6.241,
       "ev_ebitdar": null,
-      "ev_revenue": 1.238,
-      "price_to_book": 1.3753825,
-      "price_to_sales": 1.5542853,
-      "eps_trailing": -0.44,
+      "ev_revenue": 1.124,
+      "price_to_book": 1.3838831,
+      "price_to_sales": 1.5638916,
+      "eps_trailing": -0.41,
       "eps_forward": 0.99,
       "book_value": 2.941,
       "revenue_per_share": 2.628,
@@ -25784,17 +25713,17 @@ var EARNINGS_DATA = {
       "dividend_rate": null,
       "payout_ratio": 0.0,
       "fifty_two_week_high": 13.73,
-      "fifty_two_week_low": 4.04,
+      "fifty_two_week_low": 4.03,
       "fifty_day_avg": 6.0808,
       "two_hundred_day_avg": 9.9587,
       "avg_volume_10d": 5293600,
       "avg_volume_3mo": 6806306,
       "day_high": 4.305,
-      "day_low": 4.04,
+      "day_low": 4.03,
       "open_price": 4.3,
       "previous_close": 4.38,
-      "daily_change": -0.33500004,
-      "daily_change_pct": -7.6484027,
+      "daily_change": -0.31,
+      "daily_change_pct": -7.07762,
       "employees": 2000,
       "industry_yf": "Internet Content & Information",
       "sector_yf": "Communication Services",
@@ -25803,10 +25732,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-03-04",
       "next_earnings_date": "2026-05-05",
-      "pct_off_high": -70.6,
-      "vs_50dma_pct": -33.6,
-      "vs_200dma_pct": -59.4,
-      "upside_pct": 188.3,
+      "pct_off_high": -70.4,
+      "vs_50dma_pct": -33.1,
+      "vs_200dma_pct": -59.1,
+      "upside_pct": 186.2,
       "earnings_history": [
         {
           "date": "2026-03-04",
@@ -25881,17 +25810,13 @@ var EARNINGS_DATA = {
           "surprise_pct": -12.42
         }
       ],
-      "change_1y": -57.8,
-      "trend_1y": -48.5,
-      "week_change": -11.3,
-      "month_change": -22.4,
-      "three_month_change": -61.6,
-      "six_month_change": -65.8,
+      "change_1y": -57.1,
+      "trend_1y": -49.1,
+      "week_change": -10.7,
+      "month_change": -21.9,
+      "three_month_change": -61.4,
+      "six_month_change": -65.6,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 9.58
-        },
         {
           "d": "2025-04-10",
           "p": 9.49
@@ -26890,12 +26815,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 4.05
+          "p": 4.07
         }
       ],
-      "change_ytd": -62.5,
-      "ytd_change": -62.5,
-      "year_change": -57.8,
+      "change_ytd": -62.2,
+      "ytd_change": -62.2,
+      "year_change": -57.1,
       "earnings_date": "2026-05-05",
       "institutional_holders": [
         {
@@ -26903,73 +26828,73 @@ var EARNINGS_DATA = {
           "shares": 15193576,
           "date_reported": "2025-12-31",
           "pct_out": 5.91,
-          "value": 61.5
+          "value": 61.8
         },
         {
           "holder": "Wellington Management Group, LLP",
           "shares": 13903435,
           "date_reported": "2025-12-31",
           "pct_out": 5.4,
-          "value": 56.2
+          "value": 56.6
         },
         {
           "holder": "Voss Capital, LP",
           "shares": 11100000,
           "date_reported": "2025-12-31",
           "pct_out": 4.31,
-          "value": 44.9
+          "value": 45.2
         },
         {
           "holder": "Alliancebernstein L.P.",
           "shares": 10097875,
           "date_reported": "2025-12-31",
           "pct_out": 3.93,
-          "value": 40.8
+          "value": 41.1
         },
         {
           "holder": "Senvest Management LLC",
           "shares": 9410567,
           "date_reported": "2025-12-31",
           "pct_out": 3.66,
-          "value": 38.1
+          "value": 38.3
         },
         {
           "holder": "Granahan Investment Management LLC",
           "shares": 7853872,
           "date_reported": "2025-12-31",
           "pct_out": 3.05,
-          "value": 31.8
+          "value": 32.0
         },
         {
           "holder": "Hood River Capital Management LLC",
           "shares": 6954535,
           "date_reported": "2025-12-31",
           "pct_out": 2.7,
-          "value": 28.1
+          "value": 28.3
         },
         {
           "holder": "Westfield Capital Management Co LP",
           "shares": 5951203,
           "date_reported": "2025-12-31",
           "pct_out": 2.31,
-          "value": 24.1
+          "value": 24.2
         },
         {
           "holder": "Stephens Investment Management Group LLC",
           "shares": 5624316,
           "date_reported": "2025-12-31",
           "pct_out": 2.19,
-          "value": 22.8
+          "value": 22.9
         },
         {
           "holder": "Times Square Capital Management, LLC",
           "shares": 5431145,
           "date_reported": "2025-12-31",
           "pct_out": 2.11,
-          "value": 22.0
+          "value": 22.1
         }
       ],
-      "timestamp": "2026-04-09T14:06:44.469030",
+      "timestamp": "2026-04-09T21:31:11.266941",
       "rank_market_cap_b": 6,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": null,
@@ -26991,20 +26916,20 @@ var EARNINGS_DATA = {
       "name": "Brightstar Lottery",
       "category": "Gaming Equipment",
       "exchange": "NYSE",
-      "price": 12.37,
-      "price_usd": 12.37,
+      "price": 12.36,
+      "price_usd": 12.36,
       "currency": "USD",
-      "market_cap": 2281696256,
-      "market_cap_b": 2.282,
-      "enterprise_value_b": 5.875,
+      "market_cap": 2280773632,
+      "market_cap_b": 2.281,
+      "enterprise_value_b": 5.849,
       "mcap_tier": "Mid-Cap ($2B-$10B)",
       "pe_trailing": null,
-      "pe_forward": 11.495375,
-      "ev_ebitda": 6.661,
+      "pe_forward": 11.490726,
+      "ev_ebitda": 6.631,
       "ev_ebitdar": 5.7,
-      "ev_revenue": 2.34,
-      "price_to_book": 2.6404014,
-      "price_to_sales": 0.90868026,
+      "ev_revenue": 2.329,
+      "price_to_book": 2.6393337,
+      "price_to_sales": 0.90831286,
       "eps_trailing": -0.01,
       "eps_forward": 1.07565,
       "book_value": 4.683,
@@ -27041,7 +26966,7 @@ var EARNINGS_DATA = {
       "short_pct_float": 0.024600001,
       "held_pct_insiders": 0.48116,
       "held_pct_institutions": 0.45875,
-      "dividend_yield": 7.36,
+      "dividend_yield": 7.44,
       "dividend_rate": 0.92,
       "payout_ratio": 8.8889,
       "fifty_two_week_high": 18.57,
@@ -27054,8 +26979,8 @@ var EARNINGS_DATA = {
       "day_low": 12.17,
       "open_price": 12.38,
       "previous_close": 12.5,
-      "daily_change": -0.13500023,
-      "daily_change_pct": -1.0800018,
+      "daily_change": -0.14,
+      "daily_change_pct": -1.12,
       "employees": 5746,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -27065,9 +26990,9 @@ var EARNINGS_DATA = {
       "earnings_timestamp": "2026-02-24",
       "next_earnings_date": "2026-05-12",
       "pct_off_high": -33.4,
-      "vs_50dma_pct": -7.9,
-      "vs_200dma_pct": -19.4,
-      "upside_pct": 44.5,
+      "vs_50dma_pct": -8.0,
+      "vs_200dma_pct": -19.5,
+      "upside_pct": 44.7,
       "earnings_history": [
         {
           "date": "2026-02-24",
@@ -27142,17 +27067,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 2.43
         }
       ],
-      "change_1y": -1.6,
-      "trend_1y": 7.0,
+      "change_1y": 1.7,
+      "trend_1y": 6.8,
       "week_change": -2.9,
       "month_change": -4.7,
       "three_month_change": -17.9,
       "six_month_change": -26.6,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 12.57
-        },
         {
           "d": "2025-04-10",
           "p": 12.15
@@ -28156,7 +28077,7 @@ var EARNINGS_DATA = {
       ],
       "change_ytd": -17.8,
       "ytd_change": -17.8,
-      "year_change": -1.6,
+      "year_change": 1.7,
       "earnings_date": "2026-05-12",
       "institutional_holders": [
         {
@@ -28213,7 +28134,7 @@ var EARNINGS_DATA = {
           "shares": 1928942,
           "date_reported": "2025-12-31",
           "pct_out": 1.05,
-          "value": 23.9
+          "value": 23.8
         },
         {
           "holder": "Goldman Sachs Group Inc",
@@ -28230,7 +28151,7 @@ var EARNINGS_DATA = {
           "value": 19.9
         }
       ],
-      "timestamp": "2026-04-09T14:06:46.535276",
+      "timestamp": "2026-04-09T21:31:12.897057",
       "rank_market_cap_b": 1,
       "pctile_market_cap_b": 100.0,
       "rank_pe_trailing": null,
@@ -28404,9 +28325,9 @@ var EARNINGS_DATA = {
         }
       ],
       "change_1y": -23.9,
-      "trend_1y": -217.3,
-      "week_change": -1.0,
-      "month_change": -4.0,
+      "trend_1y": -208.7,
+      "week_change": 5.1,
+      "month_change": -2.6,
       "price_series": [
         {
           "d": "2026-01-27",
@@ -28607,6 +28528,10 @@ var EARNINGS_DATA = {
         {
           "d": "2026-04-08",
           "p": 89.0
+        },
+        {
+          "d": "2026-04-09",
+          "p": 88.78
         }
       ],
       "change_ytd": -23.9,
@@ -28614,7 +28539,7 @@ var EARNINGS_DATA = {
       "year_change": -23.9,
       "earnings_date": "2026-05-06",
       "institutional_holders": [],
-      "timestamp": "2026-04-09T14:06:48.095776",
+      "timestamp": "2026-04-09T21:31:14.293514",
       "rank_market_cap_b": 4,
       "pctile_market_cap_b": 0.0,
       "rank_pe_trailing": null,
@@ -28625,9 +28550,9 @@ var EARNINGS_DATA = {
       "pctile_ebitda_margins": null,
       "rank_roe": null,
       "pctile_roe": null,
-      "rank_change_ytd": 3,
-      "pctile_change_ytd": 33.3,
-      "composite_score": 16.6
+      "rank_change_ytd": 4,
+      "pctile_change_ytd": 0.0,
+      "composite_score": 0.0
     },
     "ACEL": {
       "ticker": "ACEL",
@@ -28636,20 +28561,20 @@ var EARNINGS_DATA = {
       "name": "Accel Entertainment",
       "category": "Gaming Equipment",
       "exchange": "NYSE",
-      "price": 11.69,
-      "price_usd": 11.69,
+      "price": 11.72,
+      "price_usd": 11.72,
       "currency": "USD",
-      "market_cap": 953591232,
-      "market_cap_b": 0.954,
-      "enterprise_value_b": 1.274,
+      "market_cap": 956038464,
+      "market_cap_b": 0.956,
+      "enterprise_value_b": 1.28,
       "mcap_tier": "Small-Cap ($300M-$2B)",
-      "pe_trailing": 19.483332,
-      "pe_forward": 12.051545,
-      "ev_ebitda": 6.737,
-      "ev_ebitdar": 4.7,
-      "ev_revenue": 0.957,
-      "price_to_book": 3.567287,
-      "price_to_sales": 0.71646875,
+      "pe_trailing": 19.533333,
+      "pe_forward": 12.082474,
+      "ev_ebitda": 6.767,
+      "ev_ebitdar": 4.8,
+      "ev_revenue": 0.961,
+      "price_to_book": 3.576442,
+      "price_to_sales": 0.71830744,
       "eps_trailing": 0.6,
       "eps_forward": 0.97,
       "book_value": 3.277,
@@ -28699,8 +28624,8 @@ var EARNINGS_DATA = {
       "day_low": 11.52,
       "open_price": 11.55,
       "previous_close": 11.65,
-      "daily_change": 0.03999996,
-      "daily_change_pct": 0.3433473,
+      "daily_change": 0.0700006,
+      "daily_change_pct": 0.600864,
       "employees": 1600,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -28709,10 +28634,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2025-12-30",
       "earnings_timestamp": "2026-05-05",
       "next_earnings_date": "2026-05-05",
-      "pct_off_high": -12.2,
-      "vs_50dma_pct": 4.3,
-      "vs_200dma_pct": 4.5,
-      "upside_pct": 32.6,
+      "pct_off_high": -11.9,
+      "vs_50dma_pct": 4.5,
+      "vs_200dma_pct": 4.8,
+      "upside_pct": 32.3,
       "earnings_history": [
         {
           "date": "2026-03-03",
@@ -28787,17 +28712,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 19.07
         }
       ],
-      "change_1y": 9.3,
-      "trend_1y": -4.3,
-      "week_change": 5.9,
-      "month_change": 2.7,
-      "three_month_change": -0.3,
-      "six_month_change": 11.9,
+      "change_1y": 9.1,
+      "trend_1y": -4.4,
+      "week_change": 6.2,
+      "month_change": 3.0,
+      "three_month_change": -0.0,
+      "six_month_change": 12.2,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 10.7
-        },
         {
           "d": "2025-04-10",
           "p": 10.74
@@ -29796,12 +29717,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 11.69
+          "p": 11.72
         }
       ],
-      "change_ytd": 2.8,
-      "ytd_change": 2.8,
-      "year_change": 9.3,
+      "change_ytd": 3.1,
+      "ytd_change": 3.1,
+      "year_change": 9.1,
       "earnings_date": "2026-05-05",
       "insider_transactions": [
         {
@@ -29991,35 +29912,35 @@ var EARNINGS_DATA = {
           "shares": 8098349,
           "date_reported": "2025-12-31",
           "pct_out": 9.93,
-          "value": 94.7
+          "value": 94.9
         },
         {
           "holder": "Greenvale Capital, LLP",
           "shares": 6059407,
           "date_reported": "2025-12-31",
           "pct_out": 7.43,
-          "value": 70.8
+          "value": 71.0
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 4309792,
           "date_reported": "2025-12-31",
           "pct_out": 5.28,
-          "value": 50.4
+          "value": 50.5
         },
         {
           "holder": "Vanguard Group Inc",
           "shares": 3803885,
           "date_reported": "2025-12-31",
           "pct_out": 4.66,
-          "value": 44.5
+          "value": 44.6
         },
         {
           "holder": "Hill Path Capital, LP",
           "shares": 2789113,
           "date_reported": "2025-12-31",
           "pct_out": 3.42,
-          "value": 32.6
+          "value": 32.7
         },
         {
           "holder": "Geode Capital Management, LLC",
@@ -30054,10 +29975,10 @@ var EARNINGS_DATA = {
           "shares": 910430,
           "date_reported": "2025-12-31",
           "pct_out": 1.12,
-          "value": 10.6
+          "value": 10.7
         }
       ],
-      "timestamp": "2026-04-09T14:06:49.641978",
+      "timestamp": "2026-04-09T21:31:15.754407",
       "rank_market_cap_b": 2,
       "pctile_market_cap_b": 66.7,
       "rank_pe_trailing": 1,
@@ -30079,21 +30000,21 @@ var EARNINGS_DATA = {
       "name": "Inspired Entertainment",
       "category": "Gaming Equipment",
       "exchange": "NASDAQ",
-      "price": 6.72,
-      "price_usd": 6.72,
+      "price": 6.84,
+      "price_usd": 6.84,
       "currency": "USD",
-      "market_cap": 181840320,
-      "market_cap_b": 0.182,
-      "enterprise_value_b": 0.269,
+      "market_cap": 185087472,
+      "market_cap_b": 0.185,
+      "enterprise_value_b": 0.264,
       "mcap_tier": "Micro-Cap ($50M-$300M)",
       "pe_trailing": null,
-      "pe_forward": 8.970046,
-      "ev_ebitda": 9.444,
-      "ev_ebitdar": 7.3,
-      "ev_revenue": 1.967,
-      "price_to_book": -11.144279,
-      "price_to_sales": 1.3278444,
-      "eps_trailing": -0.58,
+      "pe_forward": 9.130226,
+      "ev_ebitda": 9.265,
+      "ev_ebitdar": 7.2,
+      "ev_revenue": 1.93,
+      "price_to_book": -11.343284,
+      "price_to_sales": 1.351556,
+      "eps_trailing": -0.56,
       "eps_forward": 0.74916,
       "book_value": -0.603,
       "revenue_per_share": 6.557,
@@ -30142,8 +30063,8 @@ var EARNINGS_DATA = {
       "day_low": 6.68,
       "open_price": 6.99,
       "previous_close": 7.07,
-      "daily_change": -0.35000038,
-      "daily_change_pct": -4.9575124,
+      "daily_change": -0.23,
+      "daily_change_pct": -3.25318,
       "employees": 650,
       "industry_yf": "Gambling",
       "sector_yf": "Consumer Cyclical",
@@ -30152,10 +30073,10 @@ var EARNINGS_DATA = {
       "most_recent_quarter": "2019-03-30",
       "earnings_timestamp": "2026-03-10",
       "next_earnings_date": "2026-05-07",
-      "pct_off_high": -32.5,
-      "vs_50dma_pct": -14.5,
-      "vs_200dma_pct": -21.0,
-      "upside_pct": 98.4,
+      "pct_off_high": -31.3,
+      "vs_50dma_pct": -13.0,
+      "vs_200dma_pct": -19.6,
+      "upside_pct": 94.9,
       "earnings_history": [
         {
           "date": "2026-03-10",
@@ -30230,17 +30151,13 @@ var EARNINGS_DATA = {
           "surprise_pct": 62.5
         }
       ],
-      "change_1y": -12.7,
-      "trend_1y": -0.6,
-      "week_change": -2.9,
-      "month_change": -6.9,
-      "three_month_change": -28.5,
-      "six_month_change": -25.9,
+      "change_1y": -5.0,
+      "trend_1y": -0.8,
+      "week_change": -1.2,
+      "month_change": -5.3,
+      "three_month_change": -27.2,
+      "six_month_change": -24.6,
       "price_series": [
-        {
-          "d": "2025-04-09",
-          "p": 7.7
-        },
         {
           "d": "2025-04-10",
           "p": 7.2
@@ -31239,12 +31156,12 @@ var EARNINGS_DATA = {
         },
         {
           "d": "2026-04-09",
-          "p": 6.72
+          "p": 6.84
         }
       ],
-      "change_ytd": -25.1,
-      "ytd_change": -25.1,
-      "year_change": -12.7,
+      "change_ytd": -23.7,
+      "ytd_change": -23.7,
+      "year_change": -5.0,
       "earnings_date": "2026-05-07",
       "insider_transactions": [
         {
@@ -31434,56 +31351,56 @@ var EARNINGS_DATA = {
           "shares": 3023750,
           "date_reported": "2025-12-31",
           "pct_out": 11.17,
-          "value": 20.3
+          "value": 20.7
         },
         {
           "holder": "Kanen Wealth Management LLC",
           "shares": 2683429,
           "date_reported": "2025-12-31",
           "pct_out": 9.92,
-          "value": 18.0
+          "value": 18.4
         },
         {
           "holder": "Blackrock Inc.",
           "shares": 2090886,
           "date_reported": "2025-12-31",
           "pct_out": 7.73,
-          "value": 14.1
+          "value": 14.3
         },
         {
           "holder": "Samjo Management, LLC",
           "shares": 1745450,
           "date_reported": "2025-12-31",
           "pct_out": 6.45,
-          "value": 11.7
+          "value": 11.9
         },
         {
           "holder": "Private Management Group, Inc.",
           "shares": 1290512,
           "date_reported": "2025-12-31",
           "pct_out": 4.77,
-          "value": 8.7
+          "value": 8.8
         },
         {
           "holder": "Janus Henderson Group PLC",
           "shares": 1270275,
           "date_reported": "2025-12-31",
           "pct_out": 4.69,
-          "value": 8.5
+          "value": 8.7
         },
         {
           "holder": "683 Capital Management LLC",
           "shares": 1061044,
           "date_reported": "2025-12-31",
           "pct_out": 3.92,
-          "value": 7.1
+          "value": 7.3
         },
         {
           "holder": "Brown Advisory  Inc.",
           "shares": 900633,
           "date_reported": "2025-12-31",
           "pct_out": 3.33,
-          "value": 6.1
+          "value": 6.2
         },
         {
           "holder": "CSM Advisors, LLC",
@@ -31500,7 +31417,7 @@ var EARNINGS_DATA = {
           "value": 4.4
         }
       ],
-      "timestamp": "2026-04-09T14:06:51.152302",
+      "timestamp": "2026-04-09T21:31:17.059300",
       "rank_market_cap_b": 3,
       "pctile_market_cap_b": 33.3,
       "rank_pe_trailing": null,
@@ -31511,11 +31428,11 @@ var EARNINGS_DATA = {
       "pctile_ebitda_margins": 50.0,
       "rank_roe": null,
       "pctile_roe": null,
-      "rank_change_ytd": 4,
-      "pctile_change_ytd": 0.0,
-      "composite_score": 20.8
+      "rank_change_ytd": 3,
+      "pctile_change_ytd": 33.3,
+      "composite_score": 29.1
     },
-    "_generated_at": "2026-04-09T14:07:33.245428"
+    "_generated_at": "2026-04-09T21:32:01.445084"
   },
   "transcript_summaries": {
     "ACEL": [
@@ -34534,7 +34451,7 @@ var EARNINGS_DATA = {
     ]
   },
   "analysis_bundle": {
-    "generated_at": "2026-04-09T14:07:33.185988",
+    "generated_at": "2026-04-09T21:32:01.332887",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
@@ -41485,7 +41402,7 @@ var EARNINGS_DATA = {
     "Online & iGaming": "#81c784",
     "Gaming Equipment": "#ba68c8"
   },
-  "generated_at": "2026-04-09T14:07:33.312728"
+  "generated_at": "2026-04-09T21:32:01.492315"
 };
 // INJECTED_DATA
 </script>
@@ -41838,24 +41755,9 @@ var EARNINGS_DATA = {
         }
     }
 
-    // ── Auth ──
-    function checkAuth() {
-        const s = sessionStorage.getItem('cgi_auth');
-        if (!s) { window.location.href = 'login.html'; return false; }
-        try {
-            const auth = JSON.parse(s);
-            if (Date.now() > auth.expires) { sessionStorage.removeItem('cgi_auth'); window.location.href = 'login.html'; return false; }
-            if (auth.tier === 'admin') {
-                const adminLink = document.getElementById('admin-nav-link');
-                if (adminLink) adminLink.style.display = '';
-            }
-        } catch(e) { window.location.href = 'login.html'; return false; }
-        return true;
-    }
-    window.cgiLogout = function() { sessionStorage.removeItem('cgi_auth'); window.location.href = 'login.html'; };
+    // ── Auth handled by auth.js (included in head) ──
 
     // ── Init ──
-    if (!checkAuth()) return;
     buildTickerBar();
     buildCalendar();
     buildCompanySelect();
