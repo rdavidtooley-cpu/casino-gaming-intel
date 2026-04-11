@@ -41,7 +41,7 @@
 
         /* Ticker Bar */
         .ticker-bar{background:#0a0c10;border-bottom:1px solid rgba(255,255,255,0.06);height:32px;overflow:hidden;position:sticky;top:0;z-index:1001;white-space:nowrap;}
-        .ticker-track{display:inline-flex;animation:ticker-scroll 60s linear infinite;gap:0;}
+        .ticker-track{display:inline-flex;animation:ticker-scroll 120s linear infinite;gap:0;}
         .ticker-track:hover{animation-play-state:paused;}
         .ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 18px;height:32px;font-size:11px;font-weight:600;color:var(--text-secondary);border-right:1px solid rgba(255,255,255,0.04);white-space:nowrap;}
         .ticker-item .tk-sym{color:var(--accent);font-weight:700;}
@@ -122,6 +122,8 @@
         .cal-item.past { opacity: 0.5; border-left-color: var(--text-secondary); }
         .cal-card-soon { background: rgba(245,158,11,0.08) !important; border-left: 3px solid #f59e0b !important; }
         .cal-card-past { opacity: 0.45; }
+        .cal-export a { opacity:0.6; transition:opacity 0.2s; }
+        .cal-export a:hover { opacity:1; }
 
         /* ── Company Selector ── */
         .company-select-bar {
@@ -270,6 +272,8 @@
 
         .info-icon { position:relative; cursor:help; font-size:14px; color:var(--accent); opacity:1; display:inline-block; }
         .info-icon:hover { color:#fbbf24; }
+        a.yf-link { color:var(--accent); text-decoration:none; font-weight:700; }
+        a.yf-link:hover { text-decoration:underline; color:#ffe066; }
 
         @media (max-width: 768px) {
             .container { padding: 12px; }
@@ -422,6 +426,36 @@ var EARNINGS_DATA = {};
         return '';
     }
 
+    function googleCalUrl(ticker, dateStr) {
+        const d = dateStr.replace(/-/g, '');
+        const next = new Date(dateStr + 'T12:00:00');
+        next.setDate(next.getDate() + 1);
+        const dEnd = next.toISOString().slice(0,10).replace(/-/g, '');
+        return 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+            '&text=' + encodeURIComponent(ticker + ' Earnings Report') +
+            '&dates=' + d + '/' + dEnd +
+            '&details=' + encodeURIComponent('Earnings report for ' + ticker);
+    }
+    function downloadIcs(ticker, dateStr) {
+        const d = dateStr.replace(/-/g, '');
+        const next = new Date(dateStr + 'T12:00:00');
+        next.setDate(next.getDate() + 1);
+        const dEnd = next.toISOString().slice(0,10).replace(/-/g, '');
+        const now = new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+        const ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n' +
+            'DTSTART;VALUE=DATE:' + d + '\r\n' +
+            'DTEND;VALUE=DATE:' + dEnd + '\r\n' +
+            'SUMMARY:' + ticker + ' Earnings Report\r\n' +
+            'DESCRIPTION:Earnings report for ' + ticker + '\r\n' +
+            'DTSTAMP:' + now + '\r\n' +
+            'END:VEVENT\r\nEND:VCALENDAR';
+        const blob = new Blob([ics], {type: 'text/calendar'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = ticker + '_earnings.ics';
+        a.click();
+    }
+
     function buildCalendar() {
         const grid = document.getElementById('cal-grid');
         if (!calendar.length) { grid.innerHTML = '<div class="no-data">No upcoming earnings dates available</div>'; return; }
@@ -435,7 +469,7 @@ var EARNINGS_DATA = {};
             const proxClass = calProximityClass(c.report_date);
             html += `<div class="cal-item${isPast?' past':''}${proxClass?' '+proxClass:''}" style="border-left-color:${color}">
                 <span class="cal-date">${dateStr}</span>
-                <span class="cal-ticker">${c.ticker}</span>
+                <span class="cal-ticker"><a class="yf-link" href="CG_Company_Summary.html#company=${encodeURIComponent(c.ticker)}">${c.ticker}</a></span>
                 <span class="cal-company">${c.company}</span>
                 ${c.est_eps != null ? `<span class="cal-est">Est. EPS: $${Number(c.est_eps).toFixed(2)}</span>` : ''}
             </div>`;
@@ -709,7 +743,7 @@ var EARNINGS_DATA = {};
             html += `<div class="compare-card" style="border-left-color:${color}">
                 <div class="cc-header">
                     <div>
-                        <span class="cc-ticker">${c.ticker}</span>
+                        <span class="cc-ticker"><a class="yf-link" href="CG_Company_Summary.html#company=${encodeURIComponent(c.ticker)}">${c.ticker}</a></span>
                         <span class="cc-company" style="margin-left:8px;">${c.company}</span>
                     </div>
                     ${resultHtml}

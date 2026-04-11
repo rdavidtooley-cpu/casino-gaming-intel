@@ -355,6 +355,8 @@
             .page-header h1 { font-size: 1.1rem; }
             .nav-bar a { padding: 4px 8px; font-size: 10px; }
         }
+        a.yf-link { color:var(--accent); text-decoration:none; font-weight:700; }
+        a.yf-link:hover { text-decoration:underline; color:#ffe066; }
         .info-icon { position:relative; cursor:help; font-size:14px; color:var(--accent); opacity:1; display:inline-block; }
         .info-icon:hover { color:#fbbf24; }
         .info-icon[data-tip]:hover::after { content:attr(data-tip); position:absolute; left:50%; top:calc(100% + 6px); transform:translateX(-50%); background:#2d3748; color:#e8eaed; font-size:11px; padding:8px 12px; border-radius:6px; white-space:normal; width:280px; max-width:90vw; z-index:99999; line-height:1.5; box-shadow:0 4px 12px rgba(0,0,0,0.5); pointer-events:none; }
@@ -551,7 +553,7 @@ function buildRankings() {
         var barW = Math.min(100, Math.max(0, composite));
         html += '<tr>' +
             '<td>' + (i + 1) + '</td>' +
-            '<td style="font-weight:600;color:var(--accent)">' + (p.ticker || '') + '</td>' +
+            '<td><a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(p.ticker || '') + '">' + (p.ticker || '') + '</a></td>' +
             '<td>' + (p.company || '') + '</td>' +
             '<td><span class="cat-dot" style="background:' + catColor + '"></span>' + (p.category || '') + '</td>' +
             '<td class="' + getRankClass(p.mktcap_rank, total) + '">' + (p.mktcap_rank || '-') + '</td>' +

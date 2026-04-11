@@ -37,7 +37,7 @@
 
         /* Ticker Bar */
         .ticker-bar { display:flex; align-items:center; background:#0a0c10; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; white-space:nowrap; height:32px; position:sticky; top:0; z-index:1001; }
-        .ticker-track { display:inline-flex; animation:ticker-scroll 60s linear infinite; gap:0; flex:1; }
+        .ticker-track { display:inline-flex; animation:ticker-scroll 120s linear infinite; gap:0; flex:1; }
         .ticker-track:hover { animation-play-state:paused; }
         .ticker-item { display:inline-flex; align-items:center; gap:6px; padding:0 18px; font-size:11px; font-weight:600; border-right:1px solid rgba(255,255,255,0.04); height:32px; cursor:default; }
         .ticker-item .tk-sym { color:var(--accent); font-weight:700; letter-spacing:0.5px; }
@@ -195,6 +195,8 @@
         .range-btn.active,.range-btn:hover{background:rgba(245,158,11,0.12);color:var(--accent);border-color:var(--accent);}
         .range-date-input{padding:4px 8px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:var(--bg-card);color:var(--text-primary);font-size:11px;cursor:pointer;font-family:inherit;}
         .range-status{font-size:11px;color:var(--text-secondary);margin-top:4px;}
+        .yf-link { color:var(--accent); text-decoration:none; font-weight:700; }
+        .yf-link:hover { text-decoration:underline; }
     </style>
 </head>
 <body>
@@ -385,29 +387,29 @@
 var INJECTED_COMMAND_CENTER = {
   "market_data": {
     "MGM": {
-      "price": 36.93,
-      "change_pct": -0.458216,
-      "market_cap_b": 10.101,
+      "price": 37.32,
+      "change_pct": 1.05605,
+      "market_cap_b": 10.207,
       "name": "MGM Resorts International",
       "display_ticker": "MGM",
       "category": "Integrated Resorts",
-      "pe_ratio": 48.592106,
+      "pe_ratio": 49.105263,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-29",
       "recommendation_key": "buy",
-      "target_mean": 42.61111,
-      "upside_pct": 15.4,
+      "target_mean": 42.55556,
+      "upside_pct": 14.0,
       "num_analysts": 18,
-      "market_cap": 10100592640,
+      "market_cap": 10207259648,
       "fifty_two_week_high": 40.16,
-      "fifty_two_week_low": 25.3,
+      "fifty_two_week_low": 28.12,
       "beta": 1.351
     },
     "CZR": {
-      "price": 26.44,
-      "change_pct": -1.527,
-      "market_cap_b": 5.397,
+      "price": 26.88,
+      "change_pct": 1.6641401,
+      "market_cap_b": 5.486,
       "name": "Caesars Entertainment",
       "display_ticker": "CZR",
       "category": "Integrated Resorts",
@@ -417,77 +419,77 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-04-28",
       "recommendation_key": "buy",
       "target_mean": 32.18,
-      "upside_pct": 21.7,
+      "upside_pct": 19.7,
       "num_analysts": 18,
-      "market_cap": 5396614144,
+      "market_cap": 5486420992,
       "fifty_two_week_high": 31.58,
       "fifty_two_week_low": 17.86,
       "beta": 1.878
     },
     "WYNN": {
-      "price": 104.89,
-      "change_pct": -0.332572,
-      "market_cap_b": 10.938,
+      "price": 104.0,
+      "change_pct": -0.8485074,
+      "market_cap_b": 10.845,
       "name": "Wynn Resorts",
       "display_ticker": "WYNN",
       "category": "Integrated Resorts",
-      "pe_ratio": 33.404457,
-      "dividend_yield": 0.95,
+      "pe_ratio": 33.121017,
+      "dividend_yield": 0.96,
       "dividend_rate": 1.0,
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "strong_buy",
       "target_mean": 141.22221,
-      "upside_pct": 34.6,
+      "upside_pct": 35.8,
       "num_analysts": 18,
-      "market_cap": 10938274816,
+      "market_cap": 10845462528,
       "fifty_two_week_high": 134.72,
-      "fifty_two_week_low": 65.25,
+      "fifty_two_week_low": 71.77,
       "beta": 1.034
     },
     "LVS": {
-      "price": 54.48,
-      "change_pct": -0.219778,
-      "market_cap_b": 36.606,
+      "price": 53.45,
+      "change_pct": -1.8906,
+      "market_cap_b": 35.914,
       "name": "Las Vegas Sands",
       "display_ticker": "LVS",
       "category": "Integrated Resorts",
-      "pe_ratio": 23.282051,
-      "dividend_yield": 1.93,
+      "pe_ratio": 22.744682,
+      "dividend_yield": 1.96,
       "dividend_rate": 1.05,
       "next_earnings_date": "2026-04-22",
       "recommendation_key": "buy",
       "target_mean": 69.36579,
-      "upside_pct": 27.3,
+      "upside_pct": 29.8,
       "num_analysts": 19,
-      "market_cap": 36605693952,
+      "market_cap": 35913629696,
       "fifty_two_week_high": 70.45,
-      "fifty_two_week_low": 30.18,
+      "fifty_two_week_low": 31.57,
       "beta": 0.887
     },
     "MLCO": {
-      "price": 5.76,
-      "change_pct": -0.86058,
-      "market_cap_b": 2.343,
+      "price": 5.63,
+      "change_pct": -2.2569463,
+      "market_cap_b": 2.29,
       "name": "Melco Resorts",
       "display_ticker": "MLCO",
       "category": "Integrated Resorts",
-      "pe_ratio": 12.521739,
+      "pe_ratio": 12.23913,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-30",
       "recommendation_key": "buy",
       "target_mean": 8.88846,
-      "upside_pct": 54.3,
+      "upside_pct": 57.9,
       "num_analysts": 13,
-      "market_cap": 2343121920,
+      "market_cap": 2290238976,
       "fifty_two_week_high": 10.15,
-      "fifty_two_week_low": 4.55,
+      "fifty_two_week_low": 4.68,
       "beta": 0.603
     },
     "PENN": {
-      "price": 15.66,
-      "change_pct": 2.15264,
-      "market_cap_b": 2.091,
+      "price": 15.25,
+      "change_pct": -2.6181345,
+      "market_cap_b": 2.037,
       "name": "Penn Entertainment",
       "display_ticker": "PENN",
       "category": "Regional Operators",
@@ -497,97 +499,97 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-04-23",
       "recommendation_key": "buy",
       "target_mean": 19.11111,
-      "upside_pct": 22.0,
+      "upside_pct": 25.3,
       "num_analysts": 18,
-      "market_cap": 2091334656,
+      "market_cap": 2036580608,
       "fifty_two_week_high": 20.61,
       "fifty_two_week_low": 11.65,
       "beta": 1.327
     },
     "BYD": {
-      "price": 86.83,
-      "change_pct": 0.719177,
-      "market_cap_b": 6.555,
+      "price": 86.5,
+      "change_pct": -0.380055,
+      "market_cap_b": 6.53,
       "name": "Boyd Gaming",
       "display_ticker": "BYD",
       "category": "Regional Operators",
-      "pe_ratio": 3.8488476,
-      "dividend_yield": 0.85,
+      "pe_ratio": 3.83422,
+      "dividend_yield": 0.86,
       "dividend_rate": 0.74,
       "next_earnings_date": "2026-04-23",
       "recommendation_key": "buy",
       "target_mean": 94.53333,
-      "upside_pct": 8.9,
+      "upside_pct": 9.3,
       "num_analysts": 15,
-      "market_cap": 6554988544,
+      "market_cap": 6530076160,
       "fifty_two_week_high": 89.96,
-      "fifty_two_week_low": 60.11,
+      "fifty_two_week_low": 63.33,
       "beta": 1.192
     },
     "RRR": {
-      "price": 56.4,
-      "change_pct": -1.17399,
-      "market_cap_b": 5.799,
+      "price": 56.2,
+      "change_pct": -0.35461128,
+      "market_cap_b": 5.779,
       "name": "Red Rock Resorts",
       "display_ticker": "RRR",
       "category": "Regional Operators",
-      "pe_ratio": 18.076923,
-      "dividend_yield": 1.82,
+      "pe_ratio": 18.012821,
+      "dividend_yield": 1.85,
       "dividend_rate": 1.04,
       "next_earnings_date": "2026-04-29",
       "recommendation_key": "buy",
       "target_mean": 72.6875,
-      "upside_pct": 28.9,
+      "upside_pct": 29.3,
       "num_analysts": 16,
-      "market_cap": 5799437312,
+      "market_cap": 5778871808,
       "fifty_two_week_high": 68.99,
-      "fifty_two_week_low": 36.855,
+      "fifty_two_week_low": 39.451,
       "beta": 1.476
     },
     "CHDN": {
-      "price": 88.47,
-      "change_pct": -0.0113044,
-      "market_cap_b": 6.166,
+      "price": 87.48,
+      "change_pct": -1.1190209,
+      "market_cap_b": 6.097,
       "name": "Churchill Downs",
       "display_ticker": "CHDN",
       "category": "Regional Operators",
-      "pe_ratio": 16.724009,
+      "pe_ratio": 16.536863,
       "dividend_yield": 0.5,
       "dividend_rate": 0.44,
       "next_earnings_date": "2026-04-22",
       "recommendation_key": "strong_buy",
       "target_mean": 134.75,
-      "upside_pct": 52.3,
+      "upside_pct": 54.0,
       "num_analysts": 12,
-      "market_cap": 6166038528,
+      "market_cap": 6097039360,
       "fifty_two_week_high": 118.46,
       "fifty_two_week_low": 80.24,
       "beta": 0.65
     },
     "MCRI": {
-      "price": 98.94,
-      "change_pct": 0.477304,
-      "market_cap_b": 1.77,
+      "price": 98.33,
+      "change_pct": -0.61653584,
+      "market_cap_b": 1.759,
       "name": "Monarch Casino & Resort",
       "display_ticker": "MCRI",
       "category": "Regional Operators",
-      "pe_ratio": 18.220995,
-      "dividend_yield": 1.21,
+      "pe_ratio": 18.108656,
+      "dividend_yield": 1.22,
       "dividend_rate": 1.2,
       "next_earnings_date": "2026-04-21",
       "recommendation_key": "buy",
       "target_mean": 107.66667,
-      "upside_pct": 8.8,
+      "upside_pct": 9.5,
       "num_analysts": 6,
-      "market_cap": 1769652736,
+      "market_cap": 1758742272,
       "fifty_two_week_high": 113.88,
-      "fifty_two_week_low": 69.99,
+      "fifty_two_week_low": 72.88,
       "beta": 1.341
     },
     "GDEN": {
-      "price": 27.91,
-      "change_pct": 1.01339,
-      "market_cap_b": 0.737,
+      "price": 27.95,
+      "change_pct": 0.1433211,
+      "market_cap_b": 0.738,
       "name": "Golden Entertainment",
       "display_ticker": "GDEN",
       "category": "Regional Operators",
@@ -597,17 +599,17 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "hold",
       "target_mean": 30.0,
-      "upside_pct": 7.5,
+      "upside_pct": 7.3,
       "num_analysts": 3,
-      "market_cap": 736790848,
+      "market_cap": 737846784,
       "fifty_two_week_high": 32.74,
       "fifty_two_week_low": 19.57,
       "beta": 1.411
     },
     "FLL": {
-      "price": 2.7,
-      "change_pct": 0,
-      "market_cap_b": 0.098,
+      "price": 2.48,
+      "change_pct": -8.1481495,
+      "market_cap_b": 0.09,
       "name": "Full House Resorts",
       "display_ticker": "FLL",
       "category": "Regional Operators",
@@ -617,17 +619,17 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "none",
       "target_mean": 3.25,
-      "upside_pct": 20.4,
+      "upside_pct": 31.0,
       "num_analysts": 4,
-      "market_cap": 97694296,
+      "market_cap": 89734016,
       "fifty_two_week_high": 4.95,
       "fifty_two_week_low": 2.02,
       "beta": 1.276
     },
     "BALY": {
-      "price": 11.06,
-      "change_pct": -2.29681,
-      "market_cap_b": 0.537,
+      "price": 10.8,
+      "change_pct": -2.35082,
+      "market_cap_b": 0.526,
       "name": "Bally's Corporation",
       "display_ticker": "BALY",
       "category": "Regional Operators",
@@ -637,17 +639,17 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-11",
       "recommendation_key": "hold",
       "target_mean": 13.0,
-      "upside_pct": 17.5,
+      "upside_pct": 20.4,
       "num_analysts": 4,
-      "market_cap": 536802208,
+      "market_cap": 526425888,
       "fifty_two_week_high": 20.74,
       "fifty_two_week_low": 8.455,
       "beta": null
     },
     "DKNG": {
-      "price": 22.25,
-      "change_pct": -7.05932,
-      "market_cap_b": 11.03,
+      "price": 22.23,
+      "change_pct": -0.0898897,
+      "market_cap_b": 11.02,
       "name": "DraftKings",
       "display_ticker": "DKNG",
       "category": "Online & iGaming",
@@ -657,17 +659,17 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "buy",
       "target_mean": 35.83235,
-      "upside_pct": 61.0,
+      "upside_pct": 61.2,
       "num_analysts": 34,
-      "market_cap": 11030278144,
+      "market_cap": 11020362752,
       "fifty_two_week_high": 48.78,
       "fifty_two_week_low": 20.46,
       "beta": 1.674
     },
     "FLUT": {
-      "price": 105.25,
-      "change_pct": -3.89006,
-      "market_cap_b": 18.353,
+      "price": 102.38,
+      "change_pct": -2.72684,
+      "market_cap_b": 17.853,
       "name": "Flutter Entertainment",
       "display_ticker": "FLUT",
       "category": "Online & iGaming",
@@ -676,78 +678,78 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_rate": null,
       "next_earnings_date": "2026-05-06",
       "recommendation_key": "buy",
-      "target_mean": 198.38461,
-      "upside_pct": 88.5,
+      "target_mean": 197.34615,
+      "upside_pct": 92.8,
       "num_analysts": 26,
-      "market_cap": 18353295360,
+      "market_cap": 17852829696,
       "fifty_two_week_high": 313.685,
       "fifty_two_week_low": 98.875,
       "beta": 1.157
     },
     "RSI": {
-      "price": 21.41,
-      "change_pct": -3.60198,
-      "market_cap_b": 4.984,
+      "price": 21.09,
+      "change_pct": -1.49463,
+      "market_cap_b": 4.909,
       "name": "Rush Street Interactive",
       "display_ticker": "RSI",
       "category": "Online & iGaming",
-      "pe_ratio": 69.064514,
+      "pe_ratio": 68.03226,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-04-28",
       "recommendation_key": "strong_buy",
       "target_mean": 25.0,
-      "upside_pct": 16.8,
+      "upside_pct": 18.5,
       "num_analysts": 11,
-      "market_cap": 4983917568,
-      "fifty_two_week_high": 22.798,
-      "fifty_two_week_low": 10.22,
+      "market_cap": 4909426176,
+      "fifty_two_week_high": 23.15,
+      "fifty_two_week_low": 11.12,
       "beta": 1.457
     },
     "SRAD": {
-      "price": 15.24,
-      "change_pct": -8.35839,
-      "market_cap_b": 4.51,
+      "price": 15.47,
+      "change_pct": 1.50919,
+      "market_cap_b": 4.578,
       "name": "Sportradar Group",
       "display_ticker": "SRAD",
       "category": "Online & iGaming",
-      "pe_ratio": 42.333332,
+      "pe_ratio": 42.97222,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-05-11",
       "recommendation_key": "strong_buy",
-      "target_mean": 29.068672,
-      "upside_pct": 90.7,
+      "target_mean": 29.14368,
+      "upside_pct": 88.4,
       "num_analysts": 21,
-      "market_cap": 4510303232,
+      "market_cap": 4578372096,
       "fifty_two_week_high": 32.22,
-      "fifty_two_week_low": 15.05,
+      "fifty_two_week_low": 14.7,
       "beta": 1.985
     },
     "SGHC": {
-      "price": 10.58,
-      "change_pct": -3.2022,
-      "market_cap_b": 5.35,
+      "price": 10.23,
+      "change_pct": -3.30813,
+      "market_cap_b": 5.173,
       "name": "Super Group",
       "display_ticker": "SGHC",
       "category": "Online & iGaming",
-      "pe_ratio": 25.804878,
-      "dividend_yield": 1.61,
+      "pe_ratio": 24.357143,
+      "dividend_yield": 1.66,
       "dividend_rate": 0.17,
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "strong_buy",
       "target_mean": 17.375,
-      "upside_pct": 64.2,
+      "upside_pct": 69.8,
       "num_analysts": 8,
-      "market_cap": 5349645824,
+      "market_cap": 5172672512,
       "fifty_two_week_high": 14.38,
-      "fifty_two_week_low": 6.34,
+      "fifty_two_week_low": 6.945,
       "beta": 1.066
     },
     "GENI": {
-      "price": 4.07,
-      "change_pct": -7.07762,
-      "market_cap_b": 1.047,
+      "price": 3.92,
+      "change_pct": -3.68551,
+      "market_cap_b": 1.008,
       "name": "Genius Sports",
       "display_ticker": "GENI",
       "category": "Online & iGaming",
@@ -756,30 +758,30 @@ var INJECTED_COMMAND_CENTER = {
       "dividend_rate": null,
       "next_earnings_date": "2026-05-05",
       "recommendation_key": "strong_buy",
-      "target_mean": 11.64706,
-      "upside_pct": 186.2,
+      "target_mean": 11.52941,
+      "upside_pct": 194.1,
       "num_analysts": 17,
-      "market_cap": 1047008256,
+      "market_cap": 1008420736,
       "fifty_two_week_high": 13.73,
-      "fifty_two_week_low": 4.03,
+      "fifty_two_week_low": 3.865,
       "beta": 2.084
     },
     "BRSL": {
-      "price": 12.36,
-      "change_pct": -1.12,
-      "market_cap_b": 2.281,
+      "price": 12.25,
+      "change_pct": -0.889965,
+      "market_cap_b": 2.26,
       "name": "Brightstar Lottery",
       "display_ticker": "BRSL",
       "category": "Gaming Equipment",
       "pe_ratio": null,
-      "dividend_yield": 7.44,
+      "dividend_yield": 7.51,
       "dividend_rate": 0.92,
       "next_earnings_date": "2026-05-12",
       "recommendation_key": "buy",
       "target_mean": 17.88,
-      "upside_pct": 44.7,
+      "upside_pct": 46.0,
       "num_analysts": 5,
-      "market_cap": 2280773632,
+      "market_cap": 2260475392,
       "fifty_two_week_high": 18.57,
       "fifty_two_week_low": 12.17,
       "beta": 1.08
@@ -805,29 +807,29 @@ var INJECTED_COMMAND_CENTER = {
       "beta": null
     },
     "ACEL": {
-      "price": 11.72,
-      "change_pct": 0.600864,
-      "market_cap_b": 0.956,
+      "price": 11.61,
+      "change_pct": -0.938572,
+      "market_cap_b": 0.947,
       "name": "Accel Entertainment",
       "display_ticker": "ACEL",
       "category": "Gaming Equipment",
-      "pe_ratio": 19.533333,
+      "pe_ratio": 19.349998,
       "dividend_yield": null,
       "dividend_rate": null,
       "next_earnings_date": "2026-05-05",
       "recommendation_key": "strong_buy",
       "target_mean": 15.5,
-      "upside_pct": 32.3,
+      "upside_pct": 33.5,
       "num_analysts": 6,
-      "market_cap": 956038464,
+      "market_cap": 947065408,
       "fifty_two_week_high": 13.31,
       "fifty_two_week_low": 9.55,
       "beta": 1.058
     },
     "INSE": {
-      "price": 6.84,
-      "change_pct": -3.25318,
-      "market_cap_b": 0.185,
+      "price": 6.42,
+      "change_pct": -6.1403522,
+      "market_cap_b": 0.174,
       "name": "Inspired Entertainment",
       "display_ticker": "INSE",
       "category": "Gaming Equipment",
@@ -837,144 +839,144 @@ var INJECTED_COMMAND_CENTER = {
       "next_earnings_date": "2026-05-07",
       "recommendation_key": "buy",
       "target_mean": 13.33333,
-      "upside_pct": 94.9,
+      "upside_pct": 107.7,
       "num_analysts": 6,
-      "market_cap": 185087472,
+      "market_cap": 173722448,
       "fifty_two_week_high": 9.95,
       "fifty_two_week_low": 6.1,
       "beta": 1.254
     }
   },
-  "total_mcap": 137.8,
+  "total_mcap": 136.2,
   "top_mover": {
-    "ticker": "SRAD",
-    "name": "Sportradar Group",
-    "change_pct": -8.35839
+    "ticker": "FLL",
+    "name": "Full House Resorts",
+    "change_pct": -8.1481495
   },
   "gaming25": {
-    "current": 1819.63,
-    "daily_pct": -1.49,
-    "ytd_pct": -17.01,
+    "current": 1810.32,
+    "daily_pct": -0.83,
+    "ytd_pct": -17.61,
     "index": [
       {
-        "date": "2026-02-26",
-        "value": 1883.92
-      },
-      {
         "date": "2026-02-27",
-        "value": 1856.63
+        "value": 1862.54
       },
       {
         "date": "2026-03-02",
-        "value": 1850.02
+        "value": 1855.82
       },
       {
         "date": "2026-03-03",
-        "value": 1850.97
+        "value": 1856.73
       },
       {
         "date": "2026-03-04",
-        "value": 1871.35
+        "value": 1877.29
       },
       {
         "date": "2026-03-05",
-        "value": 1871.13
+        "value": 1877.24
       },
       {
         "date": "2026-03-06",
-        "value": 1817.54
+        "value": 1823.53
       },
       {
         "date": "2026-03-09",
-        "value": 1819.35
+        "value": 1825.32
       },
       {
         "date": "2026-03-10",
-        "value": 1814.73
+        "value": 1820.66
       },
       {
         "date": "2026-03-11",
-        "value": 1850.47
+        "value": 1856.81
       },
       {
         "date": "2026-03-12",
-        "value": 1824.64
+        "value": 1831.02
       },
       {
         "date": "2026-03-13",
-        "value": 1834.37
+        "value": 1840.76
       },
       {
         "date": "2026-03-16",
-        "value": 1815.43
+        "value": 1821.57
       },
       {
         "date": "2026-03-17",
-        "value": 1836.02
+        "value": 1842.29
       },
       {
         "date": "2026-03-18",
-        "value": 1824.13
+        "value": 1830.42
       },
       {
         "date": "2026-03-19",
-        "value": 1845.21
+        "value": 1851.64
       },
       {
         "date": "2026-03-20",
-        "value": 1788.95
+        "value": 1795.07
       },
       {
         "date": "2026-03-23",
-        "value": 1822.07
+        "value": 1828.18
       },
       {
         "date": "2026-03-24",
-        "value": 1837.03
+        "value": 1843.1
       },
       {
         "date": "2026-03-25",
-        "value": 1814.25
+        "value": 1820.35
       },
       {
         "date": "2026-03-26",
-        "value": 1781.56
+        "value": 1787.61
       },
       {
         "date": "2026-03-27",
-        "value": 1732.87
+        "value": 1738.64
       },
       {
         "date": "2026-03-30",
-        "value": 1725.61
+        "value": 1731.28
       },
       {
         "date": "2026-03-31",
-        "value": 1786.43
+        "value": 1792.23
       },
       {
         "date": "2026-04-01",
-        "value": 1805.83
+        "value": 1811.69
       },
       {
         "date": "2026-04-02",
-        "value": 1817.58
+        "value": 1823.49
       },
       {
         "date": "2026-04-06",
-        "value": 1822.09
+        "value": 1828.13
       },
       {
         "date": "2026-04-07",
-        "value": 1811.07
+        "value": 1817.16
       },
       {
         "date": "2026-04-08",
-        "value": 1847.12
+        "value": 1853.17
       },
       {
         "date": "2026-04-09",
-        "value": 1819.63
+        "value": 1825.54
+      },
+      {
+        "date": "2026-04-10",
+        "value": 1810.32
       }
     ]
   },
@@ -986,8 +988,8 @@ var INJECTED_COMMAND_CENTER = {
     },
     "VIXCLS": {
       "label": "VIX Volatility Index",
-      "value": 21.04,
-      "change_30d_pct": -17.49
+      "value": 19.49,
+      "change_30d_pct": -21.82
     },
     "DFF": {
       "label": "Federal Funds Rate (%)",
@@ -1002,85 +1004,85 @@ var INJECTED_COMMAND_CENTER = {
   },
   "big_movers": [
     {
-      "ticker": "MLCO",
-      "display_ticker": "MLCO",
-      "company": "Melco Resorts",
-      "category": "Integrated Resorts",
-      "prev_price": 5.81,
-      "curr_price": 5.76,
-      "pct_change": -86.06,
-      "market_cap_b": 2.343
-    },
-    {
-      "ticker": "BYD",
-      "display_ticker": "BYD",
-      "company": "Boyd Gaming",
-      "category": "Regional Operators",
-      "prev_price": 86.21,
-      "curr_price": 86.83,
-      "pct_change": 71.92,
-      "market_cap_b": 6.555
-    },
-    {
       "ticker": "ACEL",
       "display_ticker": "ACEL",
       "company": "Accel Entertainment",
       "category": "Gaming Equipment",
-      "prev_price": 11.65,
-      "curr_price": 11.72,
-      "pct_change": 60.09,
-      "market_cap_b": 0.956
+      "prev_price": 11.72,
+      "curr_price": 11.61,
+      "pct_change": -93.86,
+      "market_cap_b": 0.947
+    },
+    {
+      "ticker": "BRSL",
+      "display_ticker": "BRSL",
+      "company": "Brightstar Lottery",
+      "category": "Gaming Equipment",
+      "prev_price": 12.36,
+      "curr_price": 12.25,
+      "pct_change": -89.0,
+      "market_cap_b": 2.26
+    },
+    {
+      "ticker": "WYNN",
+      "display_ticker": "WYNN",
+      "company": "Wynn Resorts",
+      "category": "Integrated Resorts",
+      "prev_price": 104.89,
+      "curr_price": 104.0,
+      "pct_change": -84.85,
+      "market_cap_b": 10.845
     },
     {
       "ticker": "MCRI",
       "display_ticker": "MCRI",
       "company": "Monarch Casino & Resort",
       "category": "Regional Operators",
-      "prev_price": 98.47,
-      "curr_price": 98.94,
-      "pct_change": 47.73,
-      "market_cap_b": 1.77
+      "prev_price": 98.94,
+      "curr_price": 98.33,
+      "pct_change": -61.65,
+      "market_cap_b": 1.759
     },
     {
-      "ticker": "MGM",
-      "display_ticker": "MGM",
-      "company": "MGM Resorts International",
-      "category": "Integrated Resorts",
-      "prev_price": 37.1,
-      "curr_price": 36.93,
-      "pct_change": -45.82,
-      "market_cap_b": 10.101
+      "ticker": "BYD",
+      "display_ticker": "BYD",
+      "company": "Boyd Gaming",
+      "category": "Regional Operators",
+      "prev_price": 86.83,
+      "curr_price": 86.5,
+      "pct_change": -38.01,
+      "market_cap_b": 6.53
     }
   ],
   "category_summary": {
     "Integrated Resorts": {
       "count": 5,
-      "total_mcap": 65.4,
-      "avg_change_ytd": -8.0,
+      "total_mcap": 64.7,
+      "avg_change_ytd": -8.2,
       "color": "#ffd700"
     },
     "Regional Operators": {
       "count": 8,
-      "total_mcap": 23.8,
-      "avg_change_ytd": -5.3,
+      "total_mcap": 23.6,
+      "avg_change_ytd": -7.2,
       "color": "#4fc3f7"
     },
     "Online & iGaming": {
       "count": 6,
-      "total_mcap": 45.3,
-      "avg_change_ytd": -30.7,
+      "total_mcap": 44.5,
+      "avg_change_ytd": -31.8,
       "color": "#81c784"
     },
     "Gaming Equipment": {
       "count": 4,
       "total_mcap": 3.4,
-      "avg_change_ytd": -15.6,
+      "avg_change_ytd": -17.2,
       "color": "#ba68c8"
     }
   },
-  "generated_at": "2026-04-09T22:31:33.313883",
+  "generated_at": "2026-04-11T12:38:11.435794",
   "transcript_analysis": {
-    "generated_at": "2026-04-09T22:31:33.198079",
+    "generated_at": "2026-04-11T12:38:11.318448",
     "total_transcripts": 270,
     "companies": {
       "ACEL": {
@@ -10361,242 +10363,228 @@ var INJECTED_COMMAND_CENTER = {
   },
   "news_items": [
     {
-      "title": "Flutter Entertainment (FLUT) Stock Trades Down, Here Is Why",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/flutter-entertainment-flut-stock-trades-032547797.html",
+      "title": "Wisconsin moves closer to online sports betting with tribal-led model signed into law - The Gaming Boardroom",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNQlhQVWcwOEUwVF9VM3RLTlRQYkJRaUFyakp6OXRiZHFwWUhBZXAwN08wZkoxTENHcVRVcTlsTFFTVGx6Q1FOZ2F4MUlZRTk3blpROVBiTjNzWUdDY3FpU3JJWTlPT0MwTVh6dmJKdnhCWmt3Smw1YzVkbzVRNjVxRk9aMlB5MGxaMGxFdHFrbWtJSjlIX2tySHpCbUtLOHBxaWNLTEROQjcyMUlpRjZwTGx6UzZOTFo2bnpxUnZLaVpwS1B6NlY0?oc=5",
+      "source": "The Gaming Boardroom",
+      "published": "Fri, 10 Apr 2026 19:29:52 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Connecticut Joins Arkansas, Colorado, Rhode Island, North Carolina, Mississippi, Iowa and Other US States in Changing Casino Tourism Market in America, Generating Multi Billions Revenues Through Tax, Supercharging Tourism Sector, New Update is Her - Travel And Tour World",
+      "url": "https://news.google.com/rss/articles/CBMi3gJBVV95cUxPVnlTejJXaUM2UHBpWURvOHZwcjNqUXEzTmNGaGQzQjBpUFdxN1hCT3hrbDhqUmhkR2pIaXg5RUpsbUoxdVRFQVhpLWF0Y1ZCQmkxLTRqbXdaX1ZvdWhBSVhLTlk2VnhCYlFMc3djaE5yVlBvbmxpSlZoWnpMbjJoeFJVVHJLQ29zVmdzWFZPR2s4Rko3b0xpcUhMeVlzRDhiSWUtczFRV3d5ODRkUnhZa1hPRlE1RG1PYTd5ZTFxSmplSldLcE5mdzBER1kyQnk4Ry1QT3A3cW9qYnJqZjlvamlWWGwzcUNCQ1JNSDV2cFVzejdJTzBWZC1EdExXazlHMXZ1TUJNZFJsLVg0cnJqczJFQzUyQWFiYkNOTm14N282T3JMQ21MTEt6em5CX0dSdzhSYmw1N1B1Z3VSRjZFWE1VWU9xQzlNbWNxV2w0NnZFazFmeTdjZzdFTF96Zw?oc=5",
+      "source": "Travel And Tour World",
+      "published": "Fri, 10 Apr 2026 19:18:45 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Elemento Dragons Slot Review",
+      "url": "https://www.igamingtoday.com/elemento-dragons-slot-review/",
+      "source": "iGamingToday",
+      "published": "Fri, 10 Apr 2026 18:49:00 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 3,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Maryland online sports betting revenue surges 30.5% in March - CDC Gaming",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNdEp3S2FLNHlHV19BbE1KVVFYY0toTzJXVHJKcFR6RVc5aFcwQjJOY2FiUFZVSHpVaXJYdVBuNFlCZ2JMUVdNTjByVVVxY0FfTUIwbENXVkI2ODJnMEpVTi1WRlpjczV0YzRhRDBfVzN4eGZpazljT19ya3hmMjhfVzNwZndKRGl5ZTZPN1lJNDJKQQ?oc=5",
+      "source": "CDC Gaming",
+      "published": "Fri, 10 Apr 2026 18:44:51 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "New York online sports betting revenue vaults 34.3% in March - CDC Gaming",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOUHREa1EtZHZPWFNIQWlnYl93Q1cxRTJuN0U5TkZHZ2dlMF9KOHVMWTJsSFJpNWI1YWtRV3lFRGJuR0x1VklmSktzYWRxVENLT0l5QmpOU2s2aEZER25fNVh6bG0wckpmZnV5WTBreFNXTzk0Y2V3cGpJOTdRdGxzY19iTDRrNUx1UzZHRVQ2bW5lZw?oc=5",
+      "source": "CDC Gaming",
+      "published": "Fri, 10 Apr 2026 18:41:57 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "3 Value Stocks with Warning Signs",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/3-value-stocks-warning-signs-175044999.html",
       "source": "StockStory",
-      "published": "2026-04-10T03:25:47Z",
+      "published": "2026-04-10T17:50:44Z",
       "matched_tickers": [
-        "FLUT"
-      ],
-      "sector": "Online & iGaming",
-      "category": "Company-Specific",
-      "relevance_score": 1,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Galaxy Entertainment Sees Sports Events As A Stronger Driver For Macau Tourism",
-      "url": "https://www.igamingtoday.com/galaxy-entertainment-sees-sports-events-as-a-stronger-driver-for-macau-tourism/",
-      "source": "iGamingToday",
-      "published": "Fri, 10 Apr 2026 02:34:41 +0000",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 4,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Ana Gaming Appoints Antonio Guerardi as CMO, Betting on Customer Experience to Drive Growth",
-      "url": "https://www.igamingtoday.com/ana-gaming-appoints-antonio-guerardi-as-cmo-betting-on-customer-experience-to-drive-growth/",
-      "source": "iGamingToday",
-      "published": "Fri, 10 Apr 2026 02:05:35 +0000",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 4,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Esportes Gaming Brasil and Sportradar Initiative Becomes Public Policy in Brazil",
-      "url": "https://www.igamingtoday.com/esportes-gaming-brasil-and-sportradar-initiative-becomes-public-policy-in-brazil/",
-      "source": "iGamingToday",
-      "published": "Fri, 10 Apr 2026 00:25:59 +0000",
-      "matched_tickers": [
-        "SRAD"
-      ],
-      "sector": "Online & iGaming",
-      "category": "Company-Specific",
-      "relevance_score": 3,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "IGA: IGT kept up momentum for Rise55 cabinet and other products",
-      "url": "https://cdcgaming.com/iga-igt-kept-up-momentum-for-rise55-cabinet-and-other-products/",
-      "source": "CDC Gaming Reports",
-      "published": "Fri, 10 Apr 2026 00:14:51 +0000",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "BetConstruct AI Unveils Retail Jackpot Engine For Sportsbooks",
-      "url": "https://www.igamingtoday.com/betconstruct-ai-unveils-retail-jackpot-engine-for-sportsbooks/",
-      "source": "iGamingToday",
-      "published": "Fri, 10 Apr 2026 00:00:23 +0000",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Circa Las Vegas Relaunches All-Inclusive Summer Package - National Today",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQbEFOT1dkZ0RRZmRFSmdJdzJSUmgtWWVGcTRDeXg3WEVXLU00UzVEendRazdyNUFTV1hXTl9RVVlPLTg2TkxJQmkyZjZSb2dOMGw3UXlwN1RRNUc2eUt3cXlscTRacUFGT0lzbXZ3bmxydTEwYkYwUXZHY2FycDJDVktGQ3h2ajFWaFRpTzg5Y09HbVMxdUNfMmh1TlNHdEJqaUVMNmMxZTRZVzlzbEQ3UG5uQl8?oc=5",
-      "source": "National Today",
-      "published": "Thu, 09 Apr 2026 23:12:38 GMT",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "VIDEO DEMO: Aristocrat adds Firecrackers to Bao Zhu Zhao Fu",
-      "url": "https://cdcgaming.com/video-demo-aristocrat-adds-firecrackers-to-bao-zhu-zhao-fu/",
-      "source": "CDC Gaming Reports",
-      "published": "Thu, 09 Apr 2026 23:00:00 +0000",
-      "matched_tickers": [
-        "ARLUF"
-      ],
-      "sector": "Gaming Equipment",
-      "category": "Company-Specific",
-      "relevance_score": 3,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "What Ontario Residents Should Know About the Best Sports Betting Sites in Canada - Burlington Gazette",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNVDZEbEZtYzVuOG1ZNEVTeDNWNnhCQ0g4aXc5bWYtWEdtOXdTNEoxU01CSndkM2UxRkV0WlFhWjlMdlBIaGhEQnY1MFg0ZHdyMkx4b1RIVkdIekwtV25xbmtUQVJodzFONnJNeExscmpaTlZvMWdRYkhnbzludXZGSHY1dzJQeDhRVFQ2LUhONjF3bEtJbXc2OUpJLTY3S2RJc25CeWdmWkZ0QlE4TURF?oc=5",
-      "source": "Burlington Gazette",
-      "published": "Thu, 09 Apr 2026 22:54:32 GMT",
-      "matched_tickers": [],
-      "sector": "General",
-      "category": "Industry-Wide",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Cambodia Licenses Withdrawn from Golden Galaxy Casino After Online Scams Raid",
-      "url": "https://www.igamingtoday.com/cambodia-licenses-withdrawn-from-golden-galaxy-casino-after-online-scams-raid/",
-      "source": "iGamingToday",
-      "published": "Thu, 09 Apr 2026 22:45:39 +0000",
-      "matched_tickers": [
-        "GDEN"
+        "CHDN"
       ],
       "sector": "Regional Operators",
       "category": "Company-Specific",
-      "relevance_score": 3,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Super Group (SGHC) Limited (SGHC) Stock Slides as Market Rises: Facts to Know Before You Trade",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/super-group-sghc-limited-sghc-220004349.html",
-      "source": "Zacks",
-      "published": "2026-04-09T22:00:04Z",
-      "matched_tickers": [
-        "SGHC"
-      ],
-      "sector": "Online & iGaming",
-      "category": "Company-Specific",
       "relevance_score": 0,
-      "source_file": "news_2026-04-09.json"
+      "source_file": "news_2026-04-10.json"
     },
     {
-      "title": "Wall Street Bullish As Sportradar (SRAD) Pushes Expansion Into Adjacent Wagering Categories",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-bullish-sportradar-srad-212919464.html",
-      "source": "Insider Monkey",
-      "published": "2026-04-09T21:29:19Z",
-      "matched_tickers": [
-        "SRAD"
-      ],
-      "sector": "Online & iGaming",
-      "category": "Company-Specific",
-      "relevance_score": 1,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Financial Services Roundup: Market Talk",
-      "url": "https://www.wsj.com/business/financial-services-roundup-market-talk-0603e101?siteid=yhoof2&yptr=yahoo",
-      "source": "The Wall Street Journal",
-      "published": "2026-04-09T20:59:00Z",
-      "matched_tickers": [
-        "DKNG"
-      ],
-      "sector": "Online & iGaming",
-      "category": "Company-Specific",
-      "relevance_score": 0,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "DraftKings Price Prediction: Where The Stock Is Going This Year",
-      "url": "https://247wallst.com/investing/2026/04/09/draftkings-price-prediction-where-the-stock-is-going-this-year/",
-      "source": "24/7 Wall St.",
-      "published": "2026-04-09T20:57:21Z",
-      "matched_tickers": [
-        "DKNG"
-      ],
-      "sector": "Online & iGaming",
-      "category": "Company-Specific",
-      "relevance_score": 5,
-      "source_file": "news_2026-04-09.json"
-    },
-    {
-      "title": "Western Pa. Amusement Companies Plead Guilty to Distribution of Illegal Gaming Devices - exploreClarion",
-      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPYlFiQjNLZWhLZ3Z4YXBGQ2FxaTl4TlJOek5GajdQMkNoUGx6M2JYQmtDSGRxMDlhT0MzQi1XSnlkUUhab0pGY2tBTXVpX3p4NV8zYU51ZFd5dDdwZEVBSGk3c00zSGJpaXNwd1dKWkNIcnI0QUg0MW1rREFMNU5WWEE1YUdjNDhub05mVHdvdmZXRk9Uc2JQb1kxeE1LLUpvRDAxN2tNVHNPTFQtMThPYTFZZ0ZSZDdMREFXOWJWdXhLZEl1WUFoN3luOVhEMHNUWllxVmdHa0o?oc=5",
-      "source": "exploreClarion",
-      "published": "Thu, 09 Apr 2026 20:33:30 GMT",
+      "title": "The Future of Casinos in Brazil: Digital Convergence and Regulation Shape Industry Outlook",
+      "url": "https://www.igamingtoday.com/the-future-of-casinos-in-brazil-digital-convergence-and-regulation-shape-industry-outlook/",
+      "source": "iGamingToday",
+      "published": "Fri, 10 Apr 2026 17:39:50 +0000",
       "matched_tickers": [],
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
+      "source_file": "news_2026-04-10.json"
     },
     {
-      "title": "Circa Las Vegas joins all-inclusive bundle push to lure summer travelers - KSNV",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOMXo2RWJiZDFxRWR0N2oxN1hQTk5OZzIyNU5ZdXNaZGJFTmJxSnVKVU9weUhySnRUV0lmVWlkVlN6UzhhV2IyaGhaczlyVE5mc0Mxa1V1ZFBfd21QdTFTWFBZNUR3UTd0TjFBN3lZUVY5Mmo1QmJFZUZLRzEybTMyaGJTQmxuNGx3VDlxQjRiVUp0ZGgwb1NTSVB2ZzhQUUNGNDRUU0ZPNTNoZTE0SnR3UVo1UVotTy05VGJCdmFiZlpTZFFadVBLXy1OWW51eUVobHdQUndGRDc1eUE?oc=5",
-      "source": "KSNV",
-      "published": "Thu, 09 Apr 2026 20:31:43 GMT",
+      "title": "IGA: The importance of food in driving casino loyalty",
+      "url": "https://cdcgaming.com/iga-the-importance-of-food-in-driving-casino-loyalty/",
+      "source": "CDC Gaming Reports",
+      "published": "Fri, 10 Apr 2026 16:28:07 +0000",
       "matched_tickers": [],
       "sector": "General",
       "category": "Industry-Wide",
-      "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
+      "relevance_score": 4,
+      "source_file": "news_2026-04-10.json"
     },
     {
-      "title": "Downtown Las Vegas hotel-casino brings back all-inclusive summer deal - Las Vegas Review-Journal",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxONXExWTNPNldMbUtWWFE5S0Q5SzQxQXFZVWNTUGMxTVFSektyY1M5T1V6amJpUS1zaTZqMjVnVzhJRDJyczk5eTBhRy1JeVBkc3JrVkpidWRpTjlXZmNmUnU0eFh3VFJ3Umt6MUdwODltNzJNWUFPNU9NWkVxZXJ4M3dRUE9KZF81OHpDNXo4c05JNFA1Z21UR0hEWm80NEZRTWUyYUVhMGgyV1hkdktwWk9XeFBWcEMxWnJtOGV5aGFvSTJjZW85Z29pWUw?oc=5",
-      "source": "Google News - Las Vegas",
-      "published": "Thu, 09 Apr 2026 20:28:00 GMT",
+      "title": "Ohio Lawmakers Propose Online Sports Betting Ban, New Industry Restrictions - iGaming Brazil",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPZU1uaThobmczOUZia3NBV2pXSEk4WW5QRHo2ODh3dXBNZGZEemdNamY5bEthRHpJbDlSZ3hCZFl2YTV1c1ZTakpITGhONmZ4MGVyajlzWHFsYkx5SU5OdXhObmNMelNhQWxiU0FlRXM2c0dSakVINU85THVTMWlTamJiVHZGT3lZUW1FQmZweUVQZDFYS2c0aGlueHdJMEZwLWVjemoxREk1UTNEWFdVM2tfc0VGa1MtM21oS0FCdW5PYXNlYkxfanRRODQweFFCR3ZUUFpEMnfSAdgBQVVfeXFMT2VNbmk4aG5nMzlGYmtzQVdqV0hJOFluUER6Njg4d3VwTWRmRHpnTWpmOWxLYUR6SWw5Umd4QmRZdmE1dXNWU2pKSExoTjZmeDBlcmo5c1hxbGJMeUlOTnV4Tm5jTHpTYUFsYlNBZUVzNnNHUmpFSDVPOUx1UzFpU2piYlR2Rk95WVFtRUJmcHlFUGQxWEtnNGhpbnh3STBGcC1lY3pqMURJNVEzRFhXVTNrX3NFRmtTLTNtaEtBQnVuT2FzZWJMX2p0UTg0MHhRQkd2VFBaRDJ3?oc=5",
+      "source": "iGaming Brazil",
+      "published": "Fri, 10 Apr 2026 16:15:11 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Italy\u2019s gaming machines hold above \u20ac30bn in 2025 despite slight decline: GGR at \u20ac7.8bn, tax revenue tops \u20ac5bn - JAMMA",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPQUtVM3h3MGRkUnJGaXlqUE4zOXRIcExuclFNWUdYZlNnblZqMENxbERQN1F2cmxzYWZlTjVZZ3dnR0lQZGhhaEZrVk11ZnhfSnZ0LTFIelozbEhwY1lDbUtMcWVrOF9WNzBFQlFuNFNIaGdMd3VJTTQ0S1RZcEtLVFd4cmlaTnpwVEJDM1JDY1VvSFppY09JS3Q5VzF4Y1Y4R29CREtEcGFxZ2lHWGREbkQwaEVkREZIYW4wblg3NHV5bWpwd0p6LXpLNW5LUWU4RVJ2YUx3UzM0TGc?oc=5",
+      "source": "JAMMA",
+      "published": "Fri, 10 Apr 2026 15:43:17 GMT",
       "matched_tickers": [],
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 6,
-      "source_file": "news_2026-04-09.json"
+      "source_file": "news_2026-04-10.json"
     },
     {
-      "title": "Wisconsin governor signs law legalizing online tribal sports betting",
-      "url": "https://cdcgaming.com/wisconsin-governor-signs-law-legalizing-online-sports-betting/",
-      "source": "CDC Gaming Reports",
-      "published": "Thu, 09 Apr 2026 20:10:41 +0000",
+      "title": "Missouri attorney general says federal probe drove Torch to shut down slot machines - Missouri Independent",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSWRqd3dCXzhTNmNja1YzZDhRVnZ6QWpZM2JPTjNrd012N1lYU0pWMGpUZk1pdXpxb0o3SmJrcWdPNURUc2F4NkdSNUNPMHBueHdmNEVBVElheVdodHQ5MEk5alpUVVdOdUhMdnoxVU1YOW1KU3hQb3A1U1p5ZWtpU1ZQbkwweERydWtIZFpnVmdsU2hGUThyd1VEdkttdVU2NGNGS3VpQ1pRaGlqZWlpNm1RX3pHZTA4LWh4T1VhUEdJNVVvSmc?oc=5",
+      "source": "Missouri Independent",
+      "published": "Fri, 10 Apr 2026 15:35:39 GMT",
       "matched_tickers": [],
       "sector": "General",
       "category": "Industry-Wide",
       "relevance_score": 2,
-      "source_file": "news_2026-04-09.json"
+      "source_file": "news_2026-04-10.json"
     },
     {
-      "title": "DraftKings Craters 6% as Predictions Product Costs Spook Investors",
-      "url": "https://247wallst.com/investing/2026/04/09/draftkings-craters-6-as-predictions-product-costs-spook-investors/",
-      "source": "24/7 Wall St.",
-      "published": "2026-04-09T19:29:29Z",
+      "title": "Atlantic City casinos post mixed financial results as revenue edges up but profits fall - Shore News Network",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbTAwMTFOTG5tQmFkRXZWb2hNeDVlRVVoR2tfbjNnMXlMQ0lhV2ExNGZ6LW42Z3ZvT2RSNEpSTXV0LUNTcWZlcTJ3S0otdmVkZWF1b2JXOFlfZk9iSTg2VUlwRWRiMk5rZGZrWjRPYnpLYlQwZG82OEFfcFA1Zjd3RGJHeEVDb0ZXTGhGdU1lTjN1SFRBb3B2SGVYZGpNR1RwM1ZpUW5rSFhBV2UxR1p6cmNfbDF4V0tIT3JxWG5n?oc=5",
+      "source": "Shore News Network",
+      "published": "Fri, 10 Apr 2026 15:11:00 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Any Witch Way Slot Review",
+      "url": "https://www.igamingtoday.com/any-witch-way-slot-review/",
+      "source": "iGamingToday",
+      "published": "Fri, 10 Apr 2026 14:52:24 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 5,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Massachusetts Reopens Sportsbook Licensing After bet365 Request",
+      "url": "https://www.igamingtoday.com/massachusetts-reopens-sportsbook-licensing-after-bet365-request/",
+      "source": "iGamingToday",
+      "published": "Fri, 10 Apr 2026 14:42:21 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 4,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "3 Reasons to Sell DKNG and 1 Stock to Buy Instead",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-sell-dkng-1-140644482.html",
+      "source": "StockStory",
+      "published": "2026-04-10T14:06:44Z",
       "matched_tickers": [
         "DKNG"
       ],
       "sector": "Online & iGaming",
       "category": "Company-Specific",
-      "relevance_score": 4,
-      "source_file": "news_2026-04-09.json"
+      "relevance_score": 1,
+      "source_file": "news_2026-04-10.json"
     },
     {
-      "title": "Rebranded Strip boutique hotel-casino to host hiring event - Las Vegas Review-Journal",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdUJWWTBzSk41V3JjN2ZRVTltMkczM3Y3S2tEUVgzZFU5MUhndXNuWUQ1SUJPX3BPOW96U0FqNk8xZ0FpQW03aWVEdnQ3RS1lQmRlamwwSWhmOHNyWVdsWm9KQ2ZuN1o3MGpUUUVES2VsTldBVkxIbnI3LUJ6V0k5S2xxa3RsNlpzTnpjQ21vMjg3OHJNWmkxd1BsQXBIdEx3bFo5LXNXSjZDUQ?oc=5",
-      "source": "Google News - Las Vegas",
-      "published": "Thu, 09 Apr 2026 19:24:12 GMT",
+      "title": "Online Sports Betting Now Legal in Wisconsin as Gov Evers Signs New Law - iGamingToday.com",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQT1RBSldwSGxJTmhMTTBVYmotV2hIb2ZFam5iUkhqMW8tajBIcDFDUEZfaFNtNkRzWnpDWlFUX19FbW1RNGRsejBDOVRSYlJoQzdUZUFNZGtZck95N1k2WDU3WFFZMDZ0VGZiWnBVb2Q5TVlMS2NMUDhvaWNHTHBCZ2xKeG9pcVdGSldWVjR2X2hRUnlJRERCejdHaUJ1bTJFcU40?oc=5",
+      "source": "iGamingToday.com",
+      "published": "Fri, 10 Apr 2026 13:50:08 GMT",
       "matched_tickers": [],
       "sector": "General",
       "category": "Industry-Wide",
-      "relevance_score": 4,
-      "source_file": "news_2026-04-09.json"
+      "relevance_score": 2,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Ukraine Industry Proposes Targeted Military Gambling Limits Over Blanket Ban",
+      "url": "https://www.igamingtoday.com/ukraine-industry-proposes-targeted-military-gambling-limits-over-blanket-ban/",
+      "source": "iGamingToday",
+      "published": "Fri, 10 Apr 2026 13:44:29 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 1,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Maine casino gaming revenue nears $40 million in Q1 2026 - Gaming Intelligence",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNaWtmYVU2SnZOamNYN1U0T1BQYjhTSUxGeERrdG1UbXBBc3c2bmQzZlZHekE3YTBJamgxbGU4YlJYLUZURXZrV2RwTkFzX2VCUGdJNm1VUTFic1djaEExeURiMUpHanR1X3BYYjA3bkluV3BpcEdqNTZIMG94Tl9RZFVrQkFmTG43WmFYMEtkMXBLZWMyQ3dHWkFPOE1yVjcxTFY4aEtsaEZidw?oc=5",
+      "source": "Gaming Intelligence",
+      "published": "Fri, 10 Apr 2026 13:19:46 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 6,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Betsson expects first quarter revenue decline of 3 per cent - Gaming Intelligence",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNSlRGS3B0Zy1ieFA4UU8yYWlhVXRaMHVkMy10Z0JNY09GTHFvOVlha3loNkM2SUNCcEZvRUwyZFE4OF9GWTJJRWVMNlV0ZW5vSXYxVXBITnhuemJCOWYwcm1zZjZOaEVJb1RXRTFtSTVuVXhGNDRTcG0tbHRUWVZhOUczaGZYQWp3RFBua2ozX0NBcnNhdlFTanJPd3dUMUJSSnlLbUdQV2Z6RHhjZ0dJ?oc=5",
+      "source": "Gaming Intelligence",
+      "published": "Fri, 10 Apr 2026 13:19:46 GMT",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-04-10.json"
+    },
+    {
+      "title": "Greece Signals Upcoming Age Restrictions for Online Gambling Following Social Media Ban",
+      "url": "https://www.igamingtoday.com/greece-signals-upcoming-age-restrictions-for-online-gambling-following-social-media-ban/",
+      "source": "iGamingToday",
+      "published": "Fri, 10 Apr 2026 13:12:20 +0000",
+      "matched_tickers": [],
+      "sector": "General",
+      "category": "Industry-Wide",
+      "relevance_score": 2,
+      "source_file": "news_2026-04-10.json"
     }
   ],
   "recent_filings": [
@@ -11064,7 +11052,8 @@ function renderMovers() {
             var d = md[t];
             var chg = d.change_pct || 0;
             var cls = chg >= 0 ? 'up' : 'down';
-            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+            var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
             html += '<div class="mover-row">' +
                 '<span class="mover-name">' + label + '</span>' +
                 '<span class="mover-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</span>' +
@@ -11099,7 +11088,7 @@ function render52Week() {
             var pct = mode === 'high' ? c.pctFromHigh : c.pctFromLow;
             var label = mode === 'high' ? (pct < 0.01 ? 'AT HIGH' : pct.toFixed(1) + '% below') : (pct < 0.01 ? 'AT LOW' : pct.toFixed(1) + '% above');
             return '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);">' +
-                '<span style="font-weight:700;color:var(--accent);min-width:48px;">' + esc(c.ticker) + '</span>' +
+                '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(c.ticker) + '" style="min-width:48px;">' + esc(c.ticker) + '</a>' +
                 '<span style="flex:1;min-width:0;"><div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;position:relative;"><div style="position:absolute;left:0;top:0;height:100%;width:' + Math.min(100, c.position) + '%;background:' + barColor + ';border-radius:3px;"></div><div style="position:absolute;top:-3px;left:' + Math.min(100, c.position) + '%;width:6px;height:12px;background:#fff;border-radius:3px;transform:translateX(-50%);"></div></div></span>' +
                 '<span style="font-size:11px;color:var(--text-secondary);min-width:65px;text-align:right;">$' + c.price.toFixed(2) + '</span>' +
                 '<span style="font-size:10px;min-width:72px;text-align:right;font-weight:600;color:' + barColor + ';">' + label + '</span></div>';
@@ -11153,7 +11142,8 @@ function renderUpcomingEarnings() {
         if (isNaN(dt.getTime())) return;
         var diffDays = Math.ceil((dt - now) / 86400000);
         if (diffDays < -7) return; // skip if more than a week ago
-        var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+        var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+        var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
         upcoming.push({ label: label, date: dt, diffDays: diffDays, dateStr: dt.toLocaleDateString('en-US', {month:'short', day:'numeric'}) });
     });
     upcoming.sort(function(a, b) { return a.date - b.date; });
@@ -11184,7 +11174,8 @@ function renderAnalystSnapshot() {
         else if (rec === 'hold') hold++;
         else if (rec === 'sell' || rec === 'strong_sell' || rec === 'strongsell' || rec === 'underperform') sell++;
         if (d.upside_pct != null && d.target_mean && d.price) {
-            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+            var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
             upsideList.push({ label: label, upside: d.upside_pct, target: d.target_mean, price: d.price, rec: rec });
         }
     });
@@ -11369,7 +11360,8 @@ function renderDividendTable() {
     tickers.forEach(function(t) {
         var d = md[t];
         if (d.dividend_yield && d.dividend_yield > 0) {
-            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+            var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
             var mcap = d.market_cap_b ? '$' + Number(d.market_cap_b).toFixed(1) + 'B' : (d.market_cap ? '$' + (d.market_cap / 1e9).toFixed(1) + 'B' : DASH);
             divPayers.push({ label: label, yield: d.dividend_yield, price: d.price, mcap: mcap });
         }
@@ -11398,7 +11390,7 @@ function renderSecFilings() {
         var typeLabel = (f.type || '').replace('_Earnings', '');
         var color = typeColors[f.type] || 'var(--accent)';
         var inner = '<span style="background:' + color + '22;color:' + color + ';font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;min-width:32px;text-align:center;">' + esc(typeLabel) + '</span>' +
-            '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (f.ticker ? '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(f.ticker) + '">' + esc(f.ticker) + '</a>' + (f.company ? ' ' + esc(f.company) : '') : esc(f.company || '')) + '</span>' +
             '<span style="min-width:65px;text-align:right;color:var(--text-secondary);">' + esc(f.date || '') + '</span>';
         if (f.url) {
             html += '<a href="' + esc(f.url) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;text-decoration:none;color:inherit;cursor:pointer;" onmouseover="this.style.background=\'rgba(255,255,255,0.04)\'" onmouseout="this.style.background=\'\'">' + inner + '</a>';
@@ -11424,7 +11416,7 @@ function renderSecFilingsCompact() {
         var color = typeColors[f.type] || 'var(--accent)';
         html += '<div style="display:flex;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;">' +
             '<span style="background:' + color + '22;color:' + color + ';font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-right:6px;">' + esc(typeLabel) + '</span>' +
-            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (f.ticker ? '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(f.ticker) + '">' + esc(f.ticker) + '</a>' + (f.company ? ' ' + esc(f.company) : '') : esc(f.company || '')) + '</span>' +
             '<span style="color:var(--text-secondary);font-size:10px;margin-left:6px;">' + esc(f.date || '') + '</span></div>';
     }
     el.innerHTML = html;

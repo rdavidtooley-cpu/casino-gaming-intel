@@ -41,7 +41,7 @@
 
         /* Ticker Bar */
         .ticker-bar{background:#0a0c10;border-bottom:1px solid rgba(255,255,255,0.06);height:32px;overflow:hidden;position:sticky;top:0;z-index:1001;white-space:nowrap;}
-        .ticker-track{display:inline-flex;animation:ticker-scroll 60s linear infinite;gap:0;}
+        .ticker-track{display:inline-flex;animation:ticker-scroll 120s linear infinite;gap:0;}
         .ticker-track:hover{animation-play-state:paused;}
         .ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 18px;height:32px;font-size:11px;font-weight:600;color:var(--text-secondary);border-right:1px solid rgba(255,255,255,0.04);white-space:nowrap;}
         .ticker-item .tk-sym{color:var(--accent);font-weight:700;}
@@ -213,6 +213,8 @@
         .ticker-regional { background: rgba(79,195,247,0.15); color: var(--accent2); }
         .ticker-online { background: rgba(129,199,132,0.15); color: var(--accent3); }
         .ticker-equipment { background: rgba(186,104,200,0.15); color: var(--accent4); }
+        .yf-link { color:var(--accent); text-decoration:none; font-weight:700; }
+        .yf-link:hover { text-decoration:underline; }
 
         .relevance-bar-wrap {
             display: flex;
@@ -625,7 +627,7 @@ function buildCard(article) {
     var sectors = article.ticker_sectors || {};
     var tickerHTML = tickers.map(function(t) {
         var cls = SECTOR_TICKER_CLASS[sectors[t]] || 'ticker-integrated';
-        return '<span class="ticker-badge ' + cls + '">' + t + '</span>';
+        return '<a class="yf-link ticker-badge ' + cls + '" href="CG_Company_Summary.html#company=' + encodeURIComponent(t) + '">' + t + '</a>';
     }).join('');
 
     card.innerHTML =
@@ -772,7 +774,7 @@ function renderAnalystActions() {
         var toGrade = a.tg || '—';
         html += '<tr>' +
             '<td>' + dateStr + '</td>' +
-            '<td><a class="ticker-badge ticker-integrated" href="https://finance.yahoo.com/quote/' + encodeURIComponent(a.tk || '') + '" target="_blank" rel="noopener" style="font-size:11px;">' + esc(a.tk || '') + '</a></td>' +
+            '<td><a class="yf-link ticker-badge ticker-integrated" href="CG_Company_Summary.html#company=' + encodeURIComponent(a.tk || '') + '" style="font-size:11px;">' + esc(a.tk || '') + '</a></td>' +
             '<td style="color:var(--text-primary);max-width:200px;overflow:hidden;text-overflow:ellipsis;" title="' + esc(a.co || '') + '">' + esc(a.co || '') + '</td>' +
             '<td style="color:var(--text-secondary);">' + esc(a.f || '') + '</td>' +
             '<td><span class="action-badge ' + cls + '">' + lbl + '</span></td>' +
@@ -820,7 +822,7 @@ function renderEarningsCalendar() {
             : '<span style="background:rgba(74,222,128,0.15);color:#4ade80;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">Reported</span>';
         html += '<div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;">' +
             '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
-            '<div><strong style="color:var(--accent);font-size:15px;">' + esc(e.ticker || '') + '</strong> <span style="color:var(--text-secondary);font-size:12px;">' + esc(e.company || '') + '</span></div>' +
+            '<div><a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(e.ticker || '') + '" style="font-size:15px;">' + esc(e.ticker || '') + '</a> <span style="color:var(--text-secondary);font-size:12px;">' + esc(e.company || '') + '</span></div>' +
             badge + '</div>' +
             '<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);">' +
             '<div>&#128197; ' + esc(dateVal) + '</div>' +
@@ -844,7 +846,7 @@ function renderTrendingTickers() {
     if (!el) return;
     if (!sorted.length) { el.innerHTML = '<span style="color:#9ca3af;font-size:12px">No ticker data</span>'; return; }
     el.innerHTML = sorted.map(function(t) {
-        return '<span class="trend-tag">' + t + ' <small style="opacity:0.7">' + counts[t] + '</small></span>';
+        return '<a class="trend-tag yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(t) + '" style="text-decoration:none;">' + t + ' <small style="opacity:0.7">' + counts[t] + '</small></a>';
     }).join('');
 }
 

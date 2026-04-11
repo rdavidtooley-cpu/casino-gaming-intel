@@ -37,7 +37,7 @@
 
         /* Ticker Bar */
         .ticker-bar { display:flex; align-items:center; background:#0a0c10; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; white-space:nowrap; height:32px; position:sticky; top:0; z-index:1001; }
-        .ticker-track { display:inline-flex; animation:ticker-scroll 60s linear infinite; gap:0; flex:1; }
+        .ticker-track { display:inline-flex; animation:ticker-scroll 120s linear infinite; gap:0; flex:1; }
         .ticker-track:hover { animation-play-state:paused; }
         .ticker-item { display:inline-flex; align-items:center; gap:6px; padding:0 18px; font-size:11px; font-weight:600; border-right:1px solid rgba(255,255,255,0.04); height:32px; cursor:default; }
         .ticker-item .tk-sym { color:var(--accent); font-weight:700; letter-spacing:0.5px; }
@@ -195,6 +195,8 @@
         .range-btn.active,.range-btn:hover{background:rgba(245,158,11,0.12);color:var(--accent);border-color:var(--accent);}
         .range-date-input{padding:4px 8px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:var(--bg-card);color:var(--text-primary);font-size:11px;cursor:pointer;font-family:inherit;}
         .range-status{font-size:11px;color:var(--text-secondary);margin-top:4px;}
+        .yf-link { color:var(--accent); text-decoration:none; font-weight:700; }
+        .yf-link:hover { text-decoration:underline; }
     </style>
 </head>
 <body>
@@ -775,7 +777,8 @@ function renderMovers() {
             var d = md[t];
             var chg = d.change_pct || 0;
             var cls = chg >= 0 ? 'up' : 'down';
-            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+            var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
             html += '<div class="mover-row">' +
                 '<span class="mover-name">' + label + '</span>' +
                 '<span class="mover-price">$' + (d.price ? Number(d.price).toFixed(2) : '0.00') + '</span>' +
@@ -810,7 +813,7 @@ function render52Week() {
             var pct = mode === 'high' ? c.pctFromHigh : c.pctFromLow;
             var label = mode === 'high' ? (pct < 0.01 ? 'AT HIGH' : pct.toFixed(1) + '% below') : (pct < 0.01 ? 'AT LOW' : pct.toFixed(1) + '% above');
             return '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);">' +
-                '<span style="font-weight:700;color:var(--accent);min-width:48px;">' + esc(c.ticker) + '</span>' +
+                '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(c.ticker) + '" style="min-width:48px;">' + esc(c.ticker) + '</a>' +
                 '<span style="flex:1;min-width:0;"><div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;position:relative;"><div style="position:absolute;left:0;top:0;height:100%;width:' + Math.min(100, c.position) + '%;background:' + barColor + ';border-radius:3px;"></div><div style="position:absolute;top:-3px;left:' + Math.min(100, c.position) + '%;width:6px;height:12px;background:#fff;border-radius:3px;transform:translateX(-50%);"></div></div></span>' +
                 '<span style="font-size:11px;color:var(--text-secondary);min-width:65px;text-align:right;">$' + c.price.toFixed(2) + '</span>' +
                 '<span style="font-size:10px;min-width:72px;text-align:right;font-weight:600;color:' + barColor + ';">' + label + '</span></div>';
@@ -864,7 +867,8 @@ function renderUpcomingEarnings() {
         if (isNaN(dt.getTime())) return;
         var diffDays = Math.ceil((dt - now) / 86400000);
         if (diffDays < -7) return; // skip if more than a week ago
-        var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+        var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+        var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
         upcoming.push({ label: label, date: dt, diffDays: diffDays, dateStr: dt.toLocaleDateString('en-US', {month:'short', day:'numeric'}) });
     });
     upcoming.sort(function(a, b) { return a.date - b.date; });
@@ -895,7 +899,8 @@ function renderAnalystSnapshot() {
         else if (rec === 'hold') hold++;
         else if (rec === 'sell' || rec === 'strong_sell' || rec === 'strongsell' || rec === 'underperform') sell++;
         if (d.upside_pct != null && d.target_mean && d.price) {
-            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+            var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
             upsideList.push({ label: label, upside: d.upside_pct, target: d.target_mean, price: d.price, rec: rec });
         }
     });
@@ -1080,7 +1085,8 @@ function renderDividendTable() {
     tickers.forEach(function(t) {
         var d = md[t];
         if (d.dividend_yield && d.dividend_yield > 0) {
-            var label = d.name ? esc(d.name) + ' (' + esc(d.display_ticker || t) + ')' : esc(d.display_ticker || t);
+            var tkLink = '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(d.display_ticker || t) + '">' + esc(d.display_ticker || t) + '</a>';
+            var label = d.name ? esc(d.name) + ' (' + tkLink + ')' : tkLink;
             var mcap = d.market_cap_b ? '$' + Number(d.market_cap_b).toFixed(1) + 'B' : (d.market_cap ? '$' + (d.market_cap / 1e9).toFixed(1) + 'B' : DASH);
             divPayers.push({ label: label, yield: d.dividend_yield, price: d.price, mcap: mcap });
         }
@@ -1109,7 +1115,7 @@ function renderSecFilings() {
         var typeLabel = (f.type || '').replace('_Earnings', '');
         var color = typeColors[f.type] || 'var(--accent)';
         var inner = '<span style="background:' + color + '22;color:' + color + ';font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;min-width:32px;text-align:center;">' + esc(typeLabel) + '</span>' +
-            '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (f.ticker ? '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(f.ticker) + '">' + esc(f.ticker) + '</a>' + (f.company ? ' ' + esc(f.company) : '') : esc(f.company || '')) + '</span>' +
             '<span style="min-width:65px;text-align:right;color:var(--text-secondary);">' + esc(f.date || '') + '</span>';
         if (f.url) {
             html += '<a href="' + esc(f.url) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;text-decoration:none;color:inherit;cursor:pointer;" onmouseover="this.style.background=\'rgba(255,255,255,0.04)\'" onmouseout="this.style.background=\'\'">' + inner + '</a>';
@@ -1135,7 +1141,7 @@ function renderSecFilingsCompact() {
         var color = typeColors[f.type] || 'var(--accent)';
         html += '<div style="display:flex;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;">' +
             '<span style="background:' + color + '22;color:' + color + ';font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-right:6px;">' + esc(typeLabel) + '</span>' +
-            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(f.company || f.ticker || '') + '</span>' +
+            '<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (f.ticker ? '<a class="yf-link" href="CG_Company_Summary.html#company=' + encodeURIComponent(f.ticker) + '">' + esc(f.ticker) + '</a>' + (f.company ? ' ' + esc(f.company) : '') : esc(f.company || '')) + '</span>' +
             '<span style="color:var(--text-secondary);font-size:10px;margin-left:6px;">' + esc(f.date || '') + '</span></div>';
     }
     el.innerHTML = html;
